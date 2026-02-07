@@ -31,6 +31,17 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
+
+# deployment
+scripts/deploy*.js
+scripts/fix-permissions.js
+scripts/inspect-ftp.js
+scripts/debug-ftp.js
+scripts/test*.js
+*.log
+build_log*.txt
+
+# secrets
 .env*
 
 # vercel
