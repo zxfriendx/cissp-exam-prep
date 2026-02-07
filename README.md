@@ -63,6 +63,24 @@ A modern, interactive web application designed to help users prepare for the CIS
 -   `src/store`: Zustand stores (`quiz-store.ts`, `user-stats-store.ts`).
 -   `src/lib`: Utility functions and content helpers.
 
+## 🚀 Deployment
+
+This project is configured for static export (`output: 'export'`) to be hosted on any static hosting service (e.g., Apache/Nginx, GitHub Pages, Vercel, Netlify).
+
+To deploy:
+1.  Create a `.env.local` file with the following credentials (ask the administrator for values):
+    ```env
+    DEPLOY_HOST=your-ftp-host.com
+    DEPLOY_USER=your-ftp-username
+    DEPLOY_PASS=your-ftp-password
+    DEPLOY_REMOTE_DIR=/public_html/your-site-dir
+    ```
+2.  Run the deployment script:
+    ```bash
+    npm run deploy
+    ```
+    This will build the project and upload the `out` directory to the configured FTP server.
+
 ## 🧪 Verification
 
 To verify the installation:
