@@ -89,3 +89,7 @@ The app uses a structured JSON file for content. Each domain contains a set of q
 ```
 
 *Note: The `options` are shuffled at runtime for the user, but stored keyed A-D in the source.*
+
+## ⚖️ Legal Disclaimer
+
+CISSP® is a registered trademark of (ISC)². This project is an independent educational tool and is not affiliated with, endorsed by, or sponsored by (ISC)². For more information about the CISSP certification, please visit the official [(ISC)² website](https://www.isc2.org/certifications/cissp).
