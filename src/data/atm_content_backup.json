@@ -1,0 +1,619 @@
+{
+  "domains": [
+    {
+      "id": "domain_1",
+      "title": "Security and Risk Management",
+      "caseStudy": "Welcome to the first chapter that covers questions for Domain 1 of the CISSP curriculum\u2014Security and Risk Management. This domain defines the foundational principles of information security, including governance, compliance, and risk management.\n\nCase Study: \"Jackpotting\" Attacks on Meridian Financial Services (2025)\n\nIn early 2025, Meridian Financial Services, a mid-sized regional bank, launched an initiative to modernize its branches with \"NextGen\" ATMs. These machines promised video banking, touchscreens, and contactless NFC withdrawals. However, within six months of deployment, Meridian became the victim of a coordinated \"Jackpotting\" (Logical) attack.\n\nCriminal gangs targeted the new ATMs across three cities over a holiday weekend. By drilling a small hole in the upper fascia of the ATM or picking the lock of the service cabinet, attackers connected a laptop directly to the ATM's cash dispenser (the dispenser controller). Using specialized malware, they sent commands to the dispenser to \"spit out\" all bills, emptying the cassettes in minutes. Meridian lost over $2.5 million in cash, faced significant regulatory scrutiny from the FFIEC, and suffered reputational damage.\n\nKey Events Leading to the Breach\n\n1.  **Inadequate Risk Assessment of New Hardware**: Meridian's procurement team prioritized user experience and cost over physical security. The new \"NextGen\" ATMs had a known vulnerability in their upper cabinet locks that was documented in security forums, but Meridian's risk assessment process failed to include a physical security review of the new chassis.\n2.  **Lack of Firmware Validation (Governance Failure)**: The ATM cash dispensers accepted commands from any device connected to the internal USB port. Meridian had not enforced a policy requiring \"end-to-end encryption\" or \"firmware signing\" between the ATM PC and the dispenser, a control recommended by NIST but deemed \"too complex\" during the rollout.\n3.  **Third-Party Vendor Negligence**: The deployment was managed by a third-party vendor, \"TechSafe Solutions.\" It was discovered that TechSafe technicians had disabled the \"dispenser disconnect alarm\" to silence effective alerts during installation and never re-enabled them. Meridian had no audit process to verify the vendor's configuration.\n4.  **Delayed Incident Response**: The attacks triggered \"cash low\" alerts, but because they occurred over a holiday weekend, Meridian's operations center treated them as standard replenishment requests rather than security incidents. There was no specific \"velocity check\" or fraud alert rule for rapid dispensing.\n\nAnalysis Using CISSP Domain 1 Principles\n\n1.  **Security Governance and Policy**:\n    Meridian lacked a comprehensive governance framework for OT (Operational Technology) devices like ATMs. Security policies focused heavily on the corporate network but neglected the physical and logical security of remote terminals. A strong governance framework would have established clear standards for hardware selection, requiring security sign-off before purchase.\n\n2.  **Risk Management (Asset Identification & Valuation)**:\n    The bank failed to properly value the \"NextGen\" ATMs as critical assets requiring enhanced physical controls. A proper quantitative risk assessment would have weighed the cost of upgrading locks/firmware (SLE) against the potential loss from a jackpotting attack (ALE), likely justifying the investment in better defenses.\n\n3.  **Third-Party Risk Management (TPRM)**:\n    Meridian allowed \"TechSafe Solutions\" to configure critical infrastructure without oversight. CISSP Domain 1 emphasizes that outsourcing operations does not outsource risk. Meridian should have had a Service Level Agreement (SLA) defining security configurations and a \"Right to Audit\" clause to verify that alarms and encryption were active.\n\n4.  **Compliance (FFIEC & PCI-DSS)**:\n    As a financial institution, Meridian is subject to FFIEC guidelines which mandate strict controls over ATM operations. Failing to secure the logical access to the dispenser may constitute a violation of \"Safety and Soundness\" standards. Additionally, if the ATMs processed card data, the easy physical access could violate PCI-DSS physical security requirements (Requirement 9).\n\n5.  **Business Continuity & Resilience**:\n    The loss of 40+ ATMs over a weekend impacted customer service. Meridian's Business Continuity Plan (BCP) did not account for a widespread fleet compromise, leading to confusion on whether to shut down the remaining 400 ATMs or leave them operational but vulnerable.\n\nLessons Learned\n\n*   **Holistic Risk Assessment**: Risk assessments must cover physical, logical, and administrative controls, especially for IoT/OT devices.\n*   **Vendor Oversight**: Trust but verify. Third-party configurations on critical hardware must be audited before going live.\n*   **Defense in Depth**: Relying on just one control (the cabinet lock) is insufficient. Logical controls (encryption, firmware signing) must look the physical layer.\n*   **Incident Response Alignment**: Operational alerts (low cash) should be correlated with security indicators to detect fraud faster.",
+      "questions": [
+        {
+          "id": "domain_1_q1",
+          "number": "1",
+          "question": "Meridian's failure to review the physical security of the 'NextGen' ATM chassis before purchase best represents a failure in which Domain 1 process?",
+          "options": {
+            "A": "Security Governance",
+            "B": "Supply Chain Risk Management",
+            "C": "Security Risk Assessment",
+            "D": "Business Continuity Planning"
+          },
+          "correctAnswer": "C",
+          "explanation": "Security Risk Assessment.\n\nExplanation: Risk assessment involves identifying vulnerabilities and threats to assets. Meridian failed to assess the physical vulnerabilities (weak locks) of the new asset (ATM) before deployment."
+        },
+        {
+          "id": "domain_1_q2",
+          "number": "2",
+          "question": "Which principle could have prevented the 'TechSafe' technicians from leaving the alarms disabled without Meridian's knowledge?",
+          "options": {
+            "A": "Least Privilege",
+            "B": "Separation of Duties",
+            "C": "Due Diligence",
+            "D": "Third-Party Right to Audit"
+          },
+          "correctAnswer": "D",
+          "explanation": "Third-Party Right to Audit.\n\nExplanation: A 'Right to Audit' clause in the vendor contract would have allowed Meridian to inspect the vendor's work and configurations to ensure they met security standards."
+        },
+        {
+          "id": "domain_1_q3",
+          "number": "3",
+          "question": "The 'Jackpotting' attack succeeded because the dispenser accepted commands from an unauthorized laptop. Which security concept was missing?",
+          "options": {
+            "A": "Confidentiality",
+            "B": "Integrity (Authentication/Signing)",
+            "C": "Availability",
+            "D": "Non-repudiation"
+          },
+          "correctAnswer": "B",
+          "explanation": "Integrity (Authentication/Signing).\n\nExplanation: The system failed to verify the source and integrity of the commands. Firmware signing or mutual authentication would have ensured the dispenser only obeyed the legitimate PC."
+        },
+        {
+          "id": "domain_1_q4",
+          "number": "4",
+          "question": "Meridian operations team misinterpreting 'low cash' alerts during a holiday weekend highlights a gap in:",
+          "options": {
+            "A": "Disaster Recovery Planning",
+            "B": "Incident Response (Detection & Analysis)",
+            "C": "Asset Classification",
+            "D": "Legal Compliance"
+          },
+          "correctAnswer": "B",
+          "explanation": "Incident Response (Detection & Analysis).\n\nExplanation: The team failed to correctly identify the event as a security incident (Detection) and analyze the pattern (Analysis), treating it instead as routine maintenance."
+        },
+        {
+          "id": "domain_1_q5",
+          "number": "5",
+          "question": "To comply with FFIEC guidelines after this incident, what is the best first step for Meridian's CISO?",
+          "options": {
+            "A": "Fire the vendor immediately.",
+            "B": "Conduct a gap analysis against FFIEC cybersecurity assessment tool (CAT).",
+            "C": "Buy cyber insurance.",
+            "D": "Encrypt all hard drives."
+          },
+          "correctAnswer": "B",
+          "explanation": "Conduct a gap analysis against FFIEC cybersecurity assessment tool (CAT).\n\nExplanation: The most appropriate governance response is to assess the organization's current posture against the relevant regulatory framework (FFIEC) to identify all deficiencies."
+        },
+        {
+          "id": "domain_1_q6",
+          "number": "6",
+          "question": "If Meridian had calculated the ALE (Annualized Loss Expectancy) of a jackpotting attack, they might have justified the cost of better locks. ALE is calculated as:",
+          "options": {
+            "A": "SLE x ARO",
+            "B": "Asset Value x Exposure Factor",
+            "C": "Impact + Likelihood",
+            "D": "Total Cost of Ownership / Lifespan"
+          },
+          "correctAnswer": "A",
+          "explanation": "SLE x ARO (Single Loss Expectancy x Annualized Rate of Occurrence).\n\nExplanation: This is the standard quantitative risk analysis formula to determine the expected financial loss per year."
+        },
+        {
+          "id": "domain_1_q7",
+          "number": "7",
+          "question": "The lack of specific security policies for OT (Operational Technology) devices like ATMs represents a failure in:",
+          "options": {
+            "A": "Security Governance",
+            "B": "Threat Modeling",
+            "C": "Penetration Testing",
+            "D": "Forensics"
+          },
+          "correctAnswer": "A",
+          "explanation": "Security Governance.\n\nExplanation: Governance is responsible for setting the strategic direction and policies. Failing to have policies for a critical asset class is a governance failure."
+        },
+        {
+          "id": "domain_1_q8",
+          "number": "8",
+          "question": "Which legal concept requires Meridian to exercise reasonable care in protecting customer assets and data?",
+          "options": {
+            "A": "Due Diligence",
+            "B": "Due Care",
+            "C": "Indemnification",
+            "D": "Safe Harbor"
+          },
+          "correctAnswer": "B",
+          "explanation": "Due Care.\n\nExplanation: Due Care is the prudent conduct that a reasonable person (or organization) would exercise in similar circumstances (doing the right thing). Due Diligence is the research/investigation."
+        }
+      ]
+    },
+    {
+      "id": "domain_2",
+      "title": "Asset Security",
+      "caseStudy": "Case Study: The \"SecureVault\" Disposal Fiasco (Domain 2 - Asset Security)\n\nIn late 2024, \"SecureVault,\" a third-party ATM maintenance provider for several regional credit unions, initiated a hardware refresh cycle to replace 500 aging ATM hard drives.  To save costs, the operations manager hired a local, non-certified recycling firm to dispose of the old drives.\n\nTwo weeks later, a local journalist purchased a \"lot\" of used hard drives from an online auction site. Upon connecting one to a forensic write-blocker, she discovered it contained the unencrypted transaction logs of over 15,000 customers, including PANs (Primary Account Numbers) and PIN blocks. The drives had been formatted using the operating system's standard \"Quick Format\" command, but the data had not been sanitized according to industry standards.\n\n**Analysis:**\n1.  **Data States**: The data was \"Data at Rest.\" While the credit unions required encryption for active ATMs, the decommissioning process failed to maintain that protection.\n2.  **Media Sanitization (NIST 800-88)**: The \"Quick Format\" merely removed the file pointers. It did not overwrite the data (Clear) or destroy the physical media (Destroy/Purge).\n3.  **Data Classification**: The PANs and PINs were \"Restricted/Confidential\" data under PCI-DSS, requiring the highest level of handling and destruction assurance.\n4.  **Asset Handling Requirements**: There was no Chain of Custody log documenting the hand-off from SecureVault to the recycler.\n\n**Lessons Learned:**\n*   **Sanitization Standards**: Destruction must follow NIST 800-88 (e.g., degaussing, shredding, or multi-pass overwrite).\n*   **Vendor Due Diligence**: Recyclers must be NAID certified.\n*   **Encryption**: Full Disk Encryption (FDE) would have mitigated this risk even if physical destruction failed.",
+      "questions": [
+        {
+          "id": "domain_2_q1",
+          "number": "1",
+          "question": "The 'Quick Format' performed on the drives failed to meet which NIST 800-88 sanitization category?",
+          "options": {
+            "A": "Delete",
+            "B": "Clear",
+            "C": "Purge",
+            "D": "Destroy"
+          },
+          "correctAnswer": "B",
+          "explanation": "Clear.\n\nExplanation: 'Clearing' applies logical techniques to sanitize data in all user-addressable storage locations (e.g., standard overwrite). Quick Format does not achieve this."
+        },
+        {
+          "id": "domain_2_q2",
+          "number": "2",
+          "question": "Under PCI-DSS, how should the PAN and PIN data on the hard drives have been classified?",
+          "options": {
+            "A": "Public",
+            "B": "Internal Use Only",
+            "C": "Confidential / Restricted",
+            "D": "Unclassified"
+          },
+          "correctAnswer": "C",
+          "explanation": "Confidential / Restricted.\n\nExplanation: Cardholder data is highly sensitive and regulatory-controlled, requiring the highest classification protections."
+        },
+        {
+          "id": "domain_2_q3",
+          "number": "3",
+          "question": "Which document was missing that would have tracked the drives from SecureVault to the recycler?",
+          "options": {
+            "A": "SLA",
+            "B": "Chain of Custody",
+            "C": "NDA",
+            "D": "MOU"
+          },
+          "correctAnswer": "B",
+          "explanation": "Chain of Custody.\n\nExplanation: A Chain of Custody form documents exactly who held possession of the assets and when, essential for legal and security accountability."
+        },
+        {
+          "id": "domain_2_q4",
+          "number": "4",
+          "question": "If the hard drives had been fully encrypted (FDE) before disposal, the risk would have been effectively mitigated. This is an example of protecting data in which state?",
+          "options": {
+            "A": "Data in Transit",
+            "B": "Data in Use",
+            "C": "Data at Rest",
+            "D": "Data in Process"
+          },
+          "correctAnswer": "C",
+          "explanation": "Data at Rest.\n\nExplanation: The hard drives were storage media holding inactive data, which defines Data at Rest."
+        },
+        {
+          "id": "domain_2_q5",
+          "number": "5",
+          "question": "What is the most secure method for destroying the SSDs from the ATMs before disposal?",
+          "options": {
+            "A": "Degaussing",
+            "B": "Cryptographic Erase",
+            "C": "Shredding / Pulverizing",
+            "D": "Standard Overwrite (3-pass)"
+          },
+          "correctAnswer": "C",
+          "explanation": "Shredding / Pulverizing.\n\nExplanation: For SSDs, degaussing is ineffective (no magnetic platters), and overwriting can be unreliable due to wear-leveling. Physical destruction (shredding) is the most secure."
+        }
+      ]
+    },
+    {
+      "id": "domain_3",
+      "title": "Security Architecture & Engineering",
+      "caseStudy": "Case Study: The \"Phantom Key\" Attack (Domain 3 - Security Architecture)\n\nNexus Bank deployed a new fleet of \"SlimLine\" ATMs in high-traffic subway stations. To support remote updates, the ATMs were built on a standard PC architecture running Windows 10 IoT.\n\nA criminal syndicate discovered that the connection between the ATM's internal PC and the Encrypting Pin Pad (EPP) used a standard unencrypted USB protocol. They designed a tiny hardware \"shim\" that could be inserted into the USB port. This device captured high-level function calls, including the \"Verify PIN\" command, which, due to a flaw in the EPP's legacy mode, sent the PIN in plaintext for local verification.\n\n**Analysis:**\n1.  **Cryptographic Boundaries**: The architecture failed to enforce a strict cryptographic boundary. Sensitive data (PINs) should never leave the EPP (a Tamper Responsive Hardware Security Module) in plaintext.\n2.  **Trusted Integrity**: The ATM PC accepted the malicious USB device because it lacked mutual authentication or hardware allow-listing.\n3.  **Security Models**: The system violated the Bell-LaPadula model (No Read Up) by allowing a lower-privileged process (the USB shim) to read higher-privileged data (PINs).\n4.  **TPM Usage**: The ATMs had Trusted Platform Modules (TPM) but they were not configured to validate the hardware integrity at boot (Secure Boot), allowing the system to boot even with the rogue device attached.\n\n**Lessons Learned:**\n*   **End-to-End Encryption (E2EE)**: Data must remain encrypted from the point of entry (EPP) to the host (HSM).\n*   **Hardware Security Modules (HSM)**: EPPs must be treated as hostile environments; secrets must never leave them unencrypted.\n*   **Interface Security**: Unused ports must be physically and logically disabled.",
+      "questions": [
+        {
+          "id": "domain_3_q1",
+          "number": "1",
+          "question": "The Encrypting Pin Pad (EPP) is designed to destroy its keys if the casing is opened. What type of protection is this?",
+          "options": {
+            "A": "Tamper Evident",
+            "B": "Tamper Resistant",
+            "C": "Tamper Responsive",
+            "D": "Tamper Proof"
+          },
+          "correctAnswer": "C",
+          "explanation": "Tamper Responsive.\n\nExplanation: Tamper Responsive systems detect an intrusion (like opening the case) and actively destroy sensitive data (zeroize keys) in response."
+        },
+        {
+          "id": "domain_3_q2",
+          "number": "2",
+          "question": "The attack succeeded because the PIN traveled in plaintext across the USB bus. What architectural principle was violated?",
+          "options": {
+            "A": "Defense in Depth",
+            "B": "Least Privilege",
+            "C": "Secure Defaults",
+            "D": "End-to-End Encryption"
+          },
+          "correctAnswer": "D",
+          "explanation": "End-to-End Encryption.\n\nExplanation: E2EE ensures data is encrypted at the origin (EPP) and only decrypted at the final destination (Bank Host), never exposing it in transit (USB bus)."
+        },
+        {
+          "id": "domain_3_q3",
+          "number": "3",
+          "question": "Which hardware component could have been used to verify the integrity of the boot process and prevent the system from loading with unauthorized hardware drivers?",
+          "options": {
+            "A": "HSM",
+            "B": "TPM (Trusted Platform Module)",
+            "C": "UEFI",
+            "D": "BIOS Password"
+          },
+          "correctAnswer": "B",
+          "explanation": "TPM (Trusted Platform Module).\n\nExplanation: The TPM is the root of trust for reporting platform integrity and supporting Secure Boot to verify the bootloader and kernel."
+        },
+        {
+          "id": "domain_3_q4",
+          "number": "4",
+          "question": "The flaw allowing the EPP to output plaintext PINs typically involves a failure in managing:",
+          "options": {
+            "A": "Symmetric Keys",
+            "B": "Asymmetric Keys",
+            "C": "Cryptographic Boundaries",
+            "D": "Digital Signatures"
+          },
+          "correctAnswer": "C",
+          "explanation": "Cryptographic Boundaries.\n\nExplanation: A cryptographic boundary (NIST FIPS 140-2) defines where keys and secrets are safe. Outputting secrets outside this boundary is a critical failure."
+        },
+        {
+          "id": "domain_3_q5",
+          "number": "5",
+          "question": "Using a 'Hardware Shim' to intercept signals is an example of what type of attack?",
+          "options": {
+            "A": "Man-in-the-Middle (MITM)",
+            "B": "Side-Channel",
+            "C": "Buffer Overflow",
+            "D": "SQL Injection"
+          },
+          "correctAnswer": "A",
+          "explanation": "Man-in-the-Middle (MITM).\n\nExplanation: The hardware shim sits physically between the sender (EPP) and receiver (PC), intercepting the data flow."
+        }
+      ]
+    },
+    {
+      "id": "domain_4",
+      "title": "Communication and Network Security",
+      "caseStudy": "Case Study: The \"AirLink\" Cellular Intercept (Domain 4 - Network Security)\n\nRuralBank utilized 4G/LTE cellular modems to connect its remote standalone ATMs to the transaction processing center. To ensure reliability, the modems were configured to fallback to 3G/2G if the 4G signal was weak.\n\nAttackers set up a \"False Base Station\" (IMSI Catcher/Stingray) near a cluster of ATMs. They forced the ATM modems to downgrade to 2G (GSM), a protocol with known broken mutual authentication. Once connected to the fake tower, the attackers performed a Man-in-the-Middle (MITM) attack. While the transaction payload (ISO 8583) was encrypted, the attackers noticed that the \"Heartbeat/Status\" messages were cleartext. They manipulated these messages to report the ATM as \"Out of Service\" to the bank while keeping it operational for customers, effectively masking their physical tampering of the cash cassette.\n\n**Analysis:**\n1.  **Protocol Security**: Relying on cellular encryption alone is insufficient. The ATM application layer should have used TLS 1.2/1.3 for all communications, regardless of the transport medium.\n2.  **Downgrade Attacks**: The modems allowed fallback to insecure legacy protocols (2G).\n3.  **Network Segmentation**: The cellular network was not a private APN (Access Point Name), and the \"Heartbeat\" traffic lacked integrity checks (HMAC).\n\n**Lessons Learned:**\n*   **Transport Layer Security (TLS)**: Always assume the network (even cellular) is hostile. Use mutual TLS (mTLS) for device authentication.\n*   **Disable Legacy Protocols**: Harden configurations to reject 2G/3G connections.\n*   **VPN**: Use IPsec VPNs over cellular to create a secure tunnel.",
+      "questions": [
+        {
+          "id": "domain_4_q1",
+          "number": "1",
+          "question": "The attackers forcing the modem to 2G allows them to exploit the lack of mutual authentication in GSM. This is known as a:",
+          "options": {
+            "A": "Denial of Service",
+            "B": "Downgrade Attack",
+            "C": "Replay Attack",
+            "D": "Smurf Attack"
+          },
+          "correctAnswer": "B",
+          "explanation": "Downgrade Attack.\n\nExplanation: A downgrade attack forces a system to abandon a high-quality mode of operation (4G LTE) in favor of an older, insecure one (2G GSM) that can be exploited."
+        },
+        {
+          "id": "domain_4_q2",
+          "number": "2",
+          "question": "To prevent the 'Heartbeat' content manipulation, RuralBank should have used:",
+          "options": {
+            "A": "CRC32",
+            "B": "MD5",
+            "C": "HMAC (Hash-based Message Authentication Code)",
+            "D": "Parity Bit"
+          },
+          "correctAnswer": "C",
+          "explanation": "HMAC (Hash-based Message Authentication Code).\n\nExplanation: HMAC provides both data integrity (detecting changes) and authenticity (verifying the sender using a shared secret), which CRC and pure hashes do not."
+        },
+        {
+          "id": "domain_4_q3",
+          "number": "3",
+          "question": "Which technology would have created a secure, encrypted tunnel over the public cellular network, mitigating the MITM attack?",
+          "options": {
+            "A": "VLAN",
+            "B": "IPsec VPN",
+            "C": "NAT",
+            "D": "DHCP"
+          },
+          "correctAnswer": "B",
+          "explanation": "IPsec VPN.\n\nExplanation: An IPsec VPN encapsulates and encrypts the entire IP packet, protecting the data payload even if the underlying cellular link is compromised."
+        },
+        {
+          "id": "domain_4_q4",
+          "number": "4",
+          "question": "What specifically does mutual TLS (mTLS) prevent in this scenario?",
+          "options": {
+            "A": "The ATM connecting to a rogue server.",
+            "B": "The user forgetting their PIN.",
+            "C": "Physical drilling of the safe.",
+            "D": "GPS spoofing."
+          },
+          "correctAnswer": "A",
+          "explanation": "The ATM connecting to a rogue server.\n\nExplanation: mTLS requires both parties (ATM and Server) to present valid certificates. The fake Stingray tower would not possess the bank's private server key, preventing the connection."
+        },
+        {
+          "id": "domain_4_q5",
+          "number": "5",
+          "question": "The OSI model layer responsible for the fallback from 4G to 2G is:",
+          "options": {
+            "A": "Layer 1 (Physical)",
+            "B": "Layer 3 (Network)",
+            "C": "Layer 4 (Transport)",
+            "D": "Layer 2 (Data Link) / Radio Access"
+          },
+          "correctAnswer": "A",
+          "explanation": "Layer 1 (Physical) / Layer 2 (Data Link).\n\nExplanation: The negotiation of radio frequency and signaling protocols (GSM vs LTE) happens at the lower physical/link layers of the cellular stack."
+        }
+      ]
+    },
+    {
+      "id": "domain_5",
+      "title": "Identity & Access Management (IAM)",
+      "caseStudy": "Case Study: The \"Omni-Key\" Insider Threat (Domain 5 - IAM)\n\nGlobalCash, an ATM operator, standardized its fleet maintenance to improve efficiency. They created a single \"SuperAdmin\" account with the password \"GbCash@2024!\" for all 2,000 ATMs to allow roaming technicians to service any machine. Additionally, the physical keys to the upper cabinet were keyed-alike (all locks opened with code CH751).\n\n A technician was fired for misconduct but retained his physical key and knew the admin password. Over a weekend, he visited 15 ATMs, opened the cabinet, logged in as SuperAdmin, and initiated \"Test Dispense\" cycles to empty the cassettes. The logs showed \"SuperAdmin\" performed the actions, but GlobalCash had 50 active technicians sharing that account.\n\n**Analysis:**\n1.  **Identification vs. Authentication**: The system Authenticated the user (correct password) but failed to Identify the individual (Shared Account). Non-repudiation was impossible.\n2.  **Least Privilege**: Technicians needed \"Service\" rights, not \"SuperAdmin\" rights.\n3.  **Physical Access Control**: Using universal keys (CH751) removes the first layer of defense.\n4.  **Revocation**: There was no way to revoke the fired employee's access without changing the password on 2,000 machines manually.\n\n**Lessons Learned:**\n*   **Unique Accounts**: Every user must have a unique ID (UID).\n*   **MFA**: Technicians should require a physical token + PIN or Biometric.\n*   **RBAC**: Role-Based Access Control to limit commands (e.g., \"Dispense\" only allowed with dual-control).",
+      "questions": [
+        {
+          "id": "domain_5_q1",
+          "number": "1",
+          "question": "The inability to determine EXACTLY which technician performed the dispense actions is a failure of:",
+          "options": {
+            "A": "Authorization",
+            "B": "Availability",
+            "C": "Non-repudiation / Accountability",
+            "D": "Confidentiality"
+          },
+          "correctAnswer": "C",
+          "explanation": "Non-repudiation / Accountability.\n\nExplanation: Shared accounts destroy accountability. You cannot prove who performed an action, so the user can repudiate (deny) the validity of the logs."
+        },
+        {
+          "id": "domain_5_q2",
+          "number": "2",
+          "question": "The fired technician using a retained knowledge factor (password) and possession factor (key) highlights the need for:",
+          "options": {
+            "A": "SSO (Single Sign-On)",
+            "B": "Automated Provisioning/Deprovisioning",
+            "C": "Federated Identity",
+            "D": "DAC (Discretionary Access Control)"
+          },
+          "correctAnswer": "B",
+          "explanation": "Automated Provisioning/Deprovisioning.\n\nExplanation: An effective IAM system must have a process to immediately revoke (deprovision) access when an employee is terminated."
+        },
+        {
+          "id": "domain_5_q3",
+          "number": "3",
+          "question": "Implementing a system where the technician needs a smart card AND a PIN to access the ATM menu is an example of:",
+          "options": {
+            "A": "Two-Factor Authentication (2FA)",
+            "B": "Single-Factor Authentication",
+            "C": "Mutual Authentication",
+            "D": "Biometric Authentication"
+          },
+          "correctAnswer": "A",
+          "explanation": "Two-Factor Authentication (2FA).\n\nExplanation: It combines 'Something you have' (Smart Card) with 'Something you know' (PIN)."
+        },
+        {
+          "id": "domain_5_q4",
+          "number": "4",
+          "question": "The principle that technicians should only be able to run diagnostics, not dispense cash, is:",
+          "options": {
+            "A": "Separation of Duties",
+            "B": "Least Privilege",
+            "C": "Job Rotation",
+            "D": "Mandatory Access Control"
+          },
+          "correctAnswer": "B",
+          "explanation": "Least Privilege.\n\nExplanation: Users should be granted the minimum permissions necessary to perform their job function, and nothing more."
+        },
+        {
+          "id": "domain_5_q5",
+          "number": "5",
+          "question": "Requiring two different technicians to authorize a 'Test Dispense' implies:",
+          "options": {
+            "A": "Dual Control / Split Knowledge",
+            "B": "Implicit Deny",
+            "C": "Defense in Depth",
+            "D": "Time-of-Day Restrictions"
+          },
+          "correctAnswer": "A",
+          "explanation": "Dual Control / Split Knowledge.\n\nExplanation: Dual control requires two authorized entities to act simultaneously to complete a sensitive task, preventing a single insider threat."
+        }
+      ]
+    },
+    {
+      "id": "domain_6",
+      "title": "Security Assessment and Testing",
+      "caseStudy": "Case Study: The \"Unchecked Validator\" (Domain 6 - Security Assessment)\n\nCityBank engaged a cybersecurity firm to perform an annual penetration test. The scope was defined as \"External Network IP Addresses.\" The testers found no vulnerabilities.\n\nSix months later, a fraud ring targeted CityBank's ATMs using \"shaved\" bills and photocopy notes. The Bill Validator (the hardware reading the cash) accepted them as $100 denominations. It was discovered that the Validator firmware had not been updated in 5 years and had known weaknesses to \"spectral analysis\" attacks. The bank had never performed a \"Physical\" or \"Hardware\" penetration test, assuming the network test was sufficient.\n\n**Analysis:**\n1.  **Testing Scope**: The pen test scope was too narrow. It ignored the physical assets and OT components.\n2.  **Vulnerability Scanning**: Network scanners don't scan proprietary hardware (Bill Validators).\n3.  **Fuzzing**: No one had \"fuzzed\" the input sensors (the bill slot) with non-standard inputs.\n4.  **Audit Gaps**: The compliance team checked for \"Pen Test Completed\" boxes but did not validate if the test simulated real-world ATM attack vectors.\n\n**Lessons Learned:**\n*   **Red Teaming**: Use Red Teams to simulate holistic attacks (physical + digital).\n*   **Hardware Fuzzing**: Test hardware inputs with invalid data/media.\n*   **Scope Definition**: Explicitly include ATM hardware in validation tests.",
+      "questions": [
+        {
+          "id": "domain_6_q1",
+          "number": "1",
+          "question": "The failure to include the ATM hardware in the penetration test best illustrates a failure in:",
+          "options": {
+            "A": "Rules of Engagement / Scoping",
+            "B": "Reporting",
+            "C": "Remediation",
+            "D": "Authorization"
+          },
+          "correctAnswer": "A",
+          "explanation": "Rules of Engagement / Scoping.\n\nExplanation: Defining the scope is the critical first step. Excluding physical hardware left a massive blind spot."
+        },
+        {
+          "id": "domain_6_q2",
+          "number": "2",
+          "question": "Testing the Bill Validator by feeding it photocopied notes, half-notes, and foreign currency is a form of:",
+          "options": {
+            "A": "Static Code Analysis",
+            "B": "Fuzzing / Fuzz Testing",
+            "C": "White Box Testing",
+            "D": "Unit Testing"
+          },
+          "correctAnswer": "B",
+          "explanation": "Fuzzing / Fuzz Testing.\n\nExplanation: Fuzzing involves providing invalid, unexpected, or random data (in this case, physical media) to the inputs of a system to monitor for crashes or bypasses."
+        },
+        {
+          "id": "domain_6_q3",
+          "number": "3",
+          "question": "A test where the security team has no prior knowledge of the ATM's internal workings and must hack it 'from the outside' is:",
+          "options": {
+            "A": "White Box",
+            "B": "Gray Box",
+            "C": "Black Box",
+            "D": "Clear Box"
+          },
+          "correctAnswer": "C",
+          "explanation": "Black Box.\n\nExplanation: Black Box testing simulates a real-world attacker who starts with no insider knowledge of the target system."
+        },
+        {
+          "id": "domain_6_q4",
+          "number": "4",
+          "question": "If CityBank wanted to verify the security code logic of the Bill Validator firmware itself, which assessment method would be best?",
+          "options": {
+            "A": "Dynamic Application Security Testing (DAST)",
+            "B": "Static Application Security Testing (SAST) / Code Review",
+            "C": "Port Scanning",
+            "D": "Social Engineering"
+          },
+          "correctAnswer": "B",
+          "explanation": "Static Application Security Testing (SAST) / Code Review.\n\nExplanation: SAST analyzes the source code (at rest) to find logic errors and vulnerabilities without executing the program."
+        },
+        {
+          "id": "domain_6_q5",
+          "number": "5",
+          "question": "The fraud ring activity (shaved bills) would likely have been detected individually, but not in aggregate. What audit process was missing?",
+          "options": {
+            "A": "Log Correlation / Analysis",
+            "B": "User Access review",
+            "C": "Code Signing",
+            "D": "Backup Verification"
+          },
+          "correctAnswer": "A",
+          "explanation": "Log Correlation / Analysis.\n\nExplanation: While one rejected bill is noise, a pattern of 500 rejected bills across the city is a signal. Log correlation identifies these distributed trends."
+        }
+      ]
+    },
+    {
+      "id": "domain_7",
+      "title": "Security Operations",
+      "caseStudy": "Case Study: The \"Patch Tuesday\" Outage (Domain 7 - Security Operations)\n\nRegionalTrust Bank operated 300 ATMs running Windows 10. The Operations team had a policy to \"Auto-Approve\" Microsoft updates to save time. One Tuesday, an update caused a driver conflict with the specific Dispenser Control Board model used in 60% of the fleet.\n\nThe following morning, 180 ATMs rebooted, installed the patch, and immediately Blue Screened (BSOD). The Operations Center was flooded with \"Device Offline\" alerts. The incident response team initially suspected a cyberattack (DDOS) because of the simultaneous drop-off. It took 12 hours to identify the patch as the root cause because there was no Change Management log correlation. They had to physically visit each ATM to re-image the drive, resulting in a 4-day outage.\n\n**Analysis:**\n1.  **Change Management**: Changes (patches) were applied to production without testing in a staging environment.\n2.  **Patch Management**: There was no \"Canary\" deployment (testing on a small group first).\n3.  **Incident Response**: Triage was slow because \"Operational Events\" were not distinguished from \"Security Events.\"\n4.  **Disaster Recovery**: There was no remote rollback capability.\n\n**Lessons Learned:**\n*   **Staging/UAT**: Patches must be tested on identical hardware before rollout.\n*   **Phased Deployment**: Roll out changes to 1%, then 10%, then 100%.\n*   **Rollback Plan**: Always have a way to revert changes remotely.",
+      "questions": [
+        {
+          "id": "domain_7_q1",
+          "number": "1",
+          "question": "Applying patches to 60% of the fleet simultaneously violates which best practice?",
+          "options": {
+            "A": "Least Privilege",
+            "B": "Phased Deployment / Canary Release",
+            "C": "Separation of Duties",
+            "D": "Need to Know"
+          },
+          "correctAnswer": "B",
+          "explanation": "Phased Deployment / Canary Release.\n\nExplanation: Changes should be rolled out incrementally to a small 'canary' group first to detect issues (like the BSOD) before affecting the entire production fleet."
+        },
+        {
+          "id": "domain_7_q2",
+          "number": "2",
+          "question": "The immediate 'Blue Screen' of the ATMs represents a loss of:",
+          "options": {
+            "A": "Confidentiality",
+            "B": "Integrity",
+            "C": "Availability",
+            "D": "Privacy"
+          },
+          "correctAnswer": "C",
+          "explanation": "Availability.\n\nExplanation: The system is non-functional and cannot provide service to customers. Availability is the security objective most impacted."
+        },
+        {
+          "id": "domain_7_q3",
+          "number": "3",
+          "question": "Which process should have formally approved the patch installation after successful testing?",
+          "options": {
+            "A": "Incident Response",
+            "B": "Change Management",
+            "C": "Forensics",
+            "D": "Vulnerability Scanning"
+          },
+          "correctAnswer": "B",
+          "explanation": "Change Management.\n\nExplanation: The Change Management Board (CMB) is responsible for reviewing test results and authorizing the deployment of changes to production."
+        },
+        {
+          "id": "domain_7_q4",
+          "number": "4",
+          "question": "The inability to distinguish between a cyberattack and a failed patch delay suggests a failure in:",
+          "options": {
+            "A": "Root Cause Analysis (RCA)",
+            "B": "Data Classification",
+            "C": "Access Control",
+            "D": "Encryption"
+          },
+          "correctAnswer": "A",
+          "explanation": "Root Cause Analysis (RCA).\n\nExplanation: Effective Operations teams correlate Change Logs with Incident Alerts. The failure to link the patch time with the outage time delayed the correct diagnosis."
+        },
+        {
+          "id": "domain_7_q5",
+          "number": "5",
+          "question": "Physically visiting each ATM to restore service indicates a lack of:",
+          "options": {
+            "A": "Remote Out-of-Band (OOB) Management",
+            "B": "Physical Security",
+            "C": "Surveillance",
+            "D": "MFA"
+          },
+          "correctAnswer": "A",
+          "explanation": "Remote Out-of-Band (OOB) Management.\n\nExplanation: OOB management (like Intel vPro or separate management ports) allows admins to remotely reboot, re-image, or access the BIOS of a machine even if the main OS is crashed."
+        }
+      ]
+    },
+    {
+      "id": "domain_8",
+      "title": "Software Development Security",
+      "caseStudy": "Case Study: The \"Negative Balance\" Overflow (Domain 8 - Software Development Security)\n\nFinTechATM, a startup, built a custom ATM application using C++. To rush to market, they skipped the formal code review process.\nA clever user discovered that if they requested a withdrawal of \"-$500.00\" on the transfer screen, the application's input validation logic failed. The code used a signed integer for the amount but did not check for negative numbers in the \"Withdraw\" function.\nProcess:\n1. User enters -500.\n2. App checks: Is (Balance - Amount) >= 0?\n3. Math: $100 - (-500) = $600. Check Passed.\n4. App dispenses cash? (No, hardware physically can't dispense negative bills).\n5. BUT, the app then updated the ledger: New Balance = Old Balance - (-500) = Balance + 500.\nThe user effectively credited their account by \"withdrawing\" negative money.\n\n**Analysis:**\n1.  **Input Validation**: The most critical failure. The application trusted user input without sanitizing signs or limits.\n2.  **Integer Overflow/Underflow**: improper handling of signed vs. unsigned integers.\n3.  **Logic Bomb/Flaw**: Business logic allows nonsensical operations (negative withdrawal).\n4.  **Testing**: Boundary value analysis (testing -1, 0, 1) was missed.\n\n**Lessons Learned:**\n*   **Input Sanitization**: Whitelist allowed chars (0-9 only), reject special chars or negatives.\n*   **Boundary Testing**: QA must test edge cases.\n*   **Secure Code Review**: Peers must review critical financial logic.",
+      "questions": [
+        {
+          "id": "domain_8_q1",
+          "number": "1",
+          "question": "Which software vulnerability allowed the user to input a negative number?",
+          "options": {
+            "A": "Cross-Site Scripting (XSS)",
+            "B": "Improper Input Validation",
+            "C": "SQL Injection",
+            "D": "Race Condition"
+          },
+          "correctAnswer": "B",
+          "explanation": "Improper Input Validation.\n\nExplanation: The application failed to validate that the input must be a positive integer, allowing unexpected data (-500) to be processed."
+        },
+        {
+          "id": "domain_8_q2",
+          "number": "2",
+          "question": "The conceptual flaw allowing a withdrawal to CREDIT an account is best described as a:",
+          "options": {
+            "A": "Syntax Error",
+            "B": "Business Logic Flaw",
+            "C": "Runtime Error",
+            "D": "Hardware Failure"
+          },
+          "correctAnswer": "B",
+          "explanation": "Business Logic Flaw.\n\nExplanation: The code syntax was correct (it compiled), but the logic (the rules of how money works) was fundamentally flawed."
+        },
+        {
+          "id": "domain_8_q3",
+          "number": "3",
+          "question": "Testing inputs like -1, 0, and 99999999 is an example of:",
+          "options": {
+            "A": "Regression Testing",
+            "B": "Boundary Value Analysis",
+            "C": "User Acceptance Testing",
+            "D": "Integration Testing"
+          },
+          "correctAnswer": "B",
+          "explanation": "Boundary Value Analysis.\n\nExplanation: This technique focuses on testing the edges of allowed ranges (min, max, max+1, min-1) where errors are most likely to occur."
+        },
+        {
+          "id": "domain_8_q4",
+          "number": "4",
+          "question": "Which secure coding practice would have best prevented this specific error?",
+          "options": {
+            "A": "Using Unsigned Integers for monetary values",
+            "B": "Using Encryption",
+            "C": "Obfuscating the code",
+            "D": "Comments in code"
+          },
+          "correctAnswer": "A",
+          "explanation": "Using Unsigned Integers for monetary values.\n\nExplanation: Unsigned integers cannot represent negative numbers. Attempting to store -500 in an unsigned int would result in a large positive number (wrap around) or an error, but it wouldn't logically behave as a negative value in math."
+        },
+        {
+          "id": "domain_8_q5",
+          "number": "5",
+          "question": "In the SDLC, when was the most cost-effective time to fix this bug?",
+          "options": {
+            "A": "Production (Patching)",
+            "B": "Design / Requirements Phase",
+            "C": "Testing Phase",
+            "D": "Development Phase"
+          },
+          "correctAnswer": "B",
+          "explanation": "Design / Requirements Phase.\n\nExplanation: The 'Shift Left' principle states that bugs found early (Design) cost significantly less to fix than those found in Production."
+        }
+      ]
+    }
+  ]
+}
