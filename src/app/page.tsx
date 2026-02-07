@@ -33,7 +33,7 @@ export default function Home() {
         {/* Hero Section - Refined */}
         <section className="text-center space-y-4 pt-4 md:pt-10">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-            Master the CISSP Exam
+            Master the CISSP&reg; Exam
           </h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg leading-relaxed">
             Real-world case studies and adaptive practice questions designed to help you pass with confidence.
