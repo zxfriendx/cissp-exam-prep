@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
-              <a href="https://github.com/StartYourLab/cissp-app" target="_blank" rel="noreferrer">
+              <a href="https://github.com/zxfriendx/cissp-exam-prep" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </Button>
