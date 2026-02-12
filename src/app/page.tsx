@@ -12,14 +12,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
-          <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
-            <ShieldCheck className="h-6 w-6 text-primary" />
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">CISSP Prep</span>
+      <header className="sticky top-0 z-50 w-full border-b border-primary/15 bg-background">
+        <div className="container max-w-7xl mx-auto flex h-20 items-center justify-between px-6 sm:px-10">
+          <div className="flex items-center gap-3 font-semibold text-xl tracking-tight" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+            <ShieldCheck className="h-7 w-7 text-primary stroke-[2]" />
+            <span className="text-primary">CISSP Prep</span>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+            <Button variant="ghost" size="sm" asChild className="hidden sm:flex text-sm font-medium">
               <a href="https://github.com/zxfriendx/cissp-exam-prep" target="_blank" rel="noreferrer">
                 GitHub
               </a>
@@ -29,24 +29,30 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="container max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-12">
-        {/* Hero Section - Refined */}
-        <section className="text-center space-y-4 pt-4 md:pt-10">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-            Master the CISSP&reg; Exam
+      <main className="container max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-20">
+        {/* Hero Section - Centered & Minimalist */}
+        <section className="text-center space-y-6 pt-8 md:pt-16 pb-4">
+          <h1
+            className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary max-w-4xl mx-auto"
+            style={{ fontFamily: 'var(--font-plus-jakarta)', lineHeight: '1.1' }}
+          >
+            Master the CISSP<sup className="text-2xl">&reg;</sup> Exam
           </h1>
-          <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg leading-relaxed">
+          <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
             Real-world case studies and adaptive practice questions designed to help you pass with confidence.
           </p>
         </section>
 
-        <div className="grid gap-10">
+        <div className="grid gap-16">
           {/* Domains Section */}
-          <section className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-semibold tracking-tight">Study by Domain</h2>
+          <section className="space-y-8">
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                Study by Domain
+              </h2>
+              <p className="text-muted-foreground text-sm">Choose a domain to begin your preparation</p>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-4">
               {domains.map((domain) => (
                 <DomainCard
                   key={domain.id}
@@ -60,16 +66,26 @@ export default function Home() {
           </section>
 
           {/* Special Modes Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t">
-            <section className="space-y-4">
-              <h2 className="text-xl font-semibold tracking-tight">Adaptive Learning</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-primary/10">
+            <section className="space-y-5">
+              <div className="space-y-1">
+                <h2 className="text-2xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                  Adaptive Learning
+                </h2>
+                <p className="text-muted-foreground text-sm">Focus on your weakest areas</p>
+              </div>
               <div className="grid grid-cols-1 gap-4">
                 <WeaknessHunterButton />
               </div>
             </section>
 
-            <section className="space-y-4">
-              <h2 className="text-xl font-semibold tracking-tight">Random Practice</h2>
+            <section className="space-y-5">
+              <div className="space-y-1">
+                <h2 className="text-2xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                  Random Practice
+                </h2>
+                <p className="text-muted-foreground text-sm">Quick practice sessions</p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <RandomQuizButton count={10} />
                 <RandomQuizButton count={20} />
