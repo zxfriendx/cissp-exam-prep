@@ -68,29 +68,31 @@ export function QuestionCard({
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="w-full max-w-3xl mx-auto mt-8"
+            className="w-full max-w-4xl mx-auto mt-12"
         >
-            <Card className="shadow-sm border-border/60">
-                <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start mb-6">
-                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest">
+            <Card className="shadow-lg border-2 border-primary/15">
+                <CardHeader className="pb-6 pt-8 px-8">
+                    <div className="flex justify-between items-start mb-8">
+                        <span className="text-xs font-semibold text-primary uppercase tracking-widest font-mono">
                             Question {questionIndex + 1} / {totalQuestions}
                         </span>
 
-                        <div className="flex gap-2 items-center">
+                        <div className="flex gap-3 items-center">
                             {caseStudy && (
                                 <Dialog>
                                     <DialogTrigger asChild>
-                                        <button className="text-xs font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/5 hover:bg-primary/10">
-                                            <FileText className="h-3.5 w-3.5" />
+                                        <button className="text-xs font-medium text-secondary hover:text-primary transition-colors flex items-center gap-2 px-4 py-2 rounded-md border-2 border-secondary/30 hover:border-secondary/50 bg-background hover:bg-muted/20">
+                                            <FileText className="h-4 w-4 stroke-2" />
                                             Case Study
                                         </button>
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                                    <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
                                         <DialogHeader>
-                                            <DialogTitle>Case Study</DialogTitle>
+                                            <DialogTitle className="text-2xl font-semibold text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                                                Case Study
+                                            </DialogTitle>
                                         </DialogHeader>
-                                        <div className="prose dark:prose-invert max-w-none leading-relaxed opacity-90">
+                                        <div className="prose dark:prose-invert max-w-none leading-relaxed text-base">
                                             <ReactMarkdown>{caseStudy}</ReactMarkdown>
                                         </div>
                                     </DialogContent>
@@ -103,50 +105,48 @@ export function QuestionCard({
                                     animate={{ scale: 1, opacity: 1 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
-                                    <Badge variant={isCorrect ? "default" : "destructive"} className="text-xs px-2.5 py-0.5 font-medium">
+                                    <Badge
+                                        variant={isCorrect ? "default" : "destructive"}
+                                        className="text-xs px-3 py-1 font-semibold"
+                                        style={{
+                                            backgroundColor: isCorrect ? 'rgb(var(--success))' : undefined,
+                                            color: isCorrect ? 'rgb(var(--success-foreground))' : undefined
+                                        }}
+                                    >
                                         {isCorrect ? "Correct" : "Incorrect"}
                                     </Badge>
                                 </motion.div>
                             )}
                         </div>
                     </div>
-                    <CardTitle className="text-2xl font-semibold tracking-tight leading-snug">
+                    <CardTitle className="text-2xl font-semibold tracking-tight leading-relaxed text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
                         {question.question}
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="grid gap-3">
+                <CardContent className="space-y-5 px-8 pb-8">
+                    <div className="grid gap-4">
                         {shuffledOptions.map(([key, text]) => {
                             const isSelected = selectedAnswer === key;
                             const isTargetCorrect = question.correctAnswer === key;
-
-                            let variant: "outline" | "default" | "destructive" | "secondary" = "outline";
-
-                            if (isAnswered) {
-                                if (isTargetCorrect) variant = "default";
-                                else if (isSelected) variant = "destructive";
-                                else variant = "secondary";
-                            } else {
-                                variant = isSelected ? "default" : "outline";
-                            }
 
                             return (
                                 <motion.div key={key} variants={itemVariants} layout>
                                     <Button
                                         variant="outline"
                                         className={cn(
-                                            "w-full justify-start text-left h-auto py-5 px-6 text-[15px] whitespace-normal transition-all duration-300 border-border/50 hover:border-primary/50",
-                                            isAnswered && isTargetCorrect && "border-green-500/50 bg-green-50 dark:bg-green-950/20 text-green-900 dark:text-green-100 hover:bg-green-100 dark:hover:bg-green-950/30",
-                                            isAnswered && isSelected && !isTargetCorrect && "border-red-500/50 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100 hover:bg-red-100 dark:hover:bg-red-950/30",
-                                            !isAnswered && "hover:bg-accent/50 hover:shadow-sm"
+                                            "w-full justify-start text-left h-auto py-6 px-7 text-base whitespace-normal transition-all duration-300 border-2 font-normal",
+                                            !isAnswered && "border-primary/20 hover:border-secondary/50 hover:bg-muted/20 hover:shadow-md",
+                                            isAnswered && isTargetCorrect && "border-secondary/60 bg-[rgb(var(--success))] text-[rgb(var(--success-foreground))] font-medium",
+                                            isAnswered && isSelected && !isTargetCorrect && "border-red-400 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100",
+                                            isAnswered && !isSelected && !isTargetCorrect && "border-primary/10 opacity-60"
                                         )}
                                         onClick={() => !isAnswered && onAnswer(key)}
                                         disabled={isAnswered}
                                     >
-                                        <div className="flex items-center w-full">
+                                        <div className="flex items-center w-full gap-4">
                                             <span className="flex-1 leading-relaxed">{text}</span>
-                                            {isAnswered && isTargetCorrect && <CheckCircle2 className="ml-3 h-5 w-5 text-green-600 dark:text-green-400 shrink-0" />}
-                                            {isAnswered && isSelected && !isTargetCorrect && <XCircle className="ml-3 h-5 w-5 text-red-600 dark:text-red-400 shrink-0" />}
+                                            {isAnswered && isTargetCorrect && <CheckCircle2 className="h-6 w-6 text-secondary shrink-0 stroke-2" />}
+                                            {isAnswered && isSelected && !isTargetCorrect && <XCircle className="h-6 w-6 text-red-600 dark:text-red-400 shrink-0 stroke-2" />}
                                         </div>
                                     </Button>
                                 </motion.div>
@@ -158,20 +158,20 @@ export function QuestionCard({
                         <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
-                            transition={{ duration: 0.3 }}
-                            className="mt-8 p-4 bg-muted/50 rounded-lg"
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="mt-8 p-6 bg-[rgb(var(--light-blue))]/20 rounded-lg border-2 border-[rgb(var(--light-blue))]/40"
                         >
-                            <h4 className="font-semibold flex items-center gap-2 mb-2">
-                                <BookOpenIcon className="h-4 w-4" /> Explanation
+                            <h4 className="font-semibold flex items-center gap-2 mb-3 text-primary text-base" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                                <BookOpenIcon className="h-5 w-5 stroke-2" /> Explanation
                             </h4>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-foreground/80 leading-relaxed text-[15px]">
                                 {question.explanation}
                             </p>
                         </motion.div>
                     )}
                 </CardContent>
             </Card>
-        </motion.div >
+        </motion.div>
     )
 }
 

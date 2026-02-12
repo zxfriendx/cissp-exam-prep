@@ -24,26 +24,28 @@ export function WeaknessHunterButton() {
 
     return (
         <Card
-            className={`hover:border-primary/50 transition-colors cursor-pointer group border-primary/20 ${!hasHistory ? 'opacity-80' : ''}`}
+            className={`hover:border-secondary/50 hover:shadow-md transition-all duration-300 cursor-pointer group border-2 border-secondary/30 ${!hasHistory ? 'opacity-75' : ''}`}
             onClick={handleStart}
         >
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-primary">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+                <CardTitle className="text-sm font-semibold text-primary">
                     Weakness Hunter Mode
                 </CardTitle>
-                <Target className="h-4 w-4 text-primary animate-pulse" />
+                <Target className="h-5 w-5 text-secondary stroke-2" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold">Adaptive Set</div>
-                <p className="text-xs text-muted-foreground mt-1">
+                <div className="text-2xl font-bold text-primary mb-2" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                    Adaptive Set
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
                     {hasHistory
                         ? "Targets your lowest scoring domains"
                         : "Start practicing to unlock adaptive mode"
                     }
                 </p>
                 {!hasHistory && (
-                    <div className="flex items-center gap-1 mt-2 text-xs text-amber-500 font-medium">
-                        <Lock className="h-3 w-3" />
+                    <div className="flex items-center gap-1.5 mt-3 text-xs text-amber-600 font-medium">
+                        <Lock className="h-3.5 w-3.5" />
                         <span>Requires quiz history</span>
                     </div>
                 )}
