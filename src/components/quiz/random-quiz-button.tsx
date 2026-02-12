@@ -15,16 +15,21 @@ export function RandomQuizButton({ count }: { count: number }) {
     };
 
     return (
-        <Card className="hover:border-primary/50 transition-colors cursor-pointer group" onClick={handleStart}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
+        <Card
+            className="hover:border-secondary/50 hover:shadow-md transition-all duration-300 cursor-pointer group border-2 border-primary/15"
+            onClick={handleStart}
+        >
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+                <CardTitle className="text-sm font-semibold text-primary">
                     Mixed Set
                 </CardTitle>
-                <Shuffle className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                <Shuffle className="h-5 w-5 text-secondary group-hover:text-primary transition-colors stroke-2" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold">{count} Questions</div>
-                <p className="text-xs text-muted-foreground">
+                <div className="text-2xl font-bold text-primary mb-1" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                    {count}
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
                     Randomized from all domains
                 </p>
             </CardContent>
