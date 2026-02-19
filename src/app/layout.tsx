@@ -24,6 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
@@ -38,6 +39,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYNW16GB14" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYNW16GB14');`,
+          }}
+        />
+      </head>
       <body
         className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} font-sans antialiased`}
         style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
@@ -49,6 +58,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
+            <Header />
             <div className="flex-1">{children}</div>
             <Footer />
           </div>

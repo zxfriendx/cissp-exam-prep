@@ -1,34 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { ShieldCheck } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
 import { getAllDomains } from "@/lib/content";
 import { DomainCard } from "@/components/quiz/domain-card";
 import { RandomQuizButton } from "@/components/quiz/random-quiz-button";
-import { WeaknessHunterButton } from "@/components/quiz/weakness-hunter-button"; // Added
+import { WeaknessHunterButton } from "@/components/quiz/weakness-hunter-button";
 
 export default function Home() {
   const domains = getAllDomains();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-primary/15 bg-background">
-        <div className="container max-w-7xl mx-auto flex h-20 items-center justify-between px-6 sm:px-10">
-          <div className="flex items-center gap-3 font-semibold text-xl tracking-tight" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
-            <ShieldCheck className="h-7 w-7 text-primary stroke-[2]" />
-            <span className="text-primary">CISSP Prep</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild className="hidden sm:flex text-sm font-medium">
-              <a href="https://github.com/zxfriendx/cissp-exam-prep" target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            </Button>
-            <ModeToggle />
-          </div>
-        </div>
-      </header>
-
       <main className="container max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-20">
         {/* Hero Section - Centered & Minimalist */}
         <section className="text-center space-y-6 pt-8 md:pt-16 pb-4">
