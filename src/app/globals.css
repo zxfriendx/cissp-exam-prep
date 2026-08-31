@@ -44,15 +44,15 @@
   --radius-2xl: calc(var(--radius) + 8px);
 }
 
-:root {
+:root, .dark {
   /* Vault Steel uses a 6px radius, not 8 — machined, not rounded. */
   --radius: 6px;
 
   /* ── Vault Steel brand colours ────────────────────────────────────────────
      Source of truth: securepathdigital-site/brand/kit-vault-steel.html.
-     Vault Steel is a DARK-FIRST identity; `.dark` below is the true brand
-     expression and this light block is its paper counterpart, built from the
-     same steel neutrals and the same copper accent.                        */
+     Vault Steel is a DARK identity. This app is dark-ONLY — there is no light
+     palette and no theme toggle, so these values sit directly on :root rather
+     than behind a .dark class that could fail to apply.                     */
   --vault-bg: 12 13 16;          /* #0C0D10 */
   --vault-surface: 21 23 28;     /* #15171C */
   --vault-ink: 236 238 242;      /* #ECEEF2 */
@@ -63,49 +63,6 @@
   --vault-copper-lo: 180 100 45; /* #B4642D */
   --vault-copper-hi: 232 160 92; /* #E8A05C */
 
-  /* ── Light ("paper") ─────────────────────────────────────────────────── */
-  --background: 247 248 250;
-  --foreground: var(--vault-surface);
-
-  --card: 255 255 255;
-  --card-foreground: var(--vault-surface);
-
-  --popover: 255 255 255;
-  --popover-foreground: var(--vault-surface);
-
-  /* primary carries HEADINGS (32 text-primary uses), so it is ink, not copper */
-  --primary: var(--vault-surface);
-  --primary-foreground: 247 248 250;
-
-  --secondary: var(--vault-copper-lo);
-  --secondary-foreground: 255 255 255;
-
-  --muted: 231 234 238;
-  --muted-foreground: 92 100 112;
-
-  /* accent carries CALLS TO ACTION — this is where the copper lives */
-  --accent: var(--vault-copper);
-  --accent-foreground: 26 16 8;
-
-  --success: 22 101 82;
-  --success-foreground: 255 255 255;
-
-  --destructive: 176 48 43;
-  --destructive-foreground: 255 255 255;
-
-  --border: var(--vault-steel-deep);
-  --input: var(--vault-steel-deep);
-  --ring: var(--vault-copper);
-
-  --chart-1: var(--vault-copper);
-  --chart-2: var(--vault-steel-deep);
-  --chart-3: var(--vault-copper-hi);
-  --chart-4: var(--vault-steel);
-  --chart-5: var(--vault-copper-lo);
-}
-
-.dark {
-  /* ── Dark — the true Vault Steel ─────────────────────────────────────── */
   --background: var(--vault-bg);
   --foreground: var(--vault-ink);
 
@@ -115,6 +72,7 @@
   --popover: var(--vault-surface);
   --popover-foreground: var(--vault-ink);
 
+  /* primary carries HEADINGS (32 text-primary uses), so it is ink, not copper */
   --primary: var(--vault-ink);
   --primary-foreground: var(--vault-bg);
 
@@ -124,6 +82,7 @@
   --muted: var(--vault-line);
   --muted-foreground: var(--vault-steel);
 
+  /* accent carries CALLS TO ACTION — this is where the copper lives */
   --accent: var(--vault-copper);
   --accent-foreground: 26 16 8;
 

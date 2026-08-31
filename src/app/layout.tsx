@@ -26,7 +26,6 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
@@ -40,8 +39,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Vault Steel is a dark identity, so the app is dark-only: no theme toggle and
+  // no light palette. `color-scheme: dark` makes the browser paint form controls,
+  // scrollbars and the canvas to match instead of flashing white.
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYNW16GB14" />
         <script
@@ -53,18 +55,11 @@ export default function RootLayout({
       <body
         className={`${krona.variable} ${schibsted.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

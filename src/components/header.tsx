@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/mode-toggle";
 
 const navLinks = [
   { label: "Practice", href: "/" },
@@ -53,14 +52,14 @@ export function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-[rgb(var(--vault-line))] bg-[rgb(var(--vault-bg)/0.86)] backdrop-blur-md">
+      <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-6">
         <a
           href="https://securepathdigital.net"
           className="flex items-center gap-3.5 text-primary hover:text-accent transition-colors"
           aria-label="Secure Path Digital"
         >
-          <VaultMark className="h-9 w-9 shrink-0 text-muted-foreground" />
+          <VaultMark className="h-[38px] w-[38px] shrink-0 text-muted-foreground" />
           <span className="font-display text-[0.78rem] leading-[1.5] tracking-[0.14em]">
             SECURE PATH
             <span className="block text-[0.6rem] tracking-[0.42em] text-muted-foreground">
@@ -70,26 +69,24 @@ export function Header() {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-8">
+        <div className="hidden md:flex items-center">
+          <nav className="flex items-center gap-7">
             {navLinks.map((link) =>
               link.href.startsWith("/") ? (
-                <Link key={link.label} href={link.href} className={linkClass(link.label, "text-sm")}>
+                <Link key={link.label} href={link.href} className={linkClass(link.label, "text-[0.92rem]")}>
                   {link.label}
                 </Link>
               ) : (
-                <a key={link.label} href={link.href} className={linkClass(link.label, "text-sm")}>
+                <a key={link.label} href={link.href} className={linkClass(link.label, "text-[0.92rem]")}>
                   {link.label}
                 </a>
               )
             )}
           </nav>
-          <ModeToggle />
         </div>
 
         {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden">
-          <ModeToggle />
           <Button
             variant="ghost"
             size="icon"
