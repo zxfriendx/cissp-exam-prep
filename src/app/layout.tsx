@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -28,7 +14,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "CISSP Prep App",
+  title: "Practice Exams — Secure Path Digital",
   description: "Master the CISSP exam with real-world case studies.",
 };
 
@@ -48,8 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} font-sans antialiased`}
-        style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+        className={`${geistMono.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

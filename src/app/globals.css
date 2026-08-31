@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
-  --font-sans: var(--font-plus-jakarta);
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--font-geist-mono);
 
   --color-card: rgb(var(--card));
@@ -62,7 +62,7 @@
   --popover: 255 255 255;
   --popover-foreground: var(--midnight-violet);
 
-  --primary: var(--midnight-violet);
+  --primary: var(--deep-twilight);
   --primary-foreground: 255 255 255;
 
   --secondary: var(--french-blue);

@@ -5,12 +5,12 @@ export function Footer() {
                 <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
                     Built by{" "}
                     <a
-                        href="https://github.com/zxfriendx"
+                        href="https://securepathdigital.net"
                         target="_blank"
                         rel="noreferrer"
                         className="font-medium text-secondary hover:text-primary transition-colors underline-offset-4"
                     >
-                        zxfriendx
+                        Secure Path Digital
                     </a>
                 </p>
                 <p className="text-center text-xs text-muted-foreground md:text-right leading-relaxed max-w-md">
