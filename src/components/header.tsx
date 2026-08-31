@@ -54,8 +54,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[rgb(var(--vault-line))] bg-[rgb(var(--vault-bg)/0.86)] backdrop-blur-md">
       <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-6">
+        {/* "/" — the home of THIS property, matching /guides/ and the main site,
+            which both point their mark at their own root. It used to jump
+            off-subdomain, so the mark did something different on Practice than
+            on Study Materials. Services/Contact in the nav still go off-site. */}
         <a
-          href="https://securepathdigital.net"
+          href="/"
           className="flex items-center gap-3.5 text-primary hover:text-accent transition-colors"
           aria-label="Secure Path Digital"
         >
