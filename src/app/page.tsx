@@ -11,11 +11,15 @@ export default function Home() {
       <main className="container max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-20">
         {/* Hero Section - Centered & Minimalist */}
         <section className="text-center space-y-6 pt-8 md:pt-16 pb-4">
+          <p className="vault-label">Free Practice</p>
+          {/* Krona One is a display face — uppercase, and only here and in the
+              wordmark. Everything else is Schibsted Grotesk. */}
           <h1
-            className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary max-w-4xl mx-auto"
-            style={{ fontFamily: 'var(--font-plus-jakarta)', lineHeight: '1.1' }}
+            className="font-display uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-primary max-w-4xl mx-auto"
+            style={{ lineHeight: '1.2' }}
           >
-            Master the CISSP<sup className="text-2xl">&reg;</sup> Exam
+            Master the <span className="grad-copper">CISSP</span>
+            <sup className="text-[0.5em] align-super">&reg;</sup> Exam
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
             Real-world case studies and adaptive practice questions designed to help you pass with confidence.
@@ -26,7 +30,7 @@ export default function Home() {
           {/* Domains Section */}
           <section className="space-y-8">
             <div className="text-center space-y-2">
-              <h2 className="text-3xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+              <h2 className="text-3xl font-semibold tracking-tight text-primary">
                 Study by Domain
               </h2>
               <p className="text-muted-foreground text-sm">Choose a domain to begin your preparation</p>
@@ -48,7 +52,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8 border-t border-primary/10">
             <section className="space-y-5">
               <div className="space-y-1">
-                <h2 className="text-2xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                <h2 className="text-2xl font-semibold tracking-tight text-primary">
                   Adaptive Learning
                 </h2>
                 <p className="text-muted-foreground text-sm">Focus on your weakest areas</p>
@@ -60,7 +64,7 @@ export default function Home() {
 
             <section className="space-y-5">
               <div className="space-y-1">
-                <h2 className="text-2xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                <h2 className="text-2xl font-semibold tracking-tight text-primary">
                   Random Practice
                 </h2>
                 <p className="text-muted-foreground text-sm">Quick practice sessions</p>

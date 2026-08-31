@@ -28,7 +28,7 @@ export function DomainCard({ id, title, questionCount, description }: DomainCard
         >
             <CardHeader className="pb-4">
                 <div className="flex justify-between items-start gap-3 mb-1">
-                    <CardTitle className="text-lg leading-tight font-semibold text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                    <CardTitle className="text-lg leading-tight font-semibold text-primary">
                         {title}
                     </CardTitle>
                     <Badge

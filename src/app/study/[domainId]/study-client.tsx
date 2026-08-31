@@ -50,22 +50,22 @@ export default function StudyPageClient() {
     // Custom markdown components for better formatting
     const markdownComponents: Components = {
         h1: ({ children }) => (
-            <h1 className="text-3xl font-semibold text-primary mb-6 mt-8 pb-3 border-b-2 border-primary/20" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+            <h1 className="text-3xl font-semibold text-primary mb-6 mt-8 pb-3 border-b-2 border-primary/20">
                 {children}
             </h1>
         ),
         h2: ({ children }) => (
-            <h2 className="text-2xl font-semibold text-primary mb-4 mt-8" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+            <h2 className="text-2xl font-semibold text-primary mb-4 mt-8">
                 {children}
             </h2>
         ),
         h3: ({ children }) => (
-            <h3 className="text-xl font-semibold text-secondary mb-3 mt-6" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+            <h3 className="text-xl font-semibold text-secondary mb-3 mt-6">
                 {children}
             </h3>
         ),
         h4: ({ children }) => (
-            <h4 className="text-lg font-semibold text-foreground mb-2 mt-4" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+            <h4 className="text-lg font-semibold text-foreground mb-2 mt-4">
                 {children}
             </h4>
         ),
@@ -152,7 +152,7 @@ export default function StudyPageClient() {
                         </div>
                         <div className="flex-1 space-y-3">
                             <div className="flex items-center gap-3 flex-wrap">
-                                <h1 className="text-4xl font-semibold tracking-tight text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                                <h1 className="text-4xl font-semibold tracking-tight text-primary">
                                     {domain.title}
                                 </h1>
                                 <Badge variant="secondary" className="font-mono text-xs bg-muted/60 text-primary border border-primary/20">
@@ -170,7 +170,7 @@ export default function StudyPageClient() {
                     {domainOverview && (
                         <Card className="border-2 border-primary/20 bg-[rgb(var(--light-blue))]/10">
                             <CardHeader className="pb-4">
-                                <CardTitle className="text-xl font-semibold text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                                <CardTitle className="text-xl font-semibold text-primary">
                                     Domain Overview
                                 </CardTitle>
                             </CardHeader>
@@ -187,7 +187,7 @@ export default function StudyPageClient() {
                 <div className="mb-12">
                     <Card className="border-2 border-primary/15 shadow-lg">
                         <CardHeader className="border-b-2 border-primary/10 bg-muted/20">
-                            <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                            <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
                                 <BookOpen className="h-6 w-6 stroke-2" />
                                 Case Study
                             </CardTitle>

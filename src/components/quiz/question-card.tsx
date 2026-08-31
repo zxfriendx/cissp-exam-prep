@@ -88,7 +88,7 @@ export function QuestionCard({
                                     </DialogTrigger>
                                     <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
                                         <DialogHeader>
-                                            <DialogTitle className="text-2xl font-semibold text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                                            <DialogTitle className="text-2xl font-semibold text-primary">
                                                 Case Study
                                             </DialogTitle>
                                         </DialogHeader>
@@ -119,7 +119,7 @@ export function QuestionCard({
                             )}
                         </div>
                     </div>
-                    <CardTitle className="text-2xl font-semibold tracking-tight leading-relaxed text-primary" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                    <CardTitle className="text-2xl font-semibold tracking-tight leading-relaxed text-primary">
                         {question.question}
                     </CardTitle>
                 </CardHeader>
@@ -161,7 +161,7 @@ export function QuestionCard({
                             transition={{ duration: 0.3, ease: "easeOut" }}
                             className="mt-8 p-6 bg-[rgb(var(--light-blue))]/20 rounded-lg border-2 border-[rgb(var(--light-blue))]/40"
                         >
-                            <h4 className="font-semibold flex items-center gap-2 mb-3 text-primary text-base" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                            <h4 className="font-semibold flex items-center gap-2 mb-3 text-primary text-base">
                                 <BookOpenIcon className="h-5 w-5 stroke-2" /> Explanation
                             </h4>
                             <p className="text-foreground/80 leading-relaxed text-[15px]">

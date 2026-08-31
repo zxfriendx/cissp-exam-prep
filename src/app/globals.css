@@ -6,7 +6,9 @@
 @theme inline {
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Vault Steel: Schibsted Grotesk body, Krona One display (uppercase, sparing) */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-krona), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 
   --color-card: rgb(var(--card));
@@ -43,92 +45,103 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  /* Vault Steel uses a 6px radius, not 8 — machined, not rounded. */
+  --radius: 6px;
 
-  /* Brand Colors */
-  --midnight-violet: 13 2 33; /* #0D0221 */
-  --deep-twilight: 15 8 75; /* #0F084B */
-  --french-blue: 38 64 139; /* #26408B */
-  --light-blue: 166 207 213; /* #A6CFD5 */
-  --frozen-water: 194 231 217; /* #C2E7D9 */
+  /* ── Vault Steel brand colours ────────────────────────────────────────────
+     Source of truth: securepathdigital-site/brand/kit-vault-steel.html.
+     Vault Steel is a DARK-FIRST identity; `.dark` below is the true brand
+     expression and this light block is its paper counterpart, built from the
+     same steel neutrals and the same copper accent.                        */
+  --vault-bg: 12 13 16;          /* #0C0D10 */
+  --vault-surface: 21 23 28;     /* #15171C */
+  --vault-ink: 236 238 242;      /* #ECEEF2 */
+  --vault-steel: 155 163 175;    /* #9BA3AF */
+  --vault-steel-deep: 58 64 76;  /* #3A404C */
+  --vault-line: 38 42 51;        /* #262A33 */
+  --vault-copper: 201 123 63;    /* #C97B3F */
+  --vault-copper-lo: 180 100 45; /* #B4642D */
+  --vault-copper-hi: 232 160 92; /* #E8A05C */
 
-  /* Theme Variables */
-  --background: 255 255 255; /* Pure white */
-  --foreground: var(--midnight-violet);
+  /* ── Light ("paper") ─────────────────────────────────────────────────── */
+  --background: 247 248 250;
+  --foreground: var(--vault-surface);
 
   --card: 255 255 255;
-  --card-foreground: var(--midnight-violet);
+  --card-foreground: var(--vault-surface);
 
   --popover: 255 255 255;
-  --popover-foreground: var(--midnight-violet);
+  --popover-foreground: var(--vault-surface);
 
-  --primary: var(--deep-twilight);
-  --primary-foreground: 255 255 255;
+  /* primary carries HEADINGS (32 text-primary uses), so it is ink, not copper */
+  --primary: var(--vault-surface);
+  --primary-foreground: 247 248 250;
 
-  --secondary: var(--french-blue);
+  --secondary: var(--vault-copper-lo);
   --secondary-foreground: 255 255 255;
 
-  --muted: var(--light-blue);
-  --muted-foreground: var(--deep-twilight);
+  --muted: 231 234 238;
+  --muted-foreground: 92 100 112;
 
-  --accent: var(--french-blue);
-  --accent-foreground: 255 255 255;
+  /* accent carries CALLS TO ACTION — this is where the copper lives */
+  --accent: var(--vault-copper);
+  --accent-foreground: 26 16 8;
 
-  --success: var(--frozen-water);
-  --success-foreground: var(--deep-twilight);
+  --success: 22 101 82;
+  --success-foreground: 255 255 255;
 
-  --destructive: 239 68 68;
+  --destructive: 176 48 43;
   --destructive-foreground: 255 255 255;
 
-  --border: var(--deep-twilight);
-  --input: var(--deep-twilight);
-  --ring: var(--french-blue);
+  --border: var(--vault-steel-deep);
+  --input: var(--vault-steel-deep);
+  --ring: var(--vault-copper);
 
-  --chart-1: var(--french-blue);
-  --chart-2: var(--light-blue);
-  --chart-3: var(--frozen-water);
-  --chart-4: var(--midnight-violet);
-  --chart-5: var(--deep-twilight);
+  --chart-1: var(--vault-copper);
+  --chart-2: var(--vault-steel-deep);
+  --chart-3: var(--vault-copper-hi);
+  --chart-4: var(--vault-steel);
+  --chart-5: var(--vault-copper-lo);
 }
 
 .dark {
-  /* Dark mode: Inverted with Deep Twilight as background */
-  --background: var(--deep-twilight);
-  --foreground: 255 255 255;
+  /* ── Dark — the true Vault Steel ─────────────────────────────────────── */
+  --background: var(--vault-bg);
+  --foreground: var(--vault-ink);
 
-  --card: var(--midnight-violet);
-  --card-foreground: 255 255 255;
+  --card: var(--vault-surface);
+  --card-foreground: var(--vault-ink);
 
-  --popover: var(--midnight-violet);
-  --popover-foreground: 255 255 255;
+  --popover: var(--vault-surface);
+  --popover-foreground: var(--vault-ink);
 
-  --primary: var(--light-blue);
-  --primary-foreground: var(--midnight-violet);
+  --primary: var(--vault-ink);
+  --primary-foreground: var(--vault-bg);
 
-  --secondary: var(--french-blue);
-  --secondary-foreground: 255 255 255;
+  --secondary: var(--vault-copper-hi);
+  --secondary-foreground: var(--vault-bg);
 
-  --muted: 38 64 139;
-  --muted-foreground: var(--light-blue);
+  --muted: var(--vault-line);
+  --muted-foreground: var(--vault-steel);
 
-  --accent: var(--french-blue);
-  --accent-foreground: 255 255 255;
+  --accent: var(--vault-copper);
+  --accent-foreground: 26 16 8;
 
-  --success: var(--frozen-water);
-  --success-foreground: var(--midnight-violet);
+  --success: 110 197 168;
+  --success-foreground: var(--vault-bg);
 
-  --destructive: 248 113 113;
-  --destructive-foreground: 255 255 255;
+  --destructive: 226 106 100;
+  --destructive-foreground: var(--vault-bg);
 
-  --border: 166 207 213;
-  --input: 166 207 213;
-  --ring: var(--light-blue);
+  --border: var(--vault-steel);
+  --input: var(--vault-steel);
+  --ring: var(--vault-copper-hi);
 
-  --chart-1: var(--light-blue);
-  --chart-2: var(--frozen-water);
-  --chart-3: var(--french-blue);
-  --chart-4: 166 207 213;
-  --chart-5: 194 231 217;
+  --chart-1: var(--vault-copper-hi);
+  --chart-2: var(--vault-steel);
+  --chart-3: var(--vault-copper);
+  --chart-4: var(--vault-steel-deep);
+  --chart-5: var(--vault-copper-lo);
 }
 
 @layer base {
@@ -179,5 +192,64 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--primary) / 0.3);
+  }
+}
+
+/* ── Vault Steel signature elements ─────────────────────────────────────────
+   Ported from securepathdigital-site/brand/kit-vault-steel.html so the app,
+   the /guides/ page and the main site share one vocabulary.               */
+@layer components {
+  /* Copper gradient on a key word. Falls back to solid copper where
+     background-clip:text is unsupported. */
+  .grad-copper {
+    color: rgb(var(--vault-copper));
+    background: linear-gradient(
+      115deg,
+      rgb(var(--vault-copper-lo)) 0%,
+      rgb(var(--vault-copper-hi)) 55%,
+      rgb(var(--vault-copper)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Small-caps section label with a copper rule, as on the landing page. */
+  .vault-label {
+    font-family: var(--font-krona), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgb(var(--muted-foreground));
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .vault-label::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: linear-gradient(
+      115deg,
+      rgb(var(--vault-copper-lo)),
+      rgb(var(--vault-copper-hi))
+    );
+  }
+
+  /* Machined hairline divider with bolt heads. */
+  .machined {
+    position: relative;
+    height: 1px;
+    background: rgb(var(--border) / 0.35);
+  }
+  .machined > .bolt {
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgb(var(--card));
+    border: 1px solid rgb(var(--border) / 0.6);
+    transform: translate(-50%, -50%);
   }
 }

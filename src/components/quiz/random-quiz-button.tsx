@@ -26,7 +26,7 @@ export function RandomQuizButton({ count }: { count: number }) {
                 <Shuffle className="h-5 w-5 text-secondary group-hover:text-primary transition-colors stroke-2" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold text-primary mb-1" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                <div className="text-2xl font-bold text-primary mb-1">
                     {count}
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed">

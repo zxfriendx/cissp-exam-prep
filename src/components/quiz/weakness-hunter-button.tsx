@@ -34,7 +34,7 @@ export function WeaknessHunterButton() {
                 <Target className="h-5 w-5 text-secondary stroke-2" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold text-primary mb-2" style={{ fontFamily: 'var(--font-plus-jakarta)' }}>
+                <div className="text-2xl font-bold text-primary mb-2">
                     Adaptive Set
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed">

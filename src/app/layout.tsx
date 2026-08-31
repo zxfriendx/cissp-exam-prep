@@ -1,6 +1,23 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Krona_One, Schibsted_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+// Vault Steel typography — see securepathdigital-site/brand/kit-vault-steel.html.
+// Krona One is a DISPLAY face: hero, wordmark and small-caps labels only, always
+// uppercase. Body and section headings are Schibsted Grotesk.
+const krona = Krona_One({
+  variable: "--font-krona",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
+const schibsted = Schibsted_Grotesk({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -34,7 +51,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistMono.variable} font-sans antialiased`}
+        className={`${krona.variable} ${schibsted.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
