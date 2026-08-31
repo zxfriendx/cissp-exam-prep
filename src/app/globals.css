@@ -62,6 +62,32 @@
   --vault-copper: 201 123 63;    /* #C97B3F */
   --vault-copper-lo: 180 100 45; /* #B4642D */
   --vault-copper-hi: 232 160 92; /* #E8A05C */
+  --vault-muted: 139 148 161;    /* #8B94A1 — secondary body grey */
+
+  /* ── Vault Steel aliases ──────────────────────────────────────────────────
+     The hand-written surfaces (the /guides/ route's stylesheet, and the main
+     site) were authored against short hex names. These map those names onto
+     the triplets above, so the palette is stated ONCE: change a colour here
+     and every surface follows. Never give one of these a literal value.
+
+     --muted and --radius are deliberately NOT aliased: the app already owns
+     both as shadcn tokens, and its --muted is a BACKGROUND (#262A33), not this
+     grey. The ported CSS says var(--vault-muted) instead.                   */
+  --bg: rgb(var(--vault-bg));
+  --surface: rgb(var(--vault-surface));
+  --ink: rgb(var(--vault-ink));
+  --steel: rgb(var(--vault-steel));
+  --steel-deep: rgb(var(--vault-steel-deep));
+  --line: rgb(var(--vault-line));
+  --copper: rgb(var(--vault-copper));
+  --copper-lo: rgb(var(--vault-copper-lo));
+  --copper-hi: rgb(var(--vault-copper-hi));
+  --grad-copper: linear-gradient(
+    115deg,
+    rgb(var(--vault-copper-lo)) 0%,
+    rgb(var(--vault-copper-hi)) 55%,
+    rgb(var(--vault-copper)) 100%
+  );
 
   --background: var(--vault-bg);
   --foreground: var(--vault-ink);
@@ -211,4 +237,57 @@
     border: 1px solid rgb(var(--border) / 0.6);
     transform: translate(-50%, -50%);
   }
+
+  /* The slot cut across each bolt head, at a different angle per bolt — the
+     detail that makes the divider read as machined rather than as three dots.
+     Came across with the /guides/ page; the app's copy had only the heads. */
+  .machined > .bolt::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 1px;
+    background: rgb(var(--vault-steel));
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .machined > .bolt:nth-child(2)::after { transform: translate(-50%, -50%) rotate(-30deg); }
+  .machined > .bolt:nth-child(3)::after { transform: translate(-50%, -50%) rotate(80deg); }
+
+  .machined > .b1 { left: 0; }
+  .machined > .b2 { left: 50%; }
+  .machined > .b3 { left: 100%; }
+
+  /* ── Site footer ──────────────────────────────────────────────────────────
+     Came across from the /guides/ page, which carried the real Vault Steel
+     footer while the app shipped a two-line "Built by" bar — so the footer
+     changed completely when you moved between them. One footer now.        */
+  .vault-footer { padding: 4rem 0 3rem; border-top: 1px solid var(--line); margin-top: 5rem; }
+  .vault-footer .foot-grid {
+    display: flex; justify-content: space-between; gap: 3rem;
+    flex-wrap: wrap; margin-bottom: 2.5rem;
+  }
+  .vault-footer .foot-tag {
+    color: rgb(var(--vault-muted)); font-size: 0.9rem; max-width: 24rem; margin-top: 1rem;
+  }
+  .vault-footer .foot-col h4 {
+    font-family: var(--font-krona), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--steel); margin-bottom: 1rem; font-weight: 400;
+  }
+  .vault-footer .foot-col ul { list-style: none; display: grid; gap: 0.5rem; }
+  .vault-footer .foot-col a,
+  .vault-footer .foot-col p {
+    color: rgb(var(--vault-muted)); text-decoration: none; font-size: 0.9rem;
+    transition: color 0.25s;
+  }
+  .vault-footer .foot-col a:hover { color: var(--copper-hi); }
+  .vault-footer .foot-legal {
+    margin-top: 2.2rem; display: flex; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .vault-footer .foot-legal p {
+    color: rgb(var(--vault-muted)); font-size: 0.78rem; line-height: 1.6;
+  }
+  .vault-footer .tm { max-width: 52rem; }
 }

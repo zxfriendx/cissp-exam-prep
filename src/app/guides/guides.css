@@ -1,0 +1,99 @@
+/*
+ * /guides/ — page-specific styling only.
+ *
+ * Lifted from the standalone learn/guides/index.html when that page became a
+ * route in this app. Everything the app already provides was dropped on the way
+ * in: the reset, the palette, @font-face, .wrap, and the whole header/nav block
+ * (33 rules) — those now come from the layout, globals.css and <Header/>.
+ *
+ * Every selector is prefixed .guides-page on purpose. The names this page uses
+ * are generic — .card, .btn, .label, .free — and would otherwise collide with
+ * the quiz UI. The wrapper in page.tsx is what scopes them.
+ *
+ * Colours resolve through the Vault Steel aliases in globals.css, so this file
+ * states no literal brand colour and follows the palette automatically.
+ */
+/* Same measure as the Header and Footer (1280/24). The standalone page
+   defined .wrap globally; here it is scoped with everything else. */
+.guides-page .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 24px}
+
+.guides-page .hero{padding:6rem 0 4rem;position:relative;overflow:hidden}
+.guides-page .hero::after{
+  content:"";position:absolute;right:-260px;top:50%;transform:translateY(-50%);
+  width:620px;height:620px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgb(var(--vault-copper) / 0.10),transparent 70%);
+}
+.guides-page .hero .vault-label{margin-bottom:1.6rem}
+.guides-page .hero h1{
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(2rem,5vw,3.8rem);line-height:1.12;margin-bottom:1.6rem;
+}
+.guides-page .hero p.lede{color:var(--steel);max-width:46rem;font-size:1.12rem}
+.guides-page .hero .facts{display:flex;flex-wrap:wrap;gap:2.6rem;margin-top:2.8rem}
+.guides-page .hero .facts div{min-width:0}
+.guides-page .hero .facts .n{font-family:var(--font-display);font-size:1.7rem;line-height:1.1}
+.guides-page .hero .facts .l{font-size:.82rem;color:rgb(var(--vault-muted));letter-spacing:.06em;margin-top:.35rem}
+.guides-page section.block{padding:5rem 0}
+.guides-page h2{font-weight:600;font-size:clamp(1.5rem,2.6vw,2.1rem);letter-spacing:-.01em;margin:1.1rem 0 .8rem}
+.guides-page .sec-intro{color:rgb(var(--vault-muted));max-width:44rem;margin-bottom:3rem}
+.guides-page .products{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+@media(max-width:980px){
+  .guides-page .products{grid-template-columns:1fr}
+}
+.guides-page .card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:2.2rem 2rem;display:flex;flex-direction:column;position:relative;
+}
+.guides-page .card .icon{width:30px;height:30px;color:var(--steel);margin-bottom:1.4rem}
+.guides-page .card .kicker{
+  font-family:var(--font-display);font-size:.6rem;letter-spacing:.3em;
+  text-transform:uppercase;color:rgb(var(--vault-muted));margin-bottom:.6rem;
+}
+.guides-page .card h3{
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;
+  font-size:1.02rem;line-height:1.35;margin-bottom:1rem;
+}
+.guides-page .card p.blurb{color:var(--steel);font-size:.96rem;margin-bottom:1.4rem}
+.guides-page .card ul{list-style:none;margin-bottom:1.8rem;display:grid;gap:.55rem}
+.guides-page .card ul li{
+  font-size:.88rem;color:rgb(var(--vault-muted));padding-left:1.15rem;position:relative;line-height:1.5;
+}
+.guides-page .card ul li::before{
+  content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;
+  background:var(--copper);border-radius:50%;
+}
+.guides-page .card .spec{
+  margin-top:auto;padding-top:1.3rem;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.guides-page .card .pages{font-family:var(--font-display);font-size:.72rem;letter-spacing:.16em;color:var(--steel)}
+.guides-page .btn{
+  font-family:var(--font-body);font-weight:600;font-size:.9rem;
+  border-radius:var(--radius);padding:.72rem 1.25rem;text-decoration:none;
+  border:1px solid transparent;display:inline-block;transition:all .25s;cursor:pointer;
+}
+.guides-page .btn-buy{background:var(--grad-copper);color:rgb(var(--accent-foreground));border-color:transparent}
+.guides-page .btn-buy:hover{filter:brightness(1.08)}
+.guides-page .btn-soon{
+  background:transparent;color:rgb(var(--vault-muted));border-color:var(--line);
+  cursor:default;pointer-events:none;
+  font-family:var(--font-display);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  padding:.7rem 1rem;
+}
+.guides-page .btn-ghost{background:transparent;color:var(--ink);border-color:var(--steel-deep)}
+.guides-page .btn-ghost:hover{border-color:var(--copper);color:var(--copper-hi)}
+.guides-page .method{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+@media(max-width:860px){
+  .guides-page .method{grid-template-columns:1fr}
+}
+.guides-page .m-item{border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;background:var(--surface)}
+.guides-page .m-item svg{width:26px;height:26px;color:var(--steel);margin-bottom:1rem}
+.guides-page .m-item h4{font-weight:600;font-size:1.02rem;margin-bottom:.5rem}
+.guides-page .m-item p{color:rgb(var(--vault-muted));font-size:.92rem}
+.guides-page .free{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:2.6rem;display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.guides-page .free h3{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:1.1rem;margin-bottom:.6rem}
+.guides-page .free p{color:rgb(var(--vault-muted));font-size:.95rem;max-width:38rem}
