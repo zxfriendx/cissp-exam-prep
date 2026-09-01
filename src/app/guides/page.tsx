@@ -70,7 +70,7 @@ const PRODUCTS: Product[] = [
       "Every wrong answer refuted by name, and the case it would be right for",
       'No "when in doubt pick A": every letter is right about a quarter of the time',
     ],
-    pages: "240 PP",
+    pages: "219 PP",
   },
   {
     id: "sheets",
@@ -92,7 +92,7 @@ const FACTS = [
   { n: "292", l: "micro-lessons, one per outline leaf" },
   { n: "439", l: "practice questions" },
   { n: "8", l: "domains, weighted as the outline weights them" },
-  { n: "377", l: "pages across the three products" },
+  { n: "356", l: "pages across the three products" },
 ];
 
 const METHOD = [
