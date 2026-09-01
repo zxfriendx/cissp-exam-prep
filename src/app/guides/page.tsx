@@ -50,13 +50,13 @@ const PRODUCTS: Product[] = [
     kicker: "Book One",
     title: <>The Eight Domains<br />— Study Guide</>,
     blurb:
-      "A complete walk through the eight domains of the information security common body of knowledge, in the order the 2024 exam outline lays them out.",
+      "Every leaf of the 2024 exam outline, in the order the outline lays them out. One focused entry per subtask, each with its key points and the standard they come from.",
     points: [
       "Domain ▸ task ▸ lesson, with each domain's exam weight shown",
-      "Every leaf of the outline covered — nothing silently skipped",
+      "Every leaf of the outline covered, nothing silently skipped",
       "Key points boxed, with the source standard named",
     ],
-    pages: "129 PP",
+    pages: "128 PP",
   },
   {
     id: "test",
@@ -64,13 +64,13 @@ const PRODUCTS: Product[] = [
     kicker: "Book Two",
     title: <>The Eight Domains<br />— Practice Examination</>,
     blurb:
-      "Scenario questions across the eight domains, with a scoring key and worked explanations at the back of the book.",
+      "Scenario questions across the eight domains, with a scoring key and worked explanations at the back of the book. Every explanation says why the right answer wins and why each of the other three loses.",
     points: [
       "439 questions, grouped by domain",
-      "Per-domain case studies, with the analysis held behind the key",
-      'No "when in doubt pick A" — every letter is right as often',
+      "Every wrong answer refuted by name, and the case it would be right for",
+      'No "when in doubt pick A": every letter is right about a quarter of the time',
     ],
-    pages: "123 PP",
+    pages: "238 PP",
   },
   {
     id: "sheets",
@@ -78,10 +78,10 @@ const PRODUCTS: Product[] = [
     kicker: "Book Three",
     title: <>The Eight Domains<br />— Revision Sheets</>,
     blurb:
-      "One page per domain. The facts that decide questions — printed, folded, and reread the night before.",
+      "One page per domain. The facts that decide questions, printed, folded, and reread the night before.",
     points: [
       "Eight sheets, one per domain, each headed by its exam weight",
-      "Highest-yield facts only — no prose to wade through",
+      "Formulas and ordered models first, with every task in the domain represented",
       "A standards-attribution strip at the foot of every sheet",
     ],
     pages: "10 PP",
@@ -92,29 +92,29 @@ const FACTS = [
   { n: "292", l: "micro-lessons, one per outline leaf" },
   { n: "439", l: "practice questions" },
   { n: "8", l: "domains, weighted as the outline weights them" },
-  { n: "262", l: "pages across the three products" },
+  { n: "376", l: "pages across the three products" },
 ];
 
 const METHOD = [
   {
     icon: "ic-scale",
     h: "You learn the material, not the pattern",
-    p: 'In a lot of banks the correct answer is "A" far more often than chance. You start picking up the tell without meaning to — and then the real exam takes it away. Here every letter is right about a quarter of the time, so the only way through a question is actually knowing the answer.',
+    p: 'In a lot of banks the correct answer is "A" far more often than chance. You start picking up the tell without meaning to, and then the real exam takes it away. Here every letter is right about a quarter of the time, so the only way through a question is actually knowing the answer.',
   },
   {
     icon: "ic-source",
     h: "Straight from the standards",
-    p: "Written against NIST, ISO/IEC, FIPS, OWASP and the RFCs themselves — not a paraphrase of somebody else's paraphrase. When a question turns on what a standard actually says, you'll have read what it actually says, and every key point names the document it came from so you can go check.",
+    p: "Written against NIST, ISO/IEC, FIPS, OWASP and the RFCs themselves, not a paraphrase of somebody else's paraphrase. When a question turns on what a standard actually says, you'll have read what it actually says, and every key point names the document it came from so you can go check.",
   },
   {
     icon: "ic-grid",
     h: "No domain quietly skipped",
-    p: "Every task and subtask in the 2024 outline gets its own lesson — 292 of them, with each domain sized to the weight it actually carries on the exam. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test centre.",
+    p: "Every task and subtask in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test centre.",
   },
   {
     icon: "ic-shield",
     h: "Written by someone who sits the same exams",
-    p: "Bill Friend, CISSP — 20+ years in banking and payments security, writing the material he wanted when he was preparing. Independent publications: no certification body has reviewed or endorsed them, and nothing here reproduces exam content.",
+    p: "Bill Friend, CISSP, 20+ years in banking and payments security, writing the material he wanted when he was preparing. Independent publications: no certification body has reviewed or endorsed them, and nothing here reproduces exam content.",
   },
 ];
 
@@ -143,7 +143,7 @@ export default function GuidesPage() {
           </h1>
           <p className="lede">
             Three books that take you through all eight domains in the order the 2024 exam
-            outline lays them out — learn it, test yourself on it, then cram the night before.
+            outline lays them out: learn it, test yourself on it, then cram the night before.
             Written from the standards themselves, so what you study is what the exam is
             actually built on.
           </p>
