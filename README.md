@@ -1,37 +1,42 @@
 # CISSP Practice Exam App
 
-A modern, interactive web application designed to help users prepare for the CISSP (Certified Information Systems Security Professional) exam. Built with **Next.js 14**, **Tailwind CSS**, and **Shadcn UI**.
+A modern, interactive web application designed to help users prepare for the CISSP (Certified Information Systems Security Professional) exam. Built with **Next.js**, **Tailwind CSS**, and **Shadcn UI**.
+
+It is the on-screen edition of the printed **The Eight Domains — Practice Examination** (Secure Path Digital): the same 439 scenario questions, the same answer key, the same worked explanations, and the same rule that the case study's analysis is held back until after you have answered.
 
 ## 🚀 Features
 
--   **Domain-Based Practice**: Practice questions organized by the 8 CISSP domains.
+-   **Domain-Based Practice**: Practice questions organized by the 8 CISSP domains, each card showing the domain's share of the real examination (2024 outline weights).
+-   **Practice Examination**:
+    -   50 or 100 questions drawn to the exam blueprint weights with domains mixed, or the full book in order.
+    -   Answers are recorded as you go and marked at the end, like marking a separate sheet.
+    -   Pace guidance at 1 minute 15 seconds per question.
 -   **Adaptive Learning (Weakness Hunter)**:
     -   Automatically tracks your performance across domains.
     -   Generates custom quizzes targeting your weakest areas.
 -   **Random Practice Mode**:
-    -   Take mixed quizzes (10, 20, or 40 questions) covering all domains.
+    -   Take mixed quizzes (10, 20, or 40 questions) covering all domains, marked as you go.
 -   **Case Study Context**:
-    -   Integrated "Review Case Study" modal for questions requiring deeper context.
-    -   Seamlessly accessible without leaving the question view.
--   **Interactive Quiz Mode**:
-    -   Immediate feedback on answers.
-    -   Detailed explanations for every question.
-    -   **Randomized Options**: Answer choices are shuffled each time to ensure true knowledge retention.
+    -   Every domain opens with the scenario its questions are set in; it is one tap away during a quiz.
+    -   The scenario's analysis ("Key Lessons") gives answers away, so it waits until the results page, and sits folded on the study page.
+-   **Answers Explained**:
+    -   Immediate feedback in practice modes, with the key and a worked explanation that says why each distractor loses.
+    -   After every set: a full review of each question, your answer, the key, the explanation, score by domain, time taken against exam pace, and the case study debriefs.
+-   **Fixed Option Order**: Options are shown A-D exactly as the book prints them. The answer key is balanced across the four letters (109/111/109/110), and the explanations argue by letter, so there is no runtime shuffle.
 -   **Modern UI/UX**:
     -   Clean, professional interface using Shadcn UI components.
-    -   **Dark/Light Mode**: Fully supported theme switching.
     -   Smooth animations with Framer Motion.
--   **State Management**: Real-time quiz state tracking using Zustand.
+-   **State Management**: Real-time quiz state tracking using Zustand, persisted so a set survives a reload.
 
 ## 🛠️ Tech Stack
 
--   **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+-   **Framework**: [Next.js](https://nextjs.org/) (App Router, static export)
 -   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 -   **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
 -   **Icons**: [Lucide React](https://lucide.dev/)
 -   **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 -   **Animations**: [Framer Motion](https://www.framer.com/motion/)
--   **Markdown Rendering**: [React Markdown](https://github.com/remarkjs/react-markdown)
+-   **Markdown Rendering**: [React Markdown](https://github.com/remarkjs/react-markdown) (case studies only; question text uses a small `*emphasis*` renderer)
 
 ## 🏃‍♂️ Getting Started
 
@@ -57,11 +62,12 @@ A modern, interactive web application designed to help users prepare for the CIS
 ## 📁 Project Structure
 
 -   `src/app`: Next.js App Router pages and layouts.
--   `src/components/quiz`: Core quiz components (QuestionCard, DomainCard, ResultView, etc.).
+-   `src/components/quiz`: Core quiz components (QuestionCard, DomainCard, ExamButton, ResultsView, Emphasis, etc.).
 -   `src/components/ui`: Reusable UI components (Dialog, Card, Button, etc.).
 -   `src/data`: JSON data containing the CISSP questions and case studies.
+-   `src/lib`: Content helpers (`content.ts`), the exam blueprint (`blueprint.ts`), and text helpers shared in spirit with the PDF builder (`text.ts`).
 -   `src/store`: Zustand stores (`quiz-store.ts`, `user-stats-store.ts`).
--   `src/lib`: Utility functions and content helpers.
+-   `docs`: Audits and notes (`pdf-parity-audit-2026-09-02.md`).
 
 ## 🚀 Deployment
 
@@ -89,11 +95,14 @@ To verify the installation:
 
 ## 📄 content.json Structure
 
-The app uses a structured JSON file for content. Each domain contains a set of questions with the following format:
+`src/data/content.json` is the question bank, and it is the same file the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (see `docs/pdf-parity-audit-2026-09-02.md` for the paths). The deploy script for the learn site copies that file over this one, so **edit questions in the pipeline, not here**, and keep this copy byte-identical to it.
+
+Each domain contains a set of questions with the following format:
 
 ```json
 {
   "id": "domain_1_q1",
+  "number": "1",
   "question": "Question text here...",
   "options": {
     "A": "Option A text",
@@ -101,12 +110,15 @@ The app uses a structured JSON file for content. Each domain contains a set of q
     "C": "Option C text",
     "D": "Option D text"
   },
-  "correctAnswer": "A",
-  "explanation": "Deep dive explanation..."
+  "correctAnswer": "D",
+  "explanation": "Why D, and why A, B and C lose..."
 }
 ```
 
-*Note: The `options` are shuffled at runtime for the user, but stored keyed A-D in the source.*
+Notes:
+-   Ids are stable (`domain_X_qY`) and are what saved progress keys on; never renumber.
+-   Options are displayed in the stored A-D order; the key is balanced across letters at the source.
+-   Exam weights and the outline spelling of domain names live in `src/lib/blueprint.ts`, not in the JSON, because the deploy copy would overwrite them.
 
 ## ⚖️ Legal Disclaimer
 

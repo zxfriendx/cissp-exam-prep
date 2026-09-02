@@ -1,4 +1,4 @@
-import { getAllDomains } from "@/lib/content"
+import { getAllDomains, VIRTUAL_QUIZ_IDS } from "@/lib/content"
 import QuizPageClient from "./quiz-client"
 
 export async function generateStaticParams() {
@@ -6,7 +6,9 @@ export async function generateStaticParams() {
     const params = domains.map((domain) => ({
         domainId: domain.id,
     }));
-    return [...params, { domainId: 'random' }];
+    // The static export needs a page for every quiz route, including the
+    // ones that read their questions from the store rather than the URL.
+    return [...params, ...VIRTUAL_QUIZ_IDS.map((domainId) => ({ domainId }))];
 }
 
 export default function QuizPage() {
