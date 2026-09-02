@@ -192,7 +192,7 @@ export default function StudyPageClient() {
                                 Case Study
                             </CardTitle>
                             <CardDescription className="text-sm text-muted-foreground pt-2">
-                                Review this real-world scenario to understand practical applications of the domain concepts
+                                Work through this scenario to see how the domain's concepts apply in practice
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="pt-8 pb-10 px-8 sm:px-12">
