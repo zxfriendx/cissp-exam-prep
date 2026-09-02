@@ -1,19 +1,25 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { useParams, useRouter } from "next/navigation"
-import { getDomainById } from "@/lib/content"
+import { useEffect, useSyncExternalStore } from "react"
+import { useParams } from "next/navigation"
+import { getDomainById, isVirtualQuizId } from "@/lib/content"
+import { domainIdOf, splitCaseStudy } from "@/lib/text"
 import { useQuizStore } from "@/store/quiz-store"
-import { useUserStatsStore } from "@/store/user-stats-store" // Added
+import { useUserStatsStore } from "@/store/user-stats-store"
 import { QuestionCard } from "@/components/quiz/question-card"
 import { ResultsView } from "@/components/quiz/results-view"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
+// The persisted store only exists in the browser, so the first client render
+// must match the server's empty markup. useSyncExternalStore gives "false" on
+// the server and "true" once hydrated without a setState-in-effect.
+const subscribeNoop = () => () => {}
+const useMounted = () => useSyncExternalStore(subscribeNoop, () => true, () => false)
+
 export default function QuizPageClient() {
     const params = useParams()
-    const router = useRouter()
     const domainId = params.domainId as string
 
     const {
@@ -26,34 +32,27 @@ export default function QuizPageClient() {
         currentDomainId,
         isQuizActive,
         questions,
-        quizTitle
+        quizTitle,
+        deferFeedback,
     } = useQuizStore()
 
-    const recordStats = useUserStatsStore(state => state.recordResult); // MOVED UP
+    const recordStats = useUserStatsStore(state => state.recordResult);
+    const mounted = useMounted()
 
-    // Hydration check to prevent mismatch
-    const [mounted, setMounted] = useState(false)
+    // A domain URL starts (or resumes) that domain's quiz. The virtual routes
+    // (random, weakness-hunter, exam) only ever resume what the store holds.
     useEffect(() => {
-        setMounted(true)
-    }, [])
-
-    // Initialize quiz logic
-    useEffect(() => {
-        if (!isQuizActive || (domainId !== 'random' && currentDomainId !== domainId)) {
-            // If navigating directly to a domain URL and it's not the active quiz, start it.
-            // If it IS the active quiz (even if 'random'), we just resume.
-            if (domainId !== 'random') {
-                startQuiz(domainId)
-            }
+        if (isVirtualQuizId(domainId)) return
+        if (!isQuizActive || currentDomainId !== domainId) {
+            startQuiz(domainId)
         }
     }, [domainId, isQuizActive, currentDomainId, startQuiz])
 
     if (!mounted) return null;
 
     if (!questions || questions.length === 0) {
-        // Fallback if accessed directly with 'random' but no state, or invalid domain
-        if (domainId !== 'random') {
-            // Try to start it if possible (re-run effects might catch this, but safe fallback)
+        if (!isVirtualQuizId(domainId)) {
+            // The effect above is about to start it.
             return null;
         }
 
@@ -76,33 +75,20 @@ export default function QuizPageClient() {
     const currentQuestion = questions[currentQuestionIndex];
     const selectedAnswer = answers[currentQuestion.id];
 
-    // const recordStats = useUserStatsStore(state => state.recordResult); // REMOVED (Moved up)
-
     const handleAnswer = (optionId: string) => {
         const isCorrect = optionId === currentQuestion.correctAnswer;
         answerQuestion(currentQuestion.id, optionId, isCorrect);
 
-        // Record Stats
-        // Extract domainId from question id (e.g. "domain_1_q5" -> "domain_1")
-        // We assume the ID format is always domain_X_qY
-        const parts = currentQuestion.id.split('_');
-        if (parts.length >= 2) {
-            const dId = `${parts[0]}_${parts[1]}`;
-            recordStats(dId, isCorrect);
-        }
+        // Per-domain stats feed Weakness Hunter. Ids are domain_X_qY.
+        const dId = domainIdOf(currentQuestion.id);
+        if (dId) recordStats(dId, isCorrect);
     }
 
-    // Determine the domain for the current question (to get the correct Case Study)
-    // Format: domain_X_qY
-    const questionDomainId = (() => {
-        const parts = currentQuestion.id.split('_');
-        if (parts.length >= 2) {
-            return `${parts[0]}_${parts[1]}`;
-        }
-        return domainId; // Fallback
-    })();
-
-    const currentCaseStudy = getDomainById(questionDomainId)?.caseStudy;
+    // The scenario for this question's own domain (mixed sets cross domains).
+    // Only the scenario half: the debrief telegraphs answers and is shown on
+    // the results page instead.
+    const questionDomainId = domainIdOf(currentQuestion.id) ?? domainId;
+    const { scenario } = splitCaseStudy(getDomainById(questionDomainId)?.caseStudy ?? "");
 
     return (
         <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col">
@@ -113,8 +99,13 @@ export default function QuizPageClient() {
                         Exit Quiz
                     </Link>
                 </Button>
-                <div className="text-base font-semibold text-foreground/90">
+                <div className="text-base font-semibold text-foreground/90 text-center">
                     {quizTitle}
+                    {deferFeedback && (
+                        <div className="text-xs font-normal text-muted-foreground mt-0.5">
+                            Answers are marked at the end
+                        </div>
+                    )}
                 </div>
                 <div className="w-10" /> {/* Spacer */}
             </div>
@@ -127,14 +118,15 @@ export default function QuizPageClient() {
                     onAnswer={handleAnswer}
                     questionIndex={currentQuestionIndex}
                     totalQuestions={questions.length}
-                    caseStudy={currentCaseStudy}
+                    caseStudy={scenario || undefined}
+                    deferFeedback={deferFeedback}
                 />
 
                 <div className="flex justify-end mt-6 mr-4 min-h-[40px]">
                     {/* Show Next button only if answered */}
                     {selectedAnswer && (
                         <Button onClick={nextQuestion} size="lg" className="animate-in fade-in slide-in-from-right-4">
-                            Next Question
+                            {currentQuestionIndex + 1 >= questions.length ? "Finish" : "Next Question"}
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                     )}
