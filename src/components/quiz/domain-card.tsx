@@ -12,9 +12,11 @@ interface DomainCardProps {
     title: string
     questionCount: number
     description: string
+    /** Share of the real examination, per the 2024 outline. */
+    weight?: number
 }
 
-export function DomainCard({ id, title, questionCount, description }: DomainCardProps) {
+export function DomainCard({ id, title, questionCount, description, weight }: DomainCardProps) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -38,7 +40,12 @@ export function DomainCard({ id, title, questionCount, description }: DomainCard
                         {id.replace('domain_', '')}
                     </Badge>
                 </div>
-                <CardDescription className="text-sm font-medium">{questionCount} Questions</CardDescription>
+                <CardDescription className="text-sm font-medium">
+                    {questionCount} Questions
+                    {weight !== undefined && (
+                        <span className="text-secondary"> &middot; {weight}% of the exam</span>
+                    )}
+                </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow pb-6">
                 <p className="text-sm text-muted-foreground leading-relaxed">
