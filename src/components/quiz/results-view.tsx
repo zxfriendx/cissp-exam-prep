@@ -8,6 +8,7 @@ import { getDomainById } from "@/lib/content"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
 import { cleanExplanation, domainIdOf, orderedOptions, splitCaseStudy } from "@/lib/text"
 import { Emphasis } from "@/components/quiz/emphasis"
+import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
@@ -210,7 +211,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                                 {d.id.replace("domain_", "Domain ")} &middot; {d.title}
                             </summary>
                             <div className="px-5 sm:px-8 pb-8 pt-2 border-t-2 border-secondary/15 prose dark:prose-invert max-w-none leading-relaxed text-base">
-                                <ReactMarkdown>{d.text}</ReactMarkdown>
+                                <ReactMarkdown components={caseStudyMarkdown}>{d.text}</ReactMarkdown>
                             </div>
                         </details>
                     ))}

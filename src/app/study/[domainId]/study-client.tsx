@@ -83,6 +83,18 @@ const markdownComponents: Components = {
     hr: () => (
         <hr className="my-8 border-t-2 border-primary/15" />
     ),
+    // The case studies' "Related reading" block links out to the white paper
+    // and worksheet; the base styles reset anchors to plain text.
+    a: ({ href, children }) => (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+        >
+            {children}
+        </a>
+    ),
 }
 
 export default function StudyPageClient() {

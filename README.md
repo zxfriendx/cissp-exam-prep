@@ -95,7 +95,7 @@ To verify the installation:
 
 ## 📄 content.json Structure
 
-`src/data/content.json` is the question bank, and it is the same file the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (see `docs/pdf-parity-audit-2026-09-02.md` for the paths). The deploy script for the learn site copies that file over this one, so **edit questions in the pipeline, not here**, and keep this copy byte-identical to it.
+`src/data/content.json` carries the question bank and the eight case studies. The 439 questions are byte-identical to the file the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (see `docs/pdf-parity-audit-2026-09-02.md` for the paths), so **edit questions in the pipeline, not here**. The `caseStudy` strings are not: they were rewritten in this repository on 2026-09-02 (`docs/prose-audit-2026-09-02.md`) and the pipeline file still carries the old ones. The learn-site deploy script copies the pipeline file over this one; until the pipeline takes the new case studies, that copy step has to be dropped or it will discard them (the questions it would copy are already here).
 
 Each domain contains a set of questions with the following format:
 

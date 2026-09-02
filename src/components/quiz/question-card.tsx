@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils"
 import { CheckCircle2, XCircle, FileText, BookOpen } from "lucide-react"
 import ReactMarkdown from "react-markdown"
 import { Emphasis } from "@/components/quiz/emphasis"
+import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
 
 interface QuestionCardProps {
     question: Question
@@ -101,7 +102,7 @@ export function QuestionCard({
                                             case study debrief is held back until you have finished.
                                         </p>
                                         <div className="prose dark:prose-invert max-w-none leading-relaxed text-base">
-                                            <ReactMarkdown>{caseStudy}</ReactMarkdown>
+                                            <ReactMarkdown components={caseStudyMarkdown}>{caseStudy}</ReactMarkdown>
                                         </div>
                                     </DialogContent>
                                 </Dialog>

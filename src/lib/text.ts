@@ -9,7 +9,15 @@
 // has to be readable during the quiz. Its analysis section, though, telegraphs
 // several answers, so the printed examination holds it back until after the
 // answer key. Everything from the first analysis-style heading is debrief.
-const DEBRIEF_RE = /^\s*(Analysis\b|Lessons Learned|Key Lessons|Key Takeaways|Conclusion|Key Findings)/i;
+//
+// Since 2026-09-02 the eight case studies share one shape, as `###` headings:
+// Context, What went wrong, What a practitioner does differently, Outcome,
+// What the exam tests, Related reading. The first two are the scenario; the
+// rest is analysis ("What the exam tests" names answers), so the split lands
+// on "What a practitioner does differently". The builder's DEBRIEF_RE in
+// build_pdf.py does not know this heading yet; add it there before the
+// pipeline bank takes these case studies, or the book will print the analysis.
+const DEBRIEF_RE = /^\s*(?:#{1,6}\s*)?(Analysis\b|Lessons Learned|Key Lessons|Key Takeaways|Conclusion|Key Findings|What a practitioner does differently)/i;
 
 export interface CaseStudySplit {
     /** Safe to read before answering. */
