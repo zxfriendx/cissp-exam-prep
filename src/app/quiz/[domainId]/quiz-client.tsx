@@ -3,7 +3,7 @@
 import { useEffect, useSyncExternalStore } from "react"
 import { useParams } from "next/navigation"
 import { getDomainById, isVirtualQuizId } from "@/lib/content"
-import { domainIdOf, splitCaseStudy } from "@/lib/text"
+import { domainIdOf, parseCaseStudy } from "@/lib/text"
 import { useQuizStore } from "@/store/quiz-store"
 import { useUserStatsStore } from "@/store/user-stats-store"
 import { QuestionCard } from "@/components/quiz/question-card"
@@ -88,7 +88,7 @@ export default function QuizPageClient() {
     // Only the scenario half: the debrief telegraphs answers and is shown on
     // the results page instead.
     const questionDomainId = domainIdOf(currentQuestion.id) ?? domainId;
-    const { scenario } = splitCaseStudy(getDomainById(questionDomainId)?.caseStudy ?? "");
+    const { scenario, title: scenarioTitle } = parseCaseStudy(getDomainById(questionDomainId)?.caseStudy ?? "");
 
     return (
         <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col">
@@ -119,6 +119,7 @@ export default function QuizPageClient() {
                     questionIndex={currentQuestionIndex}
                     totalQuestions={questions.length}
                     caseStudy={scenario || undefined}
+                    caseStudyTitle={scenarioTitle || undefined}
                     deferFeedback={deferFeedback}
                 />
 

@@ -4,98 +4,13 @@ import { useMemo } from "react"
 import { useParams } from "next/navigation"
 import { getDomainById } from "@/lib/content"
 import { blueprintFor } from "@/lib/blueprint"
-import { splitCaseStudy } from "@/lib/text"
+import { parseCaseStudy } from "@/lib/text"
+import { CaseStudyBody } from "@/components/quiz/case-study"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, PlayCircle, BookOpen, ShieldCheck, EyeOff } from "lucide-react"
 import Link from "next/link"
-import ReactMarkdown from 'react-markdown'
-import type { Components } from 'react-markdown'
-
-// Custom markdown components for better formatting
-const markdownComponents: Components = {
-    h1: ({ children }) => (
-        <h1 className="text-3xl font-semibold text-primary mb-6 mt-8 pb-3 border-b-2 border-primary/20">
-            {children}
-        </h1>
-    ),
-    h2: ({ children }) => (
-        <h2 className="text-2xl font-semibold text-primary mb-4 mt-8">
-            {children}
-        </h2>
-    ),
-    h3: ({ children }) => (
-        <h3 className="text-xl font-semibold text-secondary mb-3 mt-6">
-            {children}
-        </h3>
-    ),
-    h4: ({ children }) => (
-        <h4 className="text-lg font-semibold text-foreground mb-2 mt-4">
-            {children}
-        </h4>
-    ),
-    p: ({ children }) => (
-        <p className="text-base leading-relaxed mb-4 text-foreground/90">
-            {children}
-        </p>
-    ),
-    ul: ({ children }) => (
-        <ul className="list-disc list-outside ml-6 mb-4 space-y-2 text-foreground/90">
-            {children}
-        </ul>
-    ),
-    ol: ({ children }) => (
-        <ol className="list-decimal list-outside ml-6 mb-4 space-y-2 text-foreground/90">
-            {children}
-        </ol>
-    ),
-    li: ({ children }) => (
-        <li className="leading-relaxed pl-1">
-            {children}
-        </li>
-    ),
-    strong: ({ children }) => (
-        <strong className="font-semibold text-primary">
-            {children}
-        </strong>
-    ),
-    em: ({ children }) => (
-        <em className="italic text-secondary">
-            {children}
-        </em>
-    ),
-    blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-secondary/50 pl-6 py-2 my-4 bg-muted/20 rounded-r-lg italic text-foreground/80">
-            {children}
-        </blockquote>
-    ),
-    code: ({ children }) => (
-        <code className="bg-muted/40 px-2 py-0.5 rounded text-sm font-mono text-secondary border border-primary/10">
-            {children}
-        </code>
-    ),
-    pre: ({ children }) => (
-        <pre className="bg-muted/30 p-4 rounded-lg overflow-x-auto mb-4 border-2 border-primary/10">
-            {children}
-        </pre>
-    ),
-    hr: () => (
-        <hr className="my-8 border-t-2 border-primary/15" />
-    ),
-    // The case studies' "Related reading" block links out to the white paper
-    // and worksheet; the base styles reset anchors to plain text.
-    a: ({ href, children }) => (
-        <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
-        >
-            {children}
-        </a>
-    ),
-}
 
 export default function StudyPageClient() {
     const params = useParams()
@@ -103,19 +18,9 @@ export default function StudyPageClient() {
     const domain = useMemo(() => getDomainById(domainId), [domainId])
     const blueprint = blueprintFor(domainId)
 
-    // The bank's caseStudy field is: a domain overview paragraph, then
-    // "Case Study: ..." (the scenario the stems refer to), then an analysis /
-    // key-lessons section. The printed examination prints the scenario before
-    // the questions and holds the analysis back until after the answer key,
-    // because it telegraphs several answers. Same split here.
-    const { overview, scenario, debrief } = useMemo(() => {
-        const text = domain?.caseStudy ?? ''
-        const at = text.indexOf('Case Study:')
-        const overviewText = at !== -1 ? text.slice(0, at).trim() : ''
-        const body = at !== -1 ? text.slice(at).trim() : text
-        const split = splitCaseStudy(body)
-        return { overview: overviewText, scenario: split.scenario, debrief: split.debrief }
-    }, [domain])
+    // Overview, title, scenario and the held-back analysis, split the way the
+    // printed examination splits them (src/lib/text.ts).
+    const doc = useMemo(() => parseCaseStudy(domain?.caseStudy ?? ''), [domain])
 
     if (!domain) {
         return (
@@ -175,7 +80,7 @@ export default function StudyPageClient() {
                     </div>
 
                     {/* Domain Overview Card */}
-                    {overview && (
+                    {doc.overview && (
                         <Card className="border-2 border-primary/20 bg-muted/10">
                             <CardHeader className="pb-4">
                                 <CardTitle className="text-xl font-semibold text-primary">
@@ -184,7 +89,7 @@ export default function StudyPageClient() {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-base leading-relaxed text-foreground/90">
-                                    {overview}
+                                    {doc.overview}
                                 </p>
                             </CardContent>
                         </Card>
@@ -204,18 +109,14 @@ export default function StudyPageClient() {
                                 that only appear here.
                             </CardDescription>
                         </CardHeader>
-                        <CardContent className="pt-8 pb-10 px-8 sm:px-12">
-                            <div className="max-w-none">
-                                <ReactMarkdown components={markdownComponents}>
-                                    {scenario}
-                                </ReactMarkdown>
-                            </div>
+                        <CardContent className="pt-8 pb-10 px-6 sm:px-12">
+                            <CaseStudyBody kicker="Case study" title={doc.title} markdown={doc.scenario} />
                         </CardContent>
                     </Card>
                 </div>
 
                 {/* Debrief, held back like the back of the book */}
-                {debrief && (
+                {doc.debrief && (
                     <details className="mb-12 rounded-xl border-2 border-secondary/25 bg-background group">
                         <summary className="cursor-pointer list-none px-8 py-5 flex items-center gap-3 text-secondary font-semibold">
                             <EyeOff className="h-5 w-5 stroke-2 shrink-0" />
@@ -224,10 +125,8 @@ export default function StudyPageClient() {
                                 &middot; read after you have attempted the questions; it gives several answers away
                             </span>
                         </summary>
-                        <div className="px-8 sm:px-12 pb-10 pt-2 border-t-2 border-secondary/15">
-                            <ReactMarkdown components={markdownComponents}>
-                                {debrief}
-                            </ReactMarkdown>
+                        <div className="px-6 sm:px-12 pb-10 pt-4 border-t-2 border-secondary/15">
+                            <CaseStudyBody markdown={doc.debrief} />
                         </div>
                     </details>
                 )}

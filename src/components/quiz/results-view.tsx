@@ -6,12 +6,11 @@ import { Progress } from "@/components/ui/progress"
 import { useQuizStore } from "@/store/quiz-store"
 import { getDomainById } from "@/lib/content"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
-import { cleanExplanation, domainIdOf, orderedOptions, splitCaseStudy } from "@/lib/text"
+import { cleanExplanation, domainIdOf, orderedOptions, parseCaseStudy } from "@/lib/text"
 import { Emphasis } from "@/components/quiz/emphasis"
-import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
+import { CaseStudyBody } from "@/components/quiz/case-study"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import ReactMarkdown from "react-markdown"
 import { RotateCcw, Home, CheckCircle2, XCircle, BookOpen, Clock, EyeOff } from "lucide-react"
 
 interface ResultsViewProps {
@@ -54,7 +53,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
 
     // The case study debrief for every domain in the set, now that the key is out.
     const debriefs = domainRows
-        .map(row => ({ id: row.id, title: row.title, text: splitCaseStudy(getDomainById(row.id)?.caseStudy ?? "").debrief }))
+        .map(row => ({ id: row.id, title: row.title, text: parseCaseStudy(getDomainById(row.id)?.caseStudy ?? "").debrief }))
         .filter(d => d.text);
 
     return (
@@ -210,8 +209,8 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                             <summary className="cursor-pointer list-none px-5 py-4 font-semibold text-secondary">
                                 {d.id.replace("domain_", "Domain ")} &middot; {d.title}
                             </summary>
-                            <div className="px-5 sm:px-8 pb-8 pt-2 border-t-2 border-secondary/15 prose dark:prose-invert max-w-none leading-relaxed text-base">
-                                <ReactMarkdown components={caseStudyMarkdown}>{d.text}</ReactMarkdown>
+                            <div className="px-5 sm:px-8 pb-8 pt-4 border-t-2 border-secondary/15">
+                                <CaseStudyBody markdown={d.text} />
                             </div>
                         </details>
                     ))}

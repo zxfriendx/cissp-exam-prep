@@ -15,9 +15,8 @@ import { Question } from "@/lib/content"
 import { cleanExplanation, orderedOptions } from "@/lib/text"
 import { cn } from "@/lib/utils"
 import { CheckCircle2, XCircle, FileText, BookOpen } from "lucide-react"
-import ReactMarkdown from "react-markdown"
 import { Emphasis } from "@/components/quiz/emphasis"
-import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
+import { CaseStudyBody } from "@/components/quiz/case-study"
 
 interface QuestionCardProps {
     question: Question
@@ -25,8 +24,10 @@ interface QuestionCardProps {
     onAnswer: (optionId: string) => void
     questionIndex: number
     totalQuestions: number
-    /** The scenario only. The debrief is shown after the quiz. */
+    /** The scenario only, as markdown. The debrief is shown after the quiz. */
     caseStudy?: string
+    /** The case study's title, without its "Case Study:" label. */
+    caseStudyTitle?: string
     /** Examination mode: record the answer, mark it at the end. */
     deferFeedback?: boolean
 }
@@ -38,6 +39,7 @@ export function QuestionCard({
     questionIndex,
     totalQuestions,
     caseStudy,
+    caseStudyTitle,
     deferFeedback = false,
 }: QuestionCardProps) {
 
@@ -91,7 +93,7 @@ export function QuestionCard({
                                             Scenario
                                         </button>
                                     </DialogTrigger>
-                                    <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
+                                    <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
                                         <DialogHeader>
                                             <DialogTitle className="text-2xl font-semibold text-primary">
                                                 The scenario these questions are set in
@@ -101,9 +103,7 @@ export function QuestionCard({
                                             The stems name systems and people that only appear here. The
                                             case study debrief is held back until you have finished.
                                         </p>
-                                        <div className="prose dark:prose-invert max-w-none leading-relaxed text-base">
-                                            <ReactMarkdown components={caseStudyMarkdown}>{caseStudy}</ReactMarkdown>
-                                        </div>
+                                        <CaseStudyBody kicker="Case study" title={caseStudyTitle} markdown={caseStudy} className="pt-2" />
                                     </DialogContent>
                                 </Dialog>
                             )}
