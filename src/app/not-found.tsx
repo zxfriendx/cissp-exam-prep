@@ -26,7 +26,7 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition hover:brightness-110"
           >
-            Back to practice
+            Back to CISSP Prep
           </Link>
           <Link
             href="/guides/"

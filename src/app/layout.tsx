@@ -30,7 +30,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Practice Exams — Secure Path Digital",
+  title: "CISSP Prep — Secure Path Digital",
   description: "Master the CISSP exam with real-world case studies.",
 };
 

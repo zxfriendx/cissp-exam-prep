@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { VaultLockup } from "@/components/vault-mark";
 
 const navLinks = [
-  { label: "Practice", href: "/" },
+  { label: "CISSP Prep", href: "/" },
   { label: "Study Materials", href: "/guides/" },
   { label: "Services", href: "https://securepathdigital.net/#services" },
   { label: "Contact", href: "https://securepathdigital.net/#contact" },
