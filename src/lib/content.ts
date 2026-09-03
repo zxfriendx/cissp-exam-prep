@@ -1,18 +1,34 @@
 import contentData from '@/data/content.json';
 import { BLUEPRINT, apportionByWeight, blueprintFor } from '@/lib/blueprint';
-import { shuffled } from '@/lib/text';
+import { domainIdOf, shuffled } from '@/lib/text';
 
 export interface Option {
     [key: string]: string; // "A": "Option text"
 }
 
+/**
+ * One question as scripts/import-questions.mjs writes it (bank schema 2).
+ * The optional fields are new in schema 2: a quiz persisted in localStorage
+ * before the restamp carries questions without them, so read the domain
+ * through domainOfQuestion(), never q.domainId directly.
+ */
 export interface Question {
     id: string;
+    /** The number the printed book gives it, within its domain. */
     number: string;
+    /** Schema 2. The domain the question belongs to. */
+    domainId?: string;
     question: string;
     options: Option;
     correctAnswer: string;
     explanation: string;
+    /** Passed through from a source when it carries them; none do yet. */
+    level?: string;
+    /** 2024 outline task ids, e.g. "1.3". */
+    tasks?: string[];
+    references?: string[];
+    /** Content hash of stem, options, key and explanation. Changes when a re-import revises the question. */
+    rev?: string;
 }
 
 export interface Domain {
@@ -22,11 +38,46 @@ export interface Domain {
     questions: Question[];
 }
 
+/** Written by the importer; describes the bank it built. */
+export interface BankManifest {
+    schema: number;
+    /** Date of the pipeline bank this was imported from. */
+    edition: string;
+    questionCount: number;
+    byDomain: Record<string, number>;
+    keyCounts: Record<string, number>;
+    sources: { path: string; items: number; added: number; changed: number }[];
+}
+
 export interface ContentData {
+    bank?: BankManifest;
     domains: Domain[];
 }
 
 const data = contentData as ContentData;
+
+export const getBankManifest = (): BankManifest | undefined => data.bank;
+
+/** The domain a question belongs to: the schema-2 field, or the id's domain_X_qY form for older persisted copies. */
+export const domainOfQuestion = (q: Pick<Question, 'id' | 'domainId'>): string | undefined =>
+    q.domainId ?? domainIdOf(q.id);
+
+/**
+ * A domain quiz is the whole domain in book order (49-70 questions today).
+ * Domains longer than one set are also offered in sets of this many, still in
+ * book order, so a sitting can stop at a sensible place.
+ */
+export const SET_SIZE = 25;
+
+export const setCountFor = (questionCount: number): number =>
+    questionCount > SET_SIZE ? Math.ceil(questionCount / SET_SIZE) : 1;
+
+/** "1-25", "26-50", "51-70": the book numbers a set covers. */
+export const setLabel = (set: number, questionCount: number): string => {
+    const from = (set - 1) * SET_SIZE + 1;
+    const to = Math.min(set * SET_SIZE, questionCount);
+    return `${from}–${to}`;
+};
 
 const domainDescriptions: Record<string, string> = {
     "domain_1": "Security governance, compliance, law, and risk management. Master the foundational principles of information security.",
@@ -82,6 +133,10 @@ export const getQuestionsForDomain = (domainId: string, limit?: number): Questio
     if (!limit) return domain.questions.slice();
     return shuffled(domain.questions).slice(0, limit);
 };
+
+/** Set `set` (1-based) of a domain, in book order. Out of range gives an empty list. */
+export const getQuestionSet = (domainId: string, set: number): Question[] =>
+    getQuestionsForDomain(domainId).slice((set - 1) * SET_SIZE, set * SET_SIZE);
 
 export const getRandomQuestions = (count: number): Question[] => {
     const allQuestions = data.domains.flatMap(d => d.questions);

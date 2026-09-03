@@ -4,9 +4,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { useQuizStore } from "@/store/quiz-store"
-import { getDomainById } from "@/lib/content"
+import { domainOfQuestion, getDomainById } from "@/lib/content"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
-import { cleanExplanation, domainIdOf, orderedOptions, splitCaseStudy } from "@/lib/text"
+import { cleanExplanation, orderedOptions, splitCaseStudy } from "@/lib/text"
 import { Emphasis } from "@/components/quiz/emphasis"
 import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
 import { cn } from "@/lib/utils"
@@ -42,7 +42,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
     // Score by domain, for sets that cross domains.
     const byDomain = new Map<string, DomainRow>();
     for (const q of questions) {
-        const id = domainIdOf(q.id) ?? "other";
+        const id = domainOfQuestion(q) ?? "other";
         const row = byDomain.get(id) ?? { id, title: getDomainById(id)?.title ?? id, correct: 0, total: 0 };
         row.total += 1;
         if (answers[q.id] === q.correctAnswer) row.correct += 1;

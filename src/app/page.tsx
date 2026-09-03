@@ -1,4 +1,4 @@
-import { getAllDomains, getTotalQuestionCount } from "@/lib/content";
+import { getAllDomains, getBankManifest, getTotalQuestionCount, SET_SIZE } from "@/lib/content";
 import { DomainCard } from "@/components/quiz/domain-card";
 import { RandomQuizButton } from "@/components/quiz/random-quiz-button";
 import { WeaknessHunterButton } from "@/components/quiz/weakness-hunter-button";
@@ -7,6 +7,7 @@ import { ExamButton } from "@/components/quiz/exam-button";
 export default function Home() {
   const domains = getAllDomains();
   const total = getTotalQuestionCount();
+  const bank = getBankManifest();
 
   return (
     <div className="min-h-screen bg-background">
@@ -27,6 +28,11 @@ export default function Home() {
             {total} scenario questions across the eight domains, with worked explanations
             that say why each distractor loses. Written against the 2024 exam outline.
           </p>
+          {bank && (
+            <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">
+              Question bank edition {bank.edition}
+            </p>
+          )}
         </section>
 
         <div className="grid gap-16">
@@ -38,6 +44,7 @@ export default function Home() {
               </h2>
               <p className="text-muted-foreground text-sm">
                 Choose a domain to begin. Every domain opens with the scenario its questions are set in.
+                Take the whole domain in book order, or one set of {SET_SIZE} at a time.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-4">

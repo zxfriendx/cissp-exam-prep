@@ -2,8 +2,8 @@
 
 import { useEffect, useSyncExternalStore } from "react"
 import { useParams } from "next/navigation"
-import { getDomainById, isVirtualQuizId } from "@/lib/content"
-import { domainIdOf, splitCaseStudy } from "@/lib/text"
+import { domainOfQuestion, getDomainById, isVirtualQuizId } from "@/lib/content"
+import { splitCaseStudy } from "@/lib/text"
 import { useQuizStore } from "@/store/quiz-store"
 import { useUserStatsStore } from "@/store/user-stats-store"
 import { QuestionCard } from "@/components/quiz/question-card"
@@ -79,15 +79,15 @@ export default function QuizPageClient() {
         const isCorrect = optionId === currentQuestion.correctAnswer;
         answerQuestion(currentQuestion.id, optionId, isCorrect);
 
-        // Per-domain stats feed Weakness Hunter. Ids are domain_X_qY.
-        const dId = domainIdOf(currentQuestion.id);
+        // Per-domain stats feed Weakness Hunter.
+        const dId = domainOfQuestion(currentQuestion);
         if (dId) recordStats(dId, isCorrect);
     }
 
     // The scenario for this question's own domain (mixed sets cross domains).
     // Only the scenario half: the debrief telegraphs answers and is shown on
     // the results page instead.
-    const questionDomainId = domainIdOf(currentQuestion.id) ?? domainId;
+    const questionDomainId = domainOfQuestion(currentQuestion) ?? domainId;
     const { scenario } = splitCaseStudy(getDomainById(questionDomainId)?.caseStudy ?? "");
 
     return (

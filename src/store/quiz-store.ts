@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { getDomainById, getExamQuestions, getQuestionsForDomain, getRandomQuestions, Question } from '@/lib/content';
+import { getDomainById, getExamQuestions, getQuestionSet, getQuestionsForDomain, getRandomQuestions, Question, setLabel } from '@/lib/content';
 import { shuffled } from '@/lib/text';
 
 interface QuizState {
@@ -21,7 +21,8 @@ interface QuizState {
     finishedAt: number | null;
 
     // Actions
-    startQuiz: (domainId: string) => void;
+    /** The whole domain in book order, or one set of it (1-based) when `set` is given. */
+    startQuiz: (domainId: string, set?: number) => void;
     startRandomQuiz: (count: number) => void;
     startWeaknessHunterQuiz: (weakDomainIds: string[]) => void;
     /** Blueprint-weighted sample of `count`, or the whole book in order when omitted. */
@@ -61,10 +62,14 @@ export const useQuizStore = create<QuizState>()(
             startedAt: null,
             finishedAt: null,
 
-            startQuiz: (domainId) => {
+            startQuiz: (domainId, setIndex) => {
                 const domain = getDomainById(domainId);
-                const questions = domain ? domain.questions.slice() : [];
-                set(fresh(questions, domainId, domain?.title || "Quiz"));
+                const all = domain ? domain.questions.slice() : [];
+                const questions = setIndex ? getQuestionSet(domainId, setIndex) : all;
+                const title = domain
+                    ? (setIndex ? `${domain.title} · Questions ${setLabel(setIndex, all.length)}` : domain.title)
+                    : "Quiz";
+                set(fresh(questions, domainId, title));
             },
 
             startRandomQuiz: (count) => {

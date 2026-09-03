@@ -6,7 +6,7 @@ It is the on-screen edition of the printed **The Eight Domains — Practice Exam
 
 ## 🚀 Features
 
--   **Domain-Based Practice**: Practice questions organized by the 8 CISSP domains, each card showing the domain's share of the real examination (2024 outline weights).
+-   **Domain-Based Practice**: Practice questions organized by the 8 CISSP domains, each card showing the domain's share of the real examination (2024 outline weights). Take the whole domain in book order, or one set of 25 at a time.
 -   **Practice Examination**:
     -   50 or 100 questions drawn to the exam blueprint weights with domains mixed, or the full book in order.
     -   Answers are recorded as you go and marked at the end, like marking a separate sheet.
@@ -67,7 +67,8 @@ It is the on-screen edition of the printed **The Eight Domains — Practice Exam
 -   `src/data`: JSON data containing the CISSP questions and case studies.
 -   `src/lib`: Content helpers (`content.ts`), the exam blueprint (`blueprint.ts`), and text helpers shared in spirit with the PDF builder (`text.ts`).
 -   `src/store`: Zustand stores (`quiz-store.ts`, `user-stats-store.ts`).
--   `docs`: Audits and notes (`pdf-parity-audit-2026-09-02.md`).
+-   `scripts`: `import-questions.mjs`, the only supported way to change the question bank (see below), with its `node:test` cases.
+-   `docs`: Audits and notes (`pdf-parity-audit-2026-09-02.md`, `questions-rebuild-scope-2026-09-03.md`).
 
 ## 🚀 Deployment
 
@@ -95,14 +96,26 @@ To verify the installation:
 
 ## 📄 content.json Structure
 
-`src/data/content.json` carries the question bank and the eight case studies. The 439 questions are byte-identical to the file the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (see `docs/pdf-parity-audit-2026-09-02.md` for the paths), so **edit questions in the pipeline, not here**. The `caseStudy` strings are not: they were rewritten in this repository on 2026-09-02 (`docs/prose-audit-2026-09-02.md`) and the pipeline file still carries the old ones. The learn-site deploy script copies the pipeline file over this one; until the pipeline takes the new case studies, that copy step has to be dropped or it will discard them (the questions it would copy are already here).
+`src/data/content.json` carries the question bank and the eight case studies. The 439 questions are the ones the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (paths in `docs/questions-rebuild-scope-2026-09-03.md`), so **edit questions in the pipeline, then import them; never edit them here**. The `caseStudy` strings belong to this repository (rewritten 2026-09-02, `docs/prose-audit-2026-09-02.md`); the importer never touches them.
 
-Each domain contains a set of questions with the following format:
+### Importing questions
+
+```bash
+npm run bank:import -- --source /data/video/pipeline/_product_audit_2026-08-29/content.rekeyed.json --edition 2026-08-31
+npm run bank:import -- --source a.json --source b.json --dry-run   # report only
+npm run bank:check                                                  # validate the file on disk; exit 1 on drift
+npm test                                                            # the importer's own tests
+```
+
+`scripts/import-questions.mjs` reads bank-shaped (`{domains:[…]}`) and quiz-shaped (`{quizzes:[…]}`) files by path. An item whose id already exists is a **revision**: wording replaced, id and number kept. An item with no id or an unknown id is **new** unless its normalised stem already exists in that domain (then it is skipped as a duplicate); new items get the next number in the domain. Every item is validated (four A–D options, key in A–D, non-empty explanation, no duplicate options); anything failing is skipped with a reason. It prints added / changed / unchanged / skipped and refuses to write a bank whose most common key letter is over 30% (the same cap `stage-learn.sh` enforces).
+
+The file is **bank schema 2**: a `bank` manifest first (edition, counts, key distribution, sources), then the domains. Each question:
 
 ```json
 {
   "id": "domain_1_q1",
   "number": "1",
+  "domainId": "domain_1",
   "question": "Question text here...",
   "options": {
     "A": "Option A text",
@@ -111,14 +124,18 @@ Each domain contains a set of questions with the following format:
     "D": "Option D text"
   },
   "correctAnswer": "D",
-  "explanation": "Why D, and why A, B and C lose..."
+  "explanation": "Why D, and why A, B and C lose...",
+  "rev": "3f1c9a0b7d2e"
 }
 ```
 
+`level`, `tasks` (2024 outline task ids) and `references` are optional and are passed through when a source carries them; no source does yet.
+
 Notes:
--   Ids are stable (`domain_X_qY`) and are what saved progress keys on; never renumber.
+-   Ids are stable (`domain_X_qY`) and are what saved progress keys on; never renumber. The app reads a question's domain through `domainOfQuestion()`, which falls back to the id form for quizzes saved before schema 2.
+-   `rev` is a hash of stem, options, key and explanation; `npm run bank:check` fails when it no longer matches (a hand edit). Re-running the importer restamps.
 -   Options are displayed in the stored A-D order; the key is balanced across letters at the source.
--   Exam weights and the outline spelling of domain names live in `src/lib/blueprint.ts`, not in the JSON, because the deploy copy would overwrite them.
+-   Exam weights and the outline spelling of domain names live in `src/lib/blueprint.ts`, not in the JSON.
 
 ## ⚖️ Legal Disclaimer
 
