@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test scripts/*.test.mjs",
+    "bank:import": "node scripts/import-questions.mjs",
+    "bank:check": "node scripts/import-questions.mjs --check",
     "deploy": "node scripts/deploy.js"
   },
   "dependencies": {

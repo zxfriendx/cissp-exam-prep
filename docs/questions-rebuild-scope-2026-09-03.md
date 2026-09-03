@@ -61,16 +61,19 @@ revision, which is the best bank on disk.
 | `qrev/out/domain_*.json`, `qrev/in/domain_*.json` | 08-31 | 439 + 439 | same | Identical to REVISED / OLD-rekeyed; no extra items, no extra fields |
 | `question_audit.json`, `question_audit_rekeyed.json`, `mcq_audit3.json` | 08-29..31 | 439 rows | domain, number, level (recall/middle/application), flags, stem | Metadata about the **OLD** bank; stale for the revised wording |
 | `batch_in.json` / `batch_agy.json` | 08-29 | 12 | + `_audit_flags`, `_level`, `critique` | Revision pilot, superseded |
-| `content-pipeline/reference/cissp/cissp-quiz-questions.json` | 08-07 | 137 (49 quizzes, D1–D2) | number, question, options, correct_answer, explanation, incomplete_question ×1 | **No.** Transcript-derived from a third-party course (the directory is gitignored for that reason). Key B = 69/137 (50%) |
-| `content-pipeline/reference/cissp/tools/generated_d4_d5.json` | 08-07 | 81 (27 quizzes, D4–D5) | same | **No.** Generated lesson quizzes. Key B = 56/81 (69%) |
+| `content-pipeline/reference/cissp/cissp-quiz-questions.json` | 08-07 | 137 in 49 quizzes: D1 36, D2 16, D4 36, D5 45, one each in D3/D6/D7/D8 | number, question, options, correct_answer, explanation, incomplete_question ×1 | **No.** Lesson-checkpoint quizzes: D1–D2 transcribed from a third-party course (the directory is gitignored for that reason), the rest generated. Key B = 69/137 (50%); its README still says "52 questions, D1–D2 only" |
+| `content-pipeline/reference/cissp/tools/generated_d4_d5.json` | 08-07 | 81 (27 quizzes, D4–D5) | same | **No.** Every item is already in the file above (the importer skips all 81 as duplicates) |
 | `cissp_lessons/d*.json`, `video_pipeline/cissp/d*.json` | 08-30..09-01 | 0 | lesson scripts | n/a |
 | `cissp_product/eight-domains-study-guide.pdf` (189 pp), `eight-domains-revision-sheets.pdf` (10 pp) | 09-02 | 0 | no practice items | n/a |
 | `reference/isc2/cissp_outline_2024.json` | — | 0 | domains, weights, tasks, subtasks | Weights are in `src/lib/blueprint.ts`; task ids unused |
 
-Unique stems across everything, normalised: **657** (439 + 137 + 81; the three
-wordings of the 439 share ids and are counted once). Pipeline-authored questions
-the app lacks: **0**. Questions on disk the app lacks: **218**, all older than the
-product and not written to its guide.
+Unique stems across everything, normalised: **576** (439 + 137; the three
+wordings of the 439 share ids and are counted once, and the 81 are a subset of
+the 137). Pipeline-authored questions the app lacks: **0**. Questions on disk the
+app lacks: **137** (136 importable), all older than the product and not written
+to its guide. A dry-run import of them (`scripts/import-questions.mjs
+--dry-run`) lands 136 and is then refused, correctly: the merged key would be
+31.3% B, over the 30% cap `stage-learn.sh` enforces.
 
 No source carries per-question difficulty, references, or blueprint task ids.
 Explanations: every item. Case-study linkage: one `caseStudy` string per domain,
@@ -104,16 +107,16 @@ letter, so the app must not shuffle (it does not).
    changes a question's wording is reported by `rev` and does not break either.
 6. **Metadata authoring (not import work).** Blueprint task ids for 439
    questions is a model pass plus spot review (2–4 h with `agy`); it would let
-   Weakness Hunter work per task instead of per domain. Rewriting the 218
+   Weakness Hunter work per task instead of per domain. Rewriting the 136
    legacy items to the guide is authoring: at the guide's "one person, ten
-   minutes" that is ~36 h, or a supervised `agy` run. Neither is in this branch.
+   minutes" that is ~23 h, or a supervised `agy` run. Neither is in this branch.
 
 ## 5. Size
 
 - Importer, schema v2, bank manifest, domain sets, tests, staging: **about a
   day**, done on this branch (§6).
 - Merge with the case-study work, stage, review: hours, once that branch lands.
-- Task-id tagging: 2–4 h supervised. Legacy 218 rewrite: ~36 h human or a
+- Task-id tagging: 2–4 h supervised. Legacy 136 rewrite: ~23 h human or a
   supervised model run. New questions: 10 min each by the guide's own estimate.
 
 It is bigger than "swap the JSON" (that part was done on 09-02), but the large
