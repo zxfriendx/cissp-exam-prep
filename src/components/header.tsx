@@ -36,13 +36,13 @@ export function Header() {
             which both point their mark at their own root. It used to jump
             off-subdomain, so the mark did something different on Practice than
             on Study Materials. Services/Contact in the nav still go off-site. */}
-        <a
+        <Link
           href="/"
           className="flex items-center gap-3.5 text-primary hover:text-accent transition-colors"
           aria-label="Secure Path Digital"
         >
           <VaultLockup />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center">

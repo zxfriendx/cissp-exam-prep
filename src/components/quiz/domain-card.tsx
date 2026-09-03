@@ -1,21 +1,36 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { PlayCircle, BookOpen } from "lucide-react"
 import Link from "next/link"
+import { setCountFor, setLabel } from "@/lib/content"
+import { useQuizStore } from "@/store/quiz-store"
 
 interface DomainCardProps {
     id: string
     title: string
     questionCount: number
     description: string
+    /** Share of the real examination, per the 2024 outline. */
+    weight?: number
 }
 
-export function DomainCard({ id, title, questionCount, description }: DomainCardProps) {
+export function DomainCard({ id, title, questionCount, description, weight }: DomainCardProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const startQuiz = useQuizStore(state => state.startQuiz);
+    const router = useRouter();
+    const sets = setCountFor(questionCount);
+
+    // "Start Quiz" is a link, so an unfinished domain quiz resumes. A set is
+    // an explicit start: it replaces whatever the store holds for the domain.
+    const startSet = (set: number) => {
+        startQuiz(id, set);
+        router.push(`/quiz/${id}`);
+    };
 
     return (
         <Card
@@ -38,7 +53,12 @@ export function DomainCard({ id, title, questionCount, description }: DomainCard
                         {id.replace('domain_', '')}
                     </Badge>
                 </div>
-                <CardDescription className="text-sm font-medium">{questionCount} Questions</CardDescription>
+                <CardDescription className="text-sm font-medium">
+                    {questionCount} Questions
+                    {weight !== undefined && (
+                        <span className="text-secondary"> &middot; {weight}% of the exam</span>
+                    )}
+                </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow pb-6">
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -52,6 +72,22 @@ export function DomainCard({ id, title, questionCount, description }: DomainCard
                         Start Quiz
                     </Link>
                 </Button>
+                {sets > 1 && (
+                    <div className="w-full flex items-center gap-2 flex-wrap">
+                        <span className="text-xs text-muted-foreground font-mono uppercase tracking-widest shrink-0">In sets</span>
+                        {Array.from({ length: sets }, (_, i) => i + 1).map(set => (
+                            <button
+                                key={set}
+                                type="button"
+                                onClick={() => startSet(set)}
+                                className="text-xs font-mono px-2.5 py-1 rounded-md border border-primary/20 text-primary hover:border-secondary/60 hover:bg-muted/30 transition-colors"
+                                aria-label={`Start ${title}, questions ${setLabel(set, questionCount)}`}
+                            >
+                                {setLabel(set, questionCount)}
+                            </button>
+                        ))}
+                    </div>
+                )}
                 <Button
                     variant="outline"
                     className="w-full font-medium border-2 border-primary/20 hover:border-secondary/50 hover:bg-muted/30 transition-all"

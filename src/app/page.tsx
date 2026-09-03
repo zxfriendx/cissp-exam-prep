@@ -1,10 +1,13 @@
-import { getAllDomains } from "@/lib/content";
+import { getAllDomains, getBankManifest, getTotalQuestionCount, SET_SIZE } from "@/lib/content";
 import { DomainCard } from "@/components/quiz/domain-card";
 import { RandomQuizButton } from "@/components/quiz/random-quiz-button";
 import { WeaknessHunterButton } from "@/components/quiz/weakness-hunter-button";
+import { ExamButton } from "@/components/quiz/exam-button";
 
 export default function Home() {
   const domains = getAllDomains();
+  const total = getTotalQuestionCount();
+  const bank = getBankManifest();
 
   return (
     <div className="min-h-screen bg-background">
@@ -22,8 +25,14 @@ export default function Home() {
             <sup className="text-[0.5em] align-super">&reg;</sup> Exam
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
-            Real-world case studies and adaptive practice questions designed to help you pass with confidence.
+            {total} scenario questions across the eight domains, with worked explanations
+            that say why each distractor loses. Written against the 2024 exam outline.
           </p>
+          {bank && (
+            <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">
+              Question bank edition {bank.edition}
+            </p>
+          )}
         </section>
 
         <div className="grid gap-16">
@@ -33,7 +42,10 @@ export default function Home() {
               <h2 className="text-3xl font-semibold tracking-tight text-primary">
                 Study by Domain
               </h2>
-              <p className="text-muted-foreground text-sm">Choose a domain to begin your preparation</p>
+              <p className="text-muted-foreground text-sm">
+                Choose a domain to begin. Every domain opens with the scenario its questions are set in.
+                Take the whole domain in book order, or one set of {SET_SIZE} at a time.
+              </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-4">
               {domains.map((domain) => (
@@ -43,8 +55,29 @@ export default function Home() {
                   title={domain.title}
                   questionCount={domain.questionCount}
                   description={domain.description}
+                  weight={domain.weight}
                 />
               ))}
+            </div>
+          </section>
+
+          {/* Practice Examination */}
+          <section className="space-y-6 pt-8 border-t border-primary/10">
+            <div className="space-y-2 max-w-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-primary">
+                Practice Examination
+              </h2>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Sit it like the real thing: answers are recorded as you go and marked at the end,
+                with the key, the worked explanations and each scenario&apos;s debrief. Allow roughly
+                1 minute 15 seconds per question. The correct letter is spread evenly across A, B, C
+                and D, so position tells you nothing. Answer from the stem.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <ExamButton count={50} total={total} />
+              <ExamButton count={100} total={total} />
+              <ExamButton total={total} />
             </div>
           </section>
 
@@ -67,7 +100,7 @@ export default function Home() {
                 <h2 className="text-2xl font-semibold tracking-tight text-primary">
                   Random Practice
                 </h2>
-                <p className="text-muted-foreground text-sm">Quick practice sessions</p>
+                <p className="text-muted-foreground text-sm">Quick sessions, marked as you go</p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <RandomQuizButton count={10} />
