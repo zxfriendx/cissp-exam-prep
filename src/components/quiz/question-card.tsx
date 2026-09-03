@@ -136,9 +136,9 @@ export function QuestionCard({
                                         className={cn(
                                             "w-full justify-start text-left h-auto py-6 px-7 text-base whitespace-normal transition-all duration-300 border-2 font-normal",
                                             !isAnswered && "border-primary/20 hover:border-secondary/50 hover:bg-muted/20 hover:shadow-md",
-                                            isAnswered && isTargetCorrect && "border-secondary/60 bg-[rgb(var(--success))] text-[rgb(var(--success-foreground))] font-medium",
-                                            isAnswered && isSelected && !isTargetCorrect && "border-red-400 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100",
-                                            isAnswered && !isSelected && !isTargetCorrect && "border-primary/10 opacity-60"
+                                            isAnswered && isTargetCorrect && "border-secondary/60 dark:border-secondary/60 bg-[rgb(var(--success))] dark:bg-[rgb(var(--success))] text-[rgb(var(--success-foreground))] dark:text-[rgb(var(--success-foreground))] font-medium disabled:opacity-100",
+                                            isAnswered && isSelected && !isTargetCorrect && "border-red-400 dark:border-red-400 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100 disabled:opacity-100",
+                                            isAnswered && !isSelected && !isTargetCorrect && "border-primary/10 disabled:opacity-60"
                                         )}
                                         onClick={() => !isAnswered && onAnswer(key)}
                                         disabled={isAnswered}
