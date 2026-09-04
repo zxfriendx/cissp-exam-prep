@@ -1,0 +1,3003 @@
+{
+  "meta": {
+    "schema": 1,
+    "purpose": "v2 additions authored to close the 27 zero-coverage outline items from the 2026-09-03 quiz and booklet audit, and to top up Domain 1 toward its 16 percent blueprint weight. Merge target: domains[].stimuli[] and domains[].questionsV2[] per practice-exam-v2-spec.md section 6.2. Nothing here belongs in domains[].questions[].",
+    "generated": "2026-09-04",
+    "spec": "docs/practice-exam-v2-spec.md (commit 4c92795)",
+    "standardsMap": "docs/standards/standards-map.json (commit 69a866b)",
+    "authoringGuide": "content-pipeline/docs/QUESTION_AUTHORING_GUIDE.md",
+    "outlineSpine": "content-pipeline/.../reference/isc2/cissp_outline_2024.json",
+    "notes": [
+      "Every item carries a 'sources' array naming document, revision where one applies, and the section or control id the explanation rests on. This field is additive and is not read by the v1 builder.",
+      "Withdrawn-edition handling: SP 800-88 is cited without pinning a revision (Rev 1 withdrawn 2025-09-26); SP 800-61 Rev 2's four-phase lifecycle is never attributed to Rev 3; SP 800-161 Rev 1 is cited as Rev 1 (upd 1).",
+      "No CIS Controls or PCI DSS text is quoted or paraphrased anywhere in this file. PCI DSS appears only as a regime label inside stimulus Organization Boxes.",
+      "FIPS 199 is never cited as the source of a five-pillar claim; it defines three security objectives."
+    ],
+    "counts": {
+      "items": 52,
+      "stimuli": 9,
+      "byDomain": {
+        "domain_1": 20,
+        "domain_3": 9,
+        "domain_5": 5,
+        "domain_6": 4,
+        "domain_7": 10,
+        "domain_8": 4
+      },
+      "keyCounts": {
+        "A": 13,
+        "B": 13,
+        "C": 13,
+        "D": 13
+      },
+      "itemsInTestlets": 37,
+      "byForm": {
+        "drill": 52
+      }
+    }
+  },
+  "stimuli": [
+    {
+      "id": "d1_s01",
+      "domainId": "domain_1",
+      "kind": "testlet",
+      "title": "Meridian: the Ridgeline acquisition",
+      "text": "Two years after the ATM breach, Meridian Financial is buying Ridgeline Savings, a 40-branch thrift with its own core banking platform and a customer analytics contract with a processor in Bangalore. The deal signs in six weeks. Ridgeline has never had a CISO, and its board minutes record one penetration test, in 2021. Meridian's board has told the CISO that security must not delay the closing. The examiner will review the combined entity nine months after close. Ridgeline's analytics contract renews automatically thirty days after any change of control.",
+      "world": "meridian",
+      "caseStudyId": "domain_1",
+      "profile": {
+        "organization": "Meridian Financial Services · acquiring Ridgeline Savings, 40 branches",
+        "regime": "GLBA · state breach notification · examination nine months after close",
+        "environment": "Two core banking platforms · Ridgeline analytics processor in Bangalore",
+        "state": "Six weeks to signing, no security due diligence performed"
+      },
+      "outlineItems": [
+        "1.3.2",
+        "1.11.1",
+        "1.4.4",
+        "1.3.5"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d1_s02",
+      "domainId": "domain_1",
+      "kind": "testlet",
+      "title": "Meridian: the document set",
+      "text": "Meridian's new CISO inherits a document set that grew by accident. There is a thirty-page information security policy last approved in 2019, four standards that contradict it on password length, a wiki of procedures written by whoever last did the task, and a recommended practices page nobody can say is binding. The board approved the policy; nobody can say who approved the standards. Meanwhile two branch regions are merging and 300 staff are changing roles, and the awareness programme still teaches a threat catalogue written before the bank used any cloud service at all.",
+      "world": "meridian",
+      "caseStudyId": "domain_1",
+      "profile": {
+        "organization": "Meridian Financial Services · 2,400 staff",
+        "regime": "GLBA · PCI DSS · state banking examination",
+        "environment": "Policy approved 2019 · four conflicting standards · procedures on a wiki",
+        "state": "300 staff changing roles during a branch-region merger"
+      },
+      "outlineItems": [
+        "1.6",
+        "1.9.4",
+        "1.8.3",
+        "1.12.2"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d3_s01",
+      "domainId": "domain_3",
+      "kind": "testlet",
+      "title": "Nexus: the platform split",
+      "text": "Nexus Bank is replacing the fleet-management platform that administers its SlimLine terminals. Today it is one Windows server in the bank's own data center. The target design splits it four ways: a browser console for branch staff, an application tier of Linux containers on a shared cluster, event-driven functions at a cloud provider that reconcile cash balances overnight, and the legacy dispenser-control service, which nobody will rewrite and which will run as a guest on the bank's hypervisor. The migration board has ten weeks and no budget for a second cluster. Security must sign off on each tier separately, and the board meets once a month.",
+      "world": "nexus",
+      "caseStudyId": "domain_3",
+      "profile": {
+        "organization": "Nexus Bank · SlimLine subway ATM fleet",
+        "regime": "PCI DSS · state banking examination",
+        "environment": "Browser console · shared container cluster · cloud functions · one hypervisor",
+        "state": "Ten weeks to migrate, four tiers to sign off separately"
+      },
+      "outlineItems": [
+        "3.5",
+        "3.5.1",
+        "3.5.2",
+        "3.5.10",
+        "3.5.11",
+        "3.5.15"
+      ],
+      "layout": "spread",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d3_s02",
+      "domainId": "domain_3",
+      "kind": "testlet",
+      "title": "Nexus: the SlimLine II programme",
+      "text": "Two years after the shim attack, Nexus Bank has funded a replacement terminal, the SlimLine II. The programme board meets monthly and has just approved the architecture. Three decisions are still open: how the security requirements become a concrete control set, how the new dispenser interface will be joined to the existing transaction switch, and how 900 SlimLine units leave service. The bank's examiner has asked for evidence at each gate. Finance wants the retired units sold to a secondary-market refurbisher, which pays considerably more than a recycler does and collects from the branch loading dock.",
+      "world": "nexus",
+      "caseStudyId": "domain_3",
+      "profile": {
+        "organization": "Nexus Bank · SlimLine II replacement programme",
+        "regime": "PCI DSS · state banking examination",
+        "environment": "900 SlimLine units in service · new dispenser interface · existing transaction switch",
+        "state": "Architecture approved, control set not yet chosen"
+      },
+      "outlineItems": [
+        "3.3",
+        "3.10",
+        "3.10.5",
+        "3.10.7",
+        "3.10.9"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d5_s01",
+      "domainId": "domain_5",
+      "kind": "testlet",
+      "title": "QuickCash: after SuperAdmin",
+      "text": "Six months after the SuperAdmin theft, QuickCash has replaced the shared account with named identities and is rebuilding everything around it. Its directory runs on two domain controllers in the regional office, and the ATM management console authenticates against them. The board has bought a cloud service desk and a cloud expense tool, and both want their own logins. The five field technicians need administrative rights on the console, but only while a work order is open. The regional manager who created SuperAdmin still signs off every access request. The next audit closes in eight weeks.",
+      "world": "quickcash",
+      "caseStudyId": "domain_5",
+      "profile": {
+        "organization": "QuickCash Inc · 300 ATMs, five field technicians",
+        "regime": "PCI DSS · state banking examination",
+        "environment": "Two on-premises domain controllers · ATM management console · two new cloud applications",
+        "state": "Eight weeks to audit, access model half rebuilt"
+      },
+      "outlineItems": [
+        "5.1.2",
+        "5.2.8",
+        "5.3.1",
+        "5.3.3"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d6_s01",
+      "domainId": "domain_6",
+      "kind": "testlet",
+      "title": "FinCorp: the second report",
+      "text": "Nine days after the negative-deposit story broke, FinCorp's security mailbox receives a second report. An independent researcher writes that the same mobile deposit endpoint accepts an amount carrying sixteen decimal places, and that the balance service rounds it in the customer's favour. She has not published, gives a ninety-day deadline, and asks for a named contact. FinCorp has no vulnerability disclosure policy, no bug bounty, and no stated position on researchers who test its live application. The VP of Engineering who waived the gate review still owns the release schedule. Legal's first draft reply threatens action under the terms of service.",
+      "world": "fincorp",
+      "caseStudyId": "domain_6",
+      "profile": {
+        "organization": "FinCorp · mobile check deposit for ATM customers",
+        "regime": "State banking examination · card brand rules",
+        "environment": "Mobile deposit endpoint · balance service · no disclosure policy",
+        "state": "Day nine after a related flaw went public, second report in hand"
+      },
+      "outlineItems": [
+        "6.4.3",
+        "6.4.1",
+        "6.4.2",
+        "6.2.6"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d8_s01",
+      "domainId": "domain_8",
+      "kind": "testlet",
+      "title": "Global Bank: the pipeline rebuild",
+      "text": "Global Bank is rebuilding the Cardless Cash pipeline it had when a master key reached a public repository. The new design keeps the same three teams and the same weekly release. Secrets move to a managed vault. Builds run on shared runners any team can queue work on, and the repository is private, but every developer can push to the main branch. Nobody can currently say which build produced the artefact running in production. The bank's examiner has asked for evidence that the pipeline enforces the bank's own rules, not merely that the rules exist somewhere.",
+      "world": "globalbank",
+      "caseStudyId": "domain_8",
+      "profile": {
+        "organization": "Global Bank · Cardless Cash mobile app and API",
+        "regime": "PCI DSS · state banking examination",
+        "environment": "Private repository · shared build runners · weekly release · managed secret vault",
+        "state": "Pipeline rebuild after a hardcoded key reached a public repository"
+      },
+      "outlineItems": [
+        "8.5.4",
+        "8.2.6",
+        "8.2.8",
+        "8.5.2"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d7_s01",
+      "domainId": "domain_7",
+      "kind": "testlet",
+      "title": "Global ATM: the Toledo prompt",
+      "text": "Eight months after the patch outage, Global ATM Corp's service desk logs a report from a branch: an ATM in Toledo displayed a command prompt for a few seconds during a maintenance visit. The fleet runs a standard Windows build with anti-malware and a monthly patch cycle. Each machine writes its own event log locally and keeps thirty days of it. There is no rule about which programs may run. The maintenance vendor's technician says he ran a diagnostic tool he downloaded that morning. By the time an analyst calls back, the machine has been rebooted twice.",
+      "world": "globalatm",
+      "caseStudyId": "domain_7",
+      "profile": {
+        "organization": "Global ATM Corp · 5,000 ATMs",
+        "regime": "PCI DSS · state breach notification",
+        "environment": "Standard Windows build · local event logs, 30 days · outsourced maintenance",
+        "state": "One reported command prompt, machine already rebooted twice"
+      },
+      "outlineItems": [
+        "7.7.3",
+        "7.2.6",
+        "7.6.3",
+        "7.6.7"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    },
+    {
+      "id": "d7_s02",
+      "domainId": "domain_7",
+      "kind": "testlet",
+      "title": "Global ATM: two exercises",
+      "text": "A year after the outage, Global ATM Corp has a written disaster recovery plan for the transaction switch and has run one tabletop against it. The plan names a recovery team of eleven people across three time zones, lists a call tree, and assumes the switch can be brought up at the Columbus site within four hours. Nobody has yet performed any of the steps. The board has approved two exercises this year and will not accept an outage of production. The operations director has asked what the two exercises should be and what evidence each will produce.",
+      "world": "globalatm",
+      "caseStudyId": "domain_7",
+      "profile": {
+        "organization": "Global ATM Corp · 5,000 ATMs",
+        "regime": "State banking examination · card brand availability requirements",
+        "environment": "Transaction switch · alternate site at Columbus · eleven-person recovery team, three time zones",
+        "state": "Plan written, one tabletop run, no procedure yet performed"
+      },
+      "outlineItems": [
+        "7.12.2",
+        "7.12.3",
+        "7.11.2",
+        "7.11.7"
+      ],
+      "layout": "page",
+      "editions": [
+        "v2"
+      ]
+    }
+  ],
+  "questionsV2": [
+    {
+      "id": "d1_v2_q033",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "1.3.2"
+      ],
+      "question": "The board has said security must not delay the closing. Which contribution to the acquisition process is the BEST use of the CISO's remaining six weeks?",
+      "options": {
+        "A": "Withhold approval of the transaction until Ridgeline's controls match Meridian's.",
+        "B": "Defer the security review until after close, when Meridian controls the systems.",
+        "C": "Complete a full control assessment of Ridgeline before the six weeks expire.",
+        "D": "Quantify Ridgeline's security risk so the board can price it into the deal."
+      },
+      "correctAnswer": "D",
+      "explanation": "An acquisition is a risk transfer with a price attached, and the only lever available before signing is the price. A number the board can put next to the purchase price is worth more than an objection it will overrule. NIST SP 800-53 Rev 5 SA-4 Acquisition Process requires security and privacy requirements to be included in the contract for the thing being acquired, and PM-30 Supply Chain Risk Management Strategy sets the organization-wide approach behind it. NIST SP 800-161 Rev 1 (upd 1) Section 3.1 treats acquisition as the moment when a supplier's posture becomes the acquirer's exposure. A is not the decision-maker's, because the board owns the transaction and the CISO informs it. B is wrong phase: after close the risk is owned, the price is fixed and the leverage is gone. C is wrong scope, since six weeks buys material findings rather than a complete assessment, and demanding the impossible is how security gets left out of the next deal. Price the risk instead of blocking the deal.",
+      "recallLine": "The board will not let security delay a closing. What is the best use of six weeks?",
+      "optionsShort": {
+        "A": "Withhold approval until controls match",
+        "B": "Review after close",
+        "C": "Full control assessment in six weeks",
+        "D": "Quantify the risk for pricing"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "Who decides whether a transaction proceeds when the risk is judged unacceptable?"
+        },
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What work genuinely does belong to the integration period rather than to due diligence?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What would the CISO scope if the deal timetable were nine months instead of six weeks?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | SA-4 Acquisition Process; PM-30 Supply Chain Risk Management Strategy",
+        "NIST SP 800-161 Rev 1 (upd 1) | Section 3.1 C-SCRM in Acquisition"
+      ],
+      "rev": "7b3f986e3dad"
+    },
+    {
+      "id": "d1_v2_q034",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "1.11.1"
+      ],
+      "question": "Ridgeline's analytics contract renews automatically thirty days after any change of control. Which action MOST reduces the risk Meridian inherits with it?",
+      "options": {
+        "A": "Add the processor to Meridian's vendor register with an annual review.",
+        "B": "Use the change-of-control window to renegotiate security terms before renewal.",
+        "C": "Require the processor to complete Meridian's standard security questionnaire.",
+        "D": "Obtain the processor's most recent third-party audit report from Ridgeline."
+      },
+      "correctAnswer": "B",
+      "explanation": "A supplier contract is easiest to change at the one moment it is open, and this one is open for thirty days and then shut for a term nobody at Meridian negotiated. Everything else on the list can be done in month four; only B expires. NIST SP 800-161 Rev 1 (upd 1) Section 3.1 places supply-chain requirements in the acquisition and contracting activity for exactly this reason, and NIST SP 800-53 Rev 5 SR-3 Supply Chain Controls and Processes, SR-5 Acquisition Strategies, Tools, and Methods and SA-9 External System Services are where the requirements land. Note that the copy of SP 800-161 Rev 1 in circulation carries a NIST notice superseding it with the Rev 1 errata update, which renumbers nothing. A is wrong phase, a steady-state process applied to a moment that closes. C is correct but not first, evidence gathering while the leverage expires. D is the right control for a different problem, describing the processor's controls without changing Meridian's position. Move while the door is open.",
+      "recallLine": "An inherited vendor contract auto-renews in thirty days. What most reduces the inherited risk?",
+      "optionsShort": {
+        "A": "Add to vendor register, annual review",
+        "B": "Renegotiate terms in the open window",
+        "C": "Send the security questionnaire",
+        "D": "Get the third-party audit report"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "How should this processor be governed once its contract terms are settled?"
+        },
+        "C": {
+          "label": "correct but not first",
+          "wouldAnswer": "How does Meridian assess a supplier whose contract is not about to renew?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What evidence should Meridian collect to judge whether the processor's controls are adequate?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-161 Rev 1 (upd 1) | Section 3.1 C-SCRM in Acquisition",
+        "NIST SP 800-53 Rev 5 | SR-3 Supply Chain Controls and Processes; SR-5 Acquisition Strategies, Tools, and Methods; SA-9 External System Services"
+      ],
+      "rev": "ac66356ab7e3"
+    },
+    {
+      "id": "d1_v2_q035",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "1.4.4"
+      ],
+      "question": "The analytics dataset includes EU residents who bank at two Ridgeline branches, and the processor is in Bangalore. Which requirement applies MOST directly to that flow?",
+      "options": {
+        "A": "The data must be encrypted in transit and at rest throughout the processing chain.",
+        "B": "The processor must be named in Meridian's incident response plan as a notification party.",
+        "C": "The transfer needs an adequacy decision, appropriate safeguards, or a stated derogation.",
+        "D": "The dataset must be reduced to the minimum fields the analytics contract requires."
+      },
+      "correctAnswer": "C",
+      "explanation": "Personal data leaving the European Economic Area needs a lawful basis for the transfer itself, separate from any basis for processing it. Chapter V of the General Data Protection Regulation, Regulation (EU) 2016/679, states the general principle at Article 44, adequacy decisions for a destination country at Article 45, appropriate safeguards including standard contractual clauses and binding corporate rules at Article 46, and the narrow derogations at Article 49. Onward transfers must not undermine the protection. On the control side, NIST SP 800-53 Rev 5 CM-12 Information Location and SA-9(5) External System Services | Processing, Storage, and Service Location are how an organization knows and restricts where its data physically sits. A is the right control for a different problem: encryption protects the data and does not make the transfer lawful. B is wrong scope, an incident-handling arrangement rather than a transfer basis. D is correct but not first, since minimisation is a genuine obligation that reduces exposure without supplying a basis. Lawfulness first, then protection.",
+      "recallLine": "An offshore processor handles EU residents' data. Which requirement applies most directly to the transfer?",
+      "optionsShort": {
+        "A": "Encrypt in transit and at rest",
+        "B": "Name the processor in the IR plan",
+        "C": "Adequacy, safeguards, or a derogation",
+        "D": "Reduce to the minimum fields"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What protects the dataset against interception or theft along the processing chain?"
+        },
+        "B": {
+          "label": "wrong scope",
+          "wouldAnswer": "What must be arranged so a processor's breach reaches Meridian's responders quickly?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What principle limits how much personal data a processor should receive at all?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "EU GDPR (Regulation (EU) 2016/679) | Chapter V, Articles 44, 45, 46 and 49",
+        "NIST SP 800-53 Rev 5 | CM-12 Information Location; SA-9(5) Processing, Storage, and Service Location"
+      ],
+      "rev": "1ca93065a82c"
+    },
+    {
+      "id": "d1_v2_q036",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "1.3.5"
+      ],
+      "question": "At the examination nine months after close, the examiner asks how Meridian satisfied itself about Ridgeline. Which pair of facts BEST evidences due diligence and due care?",
+      "options": {
+        "A": "The pre-close risk assessment, and the assessments run on Ridgeline's systems since close.",
+        "B": "The signed purchase agreement, and the security clauses Meridian wrote into it.",
+        "C": "Ridgeline's 2021 penetration test, and Meridian's remediation plan for its findings.",
+        "D": "Meridian's own examination record, and the policy set now applied to both entities."
+      },
+      "correctAnswer": "A",
+      "explanation": "The pair is a sequence, not a synonym. Due diligence is the investigation made before a commitment; due care is the continuing exercise of oversight after it, and an examiner asking about both wants evidence from each side of the closing date. Only A supplies both. NIST SP 800-161 Rev 1 (upd 1) Section 3.1 describes the pre-contract investigation, and NIST SP 800-53 Rev 5 SR-6 Supplier Assessments and Reviews carries the ongoing half. Worth saying plainly: no NIST document defines the due care and due diligence pair, which is a legal liability concept rather than a controls concept, so an answer that leans on a control number alone has missed the question. B is wrong scope, evidencing what was agreed rather than what was investigated or overseen. C is wrong phase, a four-year-old test that predates the transaction and records Ridgeline's activity, not Meridian's. D is the right control for a different problem, describing Meridian's own posture. Show the before and the after.",
+      "recallLine": "An examiner asks how the acquirer satisfied itself about the acquired bank. Which pair evidences it?",
+      "optionsShort": {
+        "A": "Pre-close assessment plus post-close assessments",
+        "B": "Purchase agreement and its security clauses",
+        "C": "Ridgeline's 2021 test and a remediation plan",
+        "D": "Meridian's own record and unified policy"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "wrong scope",
+          "wouldAnswer": "What shows that Meridian secured contractual protection in the transaction?"
+        },
+        "C": {
+          "label": "wrong phase",
+          "wouldAnswer": "What did Ridgeline itself do about assurance before it was acquired?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What demonstrates that the combined entity now operates under one governance regime?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-161 Rev 1 (upd 1) | Section 3.1 C-SCRM in Acquisition",
+        "NIST SP 800-53 Rev 5 | SR-6 Supplier Assessments and Reviews",
+        "No NIST source defines due care / due diligence; recorded as a legal-liability concept"
+      ],
+      "rev": "394580c31b55"
+    },
+    {
+      "id": "d1_v2_q037",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s02",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "1.6"
+      ],
+      "question": "Two standards specify different minimum password lengths and both cite the same policy. Which action BEST resolves the conflict at its source?",
+      "options": {
+        "A": "Assign one owner to approve every standard, and reissue the two under that authority.",
+        "B": "Adopt the stricter of the two lengths and update the weaker standard to match it.",
+        "C": "Move the requirement into the policy so that the board's approval settles it.",
+        "D": "Publish a guideline recommending the stricter length until the standards are rewritten."
+      },
+      "correctAnswer": "A",
+      "explanation": "Two standards contradict each other because two people were allowed to issue standards, and no choice between the two numbers changes that. NIST SP 800-53 Rev 5 makes the point structurally: every control family opens with a Policy and Procedures control, AC-1, AT-1, AU-1 and so on through SR-1, each requiring a documented policy, dissemination to defined roles, a designated official to manage its development and review, and review and update on a defined frequency and after defined events. NIST CSF 2.0 states the same in GV.PO-01 and GV.PO-02. Note that the policy, standard, procedure and guideline hierarchy itself, and the mandatory versus discretionary distinction, is CISSP-canon rather than NIST text. B is symptom not cause, resolving this contradiction and leaving the process that made it. C is wrong scope, pushing a parameter into a document meant to outlive parameters. D is the right control for a different problem, because a guideline is discretionary and cannot settle a mandatory requirement. Fix the authority, not the number.",
+      "recallLine": "Two standards contradict each other on a parameter. What resolves the conflict at its source?",
+      "optionsShort": {
+        "A": "One owner approves all standards",
+        "B": "Adopt the stricter length",
+        "C": "Move the number into the policy",
+        "D": "Issue a guideline recommending stricter"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What should the reissued standard say once a single owner has been appointed?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What belongs in a policy rather than in a standard beneath it?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "Which instrument is right for advice that teams may reasonably decline to follow?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | the '-1' Policy and Procedures control in every family (AC-1 through SR-1)",
+        "NIST CSF 2.0 (NIST CSWP 29) | GV.PO-01, GV.PO-02",
+        "NIST SP 800-18 Rev 1 | Section 3, plan development and structure"
+      ],
+      "rev": "c9402b2f68b4"
+    },
+    {
+      "id": "d1_v2_q038",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s02",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "1.9.4"
+      ],
+      "question": "A director asks why the security plan classifies controls one way and the risk report another. Which explanation is MOST accurate?",
+      "options": {
+        "A": "The plan uses the catalogue's families because they are mandatory; the report's categories are optional.",
+        "B": "The two are the same taxonomy under different names, so either may be used interchangeably.",
+        "C": "The plan groups controls by family, while the report groups them by the function they serve.",
+        "D": "The report's categories replaced the families when the bank adopted the newer framework."
+      },
+      "correctAnswer": "C",
+      "explanation": "These are two axes over the same controls, not two competing lists, and a director who understands that stops asking which one is right. NIST SP 800-53 Rev 5 Chapter 2 organizes controls into twenty families and characterizes each by implementation responsibility, organization or system, and by whether it is a base control or an enhancement. It never classifies a control as preventive, detective or corrective. That functional taxonomy, together with deterrent, directive and compensating, is CISSP-canon and appears in no NIST publication. The one near-member is the compensating control, which lives in NIST SP 800-53B Chapter 2 as tailoring guidance rather than as a class of control. A is symptom not cause, asserting a status difference where both are descriptions of the same set. B is wrong scope, collapsing two organizing axes into one. D is wrong phase, implying a supersession that never happened. Know which axis a question is asking about.",
+      "recallLine": "Why does one document group controls by family and another by preventive or detective function?",
+      "optionsShort": {
+        "A": "Families mandatory, categories optional",
+        "B": "Same taxonomy, different names",
+        "C": "One groups by family, one by function",
+        "D": "Categories replaced families"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "Which control set is a US federal system actually obliged to implement?"
+        },
+        "B": {
+          "label": "wrong scope",
+          "wouldAnswer": "When can two classification schemes be treated as interchangeable for reporting?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What did change between Revision 4 and Revision 5 of the control catalogue?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | Chapter 2, control structure, families and implementation responsibility",
+        "NIST SP 800-53B | Chapter 2, compensating controls in tailoring guidance",
+        "The preventive/detective/corrective taxonomy has no NIST source and is attributed to CISSP-canon material"
+      ],
+      "rev": "cd2c4f34012e"
+    },
+    {
+      "id": "d1_v2_q039",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s02",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "1.8.3"
+      ],
+      "crossDomain": [
+        "domain_5"
+      ],
+      "question": "Three hundred staff are changing roles as two branch regions merge. Which control MOST directly addresses the risk that creates?",
+      "options": {
+        "A": "Requiring every transferring employee to re-sign the acceptable use agreement.",
+        "B": "Reviewing and revising each transferring employee's access to match the new role.",
+        "C": "Disabling each transferring employee's account for the day the move takes effect.",
+        "D": "Requiring managers to certify their team's access at the end of each quarter."
+      },
+      "correctAnswer": "B",
+      "explanation": "A transfer adds rights and almost never subtracts them, so 300 transfers produce 300 people holding two jobs' worth of access and one job's worth of need. NIST SP 800-53 Rev 5 PS-5 Personnel Transfer is the control written for this: review and confirm the ongoing operational need for current logical and physical access authorizations when individuals are reassigned or transferred, initiate the resulting transfer or reassignment actions within a defined period, and modify access authorization as needed. PS-4 Personnel Termination handles the leavers and AC-2 Account Management the accounts themselves. A is the right control for a different problem, reaffirming the rules of behaviour while the entitlements ride along untouched. C is symptom not cause, an interruption rather than a revision, and the account comes back exactly as it was. D is detective when preventive is asked, finding accumulated access one quarter after it accumulated. Revise at the moment of the move.",
+      "recallLine": "Three hundred staff change roles in a merger. Which control most directly addresses the risk?",
+      "optionsShort": {
+        "A": "Re-sign the acceptable use agreement",
+        "B": "Review and revise access to the new role",
+        "C": "Disable the account for the move day",
+        "D": "Quarterly manager certification"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank refresh each employee's acknowledgement of the rules of behaviour?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the bank prevent access being used during an unsupervised handover window?"
+        },
+        "D": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the bank catch entitlements that accumulated despite the transfer process?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | PS-5 Personnel Transfer; PS-4 Personnel Termination; AC-2 Account Management"
+      ],
+      "rev": "1423121a2c00"
+    },
+    {
+      "id": "d1_v2_q040",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d1_s02",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "1.12.2"
+      ],
+      "question": "The awareness programme still teaches a threat catalogue written before the bank used any cloud service. Which change BEST fixes the underlying problem?",
+      "options": {
+        "A": "Add a cloud module to this year's curriculum and reissue the threat catalogue.",
+        "B": "Replace the annual course with quarterly phishing simulations for all staff.",
+        "C": "Have each business unit write the module that covers its own systems and threats.",
+        "D": "Schedule a content review on a set cadence and after defined trigger events."
+      },
+      "correctAnswer": "D",
+      "explanation": "The content is stale because nothing in the programme has a date on which it expires, and adding one module leaves the same gap ready to reopen next year. NIST SP 800-53 Rev 5 AT-2 Literacy Training and Awareness requires literacy training and awareness content to be updated on an organization-defined frequency and following organization-defined events, which is precisely the cadence-plus-trigger arrangement the option describes, and AT-3 Role-Based Training carries the same obligation for role-specific material. Note the Revision 5 title: AT-2 was called Security Awareness Training in Revision 4, so older material names it differently. NIST CSF 2.0 places the same idea under PR.AT. A is symptom not cause, patching this year's gap by the same means that produced it. B is the right control for a different problem, measuring susceptibility rather than refreshing content. C is not the decision-maker's, distributing authorship without establishing when anything gets reviewed. Give the content an expiry date.",
+      "recallLine": "Awareness content predates the technology it should cover. What fixes the underlying problem?",
+      "optionsShort": {
+        "A": "Add a cloud module this year",
+        "B": "Quarterly phishing simulations instead",
+        "C": "Each unit writes its own module",
+        "D": "Review on a cadence and on triggers"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What should this year's curriculum include once a review cadence exists?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank measure whether awareness training is changing behaviour?"
+        },
+        "C": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "How can role-specific content stay accurate for systems the central team does not run?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AT-2 Literacy Training and Awareness (renamed from Rev 4 Security Awareness Training); AT-3 Role-Based Training",
+        "NIST CSF 2.0 (NIST CSWP 29) | PR.AT Awareness and Training"
+      ],
+      "rev": "13e2f7a93bff"
+    },
+    {
+      "id": "d1_v2_q041",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.2.1"
+      ],
+      "question": "Meridian's wire-transfer system records the name of the officer who approved each payment. During a control walkthrough the auditor discovers that an administrator can edit those records afterwards, and that nothing in the system marks a record as having been changed. Which security objective does the gap MOST directly undermine?",
+      "options": {
+        "A": "Confidentiality, because the record can be read by staff who did not approve it.",
+        "B": "Integrity, because the record can be altered and the alteration cannot be shown.",
+        "C": "Availability, because the record cannot be relied on when the examiner needs it.",
+        "D": "Authenticity, because the record no longer proves who was at the console."
+      },
+      "correctAnswer": "B",
+      "explanation": "The loss the stem describes is silent modification, and modification is integrity in either framing a candidate might be carrying. This is a place where the two framings differ and the difference is worth knowing. FIPS 199, Section 3, quoting 44 U.S.C. 3542, defines exactly three security objectives, and its integrity definition reads as guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity. The five pillars that add authenticity and non-repudiation as peers of confidentiality, integrity and availability are ISC2's framing, not FIPS 199's, so never cite FIPS 199 as the source of a five-pillar claim. NIST SP 800-53 Rev 5 supplies the control-level split where it is needed: SI-7 for information integrity, AU-9 Protection of Audit Information, and AU-10 Non-repudiation. A is wrong scope, describing reading where the stem describes editing. C is symptom not cause, naming the examiner's difficulty rather than the mechanism. D is the right control for a different problem, and under FIPS 199 it is inside integrity anyway. Read the loss, then name the objective.",
+      "recallLine": "An approval record can be silently edited by an administrator. Which objective is undermined?",
+      "optionsShort": {
+        "A": "Confidentiality of others' approvals",
+        "B": "Integrity, alteration cannot be shown",
+        "C": "Availability when the examiner asks",
+        "D": "Authenticity of who was present"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "Which objective is lost when payment approvals can be read by staff with no business need?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "Which objective is lost when the record cannot be produced at all during an examination?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "Which objective is at stake when an attacker signs a message as somebody else?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "FIPS 199 | Section 3, Security Objectives (three objectives; integrity includes non-repudiation and authenticity)",
+        "NIST SP 800-53 Rev 5 | SI-7 Software, Firmware, and Information Integrity; AU-9 Protection of Audit Information; AU-10 Non-repudiation"
+      ],
+      "rev": "04e6cf345717"
+    },
+    {
+      "id": "d1_v2_q042",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.2"
+      ],
+      "question": "A Meridian customer disputes a $180,000 transfer, saying she never authorized it. The bank's records show a successful sign-in from a machine she has used before, and an approval recorded at 11:04. The dispute is heading for court, and Meridian is redesigning the approval step so a future dispute can be settled. Which control contributes MOST directly to that goal?",
+      "options": {
+        "A": "Recording the session with full packet capture retained for one year.",
+        "B": "Requiring a one-time code sent to the customer's registered phone.",
+        "C": "Restricting large transfers to sessions from previously seen devices.",
+        "D": "Signing the instruction with a private key that the customer alone holds."
+      },
+      "correctAnswer": "D",
+      "explanation": "Non-repudiation needs evidence that only one party could have produced, and that rules out anything the bank could have produced too. A signature made with a key the customer alone holds leaves Meridian outside the set of possible authors, which is what makes the evidence survive a dispute. NIST SP 800-53 Rev 5 AU-10 Non-repudiation is the control: protect against an individual falsely denying having performed an action, and provide the means to determine whether the individual took it. SC-23 Session Authenticity covers the related but distinct property of the session itself. FIPS 199 folds non-repudiation and authenticity into its integrity objective, so AU-10 and SC-23 are where the two are addressed separately. A is wrong scope, capturing what crossed the wire rather than who originated it. B is the right control for a different problem, since a code Meridian generated and Meridian verified is evidence Meridian could have manufactured. C is symptom not cause, lowering the chance of an unfamiliar actor without producing evidence. Ask who else could have made this.",
+      "recallLine": "Which control best keeps a customer from credibly denying that they authorized a transfer?",
+      "optionsShort": {
+        "A": "Full packet capture kept a year",
+        "B": "One-time code to the registered phone",
+        "C": "Restrict to previously seen devices",
+        "D": "Sign with a key only the customer holds"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "How does the bank reconstruct exactly what was transmitted during a disputed session?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank raise confidence that the person signing in is the account holder?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the bank reduce the chance of a transfer being made from an unfamiliar machine?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AU-10 Non-repudiation; SC-23 Session Authenticity",
+        "FIPS 199 | Section 3 (non-repudiation and authenticity sit inside the integrity objective)"
+      ],
+      "rev": "9eef6c0b621d"
+    },
+    {
+      "id": "d1_v2_q043",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.4.2"
+      ],
+      "question": "Meridian's fraud team wants to embed a vendor's scoring library in an internal tool that will run inside the bank and never be distributed to customers. The library's licence requires derivative works to be published under the same terms, and the team has already written three weeks of code against it. Which action should the CISO require BEFORE the build proceeds?",
+      "options": {
+        "A": "A legal review of whether the tool becomes a derivative work under that licence.",
+        "B": "A software composition scan listing every third-party component the tool will include.",
+        "C": "A vendor attestation that the library contains no known security vulnerabilities.",
+        "D": "An entry in the software inventory recording the library and its licence terms."
+      },
+      "correctAnswer": "A",
+      "explanation": "The question the licence raises is whether shipping this tool obliges Meridian to publish its own fraud-scoring logic, and that is a legal determination about a specific set of facts, not a security judgement. Getting it wrong is expensive in a way that a vulnerability is not. NIST SP 800-53 Rev 5 CM-10 Software Usage Restrictions is the control that requires software and associated documentation to be used in accordance with contract agreements and copyright law, and that licence quantities be tracked and controlled. Be honest about the limits of that citation: copyright, patent, trademark and trade-secret law are the governing sources for intellectual property generally, none of them is a NIST publication, and CM-10 covers only the software-licence compliance sliver. B is correct but not first, an inventory of components that does not answer the question the licence poses. C is the right control for a different problem, a vulnerability question wearing licence clothing. D is wrong phase, recording a decision that has not been made. Ask a lawyer a legal question.",
+      "recallLine": "A library's licence requires derivative works to be published. What should be required before building?",
+      "optionsShort": {
+        "A": "Legal review of derivative-work status",
+        "B": "Software composition scan",
+        "C": "Vendor vulnerability attestation",
+        "D": "Inventory entry with licence terms"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "correct but not first",
+          "wouldAnswer": "How does the team discover which third-party components and licences it has taken on?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What assurance is wanted about the security of a third-party component being adopted?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What record should exist once the library has been approved for use?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEFORE",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-10 Software Usage Restrictions",
+        "Intellectual property statute is the governing source and is not a NIST publication; CM-10 covers only software-licence compliance"
+      ],
+      "rev": "82989e8fb790"
+    },
+    {
+      "id": "d1_v2_q044",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.4.3"
+      ],
+      "question": "Meridian is opening a development office abroad and plans to give its engineers there access to the source of its hardware security module integration, which implements the bank's key wrapping. The office opens in nine weeks, the engineers are already hired, and the programme manager has asked the CISO to confirm that nothing stops the repository being opened to them. Which requirement should be checked FIRST?",
+      "options": {
+        "A": "That the source is stored in a repository located outside the European Union.",
+        "B": "That the engineers sign confidentiality agreements enforceable in the destination country.",
+        "C": "That the encryption technology is authorized for export to that destination.",
+        "D": "That the bank's data classification policy permits source code to leave the country."
+      },
+      "correctAnswer": "C",
+      "explanation": "Cryptographic software and the technology behind it are export-controlled goods, and a regulation is not something an internal policy or a contract can satisfy. The Export Administration Regulations, 15 CFR Parts 730 to 774, control the export of encryption software and technology through the Commerce Control List, principally Category 5 Part 2, Information Security; defence articles including some cryptographic and satellite technology sit instead under the International Traffic in Arms Regulations, 22 CFR Parts 120 to 130. One trap worth carrying into the exam: releasing controlled technology to a foreign person is treated as an export even when the release happens inside the United States, so hiring rather than offshoring does not avoid the question. Neither regulation is a NIST publication, and the specific answer depends on the Commerce Control List entry and any licence exception for the item, which has to be checked rather than assumed. A is wrong scope, a data-residency question. B is the right control for a different problem, since confidentiality is not authorization. D is not the decision-maker's, because internal classification cannot authorize what a regulation controls. Regulation outranks policy.",
+      "recallLine": "Engineers abroad will get source implementing key wrapping. Which requirement is checked first?",
+      "optionsShort": {
+        "A": "Repository located outside the EU",
+        "B": "Enforceable confidentiality agreements",
+        "C": "Export authorization for the destination",
+        "D": "Classification policy permits the transfer"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "Where must personal data of EU residents be stored or transferred under Chapter V of the GDPR?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank protect trade secrets shared with staff in another jurisdiction?"
+        },
+        "D": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "What internal rule governs which classification of material may be shared with an overseas office?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "FIRST",
+      "difficulty": 4,
+      "sources": [
+        "Export Administration Regulations | 15 CFR Parts 730 to 774, Commerce Control List Category 5 Part 2 (Information Security)",
+        "ITAR | 22 CFR Parts 120 to 130, US Munitions List",
+        "Neither is a NIST publication; the standards map records this outline item as unmapped"
+      ],
+      "rev": "eb04e6a585fa"
+    },
+    {
+      "id": "d1_v2_q045",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.5"
+      ],
+      "crossDomain": [
+        "domain_7"
+      ],
+      "question": "Meridian suspects a branch manager of falsifying loan documents. Internal audit has pulled six files and the pattern is consistent, but the general counsel has not yet decided whether this ends in dismissal, in a civil claim to recover the losses, or in a referral to prosecutors. The security team has been asked to collect the manager's mailbox and workstation. Which approach to evidence is MOST appropriate now?",
+      "options": {
+        "A": "Handle it as an administrative matter and re-collect to a higher standard if it escalates.",
+        "B": "Collect and document to the standard the strictest possible outcome would demand.",
+        "C": "Refer it to law enforcement now so that the collection standard becomes theirs to set.",
+        "D": "Collect what the disciplinary policy requires and no more until counsel advises."
+      },
+      "correctAnswer": "B",
+      "explanation": "Evidence cannot be re-collected to a higher standard later, because the thing that would have to be redone is the handling, and the handling has already happened. When the destination is unknown, the only safe assumption is the most demanding one. NIST SP 800-61 Rev 3, Section 2.3, makes this a preparation obligation: decide in advance what will be collected, by whom and to what standard, because those decisions cannot be made credibly after the fact. NIST SP 800-53 Rev 5 AU-9 Protection of Audit Information, AU-11 Audit Record Retention and IR-4(12) Incident Handling | Malicious Code and Forensic Analysis are the supporting controls. Be aware of the sourcing limit: no held standard enumerates the administrative, criminal, civil and regulatory investigation types by their burdens of proof, which is a matter of legal procedure, and NIST SP 800-86 is the guide that covers forensic technique. A is wrong phase. C is not the decision-maker's, and it forecloses the administrative route. D is wrong scope, sizing collection to the least demanding outcome. Collect for the worst case you might end up in.",
+      "recallLine": "The investigation may end in dismissal or prosecution. What standard should evidence be collected to?",
+      "optionsShort": {
+        "A": "Administrative now, re-collect if needed",
+        "B": "To the strictest possible outcome",
+        "C": "Refer to police and let them set it",
+        "D": "Only what the disciplinary policy needs"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "How should evidence be handled when the matter is definitively internal and will stay internal?"
+        },
+        "C": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "Who decides whether a suspected crime is reported to law enforcement, and when?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "What is the minimum an employer must document to support a disciplinary decision?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-61 Rev 3 | Section 2.3 Incident Response Policies, Processes, and Procedures",
+        "NIST SP 800-53 Rev 5 | AU-9; AU-11 Audit Record Retention; IR-4(12) Malicious Code and Forensic Analysis",
+        "No held standard enumerates investigation types by burden of proof; SP 800-86 is the forensic-technique source"
+      ],
+      "rev": "dd176874796a"
+    },
+    {
+      "id": "d1_v2_q046",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.8.1"
+      ],
+      "question": "Meridian is filling three vacancies this month: a branch teller, a database administrator who will hold production access to the core banking platform, and a contract cleaner who will have unescorted after-hours access to the head office floors. HR has asked the CISO what background checking each of the three requires. Which approach to screening is MOST defensible?",
+      "options": {
+        "A": "Screen all three identically so the process cannot be challenged as inconsistent.",
+        "B": "Screen the two employees to the bank's standard and exempt the contractor's employer.",
+        "C": "Screen according to seniority, with the most senior of the three screened most thoroughly.",
+        "D": "Assign each position a risk designation first, then screen against that designation."
+      },
+      "correctAnswer": "D",
+      "explanation": "Screening depth should follow what the position can reach, and that is a property of the job rather than of its title or its pay grade. The sequence is explicit in NIST SP 800-53 Rev 5 PS-2 Position Risk Designation: assign a risk designation to all organizational positions, establish screening criteria for individuals filling those positions, and review and update the designations on a defined frequency. PS-3 Personnel Screening then screens individuals prior to authorizing access and rescreens according to defined conditions, and PS-7 External Personnel Security extends the requirement to third-party personnel; note that PS-7 was titled Third-Party Personnel Security in Revision 4. A is wrong scope, one depth for a whole population regardless of reach. B is not the decision-maker's, delegating a decision to a supplier without setting the requirement, and the cleaner has the building at 3 a.m. C is symptom not cause, since seniority is a proxy for access and here it points away from the risk. Designate the position, then screen the person.",
+      "recallLine": "Three roles with very different access are being hired. Which screening approach is most defensible?",
+      "optionsShort": {
+        "A": "Screen all three identically",
+        "B": "Exempt the contractor's employer",
+        "C": "Screen by seniority",
+        "D": "Designate position risk, then screen"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "What screening applies to a population of positions that genuinely share one risk designation?"
+        },
+        "B": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "How should a contractor's own screening obligations be established and evidenced?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "When does seniority happen to be a reasonable proxy for the access a role carries?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | PS-2 Position Risk Designation; PS-3 Personnel Screening",
+        "NIST SP 800-53 Rev 5 | PS-7 External Personnel Security (renamed from Rev 4 Third-Party Personnel Security)"
+      ],
+      "rev": "7a025b5a6cc5"
+    },
+    {
+      "id": "d1_v2_q047",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.9.1"
+      ],
+      "question": "Meridian's risk register lists phishing as a risk, scored with a likelihood of 4 and an impact of 5 by the operations manager who entered it. Preparing the quarterly report for the risk committee, an analyst argues that the entry cannot be assessed as written and should be sent back. What is the MOST accurate objection?",
+      "options": {
+        "A": "It names a threat without naming the vulnerability it would exploit or the asset harmed.",
+        "B": "It names a control failure rather than a risk, so the entry belongs in the findings log.",
+        "C": "It uses a qualitative likelihood where the register's own method requires a quantitative one.",
+        "D": "It has no named owner, so nobody can be asked to reduce the likelihood it records."
+      },
+      "correctAnswer": "A",
+      "explanation": "Phishing is an event somebody might attempt, not a risk Meridian holds. A risk statement has to say what the attempt would exploit and what harm follows, because until it does, neither likelihood nor impact has anything to attach to and neither number is defensible. NIST SP 800-30 Rev 1, Chapter 3, models risk as a threat source initiating a threat event that exploits a vulnerability, producing an adverse impact, and its Appendix D and Appendix E supply the threat source and threat event taxonomies a register is populated from. NIST SP 800-53 Rev 5 RA-3 Risk Assessment is the control obligation behind it. B is wrong scope, recategorizing the entry rather than completing it. C is symptom not cause, a formatting objection that leaves an unassessable statement unassessable in a different notation. D is correct but not first, since ownership is genuinely required and does not make the entry assessable. Write the sentence with all its parts in it.",
+      "recallLine": "A risk register entry reads only 'phishing' with a likelihood and impact. What is wrong with it?",
+      "optionsShort": {
+        "A": "No vulnerability or asset named",
+        "B": "It is a control failure, not a risk",
+        "C": "Qualitative where quantitative required",
+        "D": "No named owner"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "wrong scope",
+          "wouldAnswer": "Where should an entry go that records a control that was found not to be operating?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What objection applies when a well-formed risk is scored in the wrong notation?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What is missing when a well-formed risk sits in the register with nobody accountable for it?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-30 Rev 1 | Chapter 3; Appendix D Threat Sources; Appendix E Threat Events",
+        "NIST SP 800-53 Rev 5 | RA-3 Risk Assessment"
+      ],
+      "rev": "a0435d283f8a"
+    },
+    {
+      "id": "d1_v2_q048",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.9.5"
+      ],
+      "crossDomain": [
+        "domain_6"
+      ],
+      "question": "Meridian's internal audit team has assessed the vendor access policy that was rewritten after the TechSafe breach, and its report says only that the policy is in place and has been distributed. The CISO returns the report, saying that is a statement about a document rather than an assessment result. What is MOST clearly missing?",
+      "options": {
+        "A": "The date the policy was approved and the official who approved it.",
+        "B": "The number of vendors that the policy currently applies to.",
+        "C": "Evidence that the policy operated as intended over the period examined.",
+        "D": "A comparison of the policy against the equivalent control in the framework."
+      },
+      "correctAnswer": "C",
+      "explanation": "A control assessment answers three questions and existence is only the first of them. NIST SP 800-53A Rev 5 structures its assessment procedures around determining whether controls are implemented correctly, operating as intended and producing the desired outcome with respect to meeting the security and privacy requirements, and it applies the examine, interview and test methods to reach that determination. NIST SP 800-53 Rev 5 CA-2 Control Assessments is the obligation to run them and to produce the assessment report. A policy that exists and is ignored fails the second and third questions, which is the situation Meridian was in with TechSafe's contract. A is wrong scope, provenance of the document rather than its operation. B is the right control for a different problem, the scope of applicability. D is wrong phase, a design comparison that precedes the question of whether the thing works. Existence is not effectiveness.",
+      "recallLine": "An assessor reports that a policy is in place. What is missing from that as an assessment result?",
+      "optionsShort": {
+        "A": "Approval date and approver",
+        "B": "Number of vendors covered",
+        "C": "Evidence it operated as intended",
+        "D": "Comparison against the framework"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "What should the document register hold about each approved policy?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What does the CISO need to know to judge how much of the vendor estate a policy reaches?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What check confirms that the bank's policy set covers each control the framework requires?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53A Rev 5 | assessment procedures and the examine, interview and test methods",
+        "NIST SP 800-53 Rev 5 | CA-2 Control Assessments"
+      ],
+      "rev": "656fbb24eecf"
+    },
+    {
+      "id": "d1_v2_q049",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.9.6"
+      ],
+      "question": "Meridian assesses its controls once a year, in March, and the last assessment reported no significant findings. Since then the bank has migrated two applications to a cloud provider and has changed its vendor access model twice. At the December board meeting a director asks why an annual control assessment is not enough. Which answer BEST states the case for continuous monitoring?",
+      "options": {
+        "A": "It reduces the cost of assessment by spreading the same work across the year.",
+        "B": "It keeps the authorization decision informed by the system's current state.",
+        "C": "It satisfies the examiner's expectation of testing more often than annually.",
+        "D": "It detects attacks sooner, because the monitoring is running all the time."
+      },
+      "correctAnswer": "B",
+      "explanation": "The point of monitoring controls continuously is that the decision to run the system rests on information that is still true. An annual assessment authorizes a system as it was in March and says nothing about the seven changes made since. NIST SP 800-137 defines information security continuous monitoring as maintaining ongoing awareness of information security, vulnerabilities and threats to support organizational risk management decisions, and NIST SP 800-37 Rev 2 makes the consequence explicit in its MONITOR step, where ongoing authorization replaces a point-in-time decision. NIST SP 800-53 Rev 5 CA-7 Continuous Monitoring is the control. A is symptom not cause, a cost argument that would hold even if the information were worthless. C is not the decision-maker's, making the examiner the reason rather than the risk. D is the right control for a different problem, and it is the seductive answer: security control monitoring and intrusion detection are different activities, and SI-4 System Monitoring is where the second one lives. Monitor so the decision stays current.",
+      "recallLine": "Why is an annual control assessment not sufficient? State the case for continuous monitoring.",
+      "optionsShort": {
+        "A": "Spreads assessment cost across the year",
+        "B": "Keeps the authorization decision current",
+        "C": "Meets the examiner's testing expectation",
+        "D": "Detects attacks sooner"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What is a secondary benefit of moving from one annual push to a steady assessment cadence?"
+        },
+        "C": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "What does the bank tell an examiner who asks how often controls are tested?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What does SI-4 System Monitoring provide that a control assessment does not?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-137 | information security continuous monitoring definition and process",
+        "NIST SP 800-37 Rev 2 | Chapter 3, MONITOR step and ongoing authorization",
+        "NIST SP 800-53 Rev 5 | CA-7 Continuous Monitoring; SI-4 System Monitoring"
+      ],
+      "rev": "c9c0d50de7e1"
+    },
+    {
+      "id": "d1_v2_q050",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.9.8"
+      ],
+      "question": "An outside adviser reports Meridian at Tier 2 and recommends reaching Tier 4 within two years, at a cost the adviser has already estimated. The CISO has been asked to endorse the recommendation before it goes to the board in January, and nobody has yet written down what the bank needs. Which response BEST reflects how the framework is meant to be used?",
+      "options": {
+        "A": "Adopt Tier 4 as the target and budget the programme against the gap it implies.",
+        "B": "Ask the consultant to reassess each business unit so the bank holds a Tier for each.",
+        "C": "Benchmark the reported Tier against peer banks before accepting it as a target.",
+        "D": "Set a target profile from the bank's own risk appetite, then read the Tier against it."
+      },
+      "correctAnswer": "D",
+      "explanation": "The framework's own improvement mechanism is the gap between a Current Profile and a Target Profile, and the Target Profile is derived from what the organization needs rather than from the top of a scale. NIST CSF 2.0, published as NIST CSWP 29, defines four Tiers, Partial, Risk Informed, Repeatable and Adaptive, describing the rigour of an organization's cybersecurity risk governance and risk management practices, and it is explicit that the Tiers are not maturity levels even though they are routinely used as if they were. A Tier read against a target the bank chose is diagnostic; a Tier treated as a score is a budget request. A is correct but not first, because a target is needed and taking the highest available as the target skips the step that decides what the bank requires. B is the right control for a different problem, resolution rather than direction. C is symptom not cause, since a peer's posture does not establish this bank's risk appetite. Decide what you need, then measure the distance.",
+      "recallLine": "A consultant reports a Tier and recommends a higher one. How should the framework actually be used?",
+      "optionsShort": {
+        "A": "Adopt the top Tier as the target",
+        "B": "Reassess per business unit",
+        "C": "Benchmark against peer banks",
+        "D": "Set a target profile, read the Tier against it"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "correct but not first",
+          "wouldAnswer": "What does the programme do once a target has been chosen and the gap is understood?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does a large organization get useful resolution when its units differ widely in practice?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does a board judge whether its posture is unusual for an institution of its size?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 4,
+      "sources": [
+        "NIST CSF 2.0 (NIST CSWP 29) | the four Tiers and the Organizational Profile mechanism",
+        "NIST states the Tiers are not maturity levels; CMM and CMMI are not NIST publications"
+      ],
+      "rev": "36d8121dd32b"
+    },
+    {
+      "id": "d1_v2_q051",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.9.9"
+      ],
+      "question": "Meridian is examined against banking supervisory expectations, processes card data under the card brand rules, and reports to a European parent whose group audit committee asks for ISO alignment. The CISO has one control assessment team and a calendar that already carries three audits. Which approach to frameworks is MOST workable?",
+      "options": {
+        "A": "Pick one framework as the system of record and map the others onto it.",
+        "B": "Run each framework separately so that every audience receives its own artefacts.",
+        "C": "Adopt whichever framework has the most controls, so the others are covered by it.",
+        "D": "Let each business unit choose the framework that its own regulator names."
+      },
+      "correctAnswer": "A",
+      "explanation": "Three audiences do not require three programmes; they require one set of controls and three views of it, because a control assessed once can be reported many times but a control assessed three ways is assessed badly three times. NIST SP 800-53 Rev 5 PM-9 Risk Management Strategy requires a single organization-wide strategy, and NIST SP 800-37 Rev 2 Chapter 3 gives the RMF steps that a mapped control set resolves into, with NIST SP 800-53B supplying the baselines. NIST CSF 2.0's Organizational Profile is itself designed as the mapping surface. Two of the frameworks named here, ISO/IEC 27005 and COBIT, are paywalled, so a reader should expect to buy them rather than follow a link. B is the right control for a different problem, satisfying audiences at the cost of one coherent risk picture. C is symptom not cause, because control count is not coverage and each framework's set is selected against its own scope. D is wrong scope, fragmenting a strategy the organization is meant to hold once. One system of record, many reports.",
+      "recallLine": "Three audiences demand three frameworks. What is the most workable way to organize the programme?",
+      "optionsShort": {
+        "A": "One system of record, map the rest",
+        "B": "Run each framework separately",
+        "C": "Adopt the one with most controls",
+        "D": "Each unit picks its regulator's framework"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank produce artefacts in the exact format each audience expects?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "When is a larger control set genuinely the right starting point for a programme?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "How should a unit with a unique regulatory obligation extend the common control set?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | PM-9 Risk Management Strategy",
+        "NIST SP 800-37 Rev 2 | Chapter 3, the RMF steps; NIST SP 800-53B baselines",
+        "NIST CSF 2.0 (NIST CSWP 29) | Organizational Profile as a mapping mechanism",
+        "Neither ISO/IEC 27005 nor COBIT is held here; both are paywalled"
+      ],
+      "rev": "1e52cd9e8ae6"
+    },
+    {
+      "id": "d1_v2_q052",
+      "domainId": "domain_1",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "1.10"
+      ],
+      "crossDomain": [
+        "domain_8"
+      ],
+      "question": "Meridian's team is modelling threats to a new mobile deposit feature before any code is written. The session opens with each engineer listing attacks they have read about in the last year, and after forty minutes the list is long, nobody has opened the design, and the architect is losing patience. Which starting point would make the model MOST useful?",
+      "options": {
+        "A": "The vulnerabilities the last penetration test found in the existing mobile application.",
+        "B": "The feature's data flows and the trust boundaries that each flow crosses.",
+        "C": "The controls the bank already runs, so that gaps show up against them.",
+        "D": "The threat intelligence feed's current list of campaigns against retail banks."
+      },
+      "correctAnswer": "B",
+      "explanation": "A threat model is a model of the system, and a list of remembered attacks is a model of the team. Starting from data flows and trust boundaries forces the exercise to enumerate the places where something crosses from one level of trust to another, which is where attacks land whether or not anyone has read about them. NIST SP 800-53 Rev 5 SA-8 Security and Privacy Engineering Principles names threat modelling in its discussion as the means of identifying use cases, threat agents, attack vectors and patterns, and SA-11(2) Developer Testing and Evaluation | Threat Modeling and Vulnerability Analyses requires it at defined breadth and depth. NIST SP 800-218 PW.1.1 puts risk modelling at design time, before code exists, so the design itself can still change. Note that STRIDE, PASTA and DREAD are named throughout CISSP study material and appear in no NIST publication. A is wrong phase, starting from findings against a system that already exists. C is symptom not cause, modelling the defence rather than the thing defended. D is wrong scope, and a model built from current campaigns expires with them. Model the system, then populate it with threats.",
+      "recallLine": "A team starts threat modelling from remembered attacks. What starting point makes the model useful?",
+      "optionsShort": {
+        "A": "Findings from the last penetration test",
+        "B": "Data flows and trust boundaries",
+        "C": "Controls the bank already runs",
+        "D": "Current threat intelligence campaigns"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "What should drive remediation planning for the mobile application already in production?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the bank establish which of its existing controls the new feature can inherit?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "What keeps a completed threat model current as adversary behaviour changes?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | SA-8 Security and Privacy Engineering Principles; SA-11(2) Threat Modeling and Vulnerability Analyses",
+        "NIST SP 800-218 | PW.1.1 risk modelling at design time",
+        "STRIDE, PASTA and DREAD appear in no NIST publication and are attributed to CISSP-canon material"
+      ],
+      "rev": "68de9c6b5b86"
+    },
+    {
+      "id": "d3_v2_q001",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "3.5.1"
+      ],
+      "question": "The browser console hides the cash-limit field from any user whose role is not permitted to change it. Which finding about that console design is MOST serious?",
+      "options": {
+        "A": "Authorization is enforced in console code the user controls, not on the server.",
+        "B": "The console is served over TLS 1.2 rather than TLS 1.3, which weakens the transport.",
+        "C": "The console hides the field with client script instead of a server-rendered template.",
+        "D": "The console does not write cash-limit changes to the bank's central audit repository."
+      },
+      "correctAnswer": "A",
+      "explanation": "Anything a browser enforces is advice. The user owns the machine, the script and the request, so a hidden field can be restored from a developer console or the request replayed with the field set, and Nexus has no server-side objection ready. NIST SP 800-53 Rev 5 AC-3 Access Enforcement puts the obligation on the system to enforce approved authorizations, and OWASP Top 10:2025 lists enforcement that happens only on the client under A01 Broken Access Control. B is a real transport finding and the right control for a different problem: TLS protects the request from a third party on the wire and does nothing about the party sending it. C is symptom not cause, because a server-rendered page hides the field more tidily and the server still accepts whatever arrives. D is detective when preventive is asked; the log would name whoever raised a limit, after the cash left. Decide where enforcement runs before deciding how the interface looks.",
+      "recallLine": "A browser console hides a privileged field by role. What is the most serious design finding?",
+      "optionsShort": {
+        "A": "Client-side authorization, no server recheck",
+        "B": "TLS 1.2 rather than TLS 1.3",
+        "C": "Script hiding, not server template",
+        "D": "Changes not centrally logged"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "Which transport setting should be raised when the concern is a third party reading the session?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How should a field be hidden once the server already enforces the rule?"
+        },
+        "D": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "What is missing if the question is how the bank would later prove who changed a limit?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement",
+        "OWASP Top 10:2025 | A01 Broken Access Control"
+      ],
+      "rev": "050d99ab5610"
+    },
+    {
+      "id": "d3_v2_q002",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "3.5.2"
+      ],
+      "question": "The migration will lift the existing server image into the new environment unchanged, including services nobody has used in three years. Which action BEST reduces the attack surface it carries across?",
+      "options": {
+        "A": "Run an authenticated vulnerability scan against the image and remediate the findings it reports.",
+        "B": "Place the server behind a firewall that inspects traffic to each of its listening ports.",
+        "C": "Rebuild the image from a documented baseline limited to the services the platform needs.",
+        "D": "Deploy host-based intrusion detection so an unused service raises an alert when it is touched."
+      },
+      "correctAnswer": "C",
+      "explanation": "A three-year-old service nobody uses is not a vulnerability to be patched, it is a capability that should not be there. NIST SP 800-53 Rev 5 CM-7 Least Functionality requires the system to be configured to provide only mission-essential capabilities, with defined functions, ports, protocols and services prohibited or restricted, and CM-2 Baseline Configuration is where that configuration is recorded and held. A is correct but not first: a scan tells Nexus what is listening and removes none of it, and it will report on services that should have been deleted rather than fixed. B is the right control for a different problem, because boundary filtering governs who reaches a port, not whether the port should exist at all, and the shared cluster puts plenty of traffic inside the boundary. D is detective when preventive is asked and accepts the service as permanent. Remove capability first, then defend what is left.",
+      "recallLine": "A legacy server image moves unchanged into a new environment. What best reduces the surface it carries?",
+      "optionsShort": {
+        "A": "Scan the image and remediate findings",
+        "B": "Firewall in front of listening ports",
+        "C": "Rebuild from a minimal documented baseline",
+        "D": "Host intrusion detection on unused services"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "correct but not first",
+          "wouldAnswer": "How would the team discover which unused services the image is actually running?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What protects a service that must keep running but should be reachable only from named networks?"
+        },
+        "D": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "What gives warning if a service that cannot be removed is used unexpectedly?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-7 Least Functionality",
+        "NIST SP 800-53 Rev 5 | CM-2 Baseline Configuration"
+      ],
+      "rev": "77eec18317a0"
+    },
+    {
+      "id": "d3_v2_q003",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "3.5.10"
+      ],
+      "question": "The application tier will pull its base images from a public registry at build time. Which control MOST directly addresses the risk that introduces?",
+      "options": {
+        "A": "Network policy restricting which pods in the cluster may open connections to each other.",
+        "B": "Verification of a digital signature on every image before the cluster is allowed to run it.",
+        "C": "Scanning each built image for known-vulnerable packages before it is promoted to production.",
+        "D": "A read-only root filesystem in each container so a compromised process cannot write to disk."
+      },
+      "correctAnswer": "B",
+      "explanation": "Pulling from a public registry means the cluster runs whatever answers to a name and a tag, and both are attacker-controllable in a way a version number is not. NIST SP 800-53 Rev 5 CM-14 Signed Components requires the organization to prevent installation of defined components without verification that the component was signed with a certificate the organization recognizes and approves, and SR-4 Provenance and SR-11 Component Authenticity carry the supply-chain half of the same obligation. NIST's dedicated container publication is SP 800-190; the control obligation above stands on its own. A is the right control for a different problem, lateral movement once a pod is compromised. C is symptom not cause: it finds known-bad packages inside an image whose origin is still unverified, so a purpose-built malicious image with current packages passes. D is wrong phase, limiting what a running container can do after an unverified image has already been admitted. Decide what is allowed to run before deciding how it may behave.",
+      "recallLine": "Base images come from a public registry at build time. Which control most directly addresses that risk?",
+      "optionsShort": {
+        "A": "Network policy between pods",
+        "B": "Verify image signatures before running",
+        "C": "Scan built images for known CVEs",
+        "D": "Read-only root filesystem per container"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What limits how far an attacker moves once one pod is compromised?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the team find images carrying package versions with published vulnerabilities?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What reduces the damage a compromised container process can do at runtime?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-14 Signed Components",
+        "NIST SP 800-53 Rev 5 | SR-4 Provenance; SR-11 Component Authenticity",
+        "NIST SP 800-190 (Application Container Security Guide), named as the dedicated source"
+      ],
+      "rev": "a145a3be65cb"
+    },
+    {
+      "id": "d3_v2_q004",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "3.5.11"
+      ],
+      "question": "The architects note that the provider patches the function runtime and isolates tenants. Given that division, which control should the bank's own review focus on MOST?",
+      "options": {
+        "A": "Hardening the guest operating system image the reconciliation functions run inside.",
+        "B": "Agreeing an availability service level for the overnight reconciliation window.",
+        "C": "Scheduling a quarterly vulnerability scan of the provider's platform endpoints.",
+        "D": "Scoping each function's execution role to the permissions it actually needs."
+      },
+      "correctAnswer": "D",
+      "explanation": "When the provider owns the host, the runtime and the tenant boundary, what is left for Nexus to get wrong is the identity the function runs as and what that identity may reach. A function with a broad role is a standing credential that executes on a schedule with nobody watching. NIST SP 800-53 Rev 5 AC-6 Least Privilege requires access authorizations to be no more than necessary for assigned tasks, and SA-9 External System Services requires the organization to define and document the roles and responsibilities of external providers rather than assume them, which is what makes the division above a contractual fact instead of a hope. A is not the decision-maker's: there is no guest image here that Nexus owns. B is the right control for a different problem, an availability commitment rather than a security surface. C is wrong scope, testing someone else's platform where the bank has neither authorization nor residual risk. Ask what the provider has not taken away.",
+      "recallLine": "A provider patches the runtime and isolates tenants. Where should the bank's own review concentrate?",
+      "optionsShort": {
+        "A": "Harden the guest operating system",
+        "B": "Agree an availability service level",
+        "C": "Quarterly scan of provider endpoints",
+        "D": "Least-privilege execution role per function"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "What would the bank harden if it had chosen to run these jobs on its own virtual machines?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What should the contract say if the concern is the reconciliation finishing before branches open?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What testing does the bank owe on the systems it operates and is authorized to test?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-6 Least Privilege",
+        "NIST SP 800-53 Rev 5 | SA-9 External System Services"
+      ],
+      "rev": "cadd84d91222"
+    },
+    {
+      "id": "d3_v2_q005",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s01",
+      "stimulusSeq": 5,
+      "outlineItems": [
+        "3.5.15"
+      ],
+      "question": "The dispenser-control service will run as a hypervisor guest and the team plans to keep a snapshot of every release. Which practice MOST reduces the risk that arrangement creates?",
+      "options": {
+        "A": "Encrypting the guest's virtual disk so its contents are unreadable if the file is copied.",
+        "B": "Restricting access to the hypervisor management console to a named administrator group.",
+        "C": "Enrolling every guest and retained snapshot in the same inventory and patching programme as physical hosts.",
+        "D": "Taking a fresh snapshot before every change so the service can be rolled back quickly."
+      },
+      "correctAnswer": "C",
+      "explanation": "A guest is created by an API call and a snapshot by a menu item, so virtual estates grow faster than the processes that are supposed to govern them, and a snapshot is a complete machine holding whatever data it held on the day it was taken. NIST SP 800-53 Rev 5 CM-8 System Component Inventory requires an inventory that accurately reflects the system and is updated as components are installed or removed, CM-2 Baseline Configuration governs what each of those components should look like, and SA-22 Unsupported System Components is what a forgotten legacy guest eventually becomes. Note that the catalogue contains no hypervisor-specific control; the obligation rides on the general ones. A is the right control for a different problem, protecting a disk file at rest. B is wrong scope, governing who administers the platform rather than the population of guests that accumulates on it. D is wrong phase and makes the problem larger, because it is a rollback measure that manufactures more of the artefacts the stem is worried about. Count the machines before hardening them.",
+      "recallLine": "A legacy service runs as a hypervisor guest and every release is snapshotted. What most reduces the risk?",
+      "optionsShort": {
+        "A": "Encrypt the guest's virtual disk",
+        "B": "Limit hypervisor console access",
+        "C": "Inventory and patch guests and snapshots",
+        "D": "Snapshot before every change"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What protects a virtual disk copied off the datastore by someone with storage access?"
+        },
+        "B": {
+          "label": "wrong scope",
+          "wouldAnswer": "What limits who can create, clone or destroy guests on the platform?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What lets the team undo a bad change to the dispenser-control service quickly?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-8 System Component Inventory",
+        "NIST SP 800-53 Rev 5 | CM-2 Baseline Configuration; SA-22 Unsupported System Components"
+      ],
+      "rev": "7e5a2b36feb0"
+    },
+    {
+      "id": "d3_v2_q006",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s02",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "3.3"
+      ],
+      "question": "The programme board asks how the SlimLine II's control set should be arrived at. Which sequence BEST describes a defensible selection?",
+      "options": {
+        "A": "Adopt the control set the previous SlimLine programme used, then add controls for the new interface.",
+        "B": "Categorize the system by impact, take the matching baseline, then tailor it with documented justification.",
+        "C": "Take the highest baseline available and remove the controls the examiner agrees are not applicable.",
+        "D": "Ask the examiner which controls it expects to see and build the set from that answer."
+      },
+      "correctAnswer": "B",
+      "explanation": "Selection is a chain, and each link supplies the reason for the next. FIPS 199 Section 3 categorizes the system by the impact a loss of confidentiality, integrity or availability would have. FIPS 200 Section 3 turns that category into an obligation to apply the corresponding minimum controls. NIST SP 800-53B Chapters 2 and 3 supply the Low, Moderate and High baselines and the tailoring guidance, and SP 800-53 Rev 5 made both steps auditable in their own right with PL-10 Baseline Selection and PL-11 Baseline Tailoring. SP 800-37 Rev 2 Section 3.3 walks the same ground as RMF tasks S-1 through S-6. A is wrong scope: the old set was selected against the old terminal's categorization, and the new one has a different interface and a different impact. C is wrong phase, using tailoring in place of selection so that nothing states what the system needs. D is not the decision-maker's; the system owner categorizes and selects, and the examiner assesses what was done. Categorize first, and the argument writes itself.",
+      "recallLine": "How should a new terminal's control set be arrived at so the choice can be defended?",
+      "optionsShort": {
+        "A": "Reuse the previous programme's control set",
+        "B": "Categorize, take baseline, tailor with justification",
+        "C": "Start highest and subtract by agreement",
+        "D": "Build from what the examiner names"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "What is a reasonable starting draft when two systems share a categorization and an environment?"
+        },
+        "C": {
+          "label": "wrong phase",
+          "wouldAnswer": "What does an organization do after a baseline has been selected and some controls do not fit?"
+        },
+        "D": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "Who determines whether the selected controls were implemented and are working?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "FIPS 199 | Section 3, Security Objectives and categorization",
+        "FIPS 200 | Section 3, Minimum Security Requirements",
+        "NIST SP 800-53B | Chapters 2 and 3, baselines and tailoring",
+        "NIST SP 800-53 Rev 5 | PL-10 Baseline Selection; PL-11 Baseline Tailoring",
+        "NIST SP 800-37 Rev 2 | Section 3.3 SELECT, tasks S-1 to S-6"
+      ],
+      "rev": "91e926303872"
+    },
+    {
+      "id": "d3_v2_q007",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s02",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "3.10.5"
+      ],
+      "crossDomain": [
+        "domain_8"
+      ],
+      "question": "The new dispenser interface and the existing transaction switch were built by different teams against the same written specification. Which activity is MOST likely to expose a defect neither team's own testing found?",
+      "options": {
+        "A": "A static analysis run over each team's source code against the bank's coding standard.",
+        "B": "A penetration test of the assembled terminal conducted after it has entered production.",
+        "C": "A design review comparing each team's architecture document with the approved specification.",
+        "D": "Integration testing of the assembled interfaces against cases where the two readings disagree."
+      },
+      "correctAnswer": "D",
+      "explanation": "Two teams reading one specification produce two specifications, and the gap between them is invisible to any test that examines one side alone. NIST SP 800-160 Vol 1 Rev 1 Appendix H.8 Integration is the lifecycle process that synthesizes system elements into a realized system, and it is precisely where interface and composition weaknesses surface, because it is the first activity that exercises the seam rather than the parts. SP 800-53 Rev 5 CA-3 Information Exchange governs the resulting connection; note that Rev 5 renamed it from the Rev 4 title System Interconnections, so material still using the older name is dated. A is wrong scope, testing each element on the terms each team already passed. B is wrong phase, arriving after the terminal is live and after the cheapest moment to fix a seam has gone. C is the right control for a different problem, comparing documents with a document while the defect lives in behaviour. Test the joint, not the pieces.",
+      "recallLine": "Two teams built either side of one interface from one specification. What best exposes a seam defect?",
+      "optionsShort": {
+        "A": "Static analysis per team",
+        "B": "Penetration test after production",
+        "C": "Design review against the specification",
+        "D": "Integration testing where readings disagree"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "What finds coding-standard violations and common weaknesses inside one team's own source?"
+        },
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What validates the assembled terminal against an adversary once it is fielded?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What confirms that each team's intended architecture matches what was approved?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-160 Vol 1 Rev 1 | Appendix H.8 Integration",
+        "NIST SP 800-53 Rev 5 | CA-3 Information Exchange (renamed from Rev 4 System Interconnections)"
+      ],
+      "rev": "def060ee9e5a"
+    },
+    {
+      "id": "d3_v2_q008",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s02",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "3.10.7"
+      ],
+      "question": "Fifty SlimLine II units are ready and the board wants them in service this quarter. Which condition should the security lead insist on BEFORE the first unit is cut over?",
+      "options": {
+        "A": "A documented back-out procedure and the retained configuration the units would be restored to.",
+        "B": "A signed statement from the vendor that the units meet the approved specification.",
+        "C": "A penetration test report covering the units in their final production configuration.",
+        "D": "An updated asset inventory listing each unit's serial number and installation site."
+      },
+      "correctAnswer": "A",
+      "explanation": "Cutover is the moment a design becomes an operating system, and the only property that makes it survivable is reversibility. NIST SP 800-53 Rev 5 CM-2(3) Baseline Configuration | Retention of Previous Configurations exists for exactly this, requiring a defined number of previous baseline versions to be retained to support rollback, and its discussion counts hardware, software, firmware, configuration files and records among them. NIST SP 800-160 Vol 1 Rev 1 Appendix H.10 Transition frames the wider obligation: preserve the system's verified security characteristics through an orderly, planned move into the operational environment. B is not the decision-maker's; a vendor statement is evidence the bank weighs, not the bank's own gate. C is wrong phase, because verification belongs earlier in the lifecycle and a report is not a way back. D is the right control for a different problem, since an inventory is needed to operate the fleet and does nothing to make the first fifty reversible. Never move something you cannot move back.",
+      "recallLine": "Fifty new terminals are ready to cut over. What condition should the security lead insist on first?",
+      "optionsShort": {
+        "A": "Back-out procedure and retained configuration",
+        "B": "Vendor statement of conformance",
+        "C": "Penetration test of production build",
+        "D": "Updated asset inventory"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "What does the bank ask a supplier to provide as evidence in the acceptance pack?"
+        },
+        "C": {
+          "label": "wrong phase",
+          "wouldAnswer": "What belongs at the verification gate, before units are declared ready?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What does operations need in order to maintain and account for the fielded fleet?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEFORE",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-2(3) Retention of Previous Configurations",
+        "NIST SP 800-160 Vol 1 Rev 1 | Appendix H.10 Transition",
+        "NIST SP 800-53 Rev 5 | CM-3 Configuration Change Control"
+      ],
+      "rev": "c7f77072157e"
+    },
+    {
+      "id": "d3_v2_q009",
+      "domainId": "domain_3",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d3_s02",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "3.10.9"
+      ],
+      "crossDomain": [
+        "domain_2"
+      ],
+      "question": "Finance wants the 900 retired SlimLine units sold to a refurbisher. Which step MOST directly addresses the disposal risk the security lead must sign off?",
+      "options": {
+        "A": "A contract clause making the refurbisher liable for any data recovered from the units.",
+        "B": "Removing each unit from the asset inventory once the refurbisher confirms collection.",
+        "C": "Sanitizing every storage component to a level matched to the data it held, with verification recorded.",
+        "D": "Physically destroying the encrypting PIN pad in each unit before the units leave the site."
+      },
+      "correctAnswer": "C",
+      "explanation": "A retired terminal is a filing cabinet on wheels: card data, logs, keys, configuration and whatever a technician once copied to it locally. NIST SP 800-53 Rev 5 MP-6 Media Sanitization requires media to be sanitized before disposal, release out of organizational control or release for reuse, using defined techniques and procedures, and SR-12 Component Disposal, new in Rev 5, extends that to the component itself. SP 800-160 Vol 1 Rev 1 Appendix H.14 Disposal is the lifecycle process, which includes removing information and deactivating accesses and dependencies. NIST SP 800-88 is the guide that decides between clear, purge and destroy; cite it without pinning a revision, because Revision 1 was withdrawn on 26 September 2025 and superseded by Revision 2. A is the right control for a different problem, moving liability rather than removing data. B is wrong phase, a records step that follows sanitization and would otherwise erase the bank's own account of what left. D is wrong scope, treating one component while the customer data sits on the terminal's storage. Sanitize to the data, not to the device.",
+      "recallLine": "Retired terminals are being sold to a refurbisher. What most directly addresses the disposal risk?",
+      "optionsShort": {
+        "A": "Contractual liability on the refurbisher",
+        "B": "Retire units from the asset inventory",
+        "C": "Sanitize storage to the data's level, verified",
+        "D": "Destroy each encrypting PIN pad"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What should the contract say about the refurbisher's obligations once sanitized units leave the bank?"
+        },
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What records step closes out an asset after it has been sanitized and collected?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "What is required for the one component that holds cryptographic keys under the card brand rules?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | MP-6 Media Sanitization; SR-12 Component Disposal; SI-12(3) Information Disposal",
+        "NIST SP 800-160 Vol 1 Rev 1 | Appendix H.14 Disposal",
+        "NIST SP 800-88 (revision not pinned: Rev 1 withdrawn 2025-09-26, superseded by Rev 2)"
+      ],
+      "rev": "e62340e231ea"
+    },
+    {
+      "id": "d5_v2_q010",
+      "domainId": "domain_5",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d5_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "5.1.2"
+      ],
+      "question": "The console is reachable from any office workstation and from the technicians' home connections. Which change BEST treats the console itself, rather than its accounts, as the protected asset?",
+      "options": {
+        "A": "Requiring a second authentication factor from every technician who signs in to the console.",
+        "B": "Reviewing the console's account list each quarter and removing accounts no longer needed.",
+        "C": "Admitting console sessions through one managed access point that mediates and records them.",
+        "D": "Encrypting console session traffic so credentials cannot be read on the office network."
+      },
+      "correctAnswer": "C",
+      "explanation": "Accounts and systems are different asset classes and they fail differently. Everything in options A, B and D improves who may hold a credential or what happens to it in flight, and none of them changes the fact that the console answers from anywhere. NIST SP 800-53 Rev 5 AC-17(3) Remote Access | Managed Access Control Points requires remote access to be routed through a defined number of managed network access control points, and AC-3 Access Enforcement puts the enforcement in the system rather than at its edge. A single mediated path is also the only arrangement that produces one place to watch. A is the right control for a different problem, strengthening the authentication event the stem deliberately sets aside. B is detective when preventive is asked, finding a stale account a quarter after it stopped being needed. D is wrong scope, protecting the traffic rather than the set of places the system will answer. Ask what the asset is before choosing the control.",
+      "recallLine": "An administration console answers from anywhere. What treats the console, not its accounts, as the asset?",
+      "optionsShort": {
+        "A": "Second factor for technicians",
+        "B": "Quarterly account list review",
+        "C": "One managed access point for sessions",
+        "D": "Encrypt console session traffic"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What raises the cost of using a technician's stolen password?"
+        },
+        "B": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does QuickCash find accounts that outlived the person or the job?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "What stops someone on the office network reading a console session in transit?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-17(3) Remote Access | Managed Access Control Points",
+        "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement"
+      ],
+      "rev": "b49fcc82421f"
+    },
+    {
+      "id": "d5_v2_q011",
+      "domainId": "domain_5",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d5_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "5.2.8"
+      ],
+      "crossDomain": [
+        "domain_7"
+      ],
+      "question": "The technicians need administrative rights on the console only while a work order is open. Which arrangement BEST matches that need?",
+      "options": {
+        "A": "Granting the privilege when a work order opens and removing it automatically when the order closes.",
+        "B": "Issuing each technician a second, privileged account used solely for administrative work.",
+        "C": "Granting standing administrative rights and requiring a supervisor to approve each console session.",
+        "D": "Storing the privileged credential in a vault that technicians check out and check back in."
+      },
+      "correctAnswer": "A",
+      "explanation": "The entitlement, not the credential, is what an attacker eventually inherits, so the question is how long it exists. NIST SP 800-53 Rev 5 AC-2(6) Account Management | Dynamic Privilege Management is the mechanism: privileges are adjusted at runtime rather than held statically, and AC-2(2) Automated Temporary and Emergency Account Management requires temporary and emergency accounts to be removed or disabled automatically after a defined period. AC-6(5) Privileged Accounts restricts who may hold them at all. Worth knowing for the exam and for a vendor conversation: the phrase just-in-time access does not appear in SP 800-53 Rev 5 at all. The source that uses the term is the CISA Zero Trust Maturity Model 2.0, Section 5.1 Identity, whose Access Management function reaches its Optimal stage when automation authorizes just-in-time and just-enough access. B is the right control for a different problem, separating privileged from routine use while the privilege stays permanent. C is symptom not cause, adding a gate in front of rights that are never withdrawn. D is wrong scope, controlling custody of a secret rather than the life of the entitlement behind it. Shorten the grant, not just the queue in front of it.",
+      "recallLine": "Technicians need admin rights only while a work order is open. Which arrangement matches that need?",
+      "optionsShort": {
+        "A": "Grant on work order, revoke on close",
+        "B": "Separate standing privileged account",
+        "C": "Standing rights, per-session approval",
+        "D": "Credential vault with check-out"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How should routine work be kept off an account that holds administrative rights?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What adds oversight when a privilege genuinely has to be held continuously?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "How is a shared or emergency credential kept out of five people's notebooks?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-2(6) Dynamic Privilege Management; AC-2(2) Automated Temporary and Emergency Account Management; AC-6(5) Privileged Accounts",
+        "CISA Zero Trust Maturity Model 2.0 | Section 5.1 Identity, Access Management function"
+      ],
+      "rev": "54abfb447a2c"
+    },
+    {
+      "id": "d5_v2_q012",
+      "domainId": "domain_5",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d5_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "5.3.1"
+      ],
+      "question": "QuickCash wants staff to sign in to the two cloud applications with their existing directory accounts, and the directory will stay in the regional office. Which element MOST determines whether that federation is trustworthy?",
+      "options": {
+        "A": "Whether the identity provider runs on the firm's own hardware or on a hosted platform.",
+        "B": "Whether the assertion travels over a channel encrypted end to end between the parties.",
+        "C": "Whether each application can read the full set of attributes held in the directory.",
+        "D": "Whether the terms each party is trusted for are agreed and documented before the first sign-in."
+      },
+      "correctAnswer": "D",
+      "explanation": "Federation is a transfer of belief, and what makes it safe is that both sides have written down what they are believing. NIST SP 800-63C-4 Section 3.5 Trust Agreements states that all federation transactions shall be governed by the terms of one or more trust agreements between the applicable parties, and it enumerates the relationships those terms cover, including what the relying party trusts the identity provider to represent and what the identity provider trusts the relying party to do with the attributes released. Section 3.2 defines the roles the agreement binds. One useful caution: SP 800-63C-4's own two models are general-purpose identity providers and subscriber-controlled wallets, at Section 3.1. The on-premise, cloud and hybrid split is the exam outline's deployment framing, and the trust-agreement obligation is identical wherever the provider runs. A is symptom not cause, because location decides who operates the provider, not whether the trust was ever established. B is the right control for a different problem: a well-protected assertion from an untrusted issuer is still untrusted. C is wrong scope, one clause inside the agreement and, released in full, a bad one. Write down what you are trusting.",
+      "recallLine": "Staff will sign in to cloud applications using an on-premises directory. What most determines trustworthiness?",
+      "optionsShort": {
+        "A": "Own hardware or hosted platform",
+        "B": "End-to-end encrypted assertion channel",
+        "C": "Applications read all directory attributes",
+        "D": "Documented trust agreement terms first"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What changes about operational responsibility when an identity provider moves to a hosted platform?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What protects an assertion from disclosure or tampering while it is in transit?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What should a trust agreement say about which attributes may be released to which relying party?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-63C-4 | Section 3.5 Trust Agreements; Section 3.2 Roles; Section 3.1 Federation Models",
+        "NIST SP 800-53 Rev 5 | IA-8 Identification and Authentication (Non-Organizational Users); SA-9 External System Services"
+      ],
+      "rev": "3cdc16966694"
+    },
+    {
+      "id": "d5_v2_q013",
+      "domainId": "domain_5",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d5_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "5.3.3"
+      ],
+      "question": "Board members will keep directory accounts while contractors are created only in the cloud tenant, so two identity stores will authenticate to the same applications. Which control MOST directly addresses the risk that creates?",
+      "options": {
+        "A": "Requiring both stores to sign assertions with the same algorithm and key length.",
+        "B": "Reconciling the two stores against one authoritative person record during every access review.",
+        "C": "Applying the directory's password policy to the cloud tenant so the two stores match.",
+        "D": "Requiring multi-factor authentication in both stores before either issues an assertion."
+      },
+      "correctAnswer": "B",
+      "explanation": "Two authoritative sources for the same population means one human being can hold two identities, and each store's review sees only its own half. That is how a contractor who becomes an employee keeps a set of rights nobody remembers granting, and it is the failure QuickCash already had once under a different name. NIST SP 800-53 Rev 5 IA-4 Identifier Management requires identifiers to be assigned under authorization and managed so they are not reused, and AC-2 Account Management requires accounts to be reviewed for compliance with account management requirements on a defined frequency. Reconciliation to one person record is what makes either of those checks meaningful across two stores. A is the right control for a different problem, assertion integrity. C is symptom not cause, aligning a parameter while leaving the identifier space unreconciled. D is correct but not first, because a duplicate identity that authenticates strongly is still a duplicate identity. Count people, then count accounts.",
+      "recallLine": "Two identity stores authenticate the same population to the same applications. Which control addresses that?",
+      "optionsShort": {
+        "A": "Same signing algorithm in both stores",
+        "B": "Reconcile both stores to one person record",
+        "C": "Match the password policies",
+        "D": "Multi-factor in both stores"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What keeps an assertion from being forged or replayed against a relying party?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the firm keep authentication strength consistent for staff wherever their account lives?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What raises the cost of using a stolen contractor password against either store?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | IA-4 Identifier Management; AC-2 Account Management",
+        "NIST SP 800-63C-4 | Section 3.4 Federated Identifiers"
+      ],
+      "rev": "66485336a4ae"
+    },
+    {
+      "id": "d5_v2_q014",
+      "domainId": "domain_5",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "5.1.1"
+      ],
+      "crossDomain": [
+        "domain_2"
+      ],
+      "question": "QuickCash's card-data extract is copied nightly from the console to an analyst's laptop, then into a spreadsheet on a shared drive. Access is controlled separately on each of the three systems. Which control BEST protects the information itself as it moves?",
+      "options": {
+        "A": "Requiring the same group membership on all three systems before access is granted.",
+        "B": "Encrypting each system's storage so the extract is unreadable if a disk is removed.",
+        "C": "Labelling the extract and enforcing flow rules that follow the label between systems.",
+        "D": "Reviewing the three systems' access lists on the same quarterly cycle."
+      },
+      "correctAnswer": "C",
+      "explanation": "Three well-controlled systems can still add up to an uncontrolled dataset, because the extract loses its protection at every boundary and reacquires whatever the next system happens to grant. NIST SP 800-53 Rev 5 AC-4 Information Flow Enforcement requires approved authorizations to be enforced for controlling the flow of information within the system and between connected systems, and AC-16 Security and Privacy Attributes provides the binding that makes it possible, associating attributes with information and enforcing decisions on the basis of them. Together they are the catalogue's answer to information as an access-control asset class, distinct from the system-by-system enforcement in AC-3. A is wrong scope, harmonizing three per-system decisions while the data still crosses unattended. B is the right control for a different problem, protecting media at rest rather than a copy in motion. D is detective when preventive is asked, and it looks at who may reach each system rather than where the data went. Control the data, not only the doors.",
+      "recallLine": "A card-data extract crosses three separately controlled systems. What protects the information itself?",
+      "optionsShort": {
+        "A": "Same groups on all three systems",
+        "B": "Encrypt storage on each system",
+        "C": "Label the data, enforce flow rules",
+        "D": "Aligned quarterly access reviews"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "How does the firm keep one person's entitlements consistent across three systems?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What protects the extract if a laptop or a drive leaves the building?"
+        },
+        "D": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the firm confirm periodically that only the right people can reach each system?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-4 Information Flow Enforcement; AC-16 Security and Privacy Attributes",
+        "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement"
+      ],
+      "rev": "5de76bb19dec"
+    },
+    {
+      "id": "d6_v2_q025",
+      "domainId": "domain_6",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d6_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "6.4.3"
+      ],
+      "crossDomain": [
+        "domain_1"
+      ],
+      "question": "Legal's draft reply threatens action under the terms of service. What should the security lead advise FIRST?",
+      "options": {
+        "A": "Ask the researcher to sign a non-disclosure agreement before the report is examined.",
+        "B": "Establish a published reporting channel with safe-harbour terms, then reply through it.",
+        "C": "Refer the report to the card brands so they can direct FinCorp's response to it.",
+        "D": "Reproduce the finding and patch it before any reply is sent to the researcher."
+      },
+      "correctAnswer": "B",
+      "explanation": "FinCorp has no route by which a report can arrive, so every reply it drafts is improvised, and improvised replies from Legal are how a ninety-day deadline becomes a press cycle. NIST SP 800-53 Rev 5 RA-5(11) Vulnerability Monitoring and Scanning | Public Disclosure Program is the precise and rarely quoted control: establish a public reporting channel for receiving reports of vulnerabilities in organizational systems and system components. NIST SP 800-218 RV.1.3 states the developer-side obligation, a policy addressing vulnerability disclosure and remediation with the roles and processes to support it. NIST SP 800-216 is the dedicated federal guideline on the subject. A is the right control for a different problem, since a non-disclosure agreement manages a paid engagement, not an unsolicited report from someone who owes FinCorp nothing. C is not the decision-maker's; FinCorp owns the system and the reply. D is correct but not first, because the clock runs whether or not anyone answers, and a silent patch invites publication. Build the channel, then use it.",
+      "recallLine": "A researcher reports a live flaw and Legal drafts a threat. What should the security lead advise first?",
+      "optionsShort": {
+        "A": "Ask for a non-disclosure agreement",
+        "B": "Publish a channel with safe harbour",
+        "C": "Refer it to the card brands",
+        "D": "Reproduce and patch before replying"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What governs confidentiality when FinCorp commissions a penetration test from a firm it pays?"
+        },
+        "C": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "Who must be told once the scope of a cardholder-data exposure is established?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What does FinCorp owe its customers once a reported flaw has been confirmed?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "FIRST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | RA-5(11) Vulnerability Monitoring and Scanning | Public Disclosure Program",
+        "NIST SP 800-218 | RV.1.3 vulnerability disclosure and remediation policy",
+        "NIST SP 800-216 named as the dedicated federal disclosure guideline"
+      ],
+      "rev": "eeb2bc9690cf"
+    },
+    {
+      "id": "d6_v2_q026",
+      "domainId": "domain_6",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d6_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "6.4.1"
+      ],
+      "question": "The finding is reproduced. The VP of Engineering proposes shipping the fix in the release already scheduled for eleven weeks out. Which response BEST reflects how remediation should be decided?",
+      "options": {
+        "A": "Ship in the scheduled release, because unscheduled changes carry risks of their own.",
+        "B": "Ship immediately, because any confirmed defect in a money path is an emergency.",
+        "C": "Ask the researcher whether she will extend the ninety-day deadline to cover the release.",
+        "D": "Rank it against the other open findings by exploitability and impact, then set the date."
+      },
+      "correctAnswer": "D",
+      "explanation": "Remediation timing is a risk decision, and a risk decision needs a basis that survives being asked about later. NIST SP 800-53 Rev 5 CA-5 Plan of Action and Milestones requires documented planned remediation actions to correct weaknesses noted during control assessments, with milestones, and RA-7 Risk Response requires the organization to respond to findings in accordance with its own risk tolerance. NIST SP 800-115 Chapter 8, Post-Testing Activities, covers turning findings into mitigation recommendations and a remediation plan. Ranking is what lets FinCorp defend either a rushed fix or a scheduled one. A is not the decision-maker's, treating schedule ownership as though it settled a risk question. B is correct but not first: urgency is very likely the right conclusion here, and it is still a conclusion rather than the method the question asks for. C is the right control for a different problem, because the researcher's clock is not FinCorp's risk basis. Decide by risk, then argue about the calendar.",
+      "recallLine": "When should a confirmed money-path defect be fixed, and on what basis is that decided?",
+      "optionsShort": {
+        "A": "Wait for the scheduled release",
+        "B": "Ship immediately as an emergency",
+        "C": "Ask for a deadline extension",
+        "D": "Rank by exploitability and impact"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "Who owns the release calendar, and what does that ownership actually decide?"
+        },
+        "B": {
+          "label": "correct but not first",
+          "wouldAnswer": "What is the likely outcome once this finding has been ranked against the others?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What is worth discussing with a researcher when a fix genuinely cannot be delivered in ninety days?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CA-5 Plan of Action and Milestones; RA-7 Risk Response",
+        "NIST SP 800-115 | Chapter 8 Post-Testing Activities"
+      ],
+      "rev": "5fe6631f35d3"
+    },
+    {
+      "id": "d6_v2_q027",
+      "domainId": "domain_6",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d6_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "6.4.2"
+      ],
+      "question": "One mitigation cannot ship for six months because a payment partner's interface must change first. Which record BEST handles that gap?",
+      "options": {
+        "A": "A dated exception naming the risk accepted, the compensating measure and the approver.",
+        "B": "A note in the release backlog explaining why the change is currently blocked.",
+        "C": "An entry in the risk register listing the partner as an external dependency.",
+        "D": "A revised finding severity reflecting how hard the flaw turns out to be to exploit."
+      },
+      "correctAnswer": "A",
+      "explanation": "A gap that nobody has accepted is a gap that nobody owns, and six months later the only question anyone asks is who agreed to it. NIST SP 800-53 Rev 5 CA-5 Plan of Action and Milestones is where the unfinished remediation lives, with its milestones and its owner. NIST SP 800-53B, Chapter 2, supplies the other half: where a control cannot be implemented as written, a compensating control providing equivalent protection may be substituted with documented justification. NIST SP 800-37 Rev 2 Chapter 3 places the acceptance itself at the AUTHORIZE step, where a named official accepts residual risk rather than the risk simply persisting. B is symptom not cause, recording the blockage and not the acceptance. C is wrong scope; the dependency is real and the record the stem needs is the decision about it. D is the right control for a different problem, because rescoring changes the number and leaves the accountability unassigned. Somebody signs, and the signature has a date on it.",
+      "recallLine": "A mitigation is blocked for six months by a partner. Which record handles the gap properly?",
+      "optionsShort": {
+        "A": "Dated exception, compensation, approver",
+        "B": "Backlog note explaining the block",
+        "C": "Risk register external dependency entry",
+        "D": "Revised severity for exploitability"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the engineering team track why a queued change has not moved?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "Where does FinCorp record that a partner's timetable can hold up its own remediation generally?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What should change if new evidence shows the flaw is far harder to exploit than first assessed?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CA-5 Plan of Action and Milestones",
+        "NIST SP 800-53B | Chapter 2, compensating controls with documented justification",
+        "NIST SP 800-37 Rev 2 | Chapter 3, AUTHORIZE step and risk acceptance"
+      ],
+      "rev": "a93a2d681731"
+    },
+    {
+      "id": "d6_v2_q028",
+      "domainId": "domain_6",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d6_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "6.2.6"
+      ],
+      "crossDomain": [
+        "domain_8"
+      ],
+      "question": "The team wants one test technique that would have caught both the negative amount and the sixteen-decimal amount before release. Which is MOST likely to have found them?",
+      "options": {
+        "A": "Functional test cases derived from the deposit feature's acceptance criteria.",
+        "B": "Interface testing exercising each parameter the deposit endpoint accepts.",
+        "C": "Misuse cases written from how an attacker would abuse the deposit flow.",
+        "D": "Coverage analysis showing which lines of the balance service were executed."
+      },
+      "correctAnswer": "C",
+      "explanation": "Both defects sit in the space between what the feature was asked to do and what it will actually accept, and only one technique on this list is designed to explore that space on purpose. A misuse case starts from an actor with hostile intent and asks what they would send, which is how somebody types a minus sign or sixteen decimals before a customer does. NIST SP 800-53 Rev 5 SA-11 Developer Testing and Evaluation requires a developer test and evaluation plan and the evidence of its execution, and SI-10 Information Input Validation is the control the defects violate. NIST SP 800-218 PW.5.1 names input validation and output encoding as the canonical secure-coding practice. OWASP Top 10:2025 files this family under A06 Insecure Design. A is wrong scope, derived from what the feature should do, and nobody writes deposit minus one hundred as an acceptance criterion. B is the right control for a different problem, checking that each parameter is handled rather than that the handling is safe when abused. D is symptom not cause, reporting that lines ran rather than that they behaved. Test what you do not want to happen.",
+      "recallLine": "Which technique would have caught a negative deposit and a sixteen-decimal amount before release?",
+      "optionsShort": {
+        "A": "Functional tests from acceptance criteria",
+        "B": "Interface testing of each parameter",
+        "C": "Misuse cases from attacker intent",
+        "D": "Coverage analysis of executed lines"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong scope",
+          "wouldAnswer": "What confirms the deposit feature does what the business asked it to do?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What confirms every documented parameter of the endpoint is accepted and handled?"
+        },
+        "D": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the team find code paths that no test has ever executed?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | SA-11 Developer Testing and Evaluation; SI-10 Information Input Validation",
+        "NIST SP 800-218 | PW.5.1 secure coding, validate all inputs",
+        "OWASP Top 10:2025 | A06 Insecure Design"
+      ],
+      "rev": "5cef5e92d6bf"
+    },
+    {
+      "id": "d8_v2_q029",
+      "domainId": "domain_8",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d8_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "8.5.4"
+      ],
+      "crossDomain": [
+        "domain_6"
+      ],
+      "question": "The examiner wants evidence that the pipeline enforces the bank's rules rather than merely documenting them. Which approach BEST produces that evidence?",
+      "options": {
+        "A": "A quarterly audit sampling merged changes against the written development standard.",
+        "B": "A checklist each team lead signs before a release is promoted into production.",
+        "C": "Policy expressed as machine-checked pipeline rules that fail the build and record the result.",
+        "D": "A dashboard showing how many findings each team closed in the most recent release."
+      },
+      "correctAnswer": "C",
+      "explanation": "An examiner asking for enforcement is asking for something that cannot have been skipped, and a rule that runs is the only artefact on this list with that property. It also produces its own evidence as a by-product, which is the second half of what was asked. NIST SP 800-53 Rev 5 SC-50 Software-Enforced Separation and Policy Enforcement is the nearest control in the catalogue, and it is new in Revision 5; CM-6 Configuration Settings governs the settings the rules assert. NIST SP 800-218 PO.3.3 requires the toolchain to be configured to generate artifacts that support the security checks. Worth being precise: the phrase software-defined security appears in no NIST document, so SC-50 is a functional match rather than a name match, and it should be presented that way. A is detective when preventive is asked, sampling a quarter after the fact. B is symptom not cause, capturing a person's assertion rather than an enforced condition. D is the right control for a different problem, measuring remediation throughput. Evidence is what the machine produced, not what the team promised.",
+      "recallLine": "An examiner wants proof the pipeline enforces the rules rather than documenting them. What produces it?",
+      "optionsShort": {
+        "A": "Quarterly audit sampling merges",
+        "B": "Team lead checklist before promotion",
+        "C": "Machine-checked rules that fail builds",
+        "D": "Dashboard of findings closed"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the bank confirm periodically that enforced rules still match the written standard?"
+        },
+        "B": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How is accountability for a release assigned to a named person?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the bank track whether teams are working through their open findings?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | SC-50 Software-Enforced Separation and Policy Enforcement (new in Rev 5); CM-6 Configuration Settings",
+        "NIST SP 800-218 | PO.3.3 toolchain generates supporting artifacts"
+      ],
+      "rev": "d7b72b39b72a"
+    },
+    {
+      "id": "d8_v2_q030",
+      "domainId": "domain_8",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d8_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "8.2.6"
+      ],
+      "question": "Any team can queue work on the shared build runners. Which risk does that arrangement MOST directly create for the Cardless Cash release?",
+      "options": {
+        "A": "One team's build step can read another team's secrets or artefacts.",
+        "B": "Builds will queue behind each other and the weekly release will slip.",
+        "C": "Teams will adopt different build tools and the artefacts will diverge.",
+        "D": "The runners will fall behind on operating-system patches between releases."
+      },
+      "correctAnswer": "A",
+      "explanation": "A build runner is a machine that holds every credential its jobs need and every artefact they produce, and a shared runner holds all of them at once. A job is arbitrary code by definition, so the team that queues it inherits whatever the runner can reach, and the vault the bank has just bought does not help once a job can ask the vault on someone else's behalf. NIST SP 800-53 Rev 5 AC-6 Least Privilege, SC-2 Separation of System and User Functionality, and SC-4 Information in Shared System Resources are the controls that name this class of exposure; note that SC-2's Revision 4 title was Application Partitioning. NIST SP 800-218 PO.5 requires environments involved in software development to be separated and protected. B is the right control for a different problem, a capacity concern rather than a security one. C is wrong scope, a consistency issue between teams rather than a boundary failure inside one runner. D is correct but not first, a real maintenance gap that shared queueing did not cause. Ask what the runner can reach.",
+      "recallLine": "Any team can queue jobs on shared build runners. Which risk does that most directly create?",
+      "optionsShort": {
+        "A": "Cross-team access to secrets and artefacts",
+        "B": "Queueing delays the weekly release",
+        "C": "Divergent build tools between teams",
+        "D": "Runners fall behind on patching"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What should the platform team plan for if release throughput is the concern?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What does a shared toolchain standard fix across three independent teams?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What maintenance obligation applies to build infrastructure regardless of who queues on it?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "analysis",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-6 Least Privilege; SC-2 Separation of System and User Functionality (renamed from Rev 4 Application Partitioning); SC-4 Information in Shared System Resources",
+        "NIST SP 800-218 | PO.5 secure development environments"
+      ],
+      "rev": "8d35964d218d"
+    },
+    {
+      "id": "d8_v2_q031",
+      "domainId": "domain_8",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d8_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "8.2.8"
+      ],
+      "question": "Every developer can push directly to the main branch of the private repository. Which control BEST addresses the exposure that creates?",
+      "options": {
+        "A": "Scanning the repository's history for secrets committed before the vault existed.",
+        "B": "Requiring commits to be signed so each change can be attributed to a developer.",
+        "C": "Restricting repository read access to the three teams that work on it.",
+        "D": "Requiring an independent review and a passing check before a change enters main."
+      },
+      "correctAnswer": "D",
+      "explanation": "The last incident began with one developer's decision reaching production with nobody in between, and a repository where anyone can push to main reproduces exactly that condition inside a private repository instead of a public one. NIST SP 800-53 Rev 5 CM-3 Configuration Change Control requires proposed changes to be reviewed and approved or disapproved with explicit consideration of security and privacy impact analyses, and AC-5 Separation of Duties is why the reviewer is somebody else. NIST SP 800-218 adds the software-specific half: PS.1 protects all forms of code from unauthorized access and tampering, and PW.7 covers reviewing or analysing human-readable code before release. A is wrong phase, cleaning up history without governing what enters main next. B is detective when preventive is asked, producing attribution after the change has landed. C is wrong scope, narrowing who can read rather than who can change. A gate on the branch is the control; everything else describes the branch.",
+      "recallLine": "Every developer can push straight to main. Which control best addresses that exposure?",
+      "optionsShort": {
+        "A": "Scan history for old secrets",
+        "B": "Require signed commits",
+        "C": "Restrict who can read the repository",
+        "D": "Independent review and check before main"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "What should the bank do about credentials committed before the vault was introduced?"
+        },
+        "B": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the bank establish afterwards which developer authored a given change?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What limits disclosure of source to people outside the three teams?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-3 Configuration Change Control; AC-5 Separation of Duties",
+        "NIST SP 800-218 | PS.1 protect code from unauthorized access and tampering; PW.7 review human-readable code"
+      ],
+      "rev": "7eb752ed6be8"
+    },
+    {
+      "id": "d8_v2_q032",
+      "domainId": "domain_8",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d8_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "8.5.2"
+      ],
+      "question": "The rebuilt API will issue short-lived tokens instead of a master key. Which additional check MOST directly addresses the failure that let attackers read any account?",
+      "options": {
+        "A": "Rate limiting each token so a caller cannot enumerate accounts quickly.",
+        "B": "Verifying on every request that the token's subject owns the record requested.",
+        "C": "Rotating the token signing key on a schedule the managed vault enforces.",
+        "D": "Logging every API call with its token subject and the record it touched."
+      },
+      "correctAnswer": "B",
+      "explanation": "Short-lived tokens fix who is calling. The original failure was that the API never asked whether the caller was entitled to the object it named, so any authenticated caller could read any account, and a token with a fifteen-minute lifetime does that just as thoroughly as a master key did. NIST SP 800-53 Rev 5 AC-3 Access Enforcement requires the system to enforce approved authorizations for logical access to information, and AC-6 Least Privilege sizes what those authorizations should be. OWASP Top 10:2025 places object-level authorization failures under A01 Broken Access Control, which in the 2025 edition also absorbs server-side request forgery. A is symptom not cause, slowing the enumeration while still returning records the caller should not see. C is the right control for a different problem, protecting the token's integrity rather than the decision made after it is validated. D is detective when preventive is asked. Authentication says who; authorization has to say what, and every request needs both.",
+      "recallLine": "Short-lived tokens replace a master key. What still has to be checked on every request?",
+      "optionsShort": {
+        "A": "Rate limit each token",
+        "B": "Check the subject owns the record",
+        "C": "Rotate the signing key",
+        "D": "Log every call and record touched"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What limits the damage a caller can do per minute once authorization is already correct?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What limits the value of a signing key that has been exposed?"
+        },
+        "D": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the bank reconstruct which records an abusive caller reached?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement; AC-6 Least Privilege",
+        "OWASP Top 10:2025 | A01 Broken Access Control"
+      ],
+      "rev": "857fb21a332e"
+    },
+    {
+      "id": "d7_v2_q015",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s01",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "7.7.3"
+      ],
+      "question": "Management asks which change would have stopped the technician's downloaded tool from running at all. Which control BEST meets that description?",
+      "options": {
+        "A": "Anti-malware configured to submit unknown executables to the vendor for analysis.",
+        "B": "A policy forbidding technicians from downloading software to fleet machines.",
+        "C": "Blocking the fleet's outbound web access to sites known to host hacking tools.",
+        "D": "A deny-by-default policy admitting software the organization has explicitly authorized to execute."
+      },
+      "correctAnswer": "D",
+      "explanation": "Every option except D starts from a list of things known to be bad, and a diagnostic tool downloaded that morning is on nobody's list. NIST SP 800-53 Rev 5 CM-7(5) Least Functionality | Authorized Software - Allow-by-Exception is the precise control: identify the software authorized to execute, employ a deny-all permit-by-exception policy to allow it, and review and update the list on a defined frequency. Its sibling CM-7(4) Unauthorized Software - Deny-by-Exception is the weaker direction, and the catalogue says so by structure. Note the vocabulary: Rev 5 uses allow-list and deny-list where older material says whitelisting and blacklisting. A is detective when preventive is asked, and it acts on an executable that is unknown by definition. B is the right control for a different problem, a rule aimed at a person rather than a condition enforced on the machine. C is wrong scope, applying deny-by-exception to the network, where the list can never be complete and the tool arrived on a technician's own laptop anyway. Enumerate the good, not the bad.",
+      "recallLine": "What would have stopped an unapproved downloaded tool from executing on a fleet machine?",
+      "optionsShort": {
+        "A": "Submit unknown executables to the vendor",
+        "B": "Policy forbidding downloads",
+        "C": "Block known hacking-tool sites",
+        "D": "Deny all, permit authorized software"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does the fleet get coverage for a variant the anti-malware vendor has not yet seen?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What belongs in the maintenance contract about technician conduct on the bank's machines?"
+        },
+        "C": {
+          "label": "wrong scope",
+          "wouldAnswer": "What reduces casual access to tooling sites from machines that have no need to browse?"
+        }
+      },
+      "lens": "technical",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CM-7(5) Authorized Software - Allow-by-Exception",
+        "NIST SP 800-53 Rev 5 | CM-7(4) Unauthorized Software - Deny-by-Exception; CM-10 Software Usage Restrictions"
+      ],
+      "rev": "a171b530ad88"
+    },
+    {
+      "id": "d7_v2_q016",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s01",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "7.2.6"
+      ],
+      "question": "The analyst finds that the Toledo machine's local log now begins after the second reboot. Which change would MOST improve the company's ability to investigate the next report?",
+      "options": {
+        "A": "Extending local log retention on every machine from thirty days to one year.",
+        "B": "Forwarding events to a separate repository as they are written, with synchronized time.",
+        "C": "Requiring technicians to file a written report after every maintenance visit.",
+        "D": "Configuring anti-malware to write its detections into the machine's Windows event log."
+      },
+      "correctAnswer": "B",
+      "explanation": "A record that lives only on the machine it describes is a record the machine can lose, and here two reboots were enough. NIST SP 800-53 Rev 5 AU-9(2) Protection of Audit Information | Store on Separate Physical Systems or Components requires audit records to be stored on a system or component physically different from the one being audited, which is the whole answer to this failure. AU-4 Audit Log Storage Capacity, AU-11 Audit Record Retention, and AU-8 Time Stamps with SC-45 System Time Synchronization make the collected records usable across 5,000 machines, and AU-6(3) Correlate Audit Record Repositories is what turns them into a timeline. NIST SP 800-92 is the dedicated log-management guide; the requirement above does not depend on it. A is symptom not cause, treating the age of a record while leaving it in the only place it can be destroyed. C is the right control for a different problem, an administrative account of a visit rather than machine evidence. D is wrong scope, enriching one source on the same host that loses everything. Get the record off the box.",
+      "recallLine": "Local logs vanished when a machine rebooted. What most improves the next investigation?",
+      "optionsShort": {
+        "A": "Extend local retention to a year",
+        "B": "Forward events to a separate repository",
+        "C": "Written report after every visit",
+        "D": "Anti-malware writes to the event log"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How long must records be kept once they are held somewhere they cannot be destroyed?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does the company establish what a vendor technician says he did on site?"
+        },
+        "D": {
+          "label": "wrong scope",
+          "wouldAnswer": "How does the company make sure detections appear alongside system events on the host?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AU-9(2) Store on Separate Physical Systems or Components",
+        "NIST SP 800-53 Rev 5 | AU-4; AU-8 Time Stamps; AU-11 Audit Record Retention; AU-6(3) Correlate Audit Record Repositories; SC-45 System Time Synchronization"
+      ],
+      "rev": "0cfcef61b9d7"
+    },
+    {
+      "id": "d7_v2_q017",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s01",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "7.6.3"
+      ],
+      "question": "Analysts confirm unauthorized code on four machines and cannot yet say how it arrived. Management wants the fleet protected today. Which action BEST fits mitigation at this point?",
+      "options": {
+        "A": "Reimaging the four machines from the standard build and returning them to service.",
+        "B": "Opening a change request to add allow-listing across the fleet at the next window.",
+        "C": "Isolating the four machines from the management network while the fleet stays monitored.",
+        "D": "Notifying the card brands and the state regulator that a compromise has been confirmed."
+      },
+      "correctAnswer": "C",
+      "explanation": "Mitigation is the act of stopping the incident from getting larger while the question of how it started is still open, and isolation is the only option here that does that without destroying the answer. NIST SP 800-61 Rev 3 places this in the Respond Function, where RS.MI-01 covers incidents being contained and RS.MI-02 covers eradication. NIST SP 800-53 Rev 5 supplies the mechanism in IR-4 Incident Handling, IR-4(2) Dynamic Reconfiguration, and SC-7(20) Boundary Protection | Dynamic Isolation and Segregation. One structural note worth carrying: Revision 2 of SP 800-61 grouped containment, eradication and recovery into a single phase and was withdrawn on 3 April 2025; Revision 3 puts containment and eradication under Respond and recovery under Recover. A is wrong phase, jumping to eradication and recovery and erasing the evidence of the entry point. B is correct but not first, the durable fix on a schedule the stem says is too slow. D is the right control for a different problem, a reporting obligation under IR-6 that protects nothing today. Contain before you clean.",
+      "recallLine": "Unauthorized code is confirmed on four machines and the entry point is unknown. What fits mitigation?",
+      "optionsShort": {
+        "A": "Reimage and return to service",
+        "B": "Change request for fleet allow-listing",
+        "C": "Isolate the four, keep monitoring",
+        "D": "Notify card brands and regulator"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "What returns a machine to a known-good state once the entry point is understood?"
+        },
+        "B": {
+          "label": "correct but not first",
+          "wouldAnswer": "What prevents the next unapproved executable from running across the fleet?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What obligation arises once the scope of a cardholder-data compromise is established?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-61 Rev 3 | Section 3.2, Respond Function (RS.MI-01, RS.MI-02)",
+        "NIST SP 800-53 Rev 5 | IR-4 Incident Handling; IR-4(2) Dynamic Reconfiguration; SC-7(20) Dynamic Isolation and Segregation",
+        "NIST SP 800-61 Rev 2 withdrawn 2025-04-03; the four-phase lifecycle is not restated in Rev 3"
+      ],
+      "rev": "7df83dcaf1c3"
+    },
+    {
+      "id": "d7_v2_q018",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s01",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "7.6.7"
+      ],
+      "question": "Three weeks later the incident is closed. Which outcome BEST shows that the lessons-learned step actually worked?",
+      "options": {
+        "A": "The software policy, the maintenance contract and the response playbook were each changed.",
+        "B": "A report was circulated describing the timeline and the root cause in full detail.",
+        "C": "The analysts who handled the incident briefed the wider team on what they had seen.",
+        "D": "A follow-up meeting was scheduled once recovery of the four machines was complete."
+      },
+      "correctAnswer": "A",
+      "explanation": "The test of a lessons-learned step is whether anything is different afterwards, and only A names artefacts that changed. NIST SP 800-53 Rev 5 IR-4 Incident Handling states the obligation directly: incorporate lessons learned from ongoing incident handling into response procedures, training and testing, and implement the resulting changes accordingly, with IR-8 Incident Response Plan requiring the plan itself to be reviewed and updated. NIST CSF 2.0 puts the same idea in ID.IM-01 through ID.IM-04, where improvements are identified from evaluations, from tests and exercises, from operational processes, and are then reflected in the plans. NIST SP 800-61 Rev 3 adds a change of emphasis worth knowing: lessons should often be shared as soon as they are identified rather than held until recovery concludes. B is symptom not cause, documenting the incident while nothing changed. C is the right control for a different problem, moving knowledge between people rather than into procedure. D is wrong phase, and it is the habit Revision 3 argues against. Look for the diff, not the deck.",
+      "recallLine": "An incident closes. Which outcome shows the lessons-learned step actually worked?",
+      "optionsShort": {
+        "A": "Policy, contract and playbook all changed",
+        "B": "Detailed timeline report circulated",
+        "C": "Analysts briefed the wider team",
+        "D": "Follow-up meeting scheduled after recovery"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "symptom not cause",
+          "wouldAnswer": "What record does the organization need in order to answer an examiner about this incident?"
+        },
+        "C": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "How does a response team spread hard-won knowledge to analysts who were not on the incident?"
+        },
+        "D": {
+          "label": "wrong phase",
+          "wouldAnswer": "What is the traditional four-phase model's final step, before Revision 3 moved improvement into a continuous layer?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "analysis",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | IR-4 Incident Handling; IR-8 Incident Response Plan",
+        "NIST CSF 2.0 (NIST CSWP 29) | ID.IM-01 to ID.IM-04",
+        "NIST SP 800-61 Rev 3 | Sections 1 and 3.1, lessons shared as identified"
+      ],
+      "rev": "22d87f850a8d"
+    },
+    {
+      "id": "d7_v2_q019",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s02",
+      "stimulusSeq": 1,
+      "outlineItems": [
+        "7.12.2"
+      ],
+      "question": "The tabletop found the plan readable. The operations director wants the next exercise to confirm that each named person can state their own steps. Which test type BEST fits?",
+      "options": {
+        "A": "A walkthrough in which each role reads and talks through its own procedures in sequence.",
+        "B": "A simulation in which the team responds to an injected scenario under time pressure.",
+        "C": "A parallel test bringing the alternate switch up beside production and comparing output.",
+        "D": "A full interruption test failing production over to the alternate site and back."
+      },
+      "correctAnswer": "A",
+      "explanation": "The ladder the exam tests runs read-through and tabletop, then walkthrough, then simulation, then parallel, then full interruption, and each rung adds one thing. A walkthrough is the rung where the plan stops being a document the team has read and becomes procedures individuals can state for their own role. Be careful with the sourcing here: this five-type ladder is CISSP-canon vocabulary and is not NIST's taxonomy. NIST SP 800-84 uses training sessions, tabletop exercises, functional exercises and tests, and NIST SP 800-34 Rev 1 Section 3.5.3 defines a tabletop as discussion-based only, with no equipment deployed. The control obligation is NIST SP 800-53 Rev 5 CP-4 Contingency Plan Testing. B is wrong phase, the next rung up, and it measures reaction rather than knowledge of the steps. C is correct but not first, committing real recovery infrastructure to procedures nobody has yet performed. D is not the decision-maker's, since the board has ruled out an outage of production. Climb one rung at a time.",
+      "recallLine": "The plan reads well. Which test type confirms each named person can state their own steps?",
+      "optionsShort": {
+        "A": "Walkthrough of procedures by role",
+        "B": "Simulation under time pressure",
+        "C": "Parallel test beside production",
+        "D": "Full interruption failover"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What test measures whether the team decides well when information arrives out of order?"
+        },
+        "C": {
+          "label": "correct but not first",
+          "wouldAnswer": "What test proves the alternate switch produces the same output as production?"
+        },
+        "D": {
+          "label": "not the decision-maker's",
+          "wouldAnswer": "What test would the board have to approve an outage for, and what does it finally prove?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CP-4 Contingency Plan Testing",
+        "NIST SP 800-34 Rev 1 | Section 3.5.3 Exercises (tabletop is discussion-based only)",
+        "NIST SP 800-84 | Chapters 3 to 6 (NIST taxonomy differs from the CISSP five-type ladder)"
+      ],
+      "rev": "bac28368f177"
+    },
+    {
+      "id": "d7_v2_q020",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s02",
+      "stimulusSeq": 2,
+      "outlineItems": [
+        "7.12.3"
+      ],
+      "question": "The walkthrough passed. The director now wants to see whether the team decides correctly when facts arrive out of order and time is short, still without touching production. Which test type BEST fits?",
+      "options": {
+        "A": "A tabletop exercise, facilitated by an outside consultant against a new scenario.",
+        "B": "A parallel test, with the alternate switch processing a copy of live traffic.",
+        "C": "A simulation, with the team responding to injected events in a controlled environment.",
+        "D": "A full interruption test, scheduled inside an approved maintenance window."
+      },
+      "correctAnswer": "C",
+      "explanation": "What the director is asking to measure is judgement under incomplete information, and that is exactly the rung a simulation occupies: the team performs its roles against events fed to it, in a controlled environment, without the production system being at risk. NIST SP 800-34 Rev 1 Section 3.5.3 describes the nearest NIST equivalent, the functional exercise, as personnel validating operational readiness by performing their duties in a simulated operational environment. Remember that the five-type ladder is CISSP-canon; SP 800-84's categories are training sessions, tabletop exercises, functional exercises and tests, and only tabletop is common to both vocabularies. The control obligation sits in SP 800-53 Rev 5 CP-4 with CP-4(1) Coordinate with Related Plans. A is wrong phase, a rung already cleared. B is the right control for a different problem: a parallel test proves the alternate switch computes correctly, not that people decide well. D is correct but not first, the top rung and the one that depends on all the others passing. Match the rung to the question being asked.",
+      "recallLine": "Which test type measures decision quality under pressure without putting production at risk?",
+      "optionsShort": {
+        "A": "Facilitated tabletop, new scenario",
+        "B": "Parallel test on copied traffic",
+        "C": "Simulation with injected events",
+        "D": "Full interruption in a maintenance window"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "wrong phase",
+          "wouldAnswer": "What is the right first exercise against a plan nobody has discussed as a team?"
+        },
+        "B": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What test shows the recovery environment produces the same results as production?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "What is the only test that proves the whole failover works end to end?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-34 Rev 1 | Section 3.5.3 Exercises (functional exercise definition)",
+        "NIST SP 800-53 Rev 5 | CP-4 Contingency Plan Testing; CP-4(1) Coordinate with Related Plans",
+        "NIST SP 800-84 | exercise taxonomy, distinct from the CISSP five-type ladder"
+      ],
+      "rev": "c4cba3f8fe78"
+    },
+    {
+      "id": "d7_v2_q021",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s02",
+      "stimulusSeq": 3,
+      "outlineItems": [
+        "7.11.2"
+      ],
+      "question": "The simulation stalls for fifty minutes because the only person who can authorize the failover is on a flight. Which change to the plan MOST directly addresses that?",
+      "options": {
+        "A": "Adding a second alternate site so the failover has more than one destination.",
+        "B": "Naming a deputy for every plan role, with the authority each deputy may exercise.",
+        "C": "Recording the exercise so the delay can be reviewed with the recovery team afterwards.",
+        "D": "Moving the call tree from a printed sheet to an automated notification service."
+      },
+      "correctAnswer": "B",
+      "explanation": "A recovery plan that depends on one reachable human has a single point of failure made of flesh, and eleven people across three time zones guarantees that somebody is always unreachable. The fix is delegation recorded in advance: who stands in, and what they may decide. NIST SP 800-34 Rev 1 Section 4.2.2 Notification Procedures requires the plan to document how recovery personnel are notified during business and non-business hours, and the plan structure the document specifies carries delegation of authority alongside the team rosters. NIST SP 800-53 Rev 5 CP-2 Contingency Plan requires roles, responsibilities and contact information for key personnel, with CP-3 Contingency Training behind it. A is the right control for a different problem, adding destinations when the failure was authority. C is symptom not cause, capturing the delay rather than removing it. D is correct but not first, since a faster call reaches the same absent person. Name the deputy before the flight.",
+      "recallLine": "A recovery exercise stalls waiting for the one person who can authorize failover. What fixes it?",
+      "optionsShort": {
+        "A": "Add a second alternate site",
+        "B": "Name deputies and their authority",
+        "C": "Record the exercise for review",
+        "D": "Automate the call tree"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What addresses the risk that the alternate site is itself unavailable when needed?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does the team gather accurate evidence about what happened during an exercise?"
+        },
+        "D": {
+          "label": "correct but not first",
+          "wouldAnswer": "How does the company shorten the time between an outage and the team knowing about it?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "MOST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-34 Rev 1 | Section 4.2.2 Notification Procedures; plan structure and delegation of authority",
+        "NIST SP 800-53 Rev 5 | CP-2 Contingency Plan; CP-3 Contingency Training"
+      ],
+      "rev": "11a0d2c1b7a0"
+    },
+    {
+      "id": "d7_v2_q022",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "stimulusId": "d7_s02",
+      "stimulusSeq": 4,
+      "outlineItems": [
+        "7.11.7"
+      ],
+      "question": "Both exercises are finished. Which follow-up BEST converts them into an improvement the next real outage would feel?",
+      "options": {
+        "A": "Filing the two exercise reports with the evidence pack for the annual examination.",
+        "B": "Repeating the simulation next quarter to see whether the team's timings improve.",
+        "C": "Briefing the board on the fifty-minute delay and the reasons that produced it.",
+        "D": "Revising the plan's authority and notification steps, then retesting those steps."
+      },
+      "correctAnswer": "D",
+      "explanation": "An exercise produces a finding, and a finding that does not change the plan is a cost with no return. NIST SP 800-53 Rev 5 CP-4 Contingency Plan Testing requires the organization to review the contingency plan test results and initiate corrective actions if needed, and CP-2 Contingency Plan requires the plan to be revised to address changes and problems encountered during implementation, execution or testing. NIST CSF 2.0 ID.IM-02 makes the same point from the framework side: improvements are identified from security tests and exercises, and ID.IM-04 requires the affected plans to be updated. Retesting only the changed steps is what turns the loop closed rather than open. A is the right control for a different problem, evidence for the examiner and no change to the plan. B is wrong phase, retesting before anything has been altered. C is symptom not cause, reporting the delay upward and leaving the document as written. Change the plan, then test the change.",
+      "recallLine": "Two exercises are done. Which follow-up turns them into an improvement the next outage would feel?",
+      "optionsShort": {
+        "A": "File reports in the examination pack",
+        "B": "Repeat the simulation next quarter",
+        "C": "Brief the board on the delay",
+        "D": "Revise the plan, retest those steps"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What does the company owe an examiner asking whether the plan is exercised?"
+        },
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What confirms that a revised procedure works when the team is under time pressure?"
+        },
+        "C": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does leadership learn that recovery depends on one unreachable individual?"
+        }
+      },
+      "lens": "governance",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 2,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | CP-4 Contingency Plan Testing; CP-2 Contingency Plan",
+        "NIST CSF 2.0 (NIST CSWP 29) | ID.IM-02, ID.IM-04"
+      ],
+      "rev": "a38eaddf1da8"
+    },
+    {
+      "id": "d7_v2_q023",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "7.1.3"
+      ],
+      "crossDomain": [
+        "domain_1"
+      ],
+      "question": "An analyst investigating a suspected insider at Global ATM Corp needs to establish which technician was physically at the Toledo machine on the night in question. The suspect is the administrator of the badge system, holds the account that exports its records, and has not yet been told that he is under investigation. Which step should the analyst take FIRST?",
+      "options": {
+        "A": "Interview the suspect's supervisor about the technician's assignment for that week.",
+        "B": "Query the badge system directly for the day's entries and export them to a report.",
+        "C": "Compare the badge records with the ATM's local event log on the machine itself.",
+        "D": "Preserve the badge records from a source the suspect cannot alter, then compare."
+      },
+      "correctAnswer": "D",
+      "explanation": "An investigation into the person who administers the evidence has one problem before it has any others, and that is custody. NIST SP 800-53 Rev 5 AU-9 Protection of Audit Information requires audit information and tooling to be protected from unauthorized access, modification and deletion, and its enhancements say how: AU-9(2) Store on Separate Physical Systems or Components, and AU-9(4) Access by Subset of Privileged Users, which limits management of audit functionality to a defined subset of privileged users. Those controls exist precisely so that the administrator of a system is not the custodian of the record about them. IR-4(12) Incident Handling | Malicious Code and Forensic Analysis covers the analysis that follows. NIST SP 800-86 is the guide that covers forensic technique itself. A is correct but not first, part of the investigation and no protection for an alterable record. B is symptom not cause, producing an answer from a system the suspect controls, so the answer cannot be defended later. C is wrong phase, correlating before preserving and touching the live machine to do it. Secure the record before you read it.",
+      "recallLine": "The suspect administers the system holding the evidence. What should the analyst do first?",
+      "optionsShort": {
+        "A": "Interview the supervisor",
+        "B": "Query and export the badge records",
+        "C": "Compare against the ATM's local log",
+        "D": "Preserve from a source he cannot alter"
+      },
+      "distractorReasons": {
+        "A": {
+          "label": "correct but not first",
+          "wouldAnswer": "How does the analyst establish what the technician was supposed to be doing that week?"
+        },
+        "B": {
+          "label": "symptom not cause",
+          "wouldAnswer": "How does an analyst pull entries quickly when the system owner is not a subject of the investigation?"
+        },
+        "C": {
+          "label": "wrong phase",
+          "wouldAnswer": "What does the analyst do once both records are preserved and the timeline has to be built?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "analysis",
+      "discriminator": "FIRST",
+      "difficulty": 4,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | AU-9 Protection of Audit Information; AU-9(2); AU-9(4) Access by Subset of Privileged Users",
+        "NIST SP 800-53 Rev 5 | IR-4(12) Malicious Code and Forensic Analysis",
+        "NIST SP 800-86 named as the dedicated forensic-technique source"
+      ],
+      "rev": "aac06b9aaffd"
+    },
+    {
+      "id": "d7_v2_q024",
+      "domainId": "domain_7",
+      "editions": [
+        "v2"
+      ],
+      "form": "drill",
+      "outlineItems": [
+        "7.15.4"
+      ],
+      "question": "Global ATM Corp's cash-replenishment crews work alone at night, opening safes at unattended machines in retail car parks. After a crew member was followed and threatened at a site last month, the safety committee has asked for a way for someone under coercion to summon help without the coercer noticing anything unusual. Which measure BEST meets that requirement?",
+      "options": {
+        "A": "A distinct code that opens the safe normally and silently raises an alarm at dispatch.",
+        "B": "A panic button in the service vehicle that the crew member presses before approaching.",
+        "C": "A check-in call to dispatch on arrival at each site, logged with the arrival time.",
+        "D": "A requirement that two crew members be present for every replenishment visit."
+      },
+      "correctAnswer": "A",
+      "explanation": "The requirement has two halves that most controls satisfy only one of: the signal must reach help, and the coerced person must appear to be complying. A duress code does both, because the safe behaves exactly as it would on a normal open while dispatch receives an alert nobody at the machine can see. Sourcing matters here and is worth stating plainly: NIST SP 800-53 Rev 5 contains no duress control and no travel-security control. The single occurrence of the word duress in the catalogue sits in the discussion of AC-2(6) Dynamic Privilege Management, about privileges under emergency conditions, and it is not a control. The nearest catalogue neighbours are PE-6 Monitoring Physical Access and IR-6 Incident Reporting, and the substantive requirement belongs to physical security and safety of life rather than to an information security control set. B is wrong phase, since coercion usually begins at the machine, not in the vehicle. C is detective when preventive is asked, and a coercer can stand beside the call. D is the right control for a different problem, reducing the chance rather than providing the signal. A duress signal has to look like compliance.",
+      "recallLine": "A lone worker under coercion must summon help without the coercer noticing. What meets that?",
+      "optionsShort": {
+        "A": "Duress code opens safe, alerts silently",
+        "B": "Panic button in the vehicle",
+        "C": "Logged arrival check-in call",
+        "D": "Two-person replenishment crews"
+      },
+      "distractorReasons": {
+        "B": {
+          "label": "wrong phase",
+          "wouldAnswer": "What helps a crew that spots a threat before leaving the vehicle?"
+        },
+        "C": {
+          "label": "detective when preventive is asked",
+          "wouldAnswer": "How does dispatch learn that a crew is overdue at a site?"
+        },
+        "D": {
+          "label": "right control, wrong problem",
+          "wouldAnswer": "What reduces the chance that a lone worker is targeted for coercion at all?"
+        }
+      },
+      "lens": "operational",
+      "cognitive": "application",
+      "discriminator": "BEST",
+      "difficulty": 3,
+      "sources": [
+        "NIST SP 800-53 Rev 5 | verified absence of any duress control; the single 'duress' occurrence is in the AC-2(6) discussion",
+        "NIST SP 800-53 Rev 5 | PE-6 Monitoring Physical Access; IR-6 Incident Reporting (nearest neighbours)"
+      ],
+      "rev": "6e5d17ccdc62"
+    }
+  ]
+}
