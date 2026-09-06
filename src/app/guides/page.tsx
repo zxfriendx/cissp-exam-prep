@@ -4,37 +4,40 @@ import { ICON_SPRITE } from "./icons";
 import "./guides.css";
 
 export const metadata: Metadata = {
-  title: "The Eight Domains — Study Materials — Secure Path Digital",
+  title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Study guide, practice examination and revision sheets covering the eight domains of the information security common body of knowledge. Written from primary sources by Secure Path Digital.",
-  robots: { index: false, follow: false },
+    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 491 practice questions with all four options explained, and one revision sheet per domain. $9.99.",
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   CHECKOUT WIRING — the ONLY edit needed to take these products live.
+   CHECKOUT WIRING
 
-   No payment vendor has been chosen yet (Gumroad / Lemon Squeezy / Payhip /
-   Stripe are all still open). Until a `url` AND a `price` are filled in below,
-   a product shows an inert "Coming soon" chip and NOTHING here can take money.
+   Live on Gumroad since 2026-09-06 as ONE product — the three books together,
+   not three SKUs. That is why the cards below have no individual buy buttons:
+   there is nothing to buy separately, and a "Coming soon" chip beside a live
+   bundle reads as broken. If the books are ever split, add entries here and
+   give each card its own button back.
 
-       study: { url: "https://<store>/l/eight-domains-study-guide", price: "$29" }
+   Gumroad is the merchant of record, so it handles EU VAT, delivery and
+   refunds. Bluehost static hosting cannot take payment, so a checkout link is
+   the whole integration.
 
-   The hosted-storefront route is deliberate: they act as merchant of record and
-   handle EU VAT, delivery and refunds. Bluehost static hosting cannot take
-   payment, so a checkout link is the whole integration.
-
-   This used to be a script that walked the DOM for [data-buy] and rewrote each
-   button after paint. As a route it is just data — the buttons render in the
-   right state server-side, with no flash of "Coming soon" on a live product.
+   Deliberately a plain link rather than Gumroad's overlay script: gumroad.js
+   restyles any element carrying .gumroad-button with its own branding, which
+   fights Vault Steel. A branded button that leaves for Gumroad is the better
+   trade. Swap it if the on-site modal turns out to matter more than the look.
    ───────────────────────────────────────────────────────────────────────────── */
-const CHECKOUT: Record<string, { url: string | null; price: string | null }> = {
-  study: { url: null, price: null },
-  test: { url: null, price: null },
-  sheets: { url: null, price: null },
-};
+const CHECKOUT = {
+  bundle: {
+    url: "https://securepath6.gumroad.com/l/pvzbycc",
+    price: "$9.99",
+  },
+} as const;
+
+const BUY = CHECKOUT.bundle;
 
 type Product = {
-  id: keyof typeof CHECKOUT & string;
+  id: string;
   icon: string;
   kicker: string;
   title: React.ReactNode;
@@ -48,51 +51,67 @@ const PRODUCTS: Product[] = [
     id: "study",
     icon: "ic-book",
     kicker: "Book One",
-    title: <>The Eight Domains<br />— Study Guide</>,
+    title: (
+      <>
+        The Eight Domains
+        <br />— Outline Companion
+      </>
+    ),
     blurb:
-      "Every leaf of the 2024 exam outline, in the order the outline lays them out. One focused entry per subtask, each with its key points and the standard they come from.",
+      "Learn which control comes first, who owns the decision, and what separates two answers that both look right — the call the exam actually scores, taught in the order ISC2 lays the outline out.",
     points: [
-      "Domain ▸ task ▸ lesson, with each domain's exam weight shown",
-      "Every leaf of the outline covered, nothing silently skipped",
-      "Key points boxed, with the source standard named",
+      "Every objective gets a lesson, so there's no gap to discover on exam day",
+      "Every claim names its standard — when two books disagree, you can see who is right",
+      "137 pages you'll actually finish, and an index for when you need it again",
     ],
-    pages: "127 PP",
+    pages: "137 PP",
   },
   {
     id: "test",
     icon: "ic-clipboard",
     kicker: "Book Two",
-    title: <>The Eight Domains<br />— Practice Examination</>,
+    title: (
+      <>
+        The Eight Domains
+        <br />— Practice Examination
+      </>
+    ),
     blurb:
-      "Scenario questions across the eight domains, with a scoring key and worked explanations at the back of the book. Every explanation says why the right answer wins and why each of the other three loses.",
+      "Practice the ambiguity, not the vocabulary. Every question puts you in a situation and asks for a decision — and the key explains why the other three options lose, which is where the learning actually happens.",
     points: [
-      "439 questions, grouped by domain",
-      "Every wrong answer refuted by name, and the case it would be right for",
-      'No "when in doubt pick A": every letter is right about a quarter of the time',
+      "All four options explained on every question, not just the right one",
+      "A case study opens each domain, so you decide in context instead of matching terms",
+      "No letter pattern to game — A, B, C and D are each right about a quarter of the time",
+      "The same questions are free in the practice app — this is them on paper, with the key behind them",
     ],
-    pages: "219 PP",
+    pages: "276 PP",
   },
   {
     id: "sheets",
     icon: "ic-sheet",
     kicker: "Book Three",
-    title: <>The Eight Domains<br />— Revision Sheets</>,
+    title: (
+      <>
+        The Eight Domains
+        <br />— Revision Sheets
+      </>
+    ),
     blurb:
-      "One page per domain. The facts that decide questions, printed, folded, and reread the night before.",
+      "The night before, you want one page per domain — not a book. Short lines you can test yourself against, so you find out what you can't recall while there's still time to fix it.",
     points: [
-      "Eight sheets, one per domain, each headed by its exam weight",
-      "Formulas and ordered models first, with every task in the domain represented",
-      "A standards-attribution strip at the foot of every sheet",
+      "Eight sheets weighted like the exam — read the heaviest domain last",
+      "Formulas and ordered models first, where you'll look for them",
+      "Doubles as the glossary, so it's the only page you carry in",
     ],
     pages: "10 PP",
   },
 ];
 
 const FACTS = [
-  { n: "292", l: "micro-lessons, one per outline leaf" },
-  { n: "439", l: "practice questions" },
-  { n: "8", l: "domains, weighted as the outline weights them" },
-  { n: "356", l: "pages across the three products" },
+  { n: "292", l: "objectives taught — the whole outline, no gaps to find later" },
+  { n: "491", l: "questions with all four options explained" },
+  { n: "2024", l: "outline, current — not a reprint of an older exam" },
+  { n: "423", l: "pages you'll finish, across all three" },
 ];
 
 const METHOD = [
@@ -104,12 +123,12 @@ const METHOD = [
   {
     icon: "ic-source",
     h: "Straight from the standards",
-    p: "Written against NIST, ISO/IEC, FIPS, OWASP and the RFCs themselves, not a paraphrase of somebody else's paraphrase. When a question turns on what a standard actually says, you'll have read what it actually says, and every key point names the document it came from so you can go check.",
+    p: "Written against NIST, ISO/IEC, FIPS, OWASP and the RFCs themselves, not a paraphrase of somebody else's paraphrase. Every one of the 292 lessons names the document its key points came from, so when two sources disagree you can go and check which one is right.",
   },
   {
     icon: "ic-grid",
     h: "No domain quietly skipped",
-    p: "Every task and subtask in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test centre.",
+    p: "Every objective in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test center.",
   },
   {
     icon: "ic-shield",
@@ -139,14 +158,25 @@ export default function GuidesPage() {
         <div className="wrap">
           <p className="vault-label">Study Materials</p>
           <h1>
-            The Eight <span className="grad-copper">Domains</span>
+            You know the technology.
+            <br />
+            The exam tests <span className="grad-copper">your judgment</span>.
           </h1>
           <p className="lede">
-            Three books that take you through all eight domains in the order the 2024 exam
-            outline lays them out: learn it, test yourself on it, then cram the night before.
-            Written from the standards themselves, so what you study is what the exam is
-            actually built on.
+            CISSP puts four defensible answers in front of you and asks which one a security
+            leader would choose. Engineers lose marks picking the technically correct answer
+            instead of the management one. These three books teach that call — with a lesson
+            for every objective in the 2024 outline, so nothing on exam day is the first time
+            you&apos;ve seen it.
           </p>
+          <div className="herocta">
+            <a className="btn btn-buy" href={BUY.url} rel="noopener">
+              Get all three — {BUY.price}
+            </a>
+            <Link className="btn btn-ghost" href="/">
+              Try the questions free
+            </Link>
+          </div>
           <div className="facts">
             {FACTS.map((f) => (
               <div key={f.n + f.l}>
@@ -162,45 +192,47 @@ export default function GuidesPage() {
 
       <section className="block">
         <div className="wrap">
-          <p className="vault-label">The Products</p>
+          <p className="vault-label">What You Get</p>
           <h2>Three books, one spine</h2>
           <p className="sec-intro">
-            Each is built from the same 2024 outline, so a weak area in the practice examination
-            points at a numbered section in the study guide and a line on the revision sheet.
+            One download, all three. Each is built from the same 2024 outline, so a weak area
+            in the practice examination points at a numbered section in the companion and a
+            line on the revision sheet.
           </p>
 
           <div className="products">
-            {PRODUCTS.map((product) => {
-              const buy = CHECKOUT[product.id];
-              const live = Boolean(buy?.url && buy?.price);
-              return (
-                <article className="card" key={product.id}>
-                  <svg className="icon" aria-hidden="true" focusable="false">
-                    <use href={`#${product.icon}`} />
-                  </svg>
-                  <p className="kicker">{product.kicker}</p>
-                  <h3>{product.title}</h3>
-                  <p className="blurb">{product.blurb}</p>
-                  <ul>
-                    {product.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className="spec">
-                    <span className="pages">{product.pages}</span>
-                    {live ? (
-                      <a className="btn btn-buy" href={buy.url!} rel="noopener">
-                        Buy · {buy.price}
-                      </a>
-                    ) : (
-                      <a className="btn btn-soon" href="#" aria-disabled="true">
-                        Coming soon
-                      </a>
-                    )}
-                  </div>
-                </article>
-              );
-            })}
+            {PRODUCTS.map((product) => (
+              <article className="card" key={product.id}>
+                <svg className="icon" aria-hidden="true" focusable="false">
+                  <use href={`#${product.icon}`} />
+                </svg>
+                <p className="kicker">{product.kicker}</p>
+                <h3>{product.title}</h3>
+                <p className="blurb">{product.blurb}</p>
+                <ul>
+                  {product.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="spec">
+                  <span className="pages">{product.pages}</span>
+                  <span className="included">Included</span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="buyband">
+            <div>
+              <h3>All three, {BUY.price}</h3>
+              <p>
+                423 pages as PDFs you keep — no account, no subscription, no app to crash.
+                Yours to print and mark up.
+              </p>
+            </div>
+            <a className="btn btn-buy btn-lg" href={BUY.url} rel="noopener">
+              Buy on Gumroad — {BUY.price}
+            </a>
           </div>
         </div>
       </section>
@@ -234,14 +266,16 @@ export default function GuidesPage() {
         <div className="wrap">
           <div className="free">
             <div>
-              <h3>Start free</h3>
+              <h3>The questions are already free</h3>
               <p>
-                The practice application is free and needs no account. It carries the same 439
-                questions, split by domain, with a study mode alongside the quiz.
+                All 491 of them, split by domain, with a study mode alongside the quiz — no
+                account and no card. What {BUY.price} buys is those questions on paper with the
+                key at the back, plus the two books that are not in the app at all: the Outline
+                Companion and the Revision Sheets.
               </p>
             </div>
             <Link className="btn btn-ghost" href="/">
-              Open the practice app →
+              Start a free quiz →
             </Link>
           </div>
         </div>

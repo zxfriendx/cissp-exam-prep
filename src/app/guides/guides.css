@@ -29,7 +29,12 @@
   font-size:clamp(2rem,5vw,3.8rem);line-height:1.12;margin-bottom:1.6rem;
 }
 .guides-page .hero p.lede{color:var(--steel);max-width:46rem;font-size:1.12rem}
-.guides-page .hero .facts{display:flex;flex-wrap:wrap;gap:2.6rem;margin-top:2.8rem}
+/* Four columns that stay four — the labels are long enough that a flex row
+   wraps 3 + 1 and strands the last figure. */
+.guides-page .hero .facts{display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem 2.2rem;margin-top:2.8rem;max-width:60rem}
+@media(max-width:860px){.guides-page .hero .facts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.guides-page .hero .facts{grid-template-columns:1fr}}
 .guides-page .hero .facts div{min-width:0}
 .guides-page .hero .facts .n{font-family:var(--font-display);font-size:1.7rem;line-height:1.1}
 .guides-page .hero .facts .l{font-size:.82rem;color:rgb(var(--vault-muted));letter-spacing:.06em;margin-top:.35rem}
@@ -81,6 +86,28 @@
   padding:.7rem 1rem;
 }
 .guides-page .btn-ghost{background:transparent;color:var(--ink);border-color:var(--steel-deep)}
+/* Hero call to action. .btn-buy is the copper gradient; the ghost beside it is
+   the free quiz, which is the zero-friction way in. */
+.guides-page .hero .herocta{display:flex;gap:.7rem;flex-wrap:wrap;margin:2rem 0 .5rem}
+.guides-page .btn-lg{font-size:1rem;padding:.95rem 1.7rem}
+/* The bundle is one product, so the cards state what is included rather than
+   carrying three buy buttons that would all go to the same place. */
+.guides-page .card .included{
+  font-family:var(--font-display);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--copper);border:1px solid var(--line);
+  border-radius:99px;padding:.4rem .8rem;
+}
+/* The one place on the page that asks for the sale. */
+.guides-page .buyband{
+  margin-top:1.6rem;border:1px solid rgba(201,123,63,.34);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(201,123,63,.10),rgba(201,123,63,.02));
+  padding:2.2rem 2.6rem;display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.guides-page .buyband h3{
+  font-family:var(--font-display);font-weight:400;font-size:1.35rem;margin-bottom:.5rem;
+}
+.guides-page .buyband p{color:rgb(var(--vault-muted));font-size:.95rem;max-width:40rem}
 .guides-page .btn-ghost:hover{border-color:var(--copper);color:var(--copper-hi)}
 .guides-page .method{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
 @media(max-width:860px){
