@@ -9079,7 +9079,7 @@
           "outlineItems": [
             "3.4"
           ],
-          "question": "Which placement of PIN encryption ensures an attacker with full control of the Windows core never sees a key or a cleartext PIN?",
+          "question": "Which placement of PIN encryption BEST ensures an attacker with full control of the Windows core never sees a key or a cleartext PIN?",
           "options": {
             "A": "Store the keys inside a TPM on the motherboard and let the operating system perform the PIN encryption.",
             "B": "Encrypt PINs with a software library on the core, keeping the keys obfuscated inside the application binary.",
@@ -9104,7 +9104,7 @@
           "outlineItems": [
             "3.2"
           ],
-          "question": "A low-integrity unauthorized device wrote commands to the high-integrity dispenser. Which formal model describes the rule that was violated?",
+          "question": "A low-integrity unauthorized device wrote commands to the high-integrity dispenser. Which formal model MOST directly describes the rule that was violated?",
           "options": {
             "A": "Bell-LaPadula, whose simple security property forbids reading data at a higher classification.",
             "B": "Biba, whose star integrity axiom forbids a subject writing up to higher-integrity objects.",
@@ -9379,7 +9379,7 @@
           "outlineItems": [
             "3.2"
           ],
-          "question": "A partner program must confine information flow so material moves only upward or laterally within compartments, each user bounded by labels. Which approach fits?",
+          "question": "A partner program must confine information flow so material moves only upward or laterally within compartments, each user bounded by labels. Which approach is the MOST natural fit?",
           "options": {
             "A": "Role-based access control, mapping users to permissions through defined job functions.",
             "B": "Discretionary access control, letting document owners share their files as they judge best.",
@@ -9554,7 +9554,7 @@
           "outlineItems": [
             "3.4"
           ],
-          "question": "The stolen module erased its key material before extraction completed. Which capability acted, and which risk did it reduce?",
+          "question": "The stolen module erased its key material before extraction completed. Which capability acted, and which risk did it MOST directly reduce?",
           "options": {
             "A": "Zeroization on tamper, denying the thieves any use of the bank's cryptographic keys.",
             "B": "Full-disk encryption, keeping the stored transaction records unreadable after the theft.",
@@ -9654,7 +9654,7 @@
           "outlineItems": [
             "3.4"
           ],
-          "question": "Malware gained user-mode execution but the processor refused its attempts to modify kernel memory. Which mechanism stopped it?",
+          "question": "Malware gained user-mode execution but the processor refused its attempts to modify kernel memory. Which mechanism was MOST directly responsible for stopping it?",
           "options": {
             "A": "Address space layout randomization concealing the kernel's memory layout from the process.",
             "B": "Protection rings separating privileged kernel mode from unprivileged user mode.",
@@ -10035,7 +10035,7 @@
           "crossDomain": [
             "domain_7"
           ],
-          "question": "Holiday photos emailed to a personal account carried fragments of a key database in their pixel data. Which technique was used, and which gateway countermeasure disrupts it?",
+          "question": "Holiday photos emailed to a personal account carried fragments of a key database in their pixel data. Which technique was used, and which gateway countermeasure would MOST likely disrupt it?",
           "options": {
             "A": "Encryption; quarantine outbound messages whose attachments show abnormally high entropy.",
             "B": "A covert timing channel; normalize the transmission intervals of outbound messages.",
@@ -12220,7 +12220,7 @@
           "outlineItems": [
             "4.1.1"
           ],
-          "question": "Why did controls operating higher in the stack have no visibility of the downgrade at all?",
+          "question": "Which statement BEST explains why controls higher in the stack had no visibility of the downgrade?",
           "options": {
             "A": "The radio negotiation happens at the data link and network layers of the cellular stack, below anything the center's application-layer controls can observe.",
             "B": "The downgrade messages were encrypted with the 2G A5/1 stream cipher, which the center's inspection devices could not decrypt quickly enough to raise an alarm.",
@@ -12295,7 +12295,7 @@
           "outlineItems": [
             "4.1.14"
           ],
-          "question": "What could the attackers have learned from the subscriber identity captures alone?",
+          "question": "What is the MOST accurate account of what the attackers learned from the subscriber identity captures alone?",
           "options": {
             "A": "The cardholder PIN blocks queued up for onward transmission by each of the affected festival ATMs.",
             "B": "The contents of calls and data sessions that passed through the rogue base station while it operated.",
@@ -12345,7 +12345,7 @@
           "outlineItems": [
             "4.1.1"
           ],
-          "question": "Two support laptops on one switch exchange transfers that never appear in the site router's flow logs, while their sessions to the center always do. Why?",
+          "question": "Two support laptops on one switch exchange transfers that never appear in the site router's flow logs, while their sessions to the center always do. Which statement BEST explains the difference?",
           "options": {
             "A": "The laptops negotiate a direct transport-layer session with each other that bypasses the lower network layers entirely.",
             "B": "The switch routes the local traffic itself using private internal IP addresses that the site's flow-logging router is configured to silently ignore.",
@@ -12470,7 +12470,7 @@
           "outlineItems": [
             "4.1.1"
           ],
-          "question": "Transaction messages must arrive intact and in order; status telemetry can lose a sample but must be fresh. Which transport design fits?",
+          "question": "Transaction messages must arrive intact and in order; status telemetry can lose a sample but must be fresh. Which transport-layer design is MOST appropriate?",
           "options": {
             "A": "UDP for both flows, because its lower overhead maximises battery life and bandwidth on cellular links.",
             "B": "TCP for the transaction messages and UDP for the telemetry, matching each flow's delivery requirements.",
@@ -12599,7 +12599,7 @@
           "outlineItems": [
             "4.1.1"
           ],
-          "question": "A flood of large responses arrives from thousands of legitimate servers the authority never queried. Which property of UDP makes that possible?",
+          "question": "A flood of large responses arrives from thousands of legitimate servers the authority never queried. Which property of UDP MOST directly makes that possible?",
           "options": {
             "A": "It performs no handshake, so a request carrying a forged source address is answered as though the victim had sent it.",
             "B": "It provides no delivery guarantee, so attack packets lost in transit are simply gone rather than retransmitted.",
@@ -12649,7 +12649,7 @@
           "outlineItems": [
             "4.1.13"
           ],
-          "question": "How should the SOC classify the parked laptop, and what is a proportionate first response?",
+          "question": "Which assessment of the parked laptop and a proportionate first response is BEST?",
           "options": {
             "A": "An active intrusion is underway; disable the branch wireless network until law enforcement arrives on site.",
             "B": "Probable wireless reconnaissance (war driving); review how far the branch SSIDs propagate and confirm the strength of the authentication they require.",
@@ -12699,7 +12699,7 @@
           "outlineItems": [
             "4.1.2"
           ],
-          "question": "After a failed gateway was replaced with a spare using the same address, some machines could reach it only after minutes. Which mechanism explains the delay?",
+          "question": "After a failed gateway was replaced with a spare using the same address, some machines could reach it only after minutes. Which mechanism BEST explains the delay?",
           "options": {
             "A": "The kiosks' DNS caches kept resolving the gateway's hostname to the address of the old device.",
             "B": "The kiosks' ARP caches still mapped the gateway's IP address to the old MAC address until those entries expired.",
@@ -12849,7 +12849,7 @@
           "outlineItems": [
             "4.1.10"
           ],
-          "question": "A web server compromised through a plugin probed for a week without reaching the database. Which design property accounts for the containment?",
+          "question": "A web server compromised through a plugin probed for a week without reaching the database. Which design property MOST directly accounts for the containment?",
           "options": {
             "A": "The inner screen permitted the web server only one database port inward, so every other probe from it was dropped.",
             "B": "Address translation at the perimeter hid the internal numbering plan, leaving the attacker unable to identify any internal targets worth probing.",
@@ -12949,7 +12949,7 @@
           "outlineItems": [
             "4.1.2"
           ],
-          "question": "Fragmented packets whose offsets overlap so they can never reassemble have crashed a legacy controller twice. Which attack does this indicate?",
+          "question": "Fragmented packets whose offsets overlap so they can never reassemble have crashed a legacy controller twice. Which attack does the evidence MOST specifically indicate?",
           "options": {
             "A": "Ping of death: fragments that reassemble into a datagram beyond the maximum legal size.",
             "B": "Smurf: amplified echo replies converging on the controller from a broadcast network.",
@@ -12999,7 +12999,7 @@
           "outlineItems": [
             "4.1.6"
           ],
-          "question": "The partner network treats sixteen hops as unreachable and converges slowly. Why does that matter for the merged design?",
+          "question": "The partner network treats sixteen hops as unreachable and converges slowly. Which limitation is MOST relevant to rejecting it for the merged design?",
           "options": {
             "A": "RIP carries its routing updates in cleartext, so route advertisements can be captured and read off the wire by listeners.",
             "B": "RIP treats 16 hops as unreachable and converges slowly, so both the 18-hop path and the recovery target fail.",
@@ -13049,7 +13049,7 @@
           "outlineItems": [
             "4.2"
           ],
-          "question": "A branch rule set permits all inbound traffic above port 1023 so replies can return. Which firewall capability admits only genuine return traffic?",
+          "question": "A branch rule set permits all inbound traffic above port 1023 so replies can return. Which firewall capability MOST directly admits only genuine return traffic?",
           "options": {
             "A": "An application-layer proxy gateway terminating each session and re-originating it toward the destination on the client's behalf.",
             "B": "Restricting the inbound high-port rules to source addresses inside the ISP's own network space.",
@@ -13174,7 +13174,7 @@
           "outlineItems": [
             "4.2"
           ],
-          "question": "The bank must block uploads to personal cloud storage and strip risky methods while allowing ordinary browsing. Which control suits that detail?",
+          "question": "The bank must block uploads to personal cloud storage and strip risky methods while allowing ordinary browsing. Which control is BEST suited to decisions at that level of detail?",
           "options": {
             "A": "A stateful inspection firewall filtering each connection by source address, destination address and destination port.",
             "B": "An access control list applied directly to the router at each branch office's internet uplink.",
@@ -13249,7 +13249,7 @@
           "outlineItems": [
             "4.1.6"
           ],
-          "question": "After a circuit failed, two routers re-advertised the dead network to each other for minutes, the metric climbing. Which behavior explains it?",
+          "question": "After a circuit failed, two routers re-advertised the dead network to each other for minutes, the metric climbing. Which underlying behavior BEST explains the episode?",
           "options": {
             "A": "Each router floods a complete topology map after every change, so a failure generates duplicated route advertisements.",
             "B": "The two routers' update timers fell out of synchronization, so each advertised stale route information on a different periodic refresh cycle.",
@@ -13299,7 +13299,7 @@
           "outlineItems": [
             "4.1.2"
           ],
-          "question": "A single crafted packet whose fragments reassemble beyond the maximum legal size crashes a legacy controller. Which attack class is this?",
+          "question": "A single crafted packet whose fragments reassemble beyond the maximum legal size crashes a legacy controller. Which attack class does this MOST precisely demonstrate?",
           "options": {
             "A": "Teardrop: the fragments' offsets deliberately overlap, and the reassembly logic corrupts adjacent memory when it tries to combine them.",
             "B": "Smurf: amplified echo traffic from many distant sources exhausts the controller's inbound network bandwidth.",
@@ -13724,7 +13724,7 @@
           "outlineItems": [
             "4.3.2"
           ],
-          "question": "Ransomware at a subsidiary is traced to a remote desktop port opened for a vendor and forgotten. Which pairing of lesson and remediation fits?",
+          "question": "Ransomware at a subsidiary is traced to a remote desktop port opened for a vendor and forgotten. Which pairing of lesson and remediation is MOST appropriate?",
           "options": {
             "A": "The password policy failed; require substantially longer and more complex vendor-account passwords, rotated regularly, while keeping the existing access path unchanged.",
             "B": "Vendor management failed; terminate the vendor's contract and permanently disable the account that was brute-forced.",
@@ -13799,7 +13799,7 @@
           "outlineItems": [
             "4.1.2"
           ],
-          "question": "Echo replies arrive from hundreds of hosts the group never contacted, each having received requests appearing to come from it. Which technique explains this?",
+          "question": "Echo replies arrive from hundreds of hosts the group never contacted, each having received requests appearing to come from it. Which technique BEST explains this traffic pattern?",
           "options": {
             "A": "A SYN flood launched against the bank's internet gateway with the university's address space forged as the source of every packet.",
             "B": "A teardrop attack sending overlapping packet fragments through many separate hosts inside the university network.",
@@ -15911,7 +15911,7 @@
           "outlineItems": [
             "5.2.7"
           ],
-          "question": "Now that one login unlocks everything, what should change about protecting the portal credential itself?",
+          "question": "Now that one login unlocks everything, which recommendation about protecting the portal credential is MOST appropriate?",
           "options": {
             "A": "Rotate the retired downstream application passwords on a shorter schedule",
             "B": "Keep separate standalone passwords for the three most sensitive applications",
@@ -16361,7 +16361,7 @@
           "outlineItems": [
             "5.2.2"
           ],
-          "question": "What security risk does the twenty-four-hour lockout policy itself introduce?",
+          "question": "Which statement of the risk the lockout policy itself introduces is MOST accurate?",
           "options": {
             "A": "Attackers may adapt by spraying passwords at a rate below the lockout threshold",
             "B": "Anyone holding a list of valid usernames can deliberately lock out the workforce",
@@ -16817,7 +16817,7 @@
           "outlineItems": [
             "5.3.2"
           ],
-          "question": "Which new operational risk does moving to a cloud identity provider introduce?",
+          "question": "Which account of the new operational risk this architecture introduces is MOST accurate?",
           "options": {
             "A": "An outage at the provider can block sign-in to every connected application at once",
             "B": "Each connected application must now hold and protect its own copy of user passwords",
@@ -18602,7 +18602,7 @@
           "outlineItems": [
             "6.2.6"
           ],
-          "question": "A consultant proposes adding scenarios written from a fraudster's point of view. Which practice does that describe?",
+          "question": "A consultant proposes adding scenarios written from a fraudster's point of view. Which testing practice BEST describes the proposal?",
           "options": {
             "A": "Use-case testing, extending coverage of the documented customer journeys.",
             "B": "Parallel testing, running the new scenarios beside the old suite for comparison.",
@@ -18752,7 +18752,7 @@
           "outlineItems": [
             "6.2.2"
           ],
-          "question": "A flaw existed at the time of a clean test, on a host in scope, in a function the testers exercised. Which term characterizes that result?",
+          "question": "A flaw existed at the time of a clean test, on a host in scope, in a function the testers exercised. Which term BEST characterizes that test result?",
           "options": {
             "A": "A false negative: the assessment examined the flaw's location yet reported it absent.",
             "B": "A false positive: the assessment reported a weakness that turned out to be real.",
@@ -18877,7 +18877,7 @@
           "outlineItems": [
             "6.2.7"
           ],
-          "question": "Six input parameters interact in ways single-parameter tests missed, and exhaustive testing would take years. Which technique targets that?",
+          "question": "Six input parameters interact in ways single-parameter tests missed, and exhaustive testing would take years. Which technique targets that interaction risk at the MOST practical cost?",
           "options": {
             "A": "Full exhaustive testing of every possible combination of the six parameters.",
             "B": "Pairwise combinatorial testing covering each two-parameter value combination.",
@@ -18952,7 +18952,7 @@
           "outlineItems": [
             "6.2.2"
           ],
-          "question": "In an adversarial exercise, one group triages alerts and contains hosts without knowing which activity is the test. Which term describes it?",
+          "question": "In an adversarial exercise, one group triages alerts and contains hosts without knowing which activity is the test. Which term BEST describes that group's role?",
           "options": {
             "A": "The red team, since they engage the attackers hands-on throughout the exercise.",
             "B": "The white team, which referees the exercise and adjudicates scoring disputes.",
@@ -19085,7 +19085,7 @@
           "outlineItems": [
             "6.2.2"
           ],
-          "question": "The CISO wants to test whether the operations center can detect a realistic multi-week attack across several vectors, defenders unaware. Which engagement type fits?",
+          "question": "The CISO wants to test whether the operations center can detect a realistic multi-week attack across several vectors, defenders unaware. Which engagement type BEST matches that goal?",
           "options": {
             "A": "A vulnerability assessment enumerating known weaknesses across the estate.",
             "B": "A tabletop exercise walking the SOC through the attack scenario step by step.",
@@ -19110,7 +19110,7 @@
           "outlineItems": [
             "6.2.5"
           ],
-          "question": "A tester has valid sample files and little knowledge of the format, and wants to start today. Which fuzzing approach fits?",
+          "question": "A tester has valid sample files and little knowledge of the format, and wants to start today. Which fuzzing approach BEST fits those constraints?",
           "options": {
             "A": "Generational fuzzing, building inputs from scratch out of a formal format specification.",
             "B": "Combinatorial testing, covering each pairwise combination of the documented parameters.",
@@ -19751,7 +19751,7 @@
           "outlineItems": [
             "6.3.3"
           ],
-          "question": "Patches within target hold at 96 percent while unremediated critical findings older than 30 days rise. Which pairing describes the two?",
+          "question": "Patches within target hold at 96 percent while unremediated critical findings older than 30 days rise. Which pairing BEST matches the two figures?",
           "options": {
             "A": "Both are KPIs, since each one is measured against an internally defined target.",
             "B": "The first is a KRI of patching risk; the second is a KPI of scanner output.",
@@ -21998,7 +21998,7 @@
           "outlineItems": [
             "7.10.2"
           ],
-          "question": "A service carries a thirty-minute objective, a near-zero data-loss tolerance and two million dollars an hour offline. Which recovery strategy fits?",
+          "question": "A service carries a thirty-minute objective, a near-zero data-loss tolerance and two million dollars an hour offline. Which recovery strategy is MOST appropriate despite its cost?",
           "options": {
             "A": "A warm site with servers installed, restored from the previous night's backups at activation.",
             "B": "A cold site with power, cooling, and connectivity, with equipment shipped in after declaration.",
@@ -22101,7 +22101,7 @@
           "crossDomain": [
             "domain_2"
           ],
-          "question": "Each returned machine holds a self-encrypting drive with cardholder data and must go back working. Which sanitization approach fits?",
+          "question": "Each returned machine holds a self-encrypting drive with cardholder data and must go back working. Which sanitization approach is MOST appropriate?",
           "options": {
             "A": "Degauss each drive to magnetically scramble the recorded data before the machines ship.",
             "B": "Shred the drives and fit replacement blanks into every machine before returning them.",
@@ -22151,7 +22151,7 @@
           "outlineItems": [
             "7.10.2"
           ],
-          "question": "A settlement system carries a 48-hour objective and an eight-hour data-loss tolerance, with duplicate live infrastructure rejected. Which strategy balances these?",
+          "question": "A settlement system carries a 48-hour objective and an eight-hour data-loss tolerance, with duplicate live infrastructure rejected. Which recovery strategy BEST balances these constraints?",
           "options": {
             "A": "A warm site with hardware installed, activated by restoring recent backups and redirecting links.",
             "B": "A hot site mirroring settlement transactions to a second facility in near real time.",
@@ -22451,7 +22451,7 @@
           "outlineItems": [
             "7.7.5"
           ],
-          "question": "The team must learn what the executable does without endangering other systems or alerting the attacker. Which approach fits?",
+          "question": "The team must learn what the executable does without endangering other systems or alerting the attacker. Which approach BEST meets these requirements?",
           "options": {
             "A": "Scan the executable with several locally installed anti-malware engines and record their verdicts.",
             "B": "Upload the file to a public multi-engine analysis portal and review the community results.",
@@ -22501,7 +22501,7 @@
           "outlineItems": [
             "7.2.8"
           ],
-          "question": "A valid technician account queried thousands of customer records at 3 a.m. from an unusual workstation, raising no signature alert. Which capability would improve detection?",
+          "question": "A valid technician account queried thousands of customer records at 3 a.m. from an unusual workstation, raising no signature alert. Which capability would MOST improve detection of this misuse?",
           "options": {
             "A": "Behavior analytics that baseline each account's normal activity and flag deviations from it.",
             "B": "An intrusion detection sensor kept current with the newest published attack signatures from the vendor.",
@@ -22601,7 +22601,7 @@
           "outlineItems": [
             "7.2.7"
           ],
-          "question": "The fraud team wants the earliest company-specific warning when its cards surface on criminal marketplaces. Which capability provides it?",
+          "question": "The fraud team wants the earliest company-specific warning when its cards surface on criminal marketplaces. Which capability BEST provides this?",
           "options": {
             "A": "A dark web monitoring service watching criminal markets for the bank's card ranges and branding.",
             "B": "A subscription feed of malware hashes and hostile IP addresses seen across the financial sector.",
