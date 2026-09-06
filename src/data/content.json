@@ -30,18 +30,20 @@
     "v2": {
       "schema": 1,
       "edition": "2026-09-06",
-      "carriedFromV1": 439,
-      "newItems": 52,
+      "carriedFromV1": 379,
+      "newItems": 112,
       "itemCount": 491,
-      "questionCount": 52,
-      "stimulusCount": 9,
+      "questionCount": 112,
+      "stimulusCount": 24,
       "byDomain": {
-        "domain_1": 20,
-        "domain_3": 9,
-        "domain_5": 5,
-        "domain_6": 4,
-        "domain_7": 10,
-        "domain_8": 4
+        "domain_1": 70,
+        "domain_2": 60,
+        "domain_3": 59,
+        "domain_4": 70,
+        "domain_5": 55,
+        "domain_6": 54,
+        "domain_7": 59,
+        "domain_8": 64
       },
       "byForm": {
         "drill": 491
@@ -52,7 +54,7 @@
         "C": 122,
         "D": 123
       },
-      "itemsInTestlets": 37,
+      "itemsInTestlets": 97,
       "annotationCoverage": {
         "recallLine": 0.106,
         "optionsShort": 0.106,
@@ -725,7 +727,7 @@
             "D": "As the annualized rate of occurrence, converted into monetary terms."
           },
           "correctAnswer": "B",
-          "explanation": "In the quantitative model, each term has one job, and a per-event dollar cost is the single loss expectancy (B): SLE is what one occurrence costs, so the observed $2.5 million loss is the model's SLE for this scenario. A skips a step: the annualized loss expectancy is derived, ALE = SLE \u00d7 ARO, so with one event expected every five years (ARO 0.2) the ALE is $500,000 per year. Presenting $2.5 million as ALE would overstate the annual exposure fivefold and distort every control-spend comparison built on it. C has the wrong units: the exposure factor is a percentage of asset value lost per event, an input used to compute SLE (asset value \u00d7 EF), not a dollar amount. D is a frequency: ARO here is 0.2 events per year, and it carries no monetary dimension to convert. Keep the units straight: EF is a percentage, SLE is dollars per event, ARO is events per year, and ALE is dollars per year. The board's spending decisions are only as sound as that arithmetic.",
+          "explanation": "In the quantitative model, each term has one job, and a per-event dollar cost is the single loss expectancy (B): SLE is what one occurrence costs, so the observed $2.5 million loss is the model's SLE for this scenario. A skips a step: the annualized loss expectancy is derived, ALE = SLE × ARO, so with one event expected every five years (ARO 0.2) the ALE is $500,000 per year. Presenting $2.5 million as ALE would overstate the annual exposure fivefold and distort every control-spend comparison built on it. C has the wrong units: the exposure factor is a percentage of asset value lost per event, an input used to compute SLE (asset value × EF), not a dollar amount. D is a frequency: ARO here is 0.2 events per year, and it carries no monetary dimension to convert. Keep the units straight: EF is a percentage, SLE is dollars per event, ARO is events per year, and ALE is dollars per year. The board's spending decisions are only as sound as that arithmetic.",
           "rev": "2f1b850e756a"
         },
         {
@@ -839,7 +841,7 @@
             "D": "Authenticity, because cloned cards would later impersonate legitimate cardholders."
           },
           "correctAnswer": "A",
-          "explanation": "Classify the harm by what happened to the data at the moment of attack: card details flowed, unaltered and uninterrupted, to people with no authorization to see them. Unauthorized disclosure is a confidentiality loss (A), and it stands regardless of what the criminals did with the data afterwards. B describes a different attack: the skimmer copied transactions passively, and the report notes records were processed correctly \u2014 had the malware modified amounts or destinations, integrity would be the answer. C fails on the facts twice over: the ATMs kept serving customers throughout, and the attack depended on that continuity, since every completed withdrawal fed the skimmer more track data. D names a real downstream consequence, cloned cards defeating authentication, but that is the fraud the disclosure enables later, not the property lost at capture; the exam-relevant discipline is tracing impact to the directly affected property. Date the loss at the moment of compromise: silent copying is confidentiality, tampering is integrity, denial is availability, and downstream fraud is a consequence, not the classification.",
+          "explanation": "Classify the harm by what happened to the data at the moment of attack: card details flowed, unaltered and uninterrupted, to people with no authorization to see them. Unauthorized disclosure is a confidentiality loss (A), and it stands regardless of what the criminals did with the data afterwards. B describes a different attack: the skimmer copied transactions passively, and the report notes records were processed correctly — had the malware modified amounts or destinations, integrity would be the answer. C fails on the facts twice over: the ATMs kept serving customers throughout, and the attack depended on that continuity, since every completed withdrawal fed the skimmer more track data. D names a real downstream consequence, cloned cards defeating authentication, but that is the fraud the disclosure enables later, not the property lost at capture; the exam-relevant discipline is tracing impact to the directly affected property. Date the loss at the moment of compromise: silent copying is confidentiality, tampering is integrity, denial is availability, and downstream fraud is a consequence, not the classification.",
           "rev": "0d2a6695c14f"
         },
         {
@@ -1239,9 +1241,9 @@
           "world": "meridian",
           "caseStudyId": "domain_1",
           "profile": {
-            "organization": "Meridian Financial Services \u00b7 acquiring Ridgeline Savings, 40 branches",
-            "regime": "GLBA \u00b7 state breach notification \u00b7 examination nine months after close",
-            "environment": "Two core banking platforms \u00b7 Ridgeline analytics processor in Bangalore",
+            "organization": "Meridian Financial Services · acquiring Ridgeline Savings, 40 branches",
+            "regime": "GLBA · state breach notification · examination nine months after close",
+            "environment": "Two core banking platforms · Ridgeline analytics processor in Bangalore",
             "state": "Six weeks to signing, no security due diligence performed"
           },
           "outlineItems": [
@@ -1264,9 +1266,9 @@
           "world": "meridian",
           "caseStudyId": "domain_1",
           "profile": {
-            "organization": "Meridian Financial Services \u00b7 2,400 staff",
-            "regime": "GLBA \u00b7 PCI DSS \u00b7 state banking examination",
-            "environment": "Policy approved 2019 \u00b7 four conflicting standards \u00b7 procedures on a wiki",
+            "organization": "Meridian Financial Services · 2,400 staff",
+            "regime": "GLBA · PCI DSS · state banking examination",
+            "environment": "Policy approved 2019 · four conflicting standards · procedures on a wiki",
             "state": "300 staff changing roles during a branch-region merger"
           },
           "outlineItems": [
@@ -4824,9 +4826,9 @@
           "world": "nexus",
           "caseStudyId": "domain_3",
           "profile": {
-            "organization": "Nexus Bank \u00b7 SlimLine subway ATM fleet",
-            "regime": "PCI DSS \u00b7 state banking examination",
-            "environment": "Browser console \u00b7 shared container cluster \u00b7 cloud functions \u00b7 one hypervisor",
+            "organization": "Nexus Bank · SlimLine subway ATM fleet",
+            "regime": "PCI DSS · state banking examination",
+            "environment": "Browser console · shared container cluster · cloud functions · one hypervisor",
             "state": "Ten weeks to migrate, four tiers to sign off separately"
           },
           "outlineItems": [
@@ -4851,9 +4853,9 @@
           "world": "nexus",
           "caseStudyId": "domain_3",
           "profile": {
-            "organization": "Nexus Bank \u00b7 SlimLine II replacement programme",
-            "regime": "PCI DSS \u00b7 state banking examination",
-            "environment": "900 SlimLine units in service \u00b7 new dispenser interface \u00b7 existing transaction switch",
+            "organization": "Nexus Bank · SlimLine II replacement programme",
+            "regime": "PCI DSS · state banking examination",
+            "environment": "900 SlimLine units in service · new dispenser interface · existing transaction switch",
             "state": "Architecture approved, control set not yet chosen"
           },
           "outlineItems": [
@@ -5490,7 +5492,7 @@
             "D": "An injection attack, because the rogue station inserted itself into the carrier's trusted infrastructure."
           },
           "correctAnswer": "C",
-          "explanation": "Classification should follow the mechanism that caused the loss: an adversary interposed between two communicating parties, relaying their traffic while reading it, is the definition of an on-path/MITM attack, and the stem's details (full relay, silent recording, uninterrupted service) match it exactly, so C. (A) fixes on the forced network change but draws the wrong conclusion: availability was preserved throughout (deliberately, to keep victims transacting), so denial of service misstates the impact; it would fit if the rogue tower had attached the ATMs and then black-holed them. (B) names a real follow-on risk of holding captured transactions, but nothing was resubmitted during the event \u2014 replay is what the regulator would be told if duplicate withdrawals had been executed. (D) stretches 'injection', which denotes inserting crafted data into an application or protocol stream, not positioning a device in a path. A MITM's hallmark is service that keeps working while confidentiality quietly fails.",
+          "explanation": "Classification should follow the mechanism that caused the loss: an adversary interposed between two communicating parties, relaying their traffic while reading it, is the definition of an on-path/MITM attack, and the stem's details (full relay, silent recording, uninterrupted service) match it exactly, so C. (A) fixes on the forced network change but draws the wrong conclusion: availability was preserved throughout (deliberately, to keep victims transacting), so denial of service misstates the impact; it would fit if the rogue tower had attached the ATMs and then black-holed them. (B) names a real follow-on risk of holding captured transactions, but nothing was resubmitted during the event — replay is what the regulator would be told if duplicate withdrawals had been executed. (D) stretches 'injection', which denotes inserting crafted data into an application or protocol stream, not positioning a device in a path. A MITM's hallmark is service that keeps working while confidentiality quietly fails.",
           "rev": "087a8380d0e7"
         },
         {
@@ -5582,7 +5584,7 @@
             "D": "UDP for the transactions and TCP for the telemetry, keeping time-critical payments off the slower protocol."
           },
           "correctAnswer": "B",
-          "explanation": "Transport selection is requirements matching. Transactions need what TCP's connection, sequencing, acknowledgment and retransmission machinery provides: guaranteed, ordered delivery. Telemetry inverts the trade: a retransmitted stale sample is worth less than the next fresh one, so connectionless UDP's fire-and-forget model fits, and B assigns each flow accordingly. (A) optimises the wrong variable. The efficiency gain is real, but applying it to transactions means a dropped withdrawal message simply vanishes, an unacceptable integrity-of-delivery failure for financial traffic; UDP-everywhere is the right answer only when every flow tolerates loss. (C) rests on a false premise: encryption does not require a connection-oriented transport \u2014 DTLS and IPsec protect datagram traffic routinely. (D) reverses the analysis, treating TCP's reliability as mere slowness; payments are exactly the traffic that must not be 'fast but maybe lost'.",
+          "explanation": "Transport selection is requirements matching. Transactions need what TCP's connection, sequencing, acknowledgment and retransmission machinery provides: guaranteed, ordered delivery. Telemetry inverts the trade: a retransmitted stale sample is worth less than the next fresh one, so connectionless UDP's fire-and-forget model fits, and B assigns each flow accordingly. (A) optimises the wrong variable. The efficiency gain is real, but applying it to transactions means a dropped withdrawal message simply vanishes, an unacceptable integrity-of-delivery failure for financial traffic; UDP-everywhere is the right answer only when every flow tolerates loss. (C) rests on a false premise: encryption does not require a connection-oriented transport — DTLS and IPsec protect datagram traffic routinely. (D) reverses the analysis, treating TCP's reliability as mere slowness; payments are exactly the traffic that must not be 'fast but maybe lost'.",
           "rev": "b16263820088"
         },
         {
@@ -6557,7 +6559,7 @@
             "D": "An evil twin attack is already in progress; direct branch staff to move every handheld onto its cellular fallback connectivity at once."
           },
           "correctAnswer": "B",
-          "explanation": "The evidence supports collection, not contact: hours of dwell with a high-gain antenna and zero association attempts is the profile of war driving: passively mapping SSIDs, security modes and signal reach. The proportionate response treats it as a warning about exposure: measure how far the branch networks bleed past the walls, trim transmit power where warranted, and verify that what is reachable from a parking lot demands strong authentication; B matches classification to evidence and response to classification. (A) declares an intrusion the logs refute and answers it by inflicting an availability loss on the branch \u2014 self-imposed denial of service as a precaution against observation. (C) waves away the collection phase: SSIDs, hardware vendors, security modes and coverage maps are targeting data, and reconnaissance is how attacks are scoped; 'passive' does not mean 'valueless'. (D) names an attack whose evidence (duplicate SSIDs, client disruptions, certificate warnings) is entirely absent, and triggers an operational upheaval on none of it. Reconnaissance observed is your prompt to shrink what an observer can learn and harden what an observer can reach.",
+          "explanation": "The evidence supports collection, not contact: hours of dwell with a high-gain antenna and zero association attempts is the profile of war driving: passively mapping SSIDs, security modes and signal reach. The proportionate response treats it as a warning about exposure: measure how far the branch networks bleed past the walls, trim transmit power where warranted, and verify that what is reachable from a parking lot demands strong authentication; B matches classification to evidence and response to classification. (A) declares an intrusion the logs refute and answers it by inflicting an availability loss on the branch — self-imposed denial of service as a precaution against observation. (C) waves away the collection phase: SSIDs, hardware vendors, security modes and coverage maps are targeting data, and reconnaissance is how attacks are scoped; 'passive' does not mean 'valueless'. (D) names an attack whose evidence (duplicate SSIDs, client disruptions, certificate warnings) is entirely absent, and triggers an operational upheaval on none of it. Reconnaissance observed is your prompt to shrink what an observer can learn and harden what an observer can reach.",
           "rev": "884316390f36"
         },
         {
@@ -6913,7 +6915,7 @@
             "D": "Enable SYN cookies, so the servers commit no connection state until a client's final handshake acknowledgment arrives."
           },
           "correctAnswer": "D",
-          "explanation": "The flood's lever is asymmetry: each spoofed SYN costs the attacker one packet but costs the server a table entry held open for a timeout. SYN cookies remove the lever: the server answers with a SYN-ACK whose sequence number cryptographically encodes the pending connection and stores nothing; only when a real client returns the final ACK does state get created. Spoofed SYNs, whose ACKs will come from nowhere, now cost the server nothing, while legitimate handshakes complete normally, exactly 'keep serving customers during the flood'. D dismantles the exhaustion mechanism itself. (A) chases addresses that are forged and rotating: each block lags the flood by design, legitimate users behind reused addresses become collateral, and the firewall rule base becomes its own exhaustion problem. (B) enlarges the bucket under an open tap; the flood fills any finite table, minutes later; sizing answers organic growth, not adversarial load. (C) tunes the wrong lifecycle phase: keep-alive governs established sessions after the handshake, and the flood never gets that far \u2014 its damage is entirely pre-establishment. Durable DoS mitigations attack the attacker's asymmetry: make the unverified party carry the cost of state, and a flood of fakes loses its purchase.",
+          "explanation": "The flood's lever is asymmetry: each spoofed SYN costs the attacker one packet but costs the server a table entry held open for a timeout. SYN cookies remove the lever: the server answers with a SYN-ACK whose sequence number cryptographically encodes the pending connection and stores nothing; only when a real client returns the final ACK does state get created. Spoofed SYNs, whose ACKs will come from nowhere, now cost the server nothing, while legitimate handshakes complete normally, exactly 'keep serving customers during the flood'. D dismantles the exhaustion mechanism itself. (A) chases addresses that are forged and rotating: each block lags the flood by design, legitimate users behind reused addresses become collateral, and the firewall rule base becomes its own exhaustion problem. (B) enlarges the bucket under an open tap; the flood fills any finite table, minutes later; sizing answers organic growth, not adversarial load. (C) tunes the wrong lifecycle phase: keep-alive governs established sessions after the handshake, and the flood never gets that far — its damage is entirely pre-establishment. Durable DoS mitigations attack the attacker's asymmetry: make the unverified party carry the cost of state, and a flood of fakes loses its purchase.",
           "rev": "d66d158bb27b"
         }
       ]
@@ -8066,9 +8068,9 @@
           "world": "quickcash",
           "caseStudyId": "domain_5",
           "profile": {
-            "organization": "QuickCash Inc \u00b7 300 ATMs, five field technicians",
-            "regime": "PCI DSS \u00b7 state banking examination",
-            "environment": "Two on-premises domain controllers \u00b7 ATM management console \u00b7 two new cloud applications",
+            "organization": "QuickCash Inc · 300 ATMs, five field technicians",
+            "regime": "PCI DSS · state banking examination",
+            "environment": "Two on-premises domain controllers · ATM management console · two new cloud applications",
             "state": "Eight weeks to audit, access model half rebuilt"
           },
           "outlineItems": [
@@ -9490,9 +9492,9 @@
           "world": "fincorp",
           "caseStudyId": "domain_6",
           "profile": {
-            "organization": "FinCorp \u00b7 mobile check deposit for ATM customers",
-            "regime": "State banking examination \u00b7 card brand rules",
-            "environment": "Mobile deposit endpoint \u00b7 balance service \u00b7 no disclosure policy",
+            "organization": "FinCorp · mobile check deposit for ATM customers",
+            "regime": "State banking examination · card brand rules",
+            "environment": "Mobile deposit endpoint · balance service · no disclosure policy",
             "state": "Day nine after a related flaw went public, second report in hand"
           },
           "outlineItems": [
@@ -10850,9 +10852,9 @@
           "world": "globalatm",
           "caseStudyId": "domain_7",
           "profile": {
-            "organization": "Global ATM Corp \u00b7 5,000 ATMs",
-            "regime": "PCI DSS \u00b7 state breach notification",
-            "environment": "Standard Windows build \u00b7 local event logs, 30 days \u00b7 outsourced maintenance",
+            "organization": "Global ATM Corp · 5,000 ATMs",
+            "regime": "PCI DSS · state breach notification",
+            "environment": "Standard Windows build · local event logs, 30 days · outsourced maintenance",
             "state": "One reported command prompt, machine already rebooted twice"
           },
           "outlineItems": [
@@ -10875,9 +10877,9 @@
           "world": "globalatm",
           "caseStudyId": "domain_7",
           "profile": {
-            "organization": "Global ATM Corp \u00b7 5,000 ATMs",
-            "regime": "State banking examination \u00b7 card brand availability requirements",
-            "environment": "Transaction switch \u00b7 alternate site at Columbus \u00b7 eleven-person recovery team, three time zones",
+            "organization": "Global ATM Corp · 5,000 ATMs",
+            "regime": "State banking examination · card brand availability requirements",
+            "environment": "Transaction switch · alternate site at Columbus · eleven-person recovery team, three time zones",
             "state": "Plan written, one tabletop run, no procedure yet performed"
           },
           "outlineItems": [
@@ -11429,8 +11431,7 @@
           "number": "1",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3",
@@ -11452,8 +11453,7 @@
           "number": "2",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -11474,8 +11474,7 @@
           "number": "3",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -11488,7 +11487,7 @@
             "D": "The V-model, since pairing every build phase with a matching test phase catches defects early"
           },
           "correctAnswer": "C",
-          "explanation": "Rapidly shifting requirements plus a demand for early, continuously refined releases are the exact conditions iterative Agile methods were created for: each short cycle delivers working software and folds user feedback into the next. A is wrong because Waterfall assumes requirements can be fixed before design begins \u2014 here they cannot, so the finished design would describe the wrong product; it is the right answer when requirements are stable and change is prohibited. B is wrong because Cleanroom's formal specification and verification are slow and assume a precise spec exists; it suits safety-critical software, not a moving target. D is wrong because the V-model is still a sequential, plan-driven shape; its paired test phases verify a fixed specification and cannot absorb change.",
+          "explanation": "Rapidly shifting requirements plus a demand for early, continuously refined releases are the exact conditions iterative Agile methods were created for: each short cycle delivers working software and folds user feedback into the next. A is wrong because Waterfall assumes requirements can be fixed before design begins — here they cannot, so the finished design would describe the wrong product; it is the right answer when requirements are stable and change is prohibited. B is wrong because Cleanroom's formal specification and verification are slow and assume a precise spec exists; it suits safety-critical software, not a moving target. D is wrong because the V-model is still a sequential, plan-driven shape; its paired test phases verify a fixed specification and cannot absorb change.",
           "rev": "987bc28fe00d"
         },
         {
@@ -11496,8 +11495,7 @@
           "number": "4",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.6"
@@ -11518,8 +11516,7 @@
           "number": "5",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -11540,8 +11537,7 @@
           "number": "6",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -11562,8 +11558,7 @@
           "number": "7",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -11584,8 +11579,7 @@
           "number": "8",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -11606,8 +11600,7 @@
           "number": "9",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -11628,8 +11621,7 @@
           "number": "10",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5"
@@ -11650,8 +11642,7 @@
           "number": "11",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -11672,8 +11663,7 @@
           "number": "12",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -11694,8 +11684,7 @@
           "number": "13",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.6.5"
@@ -11719,8 +11708,7 @@
           "number": "14",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.7.7"
@@ -11744,8 +11732,7 @@
           "number": "15",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.10.1",
@@ -11771,8 +11758,7 @@
           "number": "16",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.6",
@@ -11797,8 +11783,7 @@
           "number": "17",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.7.3"
@@ -11822,8 +11807,7 @@
           "number": "18",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.8",
@@ -11849,8 +11833,7 @@
           "number": "19",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.7.7"
@@ -11874,8 +11857,7 @@
           "number": "20",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.2.5"
@@ -11899,8 +11881,7 @@
           "number": "21",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "7.8"
@@ -11924,8 +11905,7 @@
           "number": "22",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -11946,8 +11926,7 @@
           "number": "23",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.2"
@@ -11968,8 +11947,7 @@
           "number": "24",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.2"
@@ -11990,8 +11968,7 @@
           "number": "25",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.3"
@@ -12015,8 +11992,7 @@
           "number": "26",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.3"
@@ -12040,8 +12016,7 @@
           "number": "27",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.3"
@@ -12065,8 +12040,7 @@
           "number": "28",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.3"
@@ -12090,8 +12064,7 @@
           "number": "29",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -12112,8 +12085,7 @@
           "number": "30",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -12134,8 +12106,7 @@
           "number": "31",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.8"
@@ -12156,8 +12127,7 @@
           "number": "32",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.8"
@@ -12178,8 +12148,7 @@
           "number": "33",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.1.1"
@@ -12203,8 +12172,7 @@
           "number": "34",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.1.1"
@@ -12228,8 +12196,7 @@
           "number": "35",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.2"
@@ -12250,8 +12217,7 @@
           "number": "36",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12272,8 +12238,7 @@
           "number": "37",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12294,8 +12259,7 @@
           "number": "38",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12316,8 +12280,7 @@
           "number": "39",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12338,8 +12301,7 @@
           "number": "40",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12360,8 +12322,7 @@
           "number": "41",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.1.1"
@@ -12382,8 +12343,7 @@
           "number": "42",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.9"
@@ -12404,8 +12364,7 @@
           "number": "43",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12426,8 +12385,7 @@
           "number": "44",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.3"
@@ -12448,8 +12406,7 @@
           "number": "45",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12470,8 +12427,7 @@
           "number": "46",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12492,8 +12448,7 @@
           "number": "47",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12514,8 +12469,7 @@
           "number": "48",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12536,8 +12490,7 @@
           "number": "49",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.5.1"
@@ -12558,8 +12511,7 @@
           "number": "50",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.3.1",
@@ -12584,8 +12536,7 @@
           "number": "51",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.1.1"
@@ -12601,7 +12552,7 @@
             "D": "Elevation of privilege, because possession of the key conferred administrative rights"
           },
           "correctAnswer": "C",
-          "explanation": "Precision about which event is being classified decides this question. The event named in the stem is the exposure itself, a confidential value becoming readable by unauthorized parties, and confidentiality violations are STRIDE's information disclosure category (C), regardless of whether anyone had exploited the exposure yet. A and D fail on phase, not on substance: when attackers later authenticated to the API as an administrator using the stolen key, that was spoofing, and the administrative capability they gained maps to elevation of privilege \u2014 each is the right answer to a question about the attack that followed, not about the leak. B fails on definition: tampering is unauthorized modification of data or code, and the developer's push was an authorized, well-intentioned change that happened to be unsafe; nothing was maliciously altered. A real incident spans several STRIDE categories in sequence; classify each event on the timeline separately instead of forcing one label onto the whole story.",
+          "explanation": "Precision about which event is being classified decides this question. The event named in the stem is the exposure itself, a confidential value becoming readable by unauthorized parties, and confidentiality violations are STRIDE's information disclosure category (C), regardless of whether anyone had exploited the exposure yet. A and D fail on phase, not on substance: when attackers later authenticated to the API as an administrator using the stolen key, that was spoofing, and the administrative capability they gained maps to elevation of privilege — each is the right answer to a question about the attack that followed, not about the leak. B fails on definition: tampering is unauthorized modification of data or code, and the developer's push was an authorized, well-intentioned change that happened to be unsafe; nothing was maliciously altered. A real incident spans several STRIDE categories in sequence; classify each event on the timeline separately instead of forcing one label onto the whole story.",
           "rev": "b4f3a54fc176"
         },
         {
@@ -12609,8 +12560,7 @@
           "number": "52",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.9"
@@ -12634,8 +12584,7 @@
           "number": "53",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.10"
@@ -12659,8 +12608,7 @@
           "number": "54",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "3.5.11",
@@ -12685,8 +12633,7 @@
           "number": "55",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.2",
@@ -12708,8 +12655,7 @@
           "number": "56",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.4.3",
@@ -12734,8 +12680,7 @@
           "number": "57",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.4.3"
@@ -12756,8 +12701,7 @@
           "number": "58",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.2.6"
@@ -12778,8 +12722,7 @@
           "number": "59",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.3"
@@ -12800,8 +12743,7 @@
           "number": "60",
           "domainId": "domain_8",
           "editions": [
-            "v1",
-            "v2"
+            "v1"
           ],
           "outlineItems": [
             "8.3.2"
@@ -12828,9 +12770,9 @@
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank \u00b7 Cardless Cash mobile app and API",
-            "regime": "PCI DSS \u00b7 state banking examination",
-            "environment": "Private repository \u00b7 shared build runners \u00b7 weekly release \u00b7 managed secret vault",
+            "organization": "Global Bank · Cardless Cash mobile app and API",
+            "regime": "PCI DSS · state banking examination",
+            "environment": "Private repository · shared build runners · weekly release · managed secret vault",
             "state": "Pipeline rebuild after a hardcoded key reached a public repository"
           },
           "outlineItems": [
@@ -12838,6 +12780,381 @@
             "8.2.6",
             "8.2.8",
             "8.5.2"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s02",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the morning the key leaked",
+          "text": "A monitoring service tells Global Bank that a production API key is sitting in a public repository, pushed three days ago by a developer working from home during the Cardless Cash hackathon. The key grants administrative access to the transaction backend, and scanning bots reach new repositories within seconds. The same key is compiled into the shipped Android and iOS clients. The bank bought a managed secret vault last year and has never wired it into anything. The examiner will want to know why a credential could be committed at all, and the same key is still compiled into the app in the stores.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · Cardless Cash mobile app and API",
+            "regime": "PCI DSS · state banking examination",
+            "environment": "Hackathon build · public repository · shipped Android and iOS clients",
+            "state": "Master API key public for three days"
+          },
+          "outlineItems": [
+            "8.2.4",
+            "8.2.7",
+            "8.2.8",
+            "8.2.9",
+            "8.5.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s03",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: what the key opened",
+          "text": "With the master key, attackers authenticated to the Cardless Cash backend as an administrator and skipped user authentication entirely. The bank is now walking the API endpoint by endpoint. Statements are served from a path carrying the account number. The login endpoint builds its query by concatenating the values submitted to it. The API records nothing about which caller owns which record, and forensic work has been slow: the servers kept seven days of logs, application logins were never recorded at all, and log review was a manual task performed quarterly.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · Cardless Cash backend API",
+            "regime": "PCI DSS",
+            "environment": "REST API · OAuth intended, master key in use · public mobile clients",
+            "state": "Endpoint-by-endpoint review after the leak"
+          },
+          "outlineItems": [
+            "8.3.1",
+            "8.5.1",
+            "8.5.2",
+            "8.5.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s04",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the portal penetration test",
+          "text": "Global Bank commissioned a penetration test of the customer web portal, the browser front end that sits beside the Cardless Cash app. The testers were given one customer login and nothing else. Their findings all sit in the parts of the portal that render or fetch content on a user's behalf: a product review board that stores what customers type, the funds-transfer form, a document download endpoint that takes a filename, and a link-preview feature that fetches whatever URL a user supplies. The portal runs inside the bank's cloud account.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · customer web portal",
+            "regime": "PCI DSS",
+            "environment": "Browser front end beside the mobile app · runs in the bank's cloud account",
+            "state": "Test complete, four findings reported"
+          },
+          "outlineItems": [
+            "8.5",
+            "8.5.1",
+            "8.5.2",
+            "8.5.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s05",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the partner integration service",
+          "text": "Global Bank's partner integration service takes settlement files and messages from card processors and correspondent banks. It is the oldest code the bank runs: a C payment daemon that parses binary messages, a Java component that accepts serialized objects from partner systems over the internet and rebuilds them in memory, and an XML invoice upload used by three suppliers. A destination-account field feeds several downstream systems, and the team maintains an ever-growing filter of known malicious strings against it. None of the service has ever been fuzzed.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · partner integration service",
+            "regime": "PCI DSS · correspondent banking agreements",
+            "environment": "C payment daemon · Java object stream · XML invoice upload",
+            "state": "Oldest code in the estate, never fuzzed"
+          },
+          "outlineItems": [
+            "3.5.3",
+            "8.2.3",
+            "8.2.5",
+            "8.5.1",
+            "8.5.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s06",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: how the portal holds a session",
+          "text": "A second engagement covers what happens after a customer signs in to Global Bank's portal. The login page is served over HTTPS and every page after it over plain HTTP. The session cookie can be read by any script running in the page, and is transmitted when users follow links over unencrypted connections. Version control shows a URL one developer added during testing to save time and never removed. The application server underneath was deployed straight from the vendor's installer and never hardened.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · customer web portal",
+            "regime": "PCI DSS",
+            "environment": "HTTPS login, HTTP thereafter · vendor-installed application server",
+            "state": "Second engagement, session handling only"
+          },
+          "outlineItems": [
+            "8.2.4",
+            "8.2.5",
+            "8.5.1",
+            "8.5.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s07",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: four programmes, four models",
+          "text": "Global Bank's programme office is starting four builds in one quarter and must pick a delivery model for each. A regulatory reporting system is fixed by contract: every requirement is agreed up front, formal documentation with approval gates at every stage is mandated, and scope cannot change without a contract modification. A new consumer feature enters a market whose customer needs are poorly understood and expected to shift every few weeks. A multi-year biometric authentication programme depends on technology nobody has proved. And a claims-processing interface has produced two contradictory requirements documents from stakeholders who cannot say what they need.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · programme office",
+            "regime": "Banking examination · fixed-price supplier contract on one programme",
+            "environment": "Four builds starting in the same quarter",
+            "state": "Delivery model not yet chosen for any of them"
+          },
+          "outlineItems": [
+            "8.1",
+            "8.1.1",
+            "8.1.3",
+            "8.1.5"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s08",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the squad goes agile",
+          "text": "The Cardless Cash squad has moved to two-week sprints and ships a product increment at the end of each one. Defects keep reaching production anyway. The regulator has told the bank that no change to the payment module may be written and merged by a single unreviewed developer, and expects the review to happen as early in development as possible. Marketing has separately put a second squad on a launch date using time-boxed cycles, heavy prototyping and minimal up-front design, and the CISO has been asked what that costs.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · Cardless Cash squad",
+            "regime": "Banking examination · regulator directive on the payment module",
+            "environment": "Two-week sprints · product increment each sprint · a second squad on a launch deadline",
+            "state": "Defects still reaching production"
+          },
+          "outlineItems": [
+            "8.1.1",
+            "8.1.2",
+            "8.1.4",
+            "8.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s09",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the improvement programme",
+          "text": "Global Bank lost a government bid because it could not demonstrate the maturity of its development processes: internally, project success still depends on individual heroics and no two teams work alike. An improvement programme has been funded and the team wants to start rewriting development procedures immediately. Elsewhere in the bank, the terminal group builds the firmware for its own PIN pads, and its certifier demands evidence that defects are prevented during development rather than found and patched afterwards, with failure rates certified statistically. The hackathon's two shortcuts still have open tickets a year on, and the estimate to retrofit them has tripled.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · engineering practice and terminal group",
+            "regime": "Government procurement · payment terminal certification",
+            "environment": "No two teams work alike · terminal firmware built in house",
+            "state": "Improvement programme funded after a lost bid"
+          },
+          "outlineItems": [
+            "8.1",
+            "8.1.1",
+            "8.1.2",
+            "8.3.2"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s10",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the release train",
+          "text": "Global Bank deploys to production twenty times a day through an automated pipeline. Security review is manual, performed by a separate team in the week before each quarterly compliance audit, so findings routinely reach developers months after the code shipped. A rewritten authentication service has passed every test and is ready, but leadership fears an unforeseen defect could lock out the entire customer base at once. During an acrimonious layoff period a database administrator still holds commit access. And the product manager has begun showing a redesigned login page to half of all users.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · platform engineering",
+            "regime": "PCI DSS · quarterly compliance audit",
+            "environment": "Twenty production deploys a day · manual security review before each audit",
+            "state": "Rewritten authentication service ready to ship"
+          },
+          "outlineItems": [
+            "8.1.3",
+            "8.1.4",
+            "8.2.6",
+            "8.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s11",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the logging library advisory",
+          "text": "A critical flaw is announced in a popular open-source logging library and exploitation is already being reported. Global Bank runs four hundred applications and cannot say within hours which of them embed a vulnerable version, including the dependencies pulled in automatically during builds. In the same week a network-management vendor discloses that its customers were breached through a signed, official product update: investigators found its build server had been compromised months earlier. And the bank's own VPN appliance carries an actively exploited flaw for which the vendor says no patch will exist for several weeks.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · four hundred applications",
+            "regime": "PCI DSS · vendor disclosure obligations",
+            "environment": "Open-source logging library in unknown numbers of builds · vendor-supplied VPN appliance",
+            "state": "Flaw announced, exploitation already reported"
+          },
+          "outlineItems": [
+            "7.8",
+            "8.2.2",
+            "8.4.1",
+            "8.4.3"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s12",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the platform migration",
+          "text": "Global Bank is moving the Cardless Cash backend off self-managed virtual machines. Two hundred microservices call each other directly, and security now requires mutual TLS and per-call authorization between every pair; modifying two hundred codebases has been ruled out as infeasible. A review of the container platform finds application containers running as root, built from unscanned images pulled from public registries, on shared hosts. A document-processing workload is moving to a serverless functions platform, and the operations lead wants to know what the team still owns afterwards. The architects want the new payment API's threats enumerated before code is written, and the API it replaces is already taking millions of requests enumerating sequential customer identifiers with stolen credential lists replayed against its login.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · Cardless Cash backend",
+            "regime": "PCI DSS",
+            "environment": "Two hundred microservices · container platform on shared hosts · serverless functions",
+            "state": "Moving off self-managed virtual machines"
+          },
+          "outlineItems": [
+            "3.1.1",
+            "3.5.10",
+            "3.5.11",
+            "3.5.9",
+            "8.5.2"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s13",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: standing up the programme",
+          "text": "Global Bank has hired an application security lead into a company with no existing programme, a small budget and no secure-coding standard. The lead must choose a starting point for developer training. A threat-modelling workshop for the trading platform has just produced forty distinct threats, far more than the team can address this quarter, and the lead needs a repeatable way to decide which ones remediation effort goes to first. The post-incident review of the key leak is running in parallel, mapping its events to STRIDE, and has reached the moment the master key became readable by anyone browsing the public repository, before any attacker had used it.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · new application security function",
+            "regime": "Banking examination",
+            "environment": "No existing programme · small training budget · trading platform under review",
+            "state": "Application security lead in post four weeks"
+          },
+          "outlineItems": [
+            "3.1.1",
+            "8.3.2",
+            "8.5"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s14",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: four incidents on the branch estate",
+          "text": "Global Bank's branch machines run a fixed, unchanging set of approved applications and staff cannot administer them. The security team is reviewing the quarter's incidents. On one server, firewall logs show connections that no local tool reports: process listings, file searches and the installed antivirus all show nothing unusual. Antivirus quarantines one variant of a malware family, yet new infections keep appearing, each sample carrying a different hash and byte pattern while behaving identically on the host. And help-desk tickets reveal that several employees installed a free PDF converter that works exactly as advertised and also opens a remote-control channel.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · branch estate",
+            "regime": "PCI DSS",
+            "environment": "Fixed set of approved applications · staff cannot administer their machines",
+            "state": "Quarterly incident review"
+          },
+          "outlineItems": [
+            "7.6.5",
+            "7.7.3",
+            "7.7.7"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s15",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the overnight spread",
+          "text": "Overnight, malware spread to hundreds of Global Bank servers across a flat internal network while no user was logged in anywhere: each infected host scanned for neighbours exposing the same vulnerable file-sharing service and infected them directly. Through its sector information-sharing group the bank received two reports the same week. A university network team traced abuse complaints to two hundred campus workstations making identical periodic connections to one overseas domain from which they fetch commands. A hospital paid attackers to recover encrypted patient records. An analyst is separately classifying code that appends itself to spreadsheet macro files.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · flat internal server network",
+            "regime": "PCI DSS · sector information-sharing membership",
+            "environment": "Hundreds of servers on one segment · two peer reports received the same week",
+            "state": "Spread contained, committee prioritising"
+          },
+          "outlineItems": [
+            "7.10.1",
+            "7.2.5",
+            "7.7.7",
+            "7.8"
+          ],
+          "layout": "spread",
+          "editions": [
+            "v2"
+          ]
+        },
+        {
+          "id": "d8_s16",
+          "domainId": "domain_8",
+          "kind": "testlet",
+          "title": "Global Bank: the reporting warehouse",
+          "text": "Global Bank's reporting warehouse serves branch operations, fraud analytics and its cash-in-transit contractor from one database. A customer's mailing address differs across three tables: an update routine changed one copy and missed the others, and refunds are being posted to an outdated address. The fraud reporting view hides individual case records but permits statistical queries. The contractor holds access to three datasets each rated non-sensitive on its own: vehicle maintenance schedules, fuel purchases and crew duty rosters. Nobody has reviewed what those three together would tell a reader, because each was approved on its own rating.",
+          "world": "globalbank",
+          "caseStudyId": "domain_8",
+          "profile": {
+            "organization": "Global Bank · reporting warehouse",
+            "regime": "PCI DSS · cash-in-transit contract",
+            "environment": "One database serving branch operations, fraud analytics and a logistics contractor",
+            "state": "Data-quality review after misdirected refunds"
+          },
+          "outlineItems": [
+            "2.1.1",
+            "2.1.2",
+            "3.5.3"
           ],
           "layout": "spread",
           "editions": [
@@ -13056,6 +13373,1557 @@
             "OWASP Top 10:2025 | A01 Broken Access Control"
           ],
           "rev": "857fb21a332e"
+        },
+        {
+          "id": "d8_v2_q101",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s02",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.2.8"
+          ],
+          "question": "The key is still live and the repository is still public. What should the team do FIRST?",
+          "options": {
+            "A": "Delete the offending file from the repository and rewrite its commit history to purge the key",
+            "B": "Make the repository private so that no additional external parties can view the key",
+            "C": "Revoke the exposed key immediately and issue a replacement through approved channels",
+            "D": "Interview the developer to establish how the key came to be committed and pushed"
+          },
+          "correctAnswer": "C",
+          "explanation": "Automated bots scrape public repositories for credential patterns within seconds of a push; after three days, the only safe assumption is that the key has already been copied. Nothing that changes who can see the repository going forward alters that, so the first move is to make the stolen value worthless: revoke it and reissue through a proper channel (C), then hunt for fraudulent use during the exposure window. A treats the visible symptom: history rewriting is worth doing afterward for hygiene, but it cannot recall the copies already harvested, and doing it first leaves an active admin credential in attackers' hands meanwhile. B fails the same way: private visibility stops future viewers, not past ones. D matters for the lessons-learned and for fixing the process, but root-cause interviews come after containment, not before it.",
+          "variantOf": "domain_8_q31",
+          "variantAxis": "scenario",
+          "rev": "bcae0fbb41dd"
+        },
+        {
+          "id": "d8_v2_q102",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s02",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.2.7"
+          ],
+          "question": "Commits containing secrets must be blocked before they reach the central repository, in a way an individual developer cannot bypass from their own machine. Which mechanism BEST meets this?",
+          "options": {
+            "A": "A server-side pre-receive hook that scans incoming pushes and rejects any containing secrets",
+            "B": "A client-side pre-commit hook on every developer workstation that runs local secret scanning",
+            "C": "A nightly scheduled job that scans the repository contents and alerts on any secrets found",
+            "D": "A mandatory code-review checklist item requiring reviewers to look for embedded credentials"
+          },
+          "correctAnswer": "A",
+          "explanation": "The requirement has two halves, enforcement before the secret enters the shared repository and enforcement developers cannot switch off, and only a control running on the server itself satisfies both. A pre-receive hook (A) evaluates every push at the moment the server is asked to accept it and refuses the whole push if a secret is detected: nothing to install, nothing to bypass. B is the closest wrong answer: client-side hooks give excellent fast feedback, but they live on machines the developer controls: they can be skipped with a flag, and a fresh clone simply does not have them; they complement the server hook, they cannot replace it. C is wrong on timing: by the nightly run the secret has been in shared history for hours, cloned and mirrored. D is wrong because human review is fallible, and in pull-request workflows the code has already been pushed to the server before anyone reviews it. Guarantees of the form 'never enters the repository' can only be enforced where the repository lives.",
+          "variantOf": "domain_8_q32",
+          "variantAxis": "scenario",
+          "rev": "a0e19c3c5ed4"
+        },
+        {
+          "id": "d8_v2_q103",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s02",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.5.3"
+          ],
+          "question": "The bank now wants credentials never to reside in application code again. Which approach BEST achieves this goal?",
+          "options": {
+            "A": "Store credentials in a configuration file that is excluded from version control by .gitignore",
+            "B": "Encrypt the hardcoded key within the source so it is unreadable in the repository",
+            "C": "Restrict every company repository to private visibility so outsiders can no longer browse code",
+            "D": "Retrieve credentials at runtime from a managed secrets vault with access control and rotation"
+          },
+          "correctAnswer": "D",
+          "explanation": "Code is for logic; secrets belong in a dedicated store. A vault (D) means the credential never enters the codebase at all: the application fetches it at runtime, access is authenticated and audited, and the key can be rotated centrally after any suspected exposure. A is wrong because it merely relocates the secret: a .gitignore entry is advisory, the file still sits unprotected on disks and in backups, and one wrong command commits it anyway; it is the right answer to keeping local developer settings out of a repo, not to protecting production secrets. B is wrong because the application must ship the decryption key too, so the secret remains recoverable from the artifact. That is obfuscation, not protection. C is wrong because it reduces external exposure while leaving the credential in code, visible to every employee, clone, and backup; private repositories leak regularly.",
+          "variantOf": "domain_8_q1",
+          "variantAxis": "scenario",
+          "rev": "54c6d16b75e3"
+        },
+        {
+          "id": "d8_v2_q104",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s02",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.2.9"
+          ],
+          "question": "The bank also wants each merge checked for hardcoded credentials and injection-prone code in its own source, without waiting for a build to be deployed anywhere. Which testing technology fits BEST?",
+          "options": {
+            "A": "Dynamic application security testing, which probes a running application from the outside",
+            "B": "Static application security testing, which examines source code without executing it",
+            "C": "Software composition analysis, which flags known vulnerabilities in third-party dependencies",
+            "D": "Interactive application security testing, which instruments the app while tests exercise it"
+          },
+          "correctAnswer": "B",
+          "explanation": "Two constraints in the stem decide this: the flaws live in first-party source (hardcoded secrets, injection-prone patterns), and the check must run before merge, when nothing is deployed. Only static analysis (B) works under both: it reads the code itself, so a credential string or an unsanitized query concatenation is visible directly, and it needs no running instance. A is wrong because DAST attacks an application from outside while it runs; it cannot see a hardcoded key that never appears in a response, and there is no running app at merge time. It is the right tool against the deployed build in staging. D fails for the same reason one layer in: IAST observes an instrumented application during test execution, so it also requires a runtime. C is wrong on target rather than timing: SCA inventories the third-party libraries you import and matches them against known-vulnerability data; it does not analyze the code your own developers wrote. SAST reads your source, DAST probes your running app, IAST watches from inside it, SCA audits what you imported. Pick by where the flaw lives and what exists when you test.",
+          "variantOf": "domain_8_q42",
+          "variantAxis": "scenario",
+          "rev": "ba1aacbd24f7"
+        },
+        {
+          "id": "d8_v2_q105",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s02",
+          "stimulusSeq": 5,
+          "outlineItems": [
+            "8.2.4"
+          ],
+          "question": "The mobile team proposes to protect the key still shipped inside the Android app by running the code through an obfuscator. Which assessment of that plan is MOST accurate?",
+          "options": {
+            "A": "Adequate, because obfuscated binaries cannot be decompiled back into readable source",
+            "B": "Adequate, provided the key is also encrypted inside the binary before obfuscation",
+            "C": "Insufficient, because obfuscation degrades performance too severely for production apps",
+            "D": "Insufficient, because obfuscation only delays analysis; the secret should move server-side"
+          },
+          "correctAnswer": "D",
+          "explanation": "Anything the app can use at runtime, an attacker holding the binary can eventually recover by decompiling, hooking the app, or dumping memory at the moment the key is used. Obfuscation raises the effort and is worth applying as one layer, but it converts none of that into confidentiality; a secret shipped to every customer's device is disclosed by design, so the durable fix is architectural: keep the key server-side and issue short-lived, per-user tokens to the client (D). A is wrong on its facts: decompilers process obfuscated code readily; the output is uglier, not unreadable. B is wrong because it recurses: the app must carry the decryption key to use the encrypted one, and that key is recoverable the same way. C reaches the right verdict for a wrong reason; modern obfuscation overhead is modest, and rejecting a control on false grounds discredits the review.",
+          "variantOf": "domain_8_q44",
+          "variantAxis": "scenario",
+          "rev": "9efff9ef85f2"
+        },
+        {
+          "id": "d8_v2_q106",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s03",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.5.2"
+          ],
+          "question": "A logged-in customer changes the number in /statements?account=1001 to 1002 and receives another customer's statement. The request was well formed and was processed exactly as designed. Which weakness explains this?",
+          "options": {
+            "A": "An injection flaw, because the customer's input altered how the server-side query executed",
+            "B": "A security misconfiguration, because a hardening option that conceals identifiers was disabled",
+            "C": "A cryptographic failure, because financial records reached a party unauthorized to read them",
+            "D": "Broken access control, because the application never checked object-level authorization"
+          },
+          "correctAnswer": "D",
+          "explanation": "Everything about this request was legitimate except the outcome: the user was authenticated, the syntax was clean, and the server did what its code says, which is precisely the point. The code never asks whether the requester owns account 1002 before serving it, a missing object-level authorization check known as an insecure direct object reference, the canonical broken access control flaw (D) and the same defect that let Global Bank's leaked key read any customer's records. A does not apply: injection means input that changes the structure or logic of a command; here the query ran exactly as designed with a different, valid parameter; nothing was subverted. B is wrong because misconfiguration lives in settings, defaults, and deployment options; this flaw lives in application logic, and no configuration toggle supplies a missing ownership check. C is wrong because cryptographic failures concern absent or weak protection of data; the TLS on this site could be flawless and the flaw would remain untouched.",
+          "variantOf": "domain_8_q48",
+          "variantAxis": "scenario",
+          "rev": "8aae4bbde8a6"
+        },
+        {
+          "id": "d8_v2_q107",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s03",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.5.1"
+          ],
+          "question": "A request submitting the login value admin' OR '1'='1 returns every row of the customer table, on a fully patched and hardened server. Which type of flaw MOST likely explains this?",
+          "options": {
+            "A": "An injection flaw, because untrusted input was interpreted as part of a database command",
+            "B": "A broken access control flaw, because the user viewed rows belonging to other customers",
+            "C": "A security misconfiguration, because the database account held more privileges than needed",
+            "D": "A cross-site scripting flaw, because attacker-supplied text was reflected in the response"
+          },
+          "correctAnswer": "A",
+          "explanation": "The tell is the quote and OR '1'='1: the input escaped its role as data and changed the logic of the SQL statement, turning a login check into a query that matches every row. That mechanism, input interpreted as code, defines injection (A). B is wrong because broken access control describes an application that correctly parses a legitimate request but fails to check authorization for it; here the request was malformed on purpose and subverted the query itself. B would be right if a well-formed request for another customer's ID had simply been honored. C is wrong because the stem states the configuration follows the hardening guide; over-privileged accounts amplify the damage of injection but do not create the flaw. D is wrong because XSS executes script in other users' browsers; the victim is the client, not the database. Classify a flaw by its mechanism, not by what data it exposed.",
+          "variantOf": "domain_8_q5",
+          "variantAxis": "scenario",
+          "rev": "88f857693a48"
+        },
+        {
+          "id": "d8_v2_q108",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s03",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.5.3"
+          ],
+          "question": "The team must remediate that flaw at its root rather than filter attack traffic. Which control should it implement FIRST?",
+          "options": {
+            "A": "Deploy a web application firewall with rules that detect and drop known injection patterns",
+            "B": "Sanitize request input by stripping quotes, comments, and SQL keywords before processing",
+            "C": "Rewrite the data-access code to use parameterized queries that bind input as data values",
+            "D": "Encrypt the customer database so records extracted through the flaw stay unreadable"
+          },
+          "correctAnswer": "C",
+          "explanation": "Injection exists because input and query text are concatenated into one string the database must reinterpret. Parameterized queries (C) remove that root cause: the statement's structure is compiled first and input is bound strictly as data, so no input value can change what the query does. A is wrong as a primary fix because a WAF is a compensating control, pattern-based and bypassable through encoding tricks, and it leaves the vulnerable code in place. It serves well as an interim shield while the code fix is developed, or for a product you cannot modify. B is wrong because blacklist-style stripping chases an open-ended set of bypasses and can break legitimate input (O'Brien); validation is worthwhile defense in depth, not the cure. D is wrong because the application must decrypt data to serve queries, so data stolen through the application arrives in plaintext; encryption at rest answers stolen-media risk, a different problem.",
+          "variantOf": "domain_8_q6",
+          "variantAxis": "scenario",
+          "rev": "80bd4997888f"
+        },
+        {
+          "id": "d8_v2_q109",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s03",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.3.1"
+          ],
+          "question": "Investigators establish the attackers were active for five months and no alert ever fired. Which improvement should the security programme prioritise?",
+          "options": {
+            "A": "Deploying stronger encryption for stored data so future intrusions yield nothing readable",
+            "B": "Centralized log collection with longer retention and automated alerting on suspicious activity",
+            "C": "Commissioning an annual external penetration test to uncover exploitable weaknesses",
+            "D": "Adopting a stricter rotation schedule for all privileged administrator account passwords"
+          },
+          "correctAnswer": "B",
+          "explanation": "Five months of undetected activity is a visibility failure, and the stem lists its three ingredients: logs that expire in a week, security-relevant events never captured, and review too infrequent and manual to notice anything. The remedy attacks all three (B): collect logs centrally where intruders cannot quietly erase them, retain them well beyond realistic dwell times so investigations have evidence, and let automation watch continuously so detection happens in hours, not quarters. A is wrong because encryption protects confidentiality against stolen media and eavesdroppers; attackers operating through compromised applications and accounts read data exactly as legitimate users do, and encryption restores no visibility. C is a point-in-time probe for ways in; this organization's demonstrated failure is not knowing when someone is already inside. D is wrong because nothing ties the intrusion to stale passwords, and rotation would not have surfaced the five-month presence. Fix the control family the incident actually indicts. Long dwell times indict detection, so build logging and monitoring before buying more prevention.",
+          "variantOf": "domain_8_q50",
+          "variantAxis": "scenario",
+          "rev": "979b5b06a06b"
+        },
+        {
+          "id": "d8_v2_q110",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s04",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.5.3"
+          ],
+          "question": "Simply viewing a certain product review causes browsers to send their session cookies to an unknown domain; script tags stored in the review text are rendered verbatim to every visitor. Which remediation MOST directly addresses this?",
+          "options": {
+            "A": "Add anti-forgery tokens to every state-changing form so requests from other sites are rejected",
+            "B": "Move all pages to HTTPS so session cookies are protected from network eavesdropping",
+            "C": "Use parameterized queries so review text cannot alter the structure of database commands",
+            "D": "Encode user-supplied content on output so browsers render it as text rather than script"
+          },
+          "correctAnswer": "D",
+          "explanation": "This is stored cross-site scripting: attacker-supplied markup was saved and later delivered into victims' pages, where the browser executed it. The defect is at the rendering step, so the direct fix is contextual output encoding (D): the stored text is displayed as inert characters, never parsed as script; a Content Security Policy and HttpOnly cookies add depth. A is wrong because anti-forgery tokens counter CSRF, where an attacker forges requests using the victim's session; here the attacker injected script, a different mechanism. B is wrong because TLS protects cookies in transit; these cookies are being read and exfiltrated by script running inside the page itself, over any transport. C is wrong because parameterized queries stop SQL injection; the review was stored through a legitimate write, and the database behaved correctly throughout.",
+          "variantOf": "domain_8_q7",
+          "variantAxis": "scenario",
+          "rev": "8266476c56fc"
+        },
+        {
+          "id": "d8_v2_q111",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s04",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.5.1"
+          ],
+          "question": "A customer signed in to the portal opens an email link in another tab, and a transfer they never initiated is sent from their own browser with a valid session cookie. Which control BEST prevents this?",
+          "options": {
+            "A": "Require multi-factor authentication when the customer first signs in to the banking site",
+            "B": "Embed unpredictable per-session tokens in forms and reject requests that lack a valid one",
+            "C": "Encode all user-supplied content the application displays to keep scripts from executing",
+            "D": "Lock accounts after repeated failed logins to defeat automated password guessing"
+          },
+          "correctAnswer": "B",
+          "explanation": "What happened is cross-site request forgery: the attacker's page made the victim's browser submit a request, and the browser helpfully attached the session cookie, so the server saw an authenticated transfer. An anti-CSRF token (B) defeats it because the forging site cannot read the unpredictable token to include it, so the forged request fails validation; SameSite cookie attributes reinforce the same boundary. A protects the wrong moment: MFA strengthens the login event, and this attack rides a session that is already authenticated. MFA at sign-in is the right answer to stolen credentials, and step-up MFA per transfer would be a separate, additional control. C is wrong because output encoding counters XSS; no script was injected into the bank's pages here. D is wrong because there were no failed logins; the attacker never touched credentials.",
+          "variantOf": "domain_8_q8",
+          "variantAxis": "scenario",
+          "rev": "b5e4e89d5625"
+        },
+        {
+          "id": "d8_v2_q112",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s04",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.5"
+          ],
+          "question": "The download endpoint serves /download?file=report.pdf, and requesting file=..%2F..%2F..%2Fetc%2Fpasswd returns the server's password file. Which fix is MOST effective?",
+          "options": {
+            "A": "Reject any filename containing the ../ character sequence before it reaches the file system call",
+            "B": "Canonicalize each requested path and serve it only if it resolves inside the approved directory",
+            "C": "Run the web server behind a reverse proxy that hides internal directory names from clients",
+            "D": "Require users to authenticate before the download endpoint will serve them any file"
+          },
+          "correctAnswer": "B",
+          "explanation": "This is a path traversal flaw, and the durable fix is to resolve the requested path to its canonical form and then check it against an allow-list boundary (B): whatever encoding or nesting the attacker uses, the final resolved path either falls inside the approved directory or is refused. A is wrong because it is a blacklist: the auditor's own request already used %2F encoding, and variants such as double encoding, ....//, or absolute paths slip past literal matching; filtering one bad pattern treats the symptom while the resolution logic stays broken. C is wrong because hiding directory names is obscurity; the operating system still resolves the traversal sequence regardless of what the client can see. D is wrong because authentication changes who can exploit the flaw, not whether it exists; any logged-in user could still walk out of the web root. Validate the destination the path resolves to, never the characters it contains.",
+          "variantOf": "domain_8_q11",
+          "variantAxis": "scenario",
+          "rev": "91c61918532d"
+        },
+        {
+          "id": "d8_v2_q113",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s04",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.5.2"
+          ],
+          "question": "The link-preview feature is given http://169.254.169.254/latest/meta-data/ and returns the cloud account's temporary credentials, fetched by the application server itself. Which vulnerability class is this?",
+          "options": {
+            "A": "Server-side request forgery, since the server was induced to request an internal resource",
+            "B": "Cross-site request forgery, since a forged request was executed without a victim's intent",
+            "C": "XML external entity injection, since a parser was made to retrieve a protected document",
+            "D": "An open redirect, since the application forwarded a browser to an attacker-chosen address"
+          },
+          "correctAnswer": "A",
+          "explanation": "The decisive detail is who made the request: the application server itself fetched the metadata address on the attacker's behalf. Abusing a server's own network position to reach resources the attacker cannot touch directly, such as internal services or the cloud metadata endpoint that only the instance may query, is server-side request forgery (A); the fix is an allow-list of fetchable destinations with internal and link-local ranges denied. B is the classic confusion: in CSRF the forged request is sent by a victim's browser, riding that user's session; here there is no victim user and the server is the one doing the fetching. C is wrong because XXE requires an XML parser resolving external entities; a URL form field involves no XML; XXE is better thought of as one specific vector that can produce SSRF-like fetches. D is wrong because an open redirect bounces the client's browser to another site; this server retrieved the content itself and handed it back. SSRF forges requests from the server, CSRF forges them from the user; identify the party being tricked.",
+          "variantOf": "domain_8_q45",
+          "variantAxis": "scenario",
+          "rev": "fa0d64117e58"
+        },
+        {
+          "id": "d8_v2_q114",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s05",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.5.1"
+          ],
+          "question": "A crash dump shows an oversized message-length field overwriting the C daemon's return address, after which the service executed attacker-supplied instructions. Which change BEST addresses the root cause?",
+          "options": {
+            "A": "Validate length fields and use bounds-checked memory operations for every buffer write",
+            "B": "Enable address space layout randomization so injected code lands at unpredictable locations",
+            "C": "Filter inbound packets at the network firewall to drop traffic from untrusted address ranges",
+            "D": "Raise the service's logging level so malformed packets are recorded for later investigation"
+          },
+          "correctAnswer": "A",
+          "explanation": "A buffer overflow happens when code writes more data into a buffer than was allocated, corrupting adjacent memory, in this case the saved return address. The root cause is the unchecked write, so the fix is in the code: validate untrusted length fields and use bounds-checked operations so an oversized value can no longer spill past the buffer (A); migrating hot paths to a memory-safe language is the same idea taken further. B is wrong as the answer here because ASLR is an exploit mitigation: it makes a successful overflow harder to weaponize but leaves the memory-corruption defect in place; it is the right answer for hardening a platform in depth. C fails because the service must accept client packets to function, and any permitted source can send the malformed field; that is scope, not cause. D is wrong because logging is detective; it records the compromise without preventing it. Mitigations raise attacker cost, but only correct code removes the vulnerability.",
+          "variantOf": "domain_8_q9",
+          "variantAxis": "scenario",
+          "rev": "600b376e6739"
+        },
+        {
+          "id": "d8_v2_q115",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s05",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.2.5"
+          ],
+          "question": "Researchers show that a crafted object chain in the Java component's input stream executes arbitrary commands during reconstruction. Which remediation MOST effectively addresses the root cause?",
+          "options": {
+            "A": "Encrypt the serialized stream in transit so intermediaries are unable to modify the objects",
+            "B": "Add a web application firewall rule that inspects payloads for known gadget-chain signatures",
+            "C": "Replace native object deserialization with a data-only format validated against a strict schema",
+            "D": "Shorten connection timeouts so any single compromised session has a limited useful lifetime"
+          },
+          "correctAnswer": "C",
+          "explanation": "Insecure deserialization is dangerous because rebuilding a native object graph lets the sender choose which classes get instantiated, and chains of innocent classes can be assembled into code execution. The root-cause fix removes that power from the sender: exchange plain data in a format such as JSON, validate it against a strict schema, and construct objects yourself (C); where native deserialization is unavoidable, a tight class allow-list is the fallback. A protects the wrong layer: encryption authenticates the channel, not the content's safety. The malicious payload comes from a partner system, or from a partner that has itself been compromised, and travels happily through the encrypted pipe. B is wrong because signature matching known gadget chains is a reactive race with researchers who keep finding new ones; it earns its keep only as an interim virtual patch. D is wrong because the exploit fires during reconstruction of a single message; session lifetime never enters into it. Never let untrusted bytes decide what code runs; deserialize data, not objects.",
+          "variantOf": "domain_8_q46",
+          "variantAxis": "scenario",
+          "rev": "6a71e11c1c83"
+        },
+        {
+          "id": "d8_v2_q116",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s05",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.2.3"
+          ],
+          "question": "An uploaded invoice whose DOCTYPE declaration defines an external entity pointing at /etc/passwd returns that file's contents. Which change BEST fixes this flaw at its source?",
+          "options": {
+            "A": "Validate that uploaded invoices are well-formed XML before passing them to the parser",
+            "B": "Configure the XML parser to disable document type definitions and external entity resolution",
+            "C": "Run the upload service in a container so its file reads are confined to the container image",
+            "D": "Scan uploaded files with antivirus to reject those containing known malicious markup"
+          },
+          "correctAnswer": "B",
+          "explanation": "XML external entity injection is unusual among injection flaws: the vulnerability is a feature, not a bug. The parser is doing exactly what DTD processing specifies, resolving an entity that happens to point at a local file, so the source-level fix is configuration: turn off DTDs and external entity resolution in the parser (B), and the attack ceases to be expressible. A is wrong because the tester's exploit file is perfectly well-formed XML; well-formedness checks syntax, and this attack is syntactically impeccable. C is wrong because containment shrinks the blast radius without fixing the flaw: everything inside the container, including its own credentials and configuration secrets, remains readable, and SSRF-style entity fetches still reach the network. It is reasonable defense in depth. D is wrong because antivirus recognizes known malware, and a three-line DOCTYPE crafted for this one application matches nothing in a signature set. When a parser's features are the attack surface, hardening its configuration is the fix, a lesson that generalizes to any dangerous default.",
+          "variantOf": "domain_8_q47",
+          "variantAxis": "scenario",
+          "rev": "707aceaaabe8"
+        },
+        {
+          "id": "d8_v2_q117",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s05",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.5.3"
+          ],
+          "question": "Bypasses of the destination-account filter keep appearing after each release. Which validation strategy would MOST durably reduce this input risk?",
+          "options": {
+            "A": "Expand the filter with new attack strings as each bypass technique is discovered in the wild",
+            "B": "Move the existing filter into client-side JavaScript so bad input is caught before submission",
+            "C": "Normalize input to lowercase before matching it against the list of known malicious patterns",
+            "D": "Accept only input matching the defined format for account numbers and reject everything else"
+          },
+          "correctAnswer": "D",
+          "explanation": "Valid account numbers form a small, precisely definable set, while the space of malicious strings is unbounded, so define the former and reject everything else. Allow-list validation (D) is durable because a brand-new attack technique still fails the format check; nobody has to anticipate it. A merely continues the losing race the stem describes: a blacklist is always one bypass behind, by construction. B is wrong because client-side checks improve user experience but provide no security: an attacker posts directly to the server, skipping the JavaScript entirely; validation must be enforced server-side. C is wrong because normalization only tightens the matching of a blacklist that remains reactive at its core; it hardens the wrong model.",
+          "variantOf": "domain_8_q12",
+          "variantAxis": "scenario",
+          "rev": "4ffb3873b9d9"
+        },
+        {
+          "id": "d8_v2_q118",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s05",
+          "stimulusSeq": 5,
+          "outlineItems": [
+            "3.5.3"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "A settlement transfer crashed the daemon after debiting the source account; on restart the half-completed change was still there and the money was in neither account. Which ACID property failed?",
+          "options": {
+            "A": "Atomicity, because a transaction's operations must apply entirely or leave no effect at all",
+            "B": "Isolation, because concurrent transactions must remain invisible to one another while running",
+            "C": "Durability, because once a transaction commits its effects must survive crashes and remain permanent",
+            "D": "Consistency, because each transaction must move the database between valid states"
+          },
+          "correctAnswer": "A",
+          "explanation": "The debit and credit form one logical transaction, and the system let half of it persist. The property that forbids exactly that is atomicity (A): all of a transaction's operations commit together, or recovery rolls every one of them back so the transaction never happened; a correct engine would have undone the debit on restart. D is the tempting wrong answer because the books are certainly now inconsistent; but the unbalanced state is the consequence, and consistency between valid states is what atomic all-or-nothing execution exists to preserve. Consistency is the direct culprit when a transaction commits while violating a declared rule or constraint. B does not fit because isolation governs interference between transactions running concurrently, and this failure involved a single transaction and a crash. C is wrong because durability protects work that had committed; the problem here is the mirror image: uncommitted, partial work that survived when it should have vanished. Partial effects persisting after recovery point at atomicity; constraint violations at commit point at consistency.",
+          "variantOf": "domain_8_q28",
+          "variantAxis": "scenario",
+          "rev": "b74083f83632"
+        },
+        {
+          "id": "d8_v2_q119",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s06",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.5.3"
+          ],
+          "question": "A tester on a coffee-shop network copies a session cookie out of another patron's traffic and opens that customer's account without ever entering credentials. Which change MOST directly defeats this attack?",
+          "options": {
+            "A": "Enforce a stronger password policy, since the portal's accounts were too easily guessed",
+            "B": "Add a CAPTCHA challenge to the login form to block automated credential attacks",
+            "C": "Serve every page over TLS and mark the session cookie with the Secure attribute",
+            "D": "Shorten the password expiration interval so captured credentials age out quickly"
+          },
+          "correctAnswer": "C",
+          "explanation": "The attacker performed session hijacking: the login was protected, but the session cookie, which is the credential after login, traveled in cleartext on every subsequent request and was simply copied. Extending TLS to the whole session and setting the cookie's Secure attribute (C) keeps the token off the wire in readable form and instructs the browser never to send it over an unencrypted connection; regenerating session IDs and HttpOnly add depth. A, B, and D all defend the authentication step, and the tester never touched it: no password was guessed (A), no automated login attempts occurred (B), and no credential was captured to age out (D); a hijacked session bypasses all three. A would be right against brute-force guessing, B against credential-stuffing bots, D against stale stolen passwords.",
+          "variantOf": "domain_8_q29",
+          "variantAxis": "scenario",
+          "rev": "b4eee94502e6"
+        },
+        {
+          "id": "d8_v2_q120",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s06",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.2.5"
+          ],
+          "question": "Which pair of cookie attributes MOST directly closes the script-access and unencrypted-transport exposures together?",
+          "options": {
+            "A": "Domain and Path, which limit the hosts and URL prefixes to which the cookie is sent",
+            "B": "HttpOnly and Secure, which deny script access and restrict the cookie to encrypted transport",
+            "C": "Max-Age and Expires, which bound how long the browser retains the session cookie",
+            "D": "SameSite and Path, which control whether cross-site navigation includes the cookie"
+          },
+          "correctAnswer": "B",
+          "explanation": "Map each finding to the attribute built for it: script access to the cookie is removed by HttpOnly, which hides the cookie from the page's JavaScript so even a successful XSS payload cannot read it; cleartext transmission is removed by Secure, which forbids the browser from sending the cookie over anything but an encrypted connection (B). A is wrong because Domain and Path only scope which requests include the cookie; within that scope, scripts can still read it and HTTP links still carry it. D is wrong for the same reason at a different boundary: SameSite governs whether cross-site requests attach the cookie, which is a CSRF defense, and neither finding involves cross-site requests. C is wrong because lifetime limits shrink the window of misuse without closing either exposure: a cookie can be stolen by script or sniffed off the wire in its first minute.",
+          "variantOf": "domain_8_q30",
+          "variantAxis": "scenario",
+          "rev": "5701393c5359"
+        },
+        {
+          "id": "d8_v2_q121",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s06",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.5.1"
+          ],
+          "question": "That leftover URL is absent from all design documents and grants administrative access with no credentials. What is the MOST accurate name for this finding?",
+          "options": {
+            "A": "A logic bomb left in the code awaiting a trigger condition chosen by the developer",
+            "B": "A Trojan horse embedded in the application and disguised as a legitimate feature",
+            "C": "A maintenance hook, an undocumented backdoor that bypasses normal authentication",
+            "D": "A race condition that intermittently allows requests to skip the authentication check"
+          },
+          "correctAnswer": "C",
+          "explanation": "An undocumented access path that developers created for their own convenience and that sidesteps authentication is the definition of a maintenance hook, a backdoor (C). Intent barely matters: left in production, it grants the same unauthenticated administrative access to whoever finds it, which is why removal must be verified before release. A is wrong because a logic bomb carries a malicious payload waiting on a trigger, such as a date or an HR record change; this URL does nothing on its own and harbors no destructive action. B is wrong because a Trojan horse is malicious software a victim is deceived into installing because it appears desirable; this is the bank's own application, not a disguised foreign program. D is wrong because a race condition is a timing defect, authentication skipped only when operations interleave badly, appearing intermittently; this bypass is deterministic and works on every request. Deliberate shortcut paths are backdoors, and the fix is process: code review and pre-release checks that hunt for them.",
+          "variantOf": "domain_8_q43",
+          "variantAxis": "scenario",
+          "rev": "bf6445ebbd48"
+        },
+        {
+          "id": "d8_v2_q122",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s06",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.2.4"
+          ],
+          "question": "The scan also finds the vendor's sample applications installed, an admin console on its documented default password, directory listing enabled, and stack traces returned to clients. Which OWASP category fits?",
+          "options": {
+            "A": "Security misconfiguration, since insecure default settings and features were left in place",
+            "B": "Broken access control, since unauthorized parties could reach administrative functions",
+            "C": "Vulnerable and outdated components, since the server carried unneeded sample software",
+            "D": "Identification and authentication failures, since a default password guarded the console"
+          },
+          "correctAnswer": "A",
+          "explanation": "Look for the common cause: sample apps present, default credentials unchanged, directory listing on, verbose errors leaking internals: four symptoms of one omission, an unhardened out-of-the-box deployment. That is security misconfiguration (A), and its remedy is a repeatable hardening baseline applied to every build, not four one-off fixes. B is wrong because broken access control describes missing or faulty authorization logic in the application; here the checks exist and were simply undermined by a published password. That is a settings problem, not a logic problem. C is wrong because the components category targets software that is outdated or known-vulnerable; the samples' sin is being present and unneeded, a deployment choice, whatever their patch level. D is the defensible near-miss: the default password in isolation could file under authentication failures, and on a question about that single finding it would be the answer. But it cannot account for directory listings, stack traces, or sample apps, and the question asks where the findings as a set belong.",
+          "variantOf": "domain_8_q49",
+          "variantAxis": "scenario",
+          "rev": "85dd911e5e97"
+        },
+        {
+          "id": "d8_v2_q123",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s07",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.1.1"
+          ],
+          "question": "Which development model is MOST appropriate for the regulatory reporting system, whose requirements and approval gates are fixed by contract?",
+          "options": {
+            "A": "Waterfall, because its sequential phases and stage-gate approvals match fixed, documented requirements",
+            "B": "Scrum, because short sprints let the team reprioritize the requirements as work proceeds",
+            "C": "Rapid Application Development, because time-boxed prototyping delivers a working system fastest",
+            "D": "Prototyping, because iterating on partial versions helps stakeholders discover what they need"
+          },
+          "correctAnswer": "A",
+          "explanation": "The environment described, with stable contractual requirements, formal documentation, and mandatory approval gates, is exactly what Waterfall's sequential, sign-off-driven structure was designed for, and its classic weakness (going back to an earlier phase is expensive) is neutralized when change is contractually prohibited anyway. B is wrong for this project because Scrum's core advantage is absorbing evolving requirements, which the contract forbids; it would be the right choice where needs shift between iterations. C is wrong because RAD deliberately trades documentation and rigor for speed, the opposite of what the mandate demands; it fits when time-to-market dominates. D is wrong because prototyping exists to help stakeholders who cannot yet articulate requirements; here the requirements are already fixed and signed. Choose the lifecycle from the stability of requirements and the rigor demanded, not from fashion.",
+          "variantOf": "domain_8_q2",
+          "variantAxis": "scenario",
+          "rev": "7f0f92ee6f1d"
+        },
+        {
+          "id": "d8_v2_q124",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s07",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.1"
+          ],
+          "question": "Leadership wants working software delivered early and refined continuously from real user feedback. Which approach BEST fits the consumer feature?",
+          "options": {
+            "A": "Waterfall, since completing the full design before coding avoids expensive rework later",
+            "B": "Cleanroom, since formally verified increments give the highest confidence in each release",
+            "C": "Agile, since short iterations and continuous customer feedback absorb changing requirements",
+            "D": "The V-model, since pairing every build phase with a matching test phase catches defects early"
+          },
+          "correctAnswer": "C",
+          "explanation": "Rapidly shifting requirements plus a demand for early, continuously refined releases are the exact conditions iterative Agile methods were created for: each short cycle delivers working software and folds user feedback into the next. A is wrong because Waterfall assumes requirements can be fixed before design begins — here they cannot, so the finished design would describe the wrong product; it is the right answer when requirements are stable and change is prohibited. B is wrong because Cleanroom's formal specification and verification are slow and assume a precise spec exists; it suits safety-critical software, not a moving target. D is wrong because the V-model is still a sequential, plan-driven shape; its paired test phases verify a fixed specification and cannot absorb change.",
+          "variantOf": "domain_8_q3",
+          "variantAxis": "scenario",
+          "rev": "314bb4cf9a24"
+        },
+        {
+          "id": "d8_v2_q125",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s07",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.1.5"
+          ],
+          "question": "Management's chief concern on the biometric programme is that unexplored technical risks could sink it, and it wants each round of work to open with an explicit risk evaluation. Which lifecycle model fits?",
+          "options": {
+            "A": "The spiral model, in which each cycle opens with objectives and a fresh risk analysis",
+            "B": "Extreme Programming, in which paired developers and test-first coding control quality",
+            "C": "The waterfall model, in which risks are addressed once during the initial planning phase",
+            "D": "Rapid Application Development, in which quick prototypes surface problems through user feedback"
+          },
+          "correctAnswer": "A",
+          "explanation": "Management has literally described the spiral model's engine: repeated cycles that each begin by setting objectives, evaluating risks and alternatives, often retiring the worst risk with a prototype, before committing to the next round of investment (A). It was conceived precisely for large projects burdened with unproven technology. B is wrong because XP's practices manage code quality within iterations; they provide no project-level gate that weighs risk before funding continues. C is wrong because a single up-front risk pass cannot handle risks that only surface mid-build, and with novel technology most of them do; waterfall fits stable, well-understood work. D is wrong because RAD's prototypes optimize for speed and requirements discovery through user reaction; user feedback exposes usability gaps, not systematic engineering risk, and RAD imposes no formal risk-evaluation checkpoint.",
+          "variantOf": "domain_8_q22",
+          "variantAxis": "scenario",
+          "rev": "88b44cf03b26"
+        },
+        {
+          "id": "d8_v2_q126",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s07",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.1.3"
+          ],
+          "question": "The delivery lead wants claims-processing stakeholders to react to something concrete before the team commits to full development. Which approach BEST serves this goal?",
+          "options": {
+            "A": "Completing a comprehensive requirements specification and having every stakeholder sign it",
+            "B": "Adopting cleanroom methods so that defects are formally prevented from the earliest phase",
+            "C": "Proceeding directly to full construction so users can react to the finished system itself",
+            "D": "Building a limited working model of the interface for stakeholders to evaluate and refine"
+          },
+          "correctAnswer": "D",
+          "explanation": "When stakeholders cannot say what they want, showing beats asking: a prototype (D) gives them something concrete to react to, converts vague or contradictory wishes into specific corrections, and costs little enough to throw away and iterate, which is the entire reason prototyping exists as a development approach. A doubles down on the technique that has already failed twice; signatures on an ambiguous document create commitment, not clarity, and the conflicts will resurface as change requests during build. B is wrong because cleanroom's formal rigor prevents implementation defects; it verifies the software against its specification, and here the specification itself is the problem: a formally verified wrong product is still wrong. C is wrong because it takes the largest possible bet on the least information; feedback arrives only after the full cost is sunk, when rework is most expensive. Prototype when requirements are the risk; formalize when correctness against known requirements is the risk.",
+          "variantOf": "domain_8_q36",
+          "variantAxis": "scenario",
+          "rev": "1eb35043f257"
+        },
+        {
+          "id": "d8_v2_q127",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s08",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.1.1"
+          ],
+          "question": "The security architect is asked how security work should fit a process that ships an increment every two weeks. Which arrangement BEST integrates the two?",
+          "options": {
+            "A": "Hold all security requirements for a hardening phase scheduled after the final sprint",
+            "B": "Have the security team test a copy of the product on its own quarterly timetable",
+            "C": "Put security items in the product backlog and security checks in the definition of done",
+            "D": "Dedicate one sprint per quarter entirely to security fixes while feature work pauses"
+          },
+          "correctAnswer": "C",
+          "explanation": "In Scrum, work exists only if it is in the product backlog, and quality bars exist only in the definition of done, so that is where security must live (C): threat-driven requirements and abuse cases enter the backlog to be prioritized alongside features, and the definition of done makes passing security checks a condition of calling any increment complete. Every sprint then ships software that has met the bar. A is wrong because it recreates the bolt-on waterfall pattern inside an iterative process, and every increment before that final phase ships unexamined. B is wrong because out-of-band quarterly testing lags up to six releases behind; findings arrive divorced from the sprint that caused them. D is the seductive anti-pattern: a periodic security sprint batches risk, lets unvetted features ship for months between passes, and frames security as a tax that pauses real work. It is defensible only as an occasional remediation push on top of, never instead of, per-sprint integration.",
+          "variantOf": "domain_8_q39",
+          "variantAxis": "scenario",
+          "rev": "3f9f99243a58"
+        },
+        {
+          "id": "d8_v2_q128",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s08",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.1.2"
+          ],
+          "question": "Which pairing of Extreme Programming practices MOST directly catches defects at the moment the code is being written?",
+          "options": {
+            "A": "The planning game and small releases, which shorten the feedback loop with customers",
+            "B": "Collective code ownership and coding standards, which keep the code base uniform",
+            "C": "On-site customer and system metaphor, which keep development aligned with business intent",
+            "D": "Pair programming and test-driven development, which review and test code as it is typed"
+          },
+          "correctAnswer": "D",
+          "explanation": "The discriminator is at the moment the code is being written, and two XP practices operate at exactly that instant (D): in test-driven development the failing test exists before the code, so the first run verifies the new logic immediately; in pair programming a second developer is reviewing each line as it appears, catching slips that the author is blind to. Together they are XP's tightest defect-feedback loop. A operates at the wrong range: the planning game and small releases work at release granularity; they surface wrong priorities and integration surprises in days or weeks, not keystrokes. B is wrong because shared ownership and standards improve maintainability and consistency, which prevents some future defects but examines nothing as it is created. C is wrong because the on-site customer and metaphor align the product with business intent: they catch building the wrong thing, not building the thing wrong.",
+          "variantOf": "domain_8_q40",
+          "variantAxis": "scenario",
+          "rev": "8aa3cb393cdf"
+        },
+        {
+          "id": "d8_v2_q129",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s08",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.3"
+          ],
+          "question": "Which practice MOST directly satisfies the regulator's requirement that review happen as early as possible?",
+          "options": {
+            "A": "Pair programming, in which a second developer reviews each line as it is being written",
+            "B": "Static analysis in the pipeline, which examines every commit for known insecure patterns",
+            "C": "Raising unit-test coverage thresholds so that untested changes cannot be merged",
+            "D": "Annual secure-coding training so that each developer can review their own work reliably before merging"
+          },
+          "correctAnswer": "A",
+          "explanation": "The requirement names two things: a second person on every change, and review at the earliest possible point. Pair programming (A) delivers both at once: the navigator is a continuous human reviewer sitting beside the author, so no line is ever written unobserved, and the review happens at the moment of creation rather than at a later gate. It is two-person integrity applied to code. B is wrong because a static analyzer, however valuable, is not a reviewer: it matches known insecure patterns and misses flawed business logic; a bogus transfer-approval rule sails through; it is the right automated complement, not the human control the regulator described. C is wrong because coverage measures how much code the author's own tests execute; it neither adds a second person nor evaluates intent. D is wrong because training improves the individual, and self-review is precisely what the requirement rules out. When a control demands independent human review, only another human, pairing or a required reviewer, satisfies it; automation assists, it does not substitute.",
+          "variantOf": "domain_8_q41",
+          "variantAxis": "scenario",
+          "rev": "cb4baec5ac75"
+        },
+        {
+          "id": "d8_v2_q130",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s08",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.1.4"
+          ],
+          "question": "Which answer MOST accurately names the greatest security risk the second squad's compressed delivery style introduces?",
+          "options": {
+            "A": "Schedule pressure squeezes security requirements and testing out of each compressed cycle",
+            "B": "The extensive documentation the method demands will delay security review sign-offs",
+            "C": "Requirements frozen at project start will block security fixes once the cycles begin",
+            "D": "The absence of user involvement means real-world abuse goes unconsidered until launch"
+          },
+          "correctAnswer": "A",
+          "explanation": "RAD's defining trade is rigor for speed. When a time-box tightens, whatever is not demanded by the demo gets cut, and security work such as threat modeling and security test cases is the classic casualty; worse, prototypes that were never meant for production get promoted into it under deadline pressure with their shortcuts intact (A). This is the very pattern behind Global Bank's hackathon key. B is wrong because it describes the opposite methodology: RAD is documentation-light by design; heavy documentation gates belong to waterfall-style processes. C is wrong for the same reason: RAD embraces changing requirements across iterations; frozen baselines are a plan-driven trait. D is wrong because RAD is built around continuous user involvement; the subtle truth, worth keeping, is that users exercise intended behavior while abusers exercise unintended behavior. But the option's premise, absent involvement, is simply false. Fast lifecycles do not forbid security work, they starve it. The countermeasure is making security part of each cycle's definition of done.",
+          "variantOf": "domain_8_q37",
+          "variantAxis": "scenario",
+          "rev": "29b92ced006a"
+        },
+        {
+          "id": "d8_v2_q131",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s09",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.1.2"
+          ],
+          "question": "Leadership wants a recognized framework for assessing and improving how the organization builds software. Which BEST meets that goal?",
+          "options": {
+            "A": "STRIDE, which categorizes design-level threats to a system under development",
+            "B": "CVSS, which scores the severity of published vulnerabilities on a common scale",
+            "C": "The OWASP Top 10, which ranks the most critical web application risk categories",
+            "D": "CMMI, which appraises process maturity in staged levels and guides improvement"
+          },
+          "correctAnswer": "D",
+          "explanation": "The firm's problem is the process itself: ad hoc, heroics-dependent, inconsistent across teams, which is the textbook description of the lowest maturity level. CMMI (D) is built for exactly this: it appraises how an organization develops software against defined maturity levels, produces the recognized rating acquirers ask for, and lays out the practice areas to institutionalize next. A is wrong because STRIDE examines one system's design for threat categories; it says nothing about how consistently the organization works. It is the right answer during a product's design phase. B is wrong because CVSS rates individual known vulnerabilities for prioritization; it measures findings, not capability. C is wrong because the Top 10 educates developers about common application risks; awareness of risks is not evidence of repeatable process. Distinguish product-level tools (threats, vulnerabilities, risks) from organization-level frameworks that measure and mature the process itself.",
+          "variantOf": "domain_8_q23",
+          "variantAxis": "scenario",
+          "rev": "aff5d113d20b"
+        },
+        {
+          "id": "d8_v2_q132",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s09",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.1"
+          ],
+          "question": "The programme adopts the IDEAL model and the team is eager to begin rewriting procedures. According to the model, what must happen FIRST?",
+          "options": {
+            "A": "Acting on the weakest findings from the appraisal to demonstrate early momentum",
+            "B": "Diagnosing the current state of practice against the desired future state",
+            "C": "Initiating the effort by securing sponsorship, resources, and an improvement infrastructure",
+            "D": "Learning from a pilot project so that later phases can be adjusted with evidence"
+          },
+          "correctAnswer": "C",
+          "explanation": "IDEAL sequences an improvement program as Initiating, Diagnosing, Establishing, Acting, Learning, and the ordering is the model's whole point. Before anything else, the Initiating phase (C) sets the business context, wins executive sponsorship, and builds the infrastructure (charter, roles, resources) that will carry the effort; improvement programs launched without that foundation stall as soon as the work gets contentious or expensive. B is wrong only in its timing: diagnosing comes second, and a diagnosis performed with no sponsor or charter produces findings nobody is bound to act on. A is wrong because Acting is the fourth phase; rushing straight to fixes is precisely the trap the eager team in the stem is walking into, changes without diagnosis or plan. D is wrong because Learning is the final phase, harvesting lessons to refine the next pass.",
+          "variantOf": "domain_8_q24",
+          "variantAxis": "scenario",
+          "rev": "4f161bced430"
+        },
+        {
+          "id": "d8_v2_q133",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s09",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.1.1"
+          ],
+          "question": "The terminal group must show defects are prevented during development rather than found and patched afterwards. Which software engineering approach BEST aligns with what its certifier demands?",
+          "options": {
+            "A": "Extreme Programming, relying on test-driven development and continuous pair review",
+            "B": "Cleanroom engineering, using formal specification, verification, and statistical quality control",
+            "C": "Rapid application development, iterating prototypes quickly until users accept the behavior",
+            "D": "Scrum, delivering the firmware in sprints with a defect backlog groomed by the product owner"
+          },
+          "correctAnswer": "B",
+          "explanation": "The regulator's two demands are the two pillars of cleanroom software engineering (B): defects are prevented before test through formal specification and mathematically based verification of the code, and quality is then demonstrated through statistical usage testing that supports certified reliability claims, precisely the evidence sought. A is the strongest wrong answer: TDD and pair programming are powerful, but they find defects moments after they are written; that is still detect-and-fix, not formal prevention, and XP offers no statistical certification of failure rates. It is the right choice for quality-focused commercial teams without a certification burden. C is wrong because RAD optimizes speed and user acceptance; its tolerance for rough prototypes is the opposite of certifiable rigor. D is wrong because Scrum is a management wrapper that explicitly routes defects into a backlog for later resolution; it prescribes no engineering rigor at all.",
+          "variantOf": "domain_8_q38",
+          "variantAxis": "scenario",
+          "rev": "3298cf6b0622"
+        },
+        {
+          "id": "d8_v2_q134",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s09",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.3.2"
+          ],
+          "question": "Which concept should the security manager use to frame the two open hackathon tickets for executives?",
+          "options": {
+            "A": "Risk transference, since responsibility now rests with whoever approved the deadline",
+            "B": "Residual risk, since some exposure legitimately remains after controls are applied",
+            "C": "Sunk cost, since money already spent on the shortcuts ought not drive decisions",
+            "D": "Technical debt, since deferred engineering shortcuts compound in cost and risk over time"
+          },
+          "correctAnswer": "D",
+          "explanation": "The pattern in the stem is the definition of technical debt (D): a deliberate shortcut taken for speed, a promise to fix it later, and a remediation bill that grows as new work is layered on top. The metaphor is what makes it board-ready: the shortcut borrowed time, the tripling estimate is the interest, and this debt's principal is security exposure: a live administrative credential and unvalidated input sitting in production, which is why security debt demands tracking and scheduled repayment like any liability. A is wrong because transference means shifting risk to another party, an insurer or contractor, through a formal arrangement; an executive having approved a deadline shifts nothing; the bank still holds every consequence. B is wrong because residual risk is what remains after controls are implemented and is often acceptable; these controls were never implemented, so the exposure is untreated, not residual. C is wrong because sunk cost is a decision-making principle about ignoring unrecoverable past spending; the manager's problem is the future, costs still growing, not attachment to money already gone. Name deferred security work as debt with compounding interest; executives fund debt repayment far more readily than vague hygiene.",
+          "variantOf": "domain_8_q60",
+          "variantAxis": "scenario",
+          "rev": "05cb01eb671e"
+        },
+        {
+          "id": "d8_v2_q135",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s10",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.2.6"
+          ],
+          "question": "Findings reach developers months after the code shipped. What is the MOST effective way to close that gap?",
+          "options": {
+            "A": "Slow the release cadence so the security team can manually review every change before deployment",
+            "B": "Integrate automated security testing into the pipeline so every build is checked before release",
+            "C": "Increase the frequency of the compliance audits from quarterly to monthly reporting cycles",
+            "D": "Have developers self-certify each release against a secure-coding checklist at deployment time"
+          },
+          "correctAnswer": "B",
+          "explanation": "The mismatch here is speed: delivery is automated and continuous while security is manual and periodic. DevSecOps closes it by making security run at the pipeline's own speed: automated static analysis plus dependency and secret scanning on every build, so findings reach the developer in minutes, while the change is still fresh. A is wrong because it sacrifices the delivery capability the business built and still scales linearly with reviewer headcount; reserving manual review for the highest-risk changes is sensible, but as the only control it fails. C is wrong because audits are detective and after the fact regardless of frequency; monthly audits still find problems months of deployments too late. D is wrong because self-certification adds no independent verification; checklists guide developers but do not test the code.",
+          "variantOf": "domain_8_q4",
+          "variantAxis": "scenario",
+          "rev": "f81b54b735d2"
+        },
+        {
+          "id": "d8_v2_q136",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s10",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.1.4"
+          ],
+          "question": "The administrator inserts code that will delete the payroll tables if his employee ID ever disappears from the HR system. Which safeguard would MOST likely catch this insertion before it reaches production?",
+          "options": {
+            "A": "Antivirus scanning on the database server to detect malicious executable files",
+            "B": "Full-disk encryption of the storage volumes holding the payroll tables",
+            "C": "An annual disaster-recovery exercise proving that payroll can be restored intact from backup tapes",
+            "D": "Mandatory peer review of every code change before it can be merged and deployed"
+          },
+          "correctAnswer": "D",
+          "explanation": "This is a logic bomb: legitimate-looking code carrying a malicious trigger. Because it is written by an authorized insider and contains no malware signature, the control most likely to catch it is another human reading the change. Mandatory peer review (D) puts a second set of eyes on a deletion routine conditioned on an HR lookup, an obvious red flag, and its mere existence deters the attempt. A fails because the bomb is source code committed through normal channels, not a foreign binary; antivirus is the right answer for commodity malware dropped onto the host. B is wrong because encryption protects confidentiality of data at rest, and the bomb will delete data through fully authorized paths that decrypt transparently. C is wrong for this question because recovery exercises are corrective; they limit the damage after detonation, which makes them the right answer to reducing impact, not to catching the insertion beforehand. Insider code threats are defeated by process controls on the change pipeline, not by malware tooling.",
+          "variantOf": "domain_8_q16",
+          "variantAxis": "scenario",
+          "rev": "08883367b0b4"
+        },
+        {
+          "id": "d8_v2_q137",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s10",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.1.3"
+          ],
+          "question": "Which deployment strategy BEST limits the blast radius of an unforeseen defect in the rewritten authentication service?",
+          "options": {
+            "A": "Blue-green deployment, cutting all traffic over to the new version while the old stands ready",
+            "B": "A canary release, sending a small share of live traffic to the new version under monitoring",
+            "C": "A big-bang upgrade during a weekend maintenance window with extended staff on call",
+            "D": "Two additional weeks of soak testing in staging before releasing to every customer at once"
+          },
+          "correctAnswer": "B",
+          "explanation": "Leadership's fear is a defect that tests did not catch, so the strategy must assume the defect ships and minimize who meets it. A canary release (B) does exactly that: a small fraction of real production traffic exercises the new version while metrics are watched, so a lockout bug strands one percent of customers for minutes rather than all of them, and rollback is a routing change. A is the strong near-miss: blue-green also offers instant rollback, but its cutover sends one hundred percent of users to the new version, so the entire customer base is exposed during the window before the defect is noticed; it is the right answer when the priority is a fast, clean switch and versions cannot serve traffic side by side. C is wrong because timing does not shrink exposure; every customer still hits the new code at once, just on a Sunday. D is wrong because the feared defect is precisely the kind staging did not produce; more of the same environment yields more of the same blind spot; only production traffic reveals production behavior. When residual risk is unknown unknowns, expose it to the smallest real audience first.",
+          "variantOf": "domain_8_q58",
+          "variantAxis": "scenario",
+          "rev": "f6fa30652428"
+        },
+        {
+          "id": "d8_v2_q138",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s10",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "8.3"
+          ],
+          "question": "The product manager argues that because real users are exercising the new login page in production, it has effectively been security tested. How should the security team respond?",
+          "options": {
+            "A": "Agree, because production traffic exercises more code paths than scripted security scans",
+            "B": "Agree, provided the experiment runs long enough to reach statistical significance",
+            "C": "Disagree, because A/B testing compares feature performance, not resistance to attack",
+            "D": "Disagree, because only half of the users saw the new page, so coverage was incomplete"
+          },
+          "correctAnswer": "C",
+          "explanation": "An A/B test is a controlled experiment on user behavior: two variants, live traffic split between them, business metrics compared: completion rates, conversions. Its participants are benign users doing intended things, so it generates no evidence about malicious inputs, session handling under attack, or authentication bypass attempts; security assurance requires deliberately adversarial testing, DAST or penetration testing, before the redesign reaches anyone (C). A measures the wrong dimension, breadth of benign traffic: normal users walk happy paths no matter how many of them there are, while attacks are crafted inputs that ordinary usage never produces. B is wrong because statistical significance strengthens the UX conclusion only; a rigorous experiment measuring the wrong property yields a very confident answer to a different question. D is the trap for careful readers: it rejects the claim for a wrong reason, since routing every user to the new page would still test nothing adversarial; endorsing that reasoning would imply full exposure equals security testing.",
+          "variantOf": "domain_8_q59",
+          "variantAxis": "scenario",
+          "rev": "2f0636747102"
+        },
+        {
+          "id": "d8_v2_q139",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s11",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.2.2"
+          ],
+          "question": "Which tooling MOST directly answers which of the four hundred applications embed a vulnerable version, transitive dependencies included?",
+          "options": {
+            "A": "Static analysis of each application's own source code for insecure logging patterns",
+            "B": "Dynamic scanning of the running applications to probe for exploitable behaviors",
+            "C": "A questionnaire asking each development team to list the libraries their apps use",
+            "D": "Software composition analysis that inventories every dependency against vulnerability data"
+          },
+          "correctAnswer": "D",
+          "explanation": "The question being asked, which applications contain component X at a vulnerable version, is an inventory question, and software composition analysis (D) is the tooling built to answer it: it resolves each application's full dependency tree, transitive imports included, records exact versions, and matches them against vulnerability advisories, turning a fleet-wide audit into a query. A is wrong on target: static analysis examines code your own developers wrote for flaw patterns; it does not catalogue which third-party library versions the build pulled in. The flaw here is in someone else's code. B is wrong on speed and coverage: dynamically probing four hundred applications takes far longer than hours, and a vulnerable library that the scanner's inputs never trigger produces no signal while still being present. C is wrong because developers reliably know their direct imports and reliably do not know the transitive ones, which is exactly where such libraries hide, and any answers gathered are stale by the next build.",
+          "variantOf": "domain_8_q55",
+          "variantAxis": "scenario",
+          "rev": "6c0557958dae"
+        },
+        {
+          "id": "d8_v2_q140",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s11",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.4.3"
+          ],
+          "question": "Every customer who applied the vendor's legitimate update received the implant. Which term BEST describes this attack?",
+          "options": {
+            "A": "A watering-hole attack, since victims were compromised at a resource they habitually trust",
+            "B": "Spear phishing, since the malicious payload reached a specifically chosen set of targets",
+            "C": "A supply chain attack, since the vendor's build pipeline was subverted to reach its customers",
+            "D": "An insider threat, since the compromise originated within the vendor's own build systems"
+          },
+          "correctAnswer": "C",
+          "explanation": "The attackers never touched the victims directly: they compromised a supplier's build pipeline so that the trusted product itself became the delivery vehicle, arriving with a valid signature through the official update channel, which is the definition of a supply chain attack (C) and the SolarWinds pattern precisely. The signature is what makes it devastating: the victims' verification checks passed, because the code was signed after the implant was inserted. A is the closest wrong answer: a watering hole also exploits a trusted habit, but it poisons a website the targets visit and exploits their browsers there; here the poison traveled inside a purchased product's update, not a webpage. B is wrong because spear phishing works by deceiving chosen individuals into opening a lure; no human at any customer was deceived; administrators applied a legitimate update correctly. D is wrong because an insider threat is an authorized person misusing their own access; the build server was breached by external attackers, and location inside the vendor does not make them insiders. When upstream trust is the vector, defenses shift to vendor assurance, build integrity, and monitoring what updates actually do.",
+          "variantOf": "domain_8_q56",
+          "variantAxis": "scenario",
+          "rev": "97efe4e81faa"
+        },
+        {
+          "id": "d8_v2_q141",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s11",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "8.4.1"
+          ],
+          "question": "Regulators ask that vendor to state precisely which components, at which versions, ship inside each product, and it cannot answer without weeks of archaeology. Which artifact would have answered immediately?",
+          "options": {
+            "A": "A software bill of materials enumerating every component and version in each release",
+            "B": "A penetration test report demonstrating the release resisted realistic attack attempts",
+            "C": "A hardware asset inventory recording every server involved in building the product",
+            "D": "A change log summarizing the features and fixes the release delivered to customers"
+          },
+          "correctAnswer": "A",
+          "explanation": "The regulators are asking for a parts list, and that is literally what a software bill of materials is (A): a machine-readable inventory, generated at build time, of every component a release contains, direct and transitive, open-source and commercial, with versions and origins. With an SBOM per release, the question 'which products contain component X?' becomes a lookup; without one, it becomes the weeks of archaeology the vendor is now doing. B is wrong because a penetration test report attests to behavior under attack at a point in time; it contains no component inventory and cannot say what is inside the product. C inventories the wrong things: the build servers are infrastructure, and listing them says nothing about what went into the shipped artifact. D is wrong because change logs describe features and fixes for human readers; they rarely mention dependencies at all, let alone exhaustively with versions.",
+          "variantOf": "domain_8_q57",
+          "variantAxis": "scenario",
+          "rev": "2599215f1aa7"
+        },
+        {
+          "id": "d8_v2_q142",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s11",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "7.8"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "The bank depends on the VPN appliance for all remote access and no patch is coming. What is the MOST appropriate immediate course of action?",
+          "options": {
+            "A": "Wait for the vendor patch, since interim changes to the appliance would need rework later",
+            "B": "Apply compensating controls, restricting exposure of the device and increasing monitoring",
+            "C": "Run signature-based antivirus scans against the appliance to remove any implanted malware",
+            "D": "Formally accept the risk, documenting that exploitation is unlikely before the patch ships"
+          },
+          "correctAnswer": "B",
+          "explanation": "Active exploitation with no patch available is the zero-day window, and the playbook for it is compensating controls (B): shrink the attack surface (restrict which addresses can reach the device, disable the vulnerable feature if the advisory allows, add virtual-patch rules where possible) and watch it closely for indicators of compromise while the fix is pending. A is wrong because it leaves the sole remote-access path exposed for weeks of known, in-the-wild exploitation; a little rework is a trivial price. C is wrong because signature tools recognize known malware, an unknown exploit's payload rarely has one yet, and appliances seldom support host scanners anyway. It is the right reflex for commodity infections, not this one. D is wrong because its own premise is false: exploitation is not unlikely, it is happening now; acceptance is legitimate only when the exposure is genuinely tolerable or mitigation costs more than the risk. When no patch exists, reduce exposure and heighten detection; documenting a risk is not the same as treating it.",
+          "variantOf": "domain_8_q21",
+          "variantAxis": "scenario",
+          "rev": "d21eb017f291"
+        },
+        {
+          "id": "d8_v2_q143",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s12",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "3.1.1"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "The architects want a structured way to enumerate spoofed callers, tampered messages, repudiated transactions and leaked records at this stage. Which technique fits BEST?",
+          "options": {
+            "A": "Scoring each of the system's known vulnerabilities with CVSS to rank their severity",
+            "B": "Running a dynamic application security test against the deployed staging environment",
+            "C": "Commissioning an external penetration test of the completed payment service",
+            "D": "Threat modeling with STRIDE to categorize design-level threats to each component"
+          },
+          "correctAnswer": "D",
+          "explanation": "At design time there is no code, no build, and no findings, only architecture. The one technique that operates on architecture alone is threat modeling, and STRIDE (D) is a natural choice here because the team's worry list maps onto its categories one for one: Spoofing, Tampering, Repudiation, Information disclosure, plus denial of service and elevation of privilege they have not thought of yet, which is exactly the value of using a structured taxonomy over brainstorming. A is wrong because CVSS scores vulnerabilities that have been discovered in something that exists; there is nothing to score yet. B is wrong because DAST probes a running application: right technique, later phase, once a staging build exists. C is wrong the same way at still a later stage: penetration testing validates the finished, deployed service.",
+          "variantOf": "domain_8_q33",
+          "variantAxis": "scenario",
+          "rev": "fd60662fc48e"
+        },
+        {
+          "id": "d8_v2_q144",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s12",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "3.5.9"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "Which approach BEST delivers mutual TLS and per-call authorization across the two hundred services without changing their code?",
+          "options": {
+            "A": "An API gateway at the network edge that authenticates external clients before they enter",
+            "B": "A perimeter firewall policy limiting which outside networks can reach the service cluster",
+            "C": "A shared library implementing TLS and authorization, to be integrated into each service",
+            "D": "A service mesh whose sidecar proxies supply mutual TLS and policy without code changes"
+          },
+          "correctAnswer": "D",
+          "explanation": "The requirement is service-to-service (east-west) security at a scale where touching application code is off the table, and that is the problem service meshes were built for (D): a sidecar proxy deployed beside each service intercepts its traffic, so mutual TLS, service identity, and per-call authorization policy are supplied by infrastructure, uniformly and without modifying any of the two hundred codebases. A is wrong on direction: a gateway guards north-south traffic where external clients enter; once inside, service-to-service calls never traverse it. It is the right answer for authenticating outside consumers. B is wrong on granularity as well as direction: a perimeter policy knows networks and ports, not service identities, and offers nothing between two services inside the cluster. C meets the functional need but fails the stated constraint: it requires integrating and re-releasing every service, and forever ties security upgrades to two hundred deployment schedules.",
+          "variantOf": "domain_8_q52",
+          "variantAxis": "scenario",
+          "rev": "49d9c2e4a93b"
+        },
+        {
+          "id": "d8_v2_q145",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s12",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "3.5.10"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "Which change MOST reduces the risk of container compromise and escape on the platform as reviewed?",
+          "options": {
+            "A": "Installing traditional antivirus agents inside every running application container",
+            "B": "Scanning images for known vulnerabilities and running containers as non-root users",
+            "C": "Moving all images into a private registry while continuing to build them unchanged",
+            "D": "Restarting every container on a nightly schedule so intrusions do not persist"
+          },
+          "correctAnswer": "B",
+          "explanation": "The review names the two dominant risks and B answers both: scanning images before deployment catches the known-vulnerable packages that public-registry images routinely carry, the most likely route to compromise, and dropping root strips a compromised container of the privileges that make kernel exploits and host escape practical on a shared node. A is wrong because an in-container antivirus agent is a host-era control transplanted badly: it bloats the image, sees only one container's namespace, and does nothing about the vulnerable packages or the root privilege; container defense lives in image hygiene and runtime policy. C is wrong because provenance without inspection just relocates the risk: the same unscanned, vulnerable images are served from a private address. It is worthwhile against registry tampering, as a complement to scanning. D is wrong because recycling containers evicts an intruder only until the same unpatched flaw readmits them; persistence is not the vulnerability, and treating restarts as cleansing mistakes the symptom for the cause.",
+          "variantOf": "domain_8_q53",
+          "variantAxis": "scenario",
+          "rev": "a30ee32e8b60"
+        },
+        {
+          "id": "d8_v2_q146",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s12",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "3.5.11"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "Which security responsibilities does the team retain once the document-processing workload runs serverless?",
+          "options": {
+            "A": "Securing the function code, its dependencies, its secrets, and its least-privilege IAM roles",
+            "B": "Patching the operating system kernels of the servers on which the functions execute",
+            "C": "Hardening the hypervisor layer that isolates the provider's tenants from one another",
+            "D": "Managing host firewalls and antivirus on the machines running the function runtime"
+          },
+          "correctAnswer": "A",
+          "explanation": "Serverless shifts the shared-responsibility line sharply toward the provider, but never past the customer's own workload. What remains is everything the team writes or configures (A): the function code and its input handling, the third-party dependencies bundled with it (composition analysis still applies), the secrets it uses, and above all the IAM role it executes under, since over-permissioned functions are the signature serverless failure. B and D are wrong for the same reason: in a functions platform the customer cannot even reach the operating system, hosts, or runtime; the provider owns their patching and protection; both answers describe responsibilities the team held on its old self-managed VMs and would still hold under IaaS. C is wrong one layer deeper still: hypervisor isolation between tenants is the provider's responsibility in every cloud service model, and no customer ever hardens it.",
+          "variantOf": "domain_8_q54",
+          "variantAxis": "scenario",
+          "rev": "15012905a094"
+        },
+        {
+          "id": "d8_v2_q147",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s12",
+          "stimulusSeq": 5,
+          "outlineItems": [
+            "8.5.2"
+          ],
+          "question": "Which pair of controls MOST directly counters the identifier enumeration and the replayed credential lists on the API being replaced?",
+          "options": {
+            "A": "Moving the API to an undocumented URL path and randomizing its response formats",
+            "B": "Deploying additional API servers behind a load balancer to absorb the request volume",
+            "C": "Rate limiting per client plus strong authentication with authorization checks on every object",
+            "D": "Requiring API consumers to accept terms of service that prohibit automated scraping"
+          },
+          "correctAnswer": "C",
+          "explanation": "Both abuse patterns exploit the same two gaps: nothing slows a caller down, and nothing verifies that a caller may access the specific record it names. Per-client rate limiting throttles the millions-of-requests behavior that enumeration and credential replay both depend on, and object-level authorization ensures that even a valid session can only retrieve its own records (C), closing the sequential-ID harvest. A is wrong because hidden paths and shuffled formats are security through obscurity; the current abuser already found the API, and any future one will. B is wrong because adding capacity treats hostile traffic as a scaling problem; it makes the abuse run more smoothly at higher cost to the retailer. D is wrong as a technical counter because a terms-of-service document enforces nothing at request time; it has real value as the legal basis for action against an identified abuser, which makes it a complement, not a control.",
+          "variantOf": "domain_8_q35",
+          "variantAxis": "scenario",
+          "rev": "e322eb198b90"
+        },
+        {
+          "id": "d8_v2_q148",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s13",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "8.5"
+          ],
+          "question": "How should the lead BEST use the OWASP Top 10 in building the programme?",
+          "options": {
+            "A": "Adopt it as the complete set of security requirements the finished application must satisfy",
+            "B": "Treat it as a substitute for penetration testing, since it already lists the likely findings",
+            "C": "Use it as an awareness baseline that focuses training on the most common web risk categories",
+            "D": "Apply it as a hardening checklist for the servers that will host the company's applications"
+          },
+          "correctAnswer": "C",
+          "explanation": "The OWASP Top 10 is an awareness document: a consensus ranking of the most prevalent categories of web application risk. That makes it an ideal seed for a first training curriculum and coding standard: maximum coverage of common failure classes for minimal budget (C). A is wrong because OWASP itself warns the Top 10 is a starting point, not a complete requirements set; when the lead needs verification-grade requirements, the OWASP Application Security Verification Standard (ASVS) is the right artifact. B is wrong because a list of risk categories cannot examine an actual implementation; testing finds the specific instances a list can only name. D is wrong because the Top 10 addresses application-layer risks; server hardening belongs to configuration baselines such as CIS Benchmarks.",
+          "variantOf": "domain_8_q10",
+          "variantAxis": "scenario",
+          "rev": "b40ed7b8be7f"
+        },
+        {
+          "id": "d8_v2_q149",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s13",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "8.3.2"
+          ],
+          "question": "Which method is designed for ranking the forty threats so that remediation effort goes to the worst ones first?",
+          "options": {
+            "A": "STRIDE, which sorts each threat into one of six categories of malicious behavior",
+            "B": "DREAD, which scores each threat on factors such as damage potential and exploitability",
+            "C": "CVSS, which computes severity scores for vulnerabilities published against shipped software",
+            "D": "CMMI, which appraises the maturity of an organization's development processes"
+          },
+          "correctAnswer": "B",
+          "explanation": "Ranking forty hypothetical threats needs a rating scheme, and DREAD (B) is exactly that: each threat is scored on Damage, Reproducibility, Exploitability, Affected users, and Discoverability, and the totals give a defensible, repeatable priority order for remediation. A cannot rank anything: STRIDE was the enumeration step the workshop just completed; it tells you what kind each threat is, and nothing about which is worse; category membership carries no severity. C is the plausible near-miss: CVSS also produces severity numbers, but it is built for disclosed vulnerabilities in released software, scoring concrete flaws with known exploit characteristics; design-stage threats have no CVE, no patch state, and often no implementation yet. It is the right answer when the input is a vulnerability-scan report. D is wrong because CMMI evaluates how the organization builds software, an entirely different altitude from ranking one system's threats. STRIDE finds and names threats, DREAD ranks them; CVSS rates real vulnerabilities after release.",
+          "variantOf": "domain_8_q34",
+          "variantAxis": "scenario",
+          "rev": "4548411c317b"
+        },
+        {
+          "id": "d8_v2_q150",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s13",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "3.1.1"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "Which STRIDE category BEST fits the moment the key became readable by anyone browsing the repository, before any attacker had used it?",
+          "options": {
+            "A": "Spoofing, because the key would later let outsiders authenticate as an administrator",
+            "B": "Tampering, because the repository's contents were changed by the developer's push",
+            "C": "Information disclosure, because a secret became visible to parties never meant to see it",
+            "D": "Elevation of privilege, because possession of the key conferred administrative rights"
+          },
+          "correctAnswer": "C",
+          "explanation": "Precision about which event is being classified decides this question. The event named in the stem is the exposure itself, a confidential value becoming readable by unauthorized parties, and confidentiality violations are STRIDE's information disclosure category (C), regardless of whether anyone had exploited the exposure yet. A and D fail on phase, not on substance: when attackers later authenticated to the API as an administrator using the stolen key, that was spoofing, and the administrative capability they gained maps to elevation of privilege — each is the right answer to a question about the attack that followed, not about the leak. B fails on definition: tampering is unauthorized modification of data or code, and the developer's push was an authorized, well-intentioned change that happened to be unsafe; nothing was maliciously altered. A real incident spans several STRIDE categories in sequence; classify each event on the timeline separately instead of forcing one label onto the whole story.",
+          "variantOf": "domain_8_q51",
+          "variantAxis": "scenario",
+          "rev": "444203fec916"
+        },
+        {
+          "id": "d8_v2_q151",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s14",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "7.6.5"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "The team suspects kernel-level malware is concealing its presence on that server. What is the MOST reliable way to restore trust in the system?",
+          "options": {
+            "A": "Rebuild the system from known-good installation media and restore data from clean backups",
+            "B": "Run a full scan with the installed antivirus using its most aggressive detection settings",
+            "C": "Delete the executables owning the suspicious connections and then reboot the server",
+            "D": "Patch the operating system to the current level so the malware can no longer operate"
+          },
+          "correctAnswer": "A",
+          "explanation": "A rootkit subverts the operating system itself, so every answer that system gives, from process lists to scan results, is suspect; the firewall seeing traffic the host denies is the classic symptom. Once the kernel is untrusted, the only way to re-establish a trusted computing base is to rebuild from media you trust and restore data verified clean (A). B is wrong because the antivirus runs on, and asks questions of, the compromised OS; the rootkit filters what it is allowed to see; aggressive settings do not fix a lying oracle. B is reasonable when the suspected malware is ordinary user-mode code. C is wrong twice over: the hiding means you cannot reliably find the owning executables, and deleting visible components leaves whatever the kernel implant protects. D is wrong because patching closes entry vectors for the future; it does not evict malware already resident below the tools that would remove it.",
+          "variantOf": "domain_8_q13",
+          "variantAxis": "scenario",
+          "rev": "93ea947c68ba"
+        },
+        {
+          "id": "d8_v2_q152",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s14",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "7.7.7"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "Which detection approach is BEST suited to the malware family whose samples differ in code but not in behaviour?",
+          "options": {
+            "A": "Distribute the newest signature databases to every endpoint several times per day",
+            "B": "Block executable email attachments at the gateway so samples cannot reach users",
+            "C": "Deploy behavior-based monitoring that flags the malware's actions rather than its code",
+            "D": "Compare file hashes on each host against the list of previously quarantined samples"
+          },
+          "correctAnswer": "C",
+          "explanation": "Identical behavior with a different hash every generation is the fingerprint of polymorphic malware: it re-encrypts or mutates its code on each infection, so static patterns never stabilize. What it cannot cheaply change is what it does: the files it touches, the persistence it sets, the traffic it sends. That is why behavior-based or heuristic detection (C) catches the family that signatures keep missing. A is wrong because faster signature delivery still loses the race: each new variant is born unsigned; frequency does not fix a model keyed to bytes that keep changing. B is wrong in scope; it narrows one delivery vector while the family may arrive by web, removable media, or lateral movement, and it still detects nothing. D is wrong because hash comparison is the most brittle signature of all: a single changed byte produces a new hash, which is precisely the property the malware exploits. When the code mutates, anchor detection to the behavior that stays constant.",
+          "variantOf": "domain_8_q14",
+          "variantAxis": "scenario",
+          "rev": "88b356734471"
+        },
+        {
+          "id": "d8_v2_q153",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s14",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "7.7.3"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "The converter does what it advertises and staff installed it themselves on machines they cannot administer. Which control would MOST effectively have prevented these installations?",
+          "options": {
+            "A": "Application allow-listing that permits only approved software to execute on endpoints",
+            "B": "A security awareness campaign warning staff about software from unofficial sources",
+            "C": "An intrusion detection sensor tuned to alert on remote-access tool network traffic",
+            "D": "Prompt operating system patching to close the vulnerabilities the malware exploited"
+          },
+          "correctAnswer": "A",
+          "explanation": "A working program that secretly carries a hostile payload is a Trojan horse, and its defining property is that the user willingly runs it, so the strongest defense is one that does not depend on the user's judgment. Application allow-listing (A) blocks the unapproved binary from executing at all, no matter how convincing it looked or who double-clicked it. B is wrong as the most effective choice because awareness is administrative and probabilistic: it lowers the click rate but some installs still happen, as this incident shows; it is the right complement, and the right answer where technical enforcement is infeasible. C is wrong because IDS is detective; it raises an alert after the channel opens rather than preventing the installation the question asks about. D is wrong because no vulnerability was exploited: the user granted execution voluntarily, so patching, the right answer for worm-style exploitation, has nothing here to close.",
+          "variantOf": "domain_8_q17",
+          "variantAxis": "scenario",
+          "rev": "bd1b3bd951b3"
+        },
+        {
+          "id": "d8_v2_q154",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s15",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "7.8"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "Each infected server infected its neighbours directly, with no user action anywhere. Which combination of controls BEST limits this class of attack in future?",
+          "options": {
+            "A": "Phishing simulations and awareness training so employees stop opening malicious attachments",
+            "B": "Timely patching of exposed network services plus segmentation to contain lateral movement",
+            "C": "Stronger password complexity requirements and lockout thresholds across all accounts",
+            "D": "Full backups of every server retained for ninety days at a separate offsite location"
+          },
+          "correctAnswer": "B",
+          "explanation": "Self-propagation through a vulnerable network service with zero user involvement is the signature of a worm, and the stem hands you both contributing causes: an unpatched exposed service, and a flat network where every host can reach every other. Patching removes the exploitable flaw; segmentation shrinks the population each infected host can even reach; together (B) they attack propagation at both ends. A guards the human vector, and the defining clue is that no human acted; training is the right answer when malware arrives by phishing or Trojanized downloads. C is wrong because the worm exploited a service flaw, not credentials; hardening passwords is the right answer when spread rides password spraying or credential reuse. D is wrong for this question because backups are corrective; they rebuild servers after the damage and do nothing to limit the spread itself. Read the propagation mechanism first; it tells you which control family is even in play.",
+          "variantOf": "domain_8_q18",
+          "variantAxis": "scenario",
+          "rev": "ea971fca7604"
+        },
+        {
+          "id": "d8_v2_q155",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s15",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "7.2.5"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "Which control would MOST reduce the ongoing harm from the compromised campus workstations fetching commands?",
+          "options": {
+            "A": "Requiring password changes for all users whose workstations were observed beaconing",
+            "B": "Encrypting the hard drives of the affected workstations to protect the stored data",
+            "C": "Scheduling monthly vulnerability scans across the campus workstation address space",
+            "D": "Egress filtering and DNS monitoring to block and expose command-and-control traffic"
+          },
+          "correctAnswer": "D",
+          "explanation": "Two hundred hosts beaconing to one domain for instructions is a botnet, and a bot's value to its herder depends entirely on the command-and-control channel. Cutting that channel at the network edge (D), by blocking the domain, filtering outbound traffic, and watching DNS, both stops the flooding and enumerates the infected hosts for cleanup; it attacks the one thing every bot must do. A misreads the cause: the workstations are compromised by resident malware, not by stolen passwords; new credentials on an infected host are promptly available to the malware anyway. B is wrong because disk encryption protects data confidentiality on lost or stolen media and is irrelevant to a machine actively attacking others while running. C is wrong for the timescale asked about: scanning is preventive hygiene that may reduce future infections, but a monthly detective cycle does nothing about the harm in progress.",
+          "variantOf": "domain_8_q20",
+          "variantAxis": "scenario",
+          "rev": "446ef88ba4ea"
+        },
+        {
+          "id": "d8_v2_q156",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s15",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "7.7.7"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "The macro code lies dormant until an infected file is opened and spreads only when users share those files. How should the analyst classify it?",
+          "options": {
+            "A": "A worm, since it eventually reached many machines across the company's network",
+            "B": "A logic bomb, since it stays dormant until a specific condition has been met",
+            "C": "A virus, since it attaches to host files and requires user execution to spread",
+            "D": "A rootkit, since it conceals its code inside legitimate document files"
+          },
+          "correctAnswer": "C",
+          "explanation": "Two properties decide the classification: the code attaches itself to a host file, and it advances only when a human opens that file. Host-dependence plus required user execution defines a virus, in this case a macro virus (C). A is wrong because a worm's defining trait is autonomous spread, exploiting services with no user action; the stem states the opposite, and mere breadth of infection does not make a worm. B is wrong because a logic bomb is code planted in a system awaiting a trigger; it does not replicate by attaching to files; the dormancy here is just the wait for an ordinary open, which is the execution vector, not a chosen trigger condition. D is wrong because a rootkit's concealment means subverting the operating system so that tools cannot see it; riding inside a document is a carrier, not OS-level hiding.",
+          "variantOf": "domain_8_q19",
+          "variantAxis": "scenario",
+          "rev": "20831a0a84a5"
+        },
+        {
+          "id": "d8_v2_q157",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s15",
+          "stimulusSeq": 4,
+          "outlineItems": [
+            "7.10.1"
+          ],
+          "crossDomain": [
+            "domain_7"
+          ],
+          "question": "The bank's risk committee wants the single control that MOST reduces the business impact of a successful ransomware attack. Which should it choose?",
+          "options": {
+            "A": "An endpoint protection platform that detects and quarantines known ransomware families",
+            "B": "Offline, regularly tested backups kept isolated from production networks and credentials",
+            "C": "Full-disk encryption on all servers so stolen patient records remain confidential",
+            "D": "A cyber-insurance policy that reimburses ransom payments and recovery expenses"
+          },
+          "correctAnswer": "B",
+          "explanation": "The discriminator is impact of a successful attack: the committee is asking what limits the damage once prevention has already failed. Ransomware is fundamentally an availability attack, and isolated, tested backups (B) restore availability without paying: offline and credential-separated because modern operators hunt down and encrypt or delete any backup they can reach, and tested because an unrestorable backup is discovered at the worst possible moment. A is wrong for this question because detection reduces the likelihood of success, which the stem has already conceded; it is the right answer to lowering the odds of infection. C is wrong because your own disk encryption does nothing against the attacker layering their encryption on top; it addresses confidentiality of stolen media, a different threat. D is wrong because insurance transfers part of the financial loss while patient care stays down; payment is no guarantee of working decryption and may raise legal issues.",
+          "variantOf": "domain_8_q15",
+          "variantAxis": "scenario",
+          "rev": "b888a861ab53"
+        },
+        {
+          "id": "d8_v2_q158",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s16",
+          "stimulusSeq": 1,
+          "outlineItems": [
+            "3.5.3"
+          ],
+          "crossDomain": [
+            "domain_3"
+          ],
+          "question": "Which database design practice MOST directly prevents the class of defect behind the mismatched addresses?",
+          "options": {
+            "A": "Normalization, so each fact is stored once and referenced rather than duplicated",
+            "B": "Transparent encryption, so address data is protected from any unauthorized reading",
+            "C": "Nightly integrity jobs that compare the three address copies and report mismatches",
+            "D": "Database activity monitoring that logs every change made to customer records"
+          },
+          "correctAnswer": "A",
+          "explanation": "Three divergent copies of one fact is an update anomaly, and update anomalies are exactly what normalization exists to eliminate: store the address once, reference it by key everywhere else, and there is no second or third copy to miss (A); the defect becomes structurally impossible. C is a detective patch on the symptom: it tolerates the redundancy, lets copies diverge, and then notices, with refunds already misdirected in the meantime; reconciliation jobs are the right answer only for data you cannot restructure, such as feeds from external systems. B is wrong because encryption addresses confidentiality; every one of the three copies can be perfectly encrypted and still inconsistent. D is wrong because an audit log records who changed what, which serves accountability and forensics but does nothing to keep the copies in step.",
+          "variantOf": "domain_8_q25",
+          "variantAxis": "scenario",
+          "rev": "1745ea3f9076"
+        },
+        {
+          "id": "d8_v2_q159",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s16",
+          "stimulusSeq": 2,
+          "outlineItems": [
+            "2.1.1"
+          ],
+          "crossDomain": [
+            "domain_2"
+          ],
+          "question": "A clerk counts customers in a rare fraud category, repeats the count excluding one named customer, and subtracts to learn that customer's flag. Neither query exceeded the clerk's permissions. Which term BEST describes this?",
+          "options": {
+            "A": "SQL injection, because crafted queries extracted data the interface was built to conceal",
+            "B": "Inference, because a protected fact was deduced from individually authorized results",
+            "C": "Privilege escalation, because the clerk obtained information above their access level",
+            "D": "Aggregation, because a large volume of harmless records was fused into a sensitive whole"
+          },
+          "correctAnswer": "B",
+          "explanation": "The clerk never broke a rule: each query was authorized and well formed. Yet arithmetic across the answers revealed a fact the system withholds. Deducing protected information from legitimately obtainable results is an inference attack (B), and it is countered by controls on the answers, not the access: minimum query-set sizes, noise or perturbation in statistics, and polyinstantiation in multilevel databases. A is wrong because injection means input that subverts the structure of the query itself; these queries ran exactly as designed. C is wrong because no permission boundary was crossed or elevated, which is what makes inference so hard to police; escalation would involve gaining rights the clerk was never granted. D is the closest wrong answer: aggregation is the sibling threat in which many individually non-sensitive records are combined until the collection itself is sensitive. Here the clerk combined two statistics to derive one specific withheld fact: deduction, not accumulation. Aggregation piles data up; inference reasons a secret out, and access control alone stops neither.",
+          "variantOf": "domain_8_q26",
+          "variantAxis": "scenario",
+          "rev": "e5e93e4c73e9"
+        },
+        {
+          "id": "d8_v2_q160",
+          "domainId": "domain_8",
+          "editions": [
+            "v2"
+          ],
+          "form": "drill",
+          "stimulusId": "d8_s16",
+          "stimulusSeq": 3,
+          "outlineItems": [
+            "2.1.2"
+          ],
+          "crossDomain": [
+            "domain_2"
+          ],
+          "question": "By correlating the three datasets the contractor reconstructs the timing and routes of cash-in-transit runs. Which security concern does this BEST illustrate?",
+          "options": {
+            "A": "Inference, since the contractor deduced one hidden value from a permitted statistical result",
+            "B": "Collusion, since several parties pooled their separate accesses to reach protected data",
+            "C": "Data remanence, since sensitive residue persisted inside systems rated non-sensitive",
+            "D": "Aggregation, since individually non-sensitive data sets combined into sensitive knowledge"
+          },
+          "correctAnswer": "D",
+          "explanation": "Every source the contractor touched was legitimately non-sensitive; the classified picture emerged only when the sources were correlated. That is aggregation (D): the combination carries a higher sensitivity than any of its parts, which is why access decisions must consider what a subject can assemble in total: need-to-know evaluated across holdings, not per database. A is the closest wrong answer: inference is the sibling concern where someone reasons a specific withheld fact out of permitted answers, as with statistical queries; here nothing was individually withheld or deduced; the sensitivity arose from assembly. B is wrong because collusion requires multiple actors combining their separate privileges; this was one contractor acting within one set of grants. C is wrong because remanence is data physically surviving on media after deletion or reuse; nothing here was residual; the databases were serving their intended content.",
+          "variantOf": "domain_8_q27",
+          "variantAxis": "scenario",
+          "rev": "fcab9a0abdf9"
         }
       ]
     }
