@@ -2437,7 +2437,7 @@
             "D": "Set a target profile from the bank's own risk appetite, then read the Tier against it."
           },
           "correctAnswer": "D",
-          "explanation": "The framework's own improvement mechanism is the gap between a Current Profile and a Target Profile, and the Target Profile is derived from what the organization needs rather than from the top of a scale. NIST CSF 2.0, published as NIST CSWP 29, defines four Tiers, Partial, Risk Informed, Repeatable and Adaptive, describing the rigour of an organization's cybersecurity risk governance and risk management practices, and it is explicit that the Tiers are not maturity levels even though they are routinely used as if they were. A Tier read against a target the bank chose is diagnostic; a Tier treated as a score is a budget request. A is a correct action but not the first one, because a target is needed and taking the highest available as the target skips the step that decides what the bank requires. B is the right control for a different problem, resolution rather than direction. C is symptom not cause, since a peer's posture does not establish this bank's risk appetite. Decide what you need, then measure the distance.",
+          "explanation": "The framework's own improvement mechanism is the gap between a Current Profile and a Target Profile, and the Target Profile is derived from what the organization needs rather than from the top of a scale. NIST CSF 2.0, published as NIST CSWP 29, defines four Tiers, Partial, Risk Informed, Repeatable and Adaptive, describing the rigor of an organization's cybersecurity risk governance and risk management practices, and it is explicit that the Tiers are not maturity levels even though they are routinely used as if they were. A Tier read against a target the bank chose is diagnostic; a Tier treated as a score is a budget request. A is a correct action but not the first one, because a target is needed and taking the highest available as the target skips the step that decides what the bank requires. B is the right control for a different problem, resolution rather than direction. C is symptom not cause, since a peer's posture does not establish this bank's risk appetite. Decide what you need, then measure the distance.",
           "recallLine": "A consultant reports a Tier and recommends a higher one. How should the framework actually be used?",
           "optionsShort": {
             "A": "Adopt the top Tier as the target",
@@ -3374,7 +3374,7 @@
           "outlineItems": [
             "1.2.1"
           ],
-          "question": "For the silent recording of card details, which property of the cardholder data was MOST directly compromised?",
+          "question": "For the silent recording of card details, which security property was MOST directly compromised?",
           "options": {
             "A": "Confidentiality, because cardholder data was disclosed to unauthorized parties.",
             "B": "Integrity, because transaction records were altered as the data was captured.",
@@ -9879,7 +9879,7 @@
           "outlineItems": [
             "3.2"
           ],
-          "question": "Which security model MOST directly provides those primitive operations for subjects, objects and rights?",
+          "question": "Which security model MOST directly formalises those creation, deletion and transfer rules?",
           "options": {
             "A": "Harrison-Ruzzo-Ullman, analyzing whether a given right can ever leak to an unauthorized subject.",
             "B": "Bell-LaPadula, constraining how information may flow between clearance levels.",
@@ -12549,7 +12549,7 @@
           "crossDomain": [
             "domain_3"
           ],
-          "question": "Which classification BEST fits an adversary that sat between the endpoints and observed live traffic in transit?",
+          "question": "Which classification BEST fits what the interposed device did during that event?",
           "options": {
             "A": "A denial-of-service attack, because the ATMs were forced away from the legitimate 4G network they should have used.",
             "B": "A replay attack, because the transactions captured by the rogue station could be resubmitted at a later time.",
@@ -12801,7 +12801,7 @@
           ],
           "question": "A tester on an access port now captures only broadcasts and their own sessions, where the old hub captured everything. Which explanation is MOST accurate?",
           "options": {
-            "A": "The switch encrypts frames travelling between its ports, so other stations' traffic is still present in the capture but cryptographically unreadable.",
+            "A": "The switch encrypts frames traveling between its ports, so other stations' traffic is still present in the capture but cryptographically unreadable.",
             "B": "The switch forwards unicast frames only to the learned destination port, so other conversations no longer reach the tester's port.",
             "C": "The switch's VLAN configuration has isolated every access port into its own separate per-port broadcast domain.",
             "D": "The switch performs routing between its ports, so frames cross from one port to another only when a gateway forwards them."
@@ -12953,7 +12953,7 @@
           "options": {
             "A": "Ping of death: fragments that reassemble into a datagram beyond the maximum legal size.",
             "B": "Smurf: amplified echo replies converging on the controller from a broadcast network.",
-            "C": "Teardrop: overlapping fragment offsets that crash vulnerable reassembly implementations.",
+            "C": "Teardrop: deliberately overlapping fragment offsets that crash a vulnerable reassembly implementation.",
             "D": "SYN flood: connection requests that exhaust the controller's half-open session table."
           },
           "correctAnswer": "C",
@@ -12999,7 +12999,7 @@
           "outlineItems": [
             "4.1.6"
           ],
-          "question": "The partner network treats sixteen hops as unreachable and converges slowly. Which limitation is MOST relevant to rejecting it for the merged design?",
+          "question": "Which limitation of the partner's proposed distance-vector protocol is MOST relevant to rejecting it?",
           "options": {
             "A": "RIP carries its routing updates in cleartext, so route advertisements can be captured and read off the wire by listeners.",
             "B": "RIP treats 16 hops as unreachable and converges slowly, so both the 18-hop path and the recovery target fail.",
@@ -13232,7 +13232,7 @@
             "D": "A dedicated management VLAN trunked from the administrators' desk switches into the enclave switches."
           },
           "correctAnswer": "B",
-          "explanation": "The architecture asked for is a choke point: one hardened system that every management session must traverse, where MFA is enforced once and session logging is complete. That is the definition of a bastion or jump host, made effective by firewall policy that admits management traffic from it alone; B implements the requirement rather than approximating it. (A) creates as many entry points as there are administrators: each workstation becomes an attack path into the enclave, MFA and logging must be replicated everywhere, and one compromised desktop reaches the servers directly. It is the pattern the requirement exists to eliminate. (C) also multiplies entry points, just tunnelled: per-laptop VPNs terminate inside the enclave, so a stolen laptop carries the enclave with it, and sessions bypass any central recording. It suits remote access to a general network, not privileged access to an enclave. (D) extends Layer 2 adjacency across the boundary: a trunked VLAN is connectivity, not control, and offers no authentication or session capture at all. Privileged access wants concentration, one heavily instrumented door, because every additional path into a sensitive zone is a full copy of the risk.",
+          "explanation": "The architecture asked for is a choke point: one hardened system that every management session must traverse, where MFA is enforced once and session logging is complete. That is the definition of a bastion or jump host, made effective by firewall policy that admits management traffic from it alone; B implements the requirement rather than approximating it. (A) creates as many entry points as there are administrators: each workstation becomes an attack path into the enclave, MFA and logging must be replicated everywhere, and one compromised desktop reaches the servers directly. It is the pattern the requirement exists to eliminate. (C) also multiplies entry points, just tunneled: per-laptop VPNs terminate inside the enclave, so a stolen laptop carries the enclave with it, and sessions bypass any central recording. It suits remote access to a general network, not privileged access to an enclave. (D) extends Layer 2 adjacency across the boundary: a trunked VLAN is connectivity, not control, and offers no authentication or session capture at all. Privileged access wants concentration, one heavily instrumented door, because every additional path into a sensitive zone is a full copy of the risk.",
           "variantOf": "domain_4_q23",
           "variantAxis": "scenario",
           "rev": "308d0ebb08bc"
@@ -13549,7 +13549,7 @@
           "outlineItems": [
             "4.3.2"
           ],
-          "question": "Engineering proposes split tunnelling to relieve saturated concentrators. What is the MOST accurate statement of the trade-off?",
+          "question": "Engineering proposes split tunneling to relieve saturated concentrators. What is the MOST accurate statement of the trade-off?",
           "options": {
             "A": "The tunnel's cryptography is weakened, because the concentrator must maintain two separate policies for every connected client.",
             "B": "There is no meaningful change, because traffic to the corporate ranges remains encrypted exactly as it was before the split tunnel was introduced.",
@@ -13557,7 +13557,7 @@
             "D": "Corporate traffic stays protected, but the endpoint's internet traffic bypasses corporate inspection while the device holds a path into the internal network."
           },
           "correctAnswer": "D",
-          "explanation": "A trade-off statement has to name what is gained and what is genuinely given up. Split tunneling leaves the corporate flow encrypted and relieves the concentrators (the gain) while sending the endpoint's general internet traffic outside the corporate security stack (web filtering, DLP, monitoring), on a device that simultaneously holds an authenticated route into the LAN: a browser compromise now sits one hop from the internal network with the defences unsighted. D captures exactly that, which is what a CISO must weigh. (A) invents a cryptographic cost: policy routing decides which packets enter the tunnel and leaves the cipher untouched. (B) is the engineer's half-truth: the encryption claim is correct, but 'no meaningful change' ignores the inspection bypass, which is the entire trade-off. (C) reverses the mechanism: corporate traffic still travels only the tunnel; nothing is sent twice. Evaluate tunneling changes by where the traffic stops being watched, not just where it stays encrypted. Protection and visibility are separate properties.",
+          "explanation": "A trade-off statement has to name what is gained and what is genuinely given up. Split tunneling leaves the corporate flow encrypted and relieves the concentrators (the gain) while sending the endpoint's general internet traffic outside the corporate security stack (web filtering, DLP, monitoring), on a device that simultaneously holds an authenticated route into the LAN: a browser compromise now sits one hop from the internal network with the defenses unsighted. D captures exactly that, which is what a CISO must weigh. (A) invents a cryptographic cost: policy routing decides which packets enter the tunnel and leaves the cipher untouched. (B) is the engineer's half-truth: the encryption claim is correct, but 'no meaningful change' ignores the inspection bypass, which is the entire trade-off. (C) reverses the mechanism: corporate traffic still travels only the tunnel; nothing is sent twice. Evaluate tunneling changes by where the traffic stops being watched, not just where it stays encrypted. Protection and visibility are separate properties.",
           "variantOf": "domain_4_q32",
           "variantAxis": "scenario",
           "rev": "5d224160299b"
@@ -13627,7 +13627,7 @@
           "question": "An external scan shows a remote-shell port open on forty hosts, permitted inbound from any source. Which risk assessment is MOST accurate?",
           "options": {
             "A": "The exposure is minor, because the service listening on that port encrypts every session between client and server.",
-            "B": "Forty hosts are offering remote administrative shells to the entire internet; that access should instead be concentrated through one hardened, MFA-protected entry point.",
+            "B": "Forty hosts offer remote administrative shells to the whole internet; that access belongs behind one hardened, MFA-protected entry point.",
             "C": "A false positive in effect: an open port carries no real risk until a vulnerability is published for the service.",
             "D": "The principal risk is information disclosure through service banners, which changing the daemon's banner text will resolve."
           },
@@ -13857,7 +13857,7 @@
             "D": "Deploy WPA3-Enterprise (802.1X), with client profiles that validate the authentication server's certificate before connecting."
           },
           "correctAnswer": "D",
-          "explanation": "An SSID is a self-declared name that any radio can claim, so telling twin from truth requires the network to prove an identity that cannot be copied. Under 802.1X the handheld's supplicant validates the authentication server's certificate before it will complete the join: an evil twin can echo the SSID but cannot present the certificate's private key, so a properly pinned client simply refuses it. That is cryptographic distinction, enforced by configuration rather than vigilance; D. (A) is concealment, and thin: clients probe for hidden SSIDs, advertising the name in every probe, and the twin answers with whatever name it hears; renaming resets the attacker's knowledge for a day. (B) delegates authentication to a bar graph, when the incident's premise is an attacker who transmits stronger; signal strength favours the twin by design. (C) raises the equipment bill trivially (dual-band hardware is commodity), and a band is a venue, not an identity. Names and signal properties are claimable; only a key-backed identity check lets a client refuse a perfect imitation, so make the network authenticate itself to the device.",
+          "explanation": "An SSID is a self-declared name that any radio can claim, so telling twin from truth requires the network to prove an identity that cannot be copied. Under 802.1X the handheld's supplicant validates the authentication server's certificate before it will complete the join: an evil twin can echo the SSID but cannot present the certificate's private key, so a properly pinned client simply refuses it. That is cryptographic distinction, enforced by configuration rather than vigilance; D. (A) is concealment, and thin: clients probe for hidden SSIDs, advertising the name in every probe, and the twin answers with whatever name it hears; renaming resets the attacker's knowledge for a day. (B) delegates authentication to a bar graph, when the incident's premise is an attacker who transmits stronger; signal strength favors the twin by design. (C) raises the equipment bill trivially (dual-band hardware is commodity), and a band is a venue, not an identity. Names and signal properties are claimable; only a key-backed identity check lets a client refuse a perfect imitation, so make the network authenticate itself to the device.",
           "variantOf": "domain_4_q56",
           "variantAxis": "scenario",
           "rev": "e4059e790ad6"
@@ -13876,7 +13876,7 @@
           ],
           "question": "Which explanation of the red team's result is MOST accurate?",
           "options": {
-            "A": "The red team tunnelled the data out inside TLS on the permitted port, indistinguishable at the firewall from ordinary encrypted web traffic.",
+            "A": "The red team tunneled the data out inside TLS on the permitted port, indistinguishable at the firewall from ordinary encrypted web traffic.",
             "B": "The rule set must also have been permitting a second port, since one allowed port cannot carry both browsing and the exfiltration.",
             "C": "The red team split the dataset into small transfers spaced across many days, staying beneath volume-based alerting thresholds.",
             "D": "The red team routed the data out through the firewall's own management interface, which egress policy does not evaluate."
@@ -15736,7 +15736,7 @@
           "outlineItems": [
             "5.2"
           ],
-          "question": "Which answer BEST captures the architectural flaw in concentrating unrestricted shared privilege in one credential?",
+          "question": "Which answer BEST captures the architectural flaw in that design, before anyone misused it?",
           "options": {
             "A": "The account's password was subject to no scheduled rotation, expiry, or complexity requirement",
             "B": "Too few administrators were available to cover shifts across 300 sites",
@@ -16411,7 +16411,7 @@
           "outlineItems": [
             "5.4.1"
           ],
-          "question": "Which model BEST supports creating identical pre-approved bundles from defined job functions?",
+          "question": "Which access control model BEST supports that automatic provisioning from HR job codes?",
           "options": {
             "A": "Discretionary access control, letting each store manager grant what is needed",
             "B": "Mandatory access control, labeling every resource by sensitivity level",
@@ -16511,7 +16511,7 @@
           "outlineItems": [
             "5.4.5"
           ],
-          "question": "Which access control model natively evaluates subject, environment and device attributes together?",
+          "question": "Which access control model is BEST suited to evaluating all of those conditions together?",
           "options": {
             "A": "Attribute-based access control combining subject, environment and device attributes",
             "B": "Role-based access control assigning rights by technician job function",
@@ -17946,7 +17946,7 @@
           "domainId": "domain_6",
           "kind": "testlet",
           "title": "FinCorp: the second report",
-          "text": "FinCorp's mobile check deposit accepted a negative amount and credited the customer, and the story reached the press. Nine days later its security mailbox receives a second report. An independent researcher writes that the same mobile deposit endpoint accepts an amount carrying sixteen decimal places, and that the balance service rounds it in the customer's favour. She has not published, gives a ninety-day deadline, and asks for a named contact. FinCorp has no vulnerability disclosure policy, no bug bounty, and no stated position on researchers who test its live application. The VP of Engineering who waived the pre-release security review still owns the release schedule. Legal's first draft reply threatens action under the terms of service.",
+          "text": "FinCorp's mobile check deposit accepted a negative amount and credited the customer, and the story reached the press. Nine days later its security mailbox receives a second report. An independent researcher writes that the same mobile deposit endpoint accepts an amount carrying sixteen decimal places, and that the balance service rounds it in the customer's favor. She has not published, gives a ninety-day deadline, and asks for a named contact. FinCorp has no vulnerability disclosure policy, no bug bounty, and no stated position on researchers who test its live application. The VP of Engineering who waived the pre-release security review still owns the release schedule. Legal's first draft reply threatens action under the terms of service.",
           "world": "fincorp",
           "caseStudyId": "domain_6",
           "profile": {
@@ -18291,7 +18291,7 @@
           "question": "Legal's draft reply threatens action under the terms of service. What should the security lead advise FIRST?",
           "options": {
             "A": "Ask the researcher to sign a non-disclosure agreement before the report is examined.",
-            "B": "Establish a published reporting channel with safe-harbour terms, then reply through it.",
+            "B": "Establish a published reporting channel with safe-harbor terms, then reply through it.",
             "C": "Refer the report to the card brands so they can direct FinCorp's response to it.",
             "D": "Reproduce the finding and patch it before any reply is sent to the researcher."
           },
@@ -18300,7 +18300,7 @@
           "recallLine": "A researcher reports a live flaw and Legal drafts a threat. What should the security lead advise first?",
           "optionsShort": {
             "A": "Ask for a non-disclosure agreement",
-            "B": "Publish a channel with safe harbour",
+            "B": "Publish a channel with safe harbor",
             "C": "Refer it to the card brands",
             "D": "Reproduce and patch before replying"
           },
@@ -18880,7 +18880,7 @@
           "question": "Six input parameters interact in ways single-parameter tests missed, and exhaustive testing would take years. Which technique targets that interaction risk at the MOST practical cost?",
           "options": {
             "A": "Full exhaustive testing of every possible combination of the six parameters.",
-            "B": "Pairwise combinatorial testing covering each two-parameter value combination.",
+            "B": "Pairwise combinatorial testing, covering every two-parameter value combination at least once.",
             "C": "Random sampling of input combinations until the test window is exhausted.",
             "D": "Boundary testing of each parameter's minimum and maximum values in isolation."
           },
@@ -19364,7 +19364,7 @@
           "outlineItems": [
             "6.3.2"
           ],
-          "question": "Which activity BEST provides evidence that leadership formally evaluates the management system and its results?",
+          "question": "Which activity BEST provides the evidence the certification auditor is asking for?",
           "options": {
             "A": "A management review where senior leadership formally evaluates the ISMS and its results.",
             "B": "A peer review in which team leads formally examine one another's control documentation.",
@@ -19489,7 +19489,7 @@
           "outlineItems": [
             "6.1"
           ],
-          "question": "Which publication MOST directly provides procedures for assessing implemented controls?",
+          "question": "Which publication MOST directly provides that assessment guidance to the agency?",
           "options": {
             "A": "NIST SP 800-53B, which provides the control baselines for federal systems.",
             "B": "NIST SP 800-53A, which defines procedures for assessing the implemented controls.",
@@ -22130,7 +22130,7 @@
           "options": {
             "A": "Sunday's full backup followed by Monday's, Tuesday's, and Wednesday's differentials in order.",
             "B": "Wednesday night's differential alone, since it holds the newest copy of the data.",
-            "C": "Sunday's full backup followed by Wednesday night's differential.",
+            "C": "Restore Sunday's full backup, then apply Wednesday night's differential on top of it.",
             "D": "Wednesday's differential first, then Sunday's full backup to fill in the older files."
           },
           "correctAnswer": "C",
@@ -22379,7 +22379,7 @@
           "question": "Which mechanism BEST makes the monitoring provider's response times enforceable?",
           "options": {
             "A": "A memorandum of understanding recording both parties' intent to cooperate on availability.",
-            "B": "A service level agreement in the contract, with measurable response times and remedies for missing them.",
+            "B": "A service level agreement with measurable response times and remedies for missing them.",
             "C": "An operational level agreement between the provider's internal support tiers.",
             "D": "The provider's published uptime statistics and reference customers from recent years."
           },
@@ -22651,7 +22651,7 @@
           "outlineItems": [
             "7.7.2"
           ],
-          "question": "What is the team's BEST course of action while the patch clears testing?",
+          "question": "What is the team's BEST course of action in the meantime?",
           "options": {
             "A": "Deploy an inline intrusion prevention signature blocking the exploit traffic until the patch clears testing.",
             "B": "Rely on the passive IDS to alert the SOC whenever exploitation of the switch is attempted.",
@@ -22676,7 +22676,7 @@
           "outlineItems": [
             "7.7.1"
           ],
-          "question": "Which missing control MOST directly addresses the spoofed internal source addresses?",
+          "question": "Which missing control MOST directly addresses that inbound traffic at the border?",
           "options": {
             "A": "Egress filtering on the border router, restricting which internal traffic may leave for the Internet.",
             "B": "A web application firewall inspecting the requests reaching the gateway's application layer.",
@@ -22812,7 +22812,7 @@
             "D": "Application allow-listing that permits only the approved vendor binaries to run."
           },
           "correctAnswer": "D",
-          "explanation": "A fixed-function device is the ideal case for a default-deny execution policy: when the legitimate software set never changes, anything outside the approved list is by definition unauthorized, so allow-listing stops even malware no vendor has ever catalogued. A is wrong because signature-based detection recognizes only known samples, and targeted cash-out malware is typically custom-built precisely to evade signatures. B is wrong because an EDR agent is detective - it reports execution to the SOC after the code has already run, which fails the stem's requirement to prevent execution. C is wrong because vulnerability scanning addresses a different problem: it finds weaknesses that might admit an attacker, but does nothing to stop a binary introduced through a legitimate maintenance channel. On fixed-function fleets, define what may run and deny the rest.",
+          "explanation": "A fixed-function device is the ideal case for a default-deny execution policy: when the legitimate software set never changes, anything outside the approved list is by definition unauthorized, so allow-listing stops even malware no vendor has ever cataloged. A is wrong because signature-based detection recognizes only known samples, and targeted cash-out malware is typically custom-built precisely to evade signatures. B is wrong because an EDR agent is detective - it reports execution to the SOC after the code has already run, which fails the stem's requirement to prevent execution. C is wrong because vulnerability scanning addresses a different problem: it finds weaknesses that might admit an attacker, but does nothing to stop a binary introduced through a legitimate maintenance channel. On fixed-function fleets, define what may run and deny the rest.",
           "variantOf": "domain_7_q11",
           "variantAxis": "scenario",
           "rev": "8230f4a21102"
