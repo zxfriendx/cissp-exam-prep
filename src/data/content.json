@@ -9182,7 +9182,7 @@
           "question": "An engineer argues network intrusion detection should have caught it. What is the MOST accurate response?",
           "options": {
             "A": "Physical-layer tampering inside the chassis is invisible to network monitoring; detection requires hardware integrity controls at the device.",
-            "B": "The network IDS would have observed the shim if its sensor had been placed inline between the ATM and the bank host.",
+            "B": "The network IDS would have seen the shim with its sensor placed inline to the bank host.",
             "C": "Enabling deep-packet inspection on the existing sensors would have revealed the injected dispense commands.",
             "D": "Correlating the carrier's NetFlow records against transaction logs would have exposed the additional device."
           },
@@ -13628,7 +13628,7 @@
           "options": {
             "A": "The exposure is minor, because the service listening on that port encrypts every session between client and server.",
             "B": "Forty hosts are offering remote administrative shells to the entire internet; that access should instead be concentrated through one hardened, MFA-protected entry point.",
-            "C": "The finding is a false positive in effect: an open TCP port carries no real risk until a vulnerability is published for the listening service.",
+            "C": "A false positive in effect: an open port carries no real risk until a vulnerability is published for the service.",
             "D": "The principal risk is information disclosure through service banners, which changing the daemon's banner text will resolve."
           },
           "correctAnswer": "B",
@@ -22378,7 +22378,7 @@
           ],
           "question": "Which mechanism BEST makes the monitoring provider's response times enforceable?",
           "options": {
-            "A": "A memorandum of understanding recording both parties' intent to cooperate on availability and to respond promptly to outages.",
+            "A": "A memorandum of understanding recording both parties' intent to cooperate on availability.",
             "B": "A service level agreement in the contract, with measurable response times and remedies for missing them.",
             "C": "An operational level agreement between the provider's internal support tiers.",
             "D": "The provider's published uptime statistics and reference customers from recent years."
