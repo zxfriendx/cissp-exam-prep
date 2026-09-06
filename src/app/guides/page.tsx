@@ -29,7 +29,7 @@ export const metadata: Metadata = {
    ───────────────────────────────────────────────────────────────────────────── */
 const CHECKOUT = {
   bundle: {
-    url: "https://securepath6.gumroad.com/l/pvzbycc",
+    url: "https://securepath6.gumroad.com/l/eight-domains",
     price: "$9.99",
   },
 } as const;
