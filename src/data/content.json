@@ -1237,7 +1237,7 @@
           "domainId": "domain_1",
           "kind": "testlet",
           "title": "Meridian: the Ridgeline acquisition",
-          "text": "Two years after the ATM breach, Meridian Financial is buying Ridgeline Savings, a 40-branch thrift with its own core banking platform and a customer analytics contract with a processor in Bangalore. The deal signs in six weeks. Ridgeline has never had a CISO, and its board minutes record one penetration test, in 2021. Meridian's board has told the CISO that security must not delay the closing. The examiner will review the combined entity nine months after close. Ridgeline's analytics contract renews automatically thirty days after any change of control.",
+          "text": "Meridian Financial Services, a regional bank of 2,400 staff, is buying Ridgeline Savings, a 40-branch thrift with its own core banking platform and a customer analytics contract with a processor in Bangalore. The deal signs in six weeks. Ridgeline has never had a CISO, and its board minutes record one penetration test, in 2021. Meridian's board has told the CISO that security must not delay the closing. The examiner will review the combined entity nine months after close. Ridgeline's analytics contract renews automatically thirty days after any change of control.",
           "world": "meridian",
           "caseStudyId": "domain_1",
           "profile": {
@@ -4849,7 +4849,7 @@
           "domainId": "domain_3",
           "kind": "testlet",
           "title": "Nexus: the SlimLine II programme",
-          "text": "Two years after the shim attack, Nexus Bank has funded a replacement terminal, the SlimLine II. The programme board meets monthly and has just approved the architecture. Three decisions are still open: how the security requirements become a concrete control set, how the new dispenser interface will be joined to the existing transaction switch, and how 900 SlimLine units leave service. The bank's examiner has asked for evidence at each gate. Finance wants the retired units sold to a secondary-market refurbisher, which pays considerably more than a recycler does and collects from the branch loading dock.",
+          "text": "Nexus Bank has funded a replacement for its SlimLine subway terminal, the SlimLine II, after an interposer device fitted inside the original captured PINs at dozens of sites. The programme board meets monthly and has just approved the architecture. Three decisions are still open: how the security requirements become a concrete control set, how the new dispenser interface will be joined to the existing transaction switch, and how 900 SlimLine units leave service. The bank's examiner has asked for evidence at each gate. Finance wants the retired units sold to a secondary-market refurbisher, which pays considerably more than a recycler does and collects from the branch loading dock.",
           "world": "nexus",
           "caseStudyId": "domain_3",
           "profile": {
@@ -8064,7 +8064,7 @@
           "domainId": "domain_5",
           "kind": "testlet",
           "title": "QuickCash: after SuperAdmin",
-          "text": "Six months after the SuperAdmin theft, QuickCash has replaced the shared account with named identities and is rebuilding everything around it. Its directory runs on two domain controllers in the regional office, and the ATM management console authenticates against them. The board has bought a cloud service desk and a cloud expense tool, and both want their own logins. The five field technicians need administrative rights on the console, but only while a work order is open. The regional manager who created SuperAdmin still signs off every access request. The next audit closes in eight weeks.",
+          "text": "QuickCash Inc runs 300 ATMs with five field technicians who once shared a single 'SuperAdmin' account, until one of them used it from home to create fake customer accounts. The shared account is gone, every technician now has a named identity, and the company is rebuilding around that. Its directory runs on two domain controllers in the regional office, and the ATM management console authenticates against them. The board has bought a cloud service desk and a cloud expense tool, and both want their own logins. The five field technicians need administrative rights on the console, but only while a work order is open. The regional manager who created SuperAdmin still signs off every access request. The next audit closes in eight weeks.",
           "world": "quickcash",
           "caseStudyId": "domain_5",
           "profile": {
@@ -9488,7 +9488,7 @@
           "domainId": "domain_6",
           "kind": "testlet",
           "title": "FinCorp: the second report",
-          "text": "Nine days after the negative-deposit story broke, FinCorp's security mailbox receives a second report. An independent researcher writes that the same mobile deposit endpoint accepts an amount carrying sixteen decimal places, and that the balance service rounds it in the customer's favour. She has not published, gives a ninety-day deadline, and asks for a named contact. FinCorp has no vulnerability disclosure policy, no bug bounty, and no stated position on researchers who test its live application. The VP of Engineering who waived the gate review still owns the release schedule. Legal's first draft reply threatens action under the terms of service.",
+          "text": "FinCorp's mobile check deposit accepted a negative amount and credited the customer, and the story reached the press. Nine days later its security mailbox receives a second report. An independent researcher writes that the same mobile deposit endpoint accepts an amount carrying sixteen decimal places, and that the balance service rounds it in the customer's favour. She has not published, gives a ninety-day deadline, and asks for a named contact. FinCorp has no vulnerability disclosure policy, no bug bounty, and no stated position on researchers who test its live application. The VP of Engineering who waived the pre-release security review still owns the release schedule. Legal's first draft reply threatens action under the terms of service.",
           "world": "fincorp",
           "caseStudyId": "domain_6",
           "profile": {
@@ -10848,7 +10848,7 @@
           "domainId": "domain_7",
           "kind": "testlet",
           "title": "Global ATM: the Toledo prompt",
-          "text": "Eight months after the patch outage, Global ATM Corp's service desk logs a report from a branch: an ATM in Toledo displayed a command prompt for a few seconds during a maintenance visit. The fleet runs a standard Windows build with anti-malware and a monthly patch cycle. Each machine writes its own event log locally and keeps thirty days of it. There is no rule about which programs may run. The maintenance vendor's technician says he ran a diagnostic tool he downloaded that morning. By the time an analyst calls back, the machine has been rebooted twice.",
+          "text": "Global ATM Corp operates 5,000 ATMs. Its service desk logs a report from a branch: an ATM in Toledo displayed a command prompt for a few seconds during a maintenance visit. The fleet runs a standard Windows build with anti-malware and a monthly patch cycle. Each machine writes its own event log locally and keeps thirty days of it. There is no rule about which programs may run. The maintenance vendor's technician says he ran a diagnostic tool he downloaded that morning. By the time an analyst calls back, the machine has been rebooted twice.",
           "world": "globalatm",
           "caseStudyId": "domain_7",
           "profile": {
@@ -10873,7 +10873,7 @@
           "domainId": "domain_7",
           "kind": "testlet",
           "title": "Global ATM: two exercises",
-          "text": "A year after the outage, Global ATM Corp has a written disaster recovery plan for the transaction switch and has run one tabletop against it. The plan names a recovery team of eleven people across three time zones, lists a call tree, and assumes the switch can be brought up at the Columbus site within four hours. Nobody has yet performed any of the steps. The board has approved two exercises this year and will not accept an outage of production. The operations director has asked what the two exercises should be and what evidence each will produce.",
+          "text": "Global ATM Corp has a written disaster recovery plan for the transaction switch behind its 5,000 ATMs, and has run one tabletop against it. The plan names a recovery team of eleven people across three time zones, lists a call tree, and assumes the switch can be brought up at the Columbus site within four hours. Nobody has yet performed any of the steps. The board has approved two exercises this year and will not accept an outage of production. The operations director has asked what the two exercises should be and what evidence each will produce.",
           "world": "globalatm",
           "caseStudyId": "domain_7",
           "profile": {
@@ -12766,7 +12766,7 @@
           "domainId": "domain_8",
           "kind": "testlet",
           "title": "Global Bank: the pipeline rebuild",
-          "text": "Global Bank is rebuilding the Cardless Cash pipeline it had when a master key reached a public repository. The new design keeps the same three teams and the same weekly release. Secrets move to a managed vault. Builds run on shared runners any team can queue work on, and the repository is private, but every developer can push to the main branch. Nobody can currently say which build produced the artefact running in production. The bank's examiner has asked for evidence that the pipeline enforces the bank's own rules, not merely that the rules exist somewhere.",
+          "text": "Global Bank is rebuilding the build pipeline for Cardless Cash, its cardless ATM withdrawal service, after a master key committed to source reached a public repository. The new design keeps the same three teams and the same weekly release. Secrets move to a managed vault. Builds run on shared runners any team can queue work on, and the repository is private, but every developer can push to the main branch. Nobody can currently say which build produced the artefact running in production. The bank's examiner has asked for evidence that the pipeline enforces the bank's own rules, not merely that the rules exist somewhere.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
@@ -12790,15 +12790,15 @@
           "id": "d8_s02",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the morning the key leaked",
-          "text": "A monitoring service tells Global Bank that a production API key is sitting in a public repository, pushed three days ago by a developer working from home during the Cardless Cash hackathon. The key grants administrative access to the transaction backend, and scanning bots reach new repositories within seconds. The same key is compiled into the shipped Android and iOS clients. The bank bought a managed secret vault last year and has never wired it into anything. The examiner will want to know why a credential could be committed at all, and the same key is still compiled into the app in the stores.",
+          "title": "A key in a public repository",
+          "text": "A monitoring service tells Global Bank that a production API key for its Cardless Cash service, the mobile app that lets customers withdraw at an ATM without a card, is sitting in a public repository. A developer pushed it there three days ago while working from home during a hackathon, and scanning bots reach new repositories within seconds. The key grants administrative access to the transaction backend. It is also compiled into the Android and iOS clients already in the app stores. The bank bought a managed secret vault last year and never wired it into anything, and nothing in its process would stop a credential being committed.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
             "organization": "Global Bank · Cardless Cash mobile app and API",
             "regime": "PCI DSS · state banking examination",
-            "environment": "Hackathon build · public repository · shipped Android and iOS clients",
-            "state": "Master API key public for three days"
+            "environment": "Hackathon build · public repository · clients already in the app stores",
+            "state": "Key public for three days, still valid"
           },
           "outlineItems": [
             "8.2.4",
@@ -12816,15 +12816,15 @@
           "id": "d8_s03",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: what the key opened",
-          "text": "With the master key, attackers authenticated to the Cardless Cash backend as an administrator and skipped user authentication entirely. The bank is now walking the API endpoint by endpoint. Statements are served from a path carrying the account number. The login endpoint builds its query by concatenating the values submitted to it. The API records nothing about which caller owns which record, and forensic work has been slow: the servers kept seven days of logs, application logins were never recorded at all, and log review was a manual task performed quarterly.",
-          "world": "globalbank",
+          "title": "Walking a payment API endpoint by endpoint",
+          "text": "Coastal Savings processes card transactions for its own customers and for eight hundred merchants. An administrator credential has been found reaching its backend from outside the company, and the security team is now walking the customer API endpoint by endpoint. Statements are served from a path carrying the account number in the query string. The login endpoint builds its database query by concatenating the values submitted to it. Nothing in the API records which caller owns which record. Forensic work has been slow: the servers keep seven days of logs, application logins were never recorded at all, and log review is a manual quarterly task.",
+          "world": "coastalsavings",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · Cardless Cash backend API",
+            "organization": "Coastal Savings · customer-facing payments API",
             "regime": "PCI DSS",
-            "environment": "REST API · OAuth intended, master key in use · public mobile clients",
-            "state": "Endpoint-by-endpoint review after the leak"
+            "environment": "REST API · mobile and web clients · seven-day log retention",
+            "state": "Administrator credential found reaching the backend from outside"
           },
           "outlineItems": [
             "8.3.1",
@@ -12841,14 +12841,14 @@
           "id": "d8_s04",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the portal penetration test",
-          "text": "Global Bank commissioned a penetration test of the customer web portal, the browser front end that sits beside the Cardless Cash app. The testers were given one customer login and nothing else. Their findings all sit in the parts of the portal that render or fetch content on a user's behalf: a product review board that stores what customers type, the funds-transfer form, a document download endpoint that takes a filename, and a link-preview feature that fetches whatever URL a user supplies. The portal runs inside the bank's cloud account.",
+          "title": "A penetration test of the customer portal",
+          "text": "Global Bank commissioned a penetration test of its customer web portal, the browser front end customers use for statements and transfers. The testers were given one customer login and nothing else. Every finding sits in a part of the portal that renders or fetches content on a user's behalf: a review board that stores and redisplays what customers type, the funds-transfer form, a document download endpoint that takes a filename, and a link-preview feature that fetches whatever URL a user supplies. The portal runs inside the bank's cloud account, on instances that can reach the cloud provider's own metadata service.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
             "organization": "Global Bank · customer web portal",
             "regime": "PCI DSS",
-            "environment": "Browser front end beside the mobile app · runs in the bank's cloud account",
+            "environment": "Browser front end for statements and transfers · runs in the bank's cloud account",
             "state": "Test complete, four findings reported"
           },
           "outlineItems": [
@@ -12866,15 +12866,15 @@
           "id": "d8_s05",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the partner integration service",
-          "text": "Global Bank's partner integration service takes settlement files and messages from card processors and correspondent banks. It is the oldest code the bank runs: a C payment daemon that parses binary messages, a Java component that accepts serialized objects from partner systems over the internet and rebuilds them in memory, and an XML invoice upload used by three suppliers. A destination-account field feeds several downstream systems, and the team maintains an ever-growing filter of known malicious strings against it. None of the service has ever been fuzzed.",
-          "world": "globalbank",
+          "title": "The oldest code in the estate",
+          "text": "Northbridge Clearing settles interbank payments and takes files and messages from card processors and correspondent banks all day. Its partner integration service is the oldest code it runs: a C daemon that parses binary payment messages, a Java component that accepts serialized objects from partner systems over the internet and rebuilds them in memory, and an XML invoice upload used by three suppliers. A destination-account field feeds several downstream systems, and the team maintains an ever-growing filter of known malicious strings against it. None of the service has ever been fuzzed, and a settlement transfer crashed the daemon last week.",
+          "world": "northbridgeclearing",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · partner integration service",
-            "regime": "PCI DSS · correspondent banking agreements",
+            "organization": "Northbridge Clearing · partner integration service",
+            "regime": "Correspondent banking agreements · PCI DSS",
             "environment": "C payment daemon · Java object stream · XML invoice upload",
-            "state": "Oldest code in the estate, never fuzzed"
+            "state": "Never fuzzed; the daemon crashed last week"
           },
           "outlineItems": [
             "3.5.3",
@@ -12892,15 +12892,15 @@
           "id": "d8_s06",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: how the portal holds a session",
-          "text": "A second engagement covers what happens after a customer signs in to Global Bank's portal. The login page is served over HTTPS and every page after it over plain HTTP. The session cookie can be read by any script running in the page, and is transmitted when users follow links over unencrypted connections. Version control shows a URL one developer added during testing to save time and never removed. The application server underneath was deployed straight from the vendor's installer and never hardened.",
-          "world": "globalbank",
+          "title": "How a portal holds a session",
+          "text": "Kestrel Mutual, a general insurer, has commissioned a review of how its policyholder portal handles a session once someone has signed in. The login page is served over HTTPS and every page after it over plain HTTP. The session cookie can be read by any script running in the page, and is transmitted whenever a user follows a link over an unencrypted connection. Version control shows a URL one developer added during testing to save time and never removed. The application server underneath was deployed straight from the vendor's installer and has never been hardened.",
+          "world": "kestrelmutual",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · customer web portal",
-            "regime": "PCI DSS",
-            "environment": "HTTPS login, HTTP thereafter · vendor-installed application server",
-            "state": "Second engagement, session handling only"
+            "organization": "Kestrel Mutual · policyholder web portal",
+            "regime": "State insurance regulation",
+            "environment": "HTTPS login, HTTP thereafter · application server from the vendor's installer",
+            "state": "Review of session handling only"
           },
           "outlineItems": [
             "8.2.4",
@@ -12942,14 +12942,14 @@
           "id": "d8_s08",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the squad goes agile",
-          "text": "The Cardless Cash squad has moved to two-week sprints and ships a product increment at the end of each one. Defects keep reaching production anyway. The regulator has told the bank that no change to the payment module may be written and merged by a single unreviewed developer, and expects the review to happen as early in development as possible. Marketing has separately put a second squad on a launch date using time-boxed cycles, heavy prototyping and minimal up-front design, and the CISO has been asked what that costs.",
+          "title": "Two squads, two cadences",
+          "text": "Global Bank's payments squad has moved to two-week sprints and ships a product increment at the end of each one. Defects keep reaching production anyway. The regulator has told the bank that no change to the payment module may be written and merged by a single unreviewed developer, and expects that review to happen as early in development as possible. Marketing has separately put another squad on a hard launch date using time-boxed cycles, heavy prototyping and minimal up-front design, and the CISO has been asked what that approach costs in security terms.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · Cardless Cash squad",
+            "organization": "Global Bank · payments and marketing squads",
             "regime": "Banking examination · regulator directive on the payment module",
-            "environment": "Two-week sprints · product increment each sprint · a second squad on a launch deadline",
+            "environment": "Two-week sprints, an increment each sprint · a second squad on a hard launch date",
             "state": "Defects still reaching production"
           },
           "outlineItems": [
@@ -12967,14 +12967,14 @@
           "id": "d8_s09",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the improvement programme",
-          "text": "Global Bank lost a government bid because it could not demonstrate the maturity of its development processes: internally, project success still depends on individual heroics and no two teams work alike. An improvement programme has been funded and the team wants to start rewriting development procedures immediately. Elsewhere in the bank, the terminal group builds the firmware for its own PIN pads, and its certifier demands evidence that defects are prevented during development rather than found and patched afterwards, with failure rates certified statistically. The hackathon's two shortcuts still have open tickets a year on, and the estimate to retrofit them has tripled.",
-          "world": "globalbank",
+          "title": "A firm that cannot show how it builds",
+          "text": "Ardent Systems writes software for payment terminals. It lost a government bid because it could not demonstrate the maturity of its development processes: internally, project success still depends on individual heroics and no two teams work alike. An improvement programme has been funded and the team wants to start rewriting development procedures immediately. Its terminal firmware is separately certified, and the certifier demands evidence that defects are prevented during development rather than found and patched afterwards, with failure rates certified statistically. Two shortcuts taken to hit a deadline a year ago, a hardcoded credential and skipped input validation, still have open tickets and a tripled estimate.",
+          "world": "ardentsystems",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · engineering practice and terminal group",
+            "organization": "Ardent Systems · payment terminal software",
             "regime": "Government procurement · payment terminal certification",
-            "environment": "No two teams work alike · terminal firmware built in house",
+            "environment": "No two teams work alike · terminal firmware certified separately",
             "state": "Improvement programme funded after a lost bid"
           },
           "outlineItems": [
@@ -12992,14 +12992,14 @@
           "id": "d8_s10",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the release train",
-          "text": "Global Bank deploys to production twenty times a day through an automated pipeline. Security review is manual, performed by a separate team in the week before each quarterly compliance audit, so findings routinely reach developers months after the code shipped. A rewritten authentication service has passed every test and is ready, but leadership fears an unforeseen defect could lock out the entire customer base at once. During an acrimonious layoff period a database administrator still holds commit access. And the product manager has begun showing a redesigned login page to half of all users.",
-          "world": "globalbank",
+          "title": "Twenty deploys a day",
+          "text": "Vantage Retail deploys to production twenty times a day through an automated pipeline. Security review is manual, performed by a separate team in the week before each quarterly compliance audit, so findings routinely reach developers months after the code shipped. A rewritten authentication service has passed every test and is ready to ship, but leadership fears an unforeseen defect could lock out the entire customer base at once. The company is in an acrimonious layoff period and a database administrator due to leave still holds commit access. The product manager has begun showing a redesigned login page to half of all users.",
+          "world": "vantageretail",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · platform engineering",
+            "organization": "Vantage Retail · e-commerce platform",
             "regime": "PCI DSS · quarterly compliance audit",
-            "environment": "Twenty production deploys a day · manual security review before each audit",
+            "environment": "Automated pipeline, twenty production deploys a day · manual security review before each audit",
             "state": "Rewritten authentication service ready to ship"
           },
           "outlineItems": [
@@ -13017,8 +13017,8 @@
           "id": "d8_s11",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the logging library advisory",
-          "text": "A critical flaw is announced in a popular open-source logging library and exploitation is already being reported. Global Bank runs four hundred applications and cannot say within hours which of them embed a vulnerable version, including the dependencies pulled in automatically during builds. In the same week a network-management vendor discloses that its customers were breached through a signed, official product update: investigators found its build server had been compromised months earlier. And the bank's own VPN appliance carries an actively exploited flaw for which the vendor says no patch will exist for several weeks.",
+          "title": "A flaw in a library everybody uses",
+          "text": "A critical flaw is announced in a widely used open-source logging library, and exploitation is already being reported. Global Bank runs four hundred applications and cannot say within hours which of them embed a vulnerable version, including the dependencies pulled in automatically during builds. In the same week a network-management vendor discloses that its customers were breached through a signed, official product update: investigators found the vendor's build server had been compromised months before. And the bank's own VPN appliance carries an actively exploited flaw for which the manufacturer says no patch will exist for several weeks.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
@@ -13042,12 +13042,12 @@
           "id": "d8_s12",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the platform migration",
-          "text": "Global Bank is moving the Cardless Cash backend off self-managed virtual machines. Two hundred microservices call each other directly, and security now requires mutual TLS and per-call authorization between every pair; modifying two hundred codebases has been ruled out as infeasible. A review of the container platform finds application containers running as root, built from unscanned images pulled from public registries, on shared hosts. A document-processing workload is moving to a serverless functions platform, and the operations lead wants to know what the team still owns afterwards. The architects want the new payment API's threats enumerated before code is written, and the API it replaces is already taking millions of requests enumerating sequential customer identifiers with stolen credential lists replayed against its login.",
-          "world": "globalbank",
+          "title": "Two hundred services, no shared plumbing",
+          "text": "Trellis Pay is moving its payments backend off self-managed virtual machines. Two hundred microservices call each other directly, and security now requires mutual TLS and per-call authorization between every pair; modifying two hundred codebases has been ruled out as infeasible. A review of the container platform finds application containers running as root, built from unscanned images pulled from public registries, on shared hosts. A document-processing workload is moving to a serverless functions platform. The architects want the new payment API's threats enumerated before code is written, and the API it replaces is already taking millions of requests enumerating sequential customer identifiers, with stolen credential lists replayed against its login.",
+          "world": "trellispay",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · Cardless Cash backend",
+            "organization": "Trellis Pay · payments backend",
             "regime": "PCI DSS",
             "environment": "Two hundred microservices · container platform on shared hosts · serverless functions",
             "state": "Moving off self-managed virtual machines"
@@ -13068,15 +13068,15 @@
           "id": "d8_s13",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: standing up the programme",
-          "text": "Global Bank has hired an application security lead into a company with no existing programme, a small budget and no secure-coding standard. The lead must choose a starting point for developer training. A threat-modelling workshop for the trading platform has just produced forty distinct threats, far more than the team can address this quarter, and the lead needs a repeatable way to decide which ones remediation effort goes to first. The post-incident review of the key leak is running in parallel, mapping its events to STRIDE, and has reached the moment the master key became readable by anyone browsing the public repository, before any attacker had used it.",
+          "title": "A first application security lead",
+          "text": "Global Bank has hired its first application security lead into a company with no existing programme, a small training budget and no secure-coding standard, and the lead must choose a starting point for developer training. A threat-modelling workshop for the trading platform has just produced forty distinct threats, far more than the team can address this quarter, and the lead needs a repeatable way to decide which ones get remediation effort first. A separate review is examining an episode in which a master API key became readable by anyone browsing a public repository, and is classifying each event in it.",
           "world": "globalbank",
           "caseStudyId": "domain_8",
           "profile": {
             "organization": "Global Bank · new application security function",
             "regime": "Banking examination",
             "environment": "No existing programme · small training budget · trading platform under review",
-            "state": "Application security lead in post four weeks"
+            "state": "Lead in post four weeks"
           },
           "outlineItems": [
             "3.1.1",
@@ -13092,12 +13092,12 @@
           "id": "d8_s14",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: four incidents on the branch estate",
-          "text": "Global Bank's branch machines run a fixed, unchanging set of approved applications and staff cannot administer them. The security team is reviewing the quarter's incidents. On one server, firewall logs show connections that no local tool reports: process listings, file searches and the installed antivirus all show nothing unusual. Antivirus quarantines one variant of a malware family, yet new infections keep appearing, each sample carrying a different hash and byte pattern while behaving identically on the host. And help-desk tickets reveal that several employees installed a free PDF converter that works exactly as advertised and also opens a remote-control channel.",
-          "world": "globalbank",
+          "title": "Three incidents on the store estate",
+          "text": "Vantage Retail's in-store machines run a fixed, unchanging set of approved applications and staff cannot administer them. The security team is reviewing three incidents from the quarter. On one server, firewall logs show connections that no local tool reports: process listings, file searches and the installed antivirus all show nothing unusual. Antivirus quarantines one variant of a malware family, yet new infections keep appearing, each sample carrying a different hash and byte pattern while behaving identically on the host. And help-desk tickets reveal that several employees installed a free PDF converter which works as advertised and also opens a remote-control channel.",
+          "world": "vantageretail",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · branch estate",
+            "organization": "Vantage Retail · in-store machines",
             "regime": "PCI DSS",
             "environment": "Fixed set of approved applications · staff cannot administer their machines",
             "state": "Quarterly incident review"
@@ -13116,14 +13116,14 @@
           "id": "d8_s15",
           "domainId": "domain_8",
           "kind": "testlet",
-          "title": "Global Bank: the overnight spread",
-          "text": "Overnight, malware spread to hundreds of Global Bank servers across a flat internal network while no user was logged in anywhere: each infected host scanned for neighbours exposing the same vulnerable file-sharing service and infected them directly. Through its sector information-sharing group the bank received two reports the same week. A university network team traced abuse complaints to two hundred campus workstations making identical periodic connections to one overseas domain from which they fetch commands. A hospital paid attackers to recover encrypted patient records. An analyst is separately classifying code that appends itself to spreadsheet macro files.",
-          "world": "globalbank",
+          "title": "An overnight spread, and two peer reports",
+          "text": "Overnight, malware spread to hundreds of Halden Logistics servers across a flat internal network while no user was logged in anywhere: each infected host scanned for neighbours exposing the same vulnerable file-sharing service and infected them directly. Through the sector information-sharing group it belongs to, the company received two reports the same week. A university network team traced abuse complaints to two hundred campus workstations making identical periodic connections to one overseas domain from which they fetch commands. A hospital paid attackers to recover encrypted patient records. An analyst is separately classifying code that appends itself to spreadsheet macro files.",
+          "world": "haldenlogistics",
           "caseStudyId": "domain_8",
           "profile": {
-            "organization": "Global Bank · flat internal server network",
-            "regime": "PCI DSS · sector information-sharing membership",
-            "environment": "Hundreds of servers on one segment · two peer reports received the same week",
+            "organization": "Halden Logistics · internal server network",
+            "regime": "Sector information-sharing membership",
+            "environment": "Hundreds of servers on one flat segment · two peer reports received the same week",
             "state": "Spread contained, committee prioritising"
           },
           "outlineItems": [
@@ -14139,7 +14139,7 @@
           "outlineItems": [
             "8.1.2"
           ],
-          "question": "Leadership wants a recognized framework for assessing and improving how the organization builds software. Which BEST meets that goal?",
+          "question": "The firm wants a recognized framework for assessing and improving how it builds software. Which BEST meets that goal?",
           "options": {
             "A": "STRIDE, which categorizes design-level threats to a system under development",
             "B": "CVSS, which scores the severity of published vulnerabilities on a common scale",
@@ -14189,7 +14189,7 @@
           "outlineItems": [
             "8.1.1"
           ],
-          "question": "The terminal group must show defects are prevented during development rather than found and patched afterwards. Which software engineering approach BEST aligns with what its certifier demands?",
+          "question": "The certifier wants defects prevented during development rather than found and patched afterwards, with failure rates certified statistically. Which software engineering approach aligns BEST?",
           "options": {
             "A": "Extreme Programming, relying on test-driven development and continuous pair review",
             "B": "Cleanroom engineering, using formal specification, verification, and statistical quality control",
