@@ -1371,6 +1371,13 @@ and the difference between a spec and a hope.
 
 ### 8.1 Target composition
 
+> **⚠ Superseded 2026-09-06.** This table was computed against a 439-item bank. The bank
+> now holds 491, so the carry is 462 rather than 414 and the new drill authoring is **38
+> items, not 86** — total new authoring for a 750-item v2 is 288. The current count is in
+> `securepathdigital-site/docs/PRACTICE_EXAM_REFACTOR.md`, which also records which
+> questions the coverage data now says to trim.
+
+
 Drills sized to the blueprint, forms sized by the same largest-remainder apportionment the
 app already uses:
 
@@ -1449,7 +1456,14 @@ them changes the architecture Phase 1 lands.
 
 ## 9. Decisions still open
 
-These are Bill's calls, not the authoring pass's.
+> **⚠ Answered 2026-09-06.** Decisions 1, 2 and 3 are settled — **two volumes**, **v2
+> replaces v1 in the $9.99 bundle**, **750 items**. Decisions 5, 6 and 7 were settled by
+> measurement while Phase 1 was built. The answers and their reasons are in
+> `securepathdigital-site/docs/PRACTICE_EXAM_REFACTOR.md`; the list below is kept for the
+> arguments it records, not as an open question set. Decisions 4 (the uncarried items),
+> 8 (testlets in the app) and 9 (verify the exam format on print day) are still open.
+
+These were Bill's calls, not the authoring pass's.
 
 1. **Two volumes, or one book.** The §3 recommendation works either way — the review block
    is self-contained regardless of where it is bound. Splitting costs a second SKU and a
