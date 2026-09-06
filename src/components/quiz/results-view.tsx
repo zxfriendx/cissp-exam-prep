@@ -114,7 +114,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                 </CardContent>
                 <CardFooter className="flex justify-center gap-4 py-8">
                     <Button variant="outline" size="lg" onClick={resetQuiz} asChild>
-                        <Link href="/">
+                        <Link href="/practice/">
                             <Home className="mr-2 h-4 w-4" />
                             Dashboard
                         </Link>

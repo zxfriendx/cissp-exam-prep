@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { VaultLockup } from "@/components/vault-mark";
 
 const navLinks = [
-  { label: "CISSP Prep", href: "/" },
-  { label: "Study Materials", href: "/guides/" },
+  { label: "Study Materials", href: "/" },
+  { label: "Free Practice Test", href: "/practice/" },
   { label: "Services", href: "https://securepathdigital.net/#services" },
   { label: "Contact", href: "https://securepathdigital.net/#contact" },
 ];
@@ -18,9 +18,8 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  // /guides/ is now a route in this app rather than a separate hand-written
-  // page, so the active tab is derived instead of hardcoded to "Practice" —
-  // otherwise Study Materials would never light up. Off-site links never match.
+  // The root is the offer now and /practice/ is the free quiz, so the active
+  // tab is derived from the path. Off-site links never match.
   const isCurrent = (href: string) =>
     href === "/" ? pathname === "/" : href.startsWith("/") && pathname.startsWith(href);
 

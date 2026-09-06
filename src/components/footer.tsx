@@ -34,8 +34,8 @@ export function Footer() {
           <div className="foot-col">
             <h4>Study</h4>
             <ul>
-              <li><Link href="/">CISSP Prep</Link></li>
-              <li><Link href="/guides/">Study materials</Link></li>
+              <li><Link href="/">Study materials</Link></li>
+              <li><Link href="/practice/">Free practice test</Link></li>
             </ul>
           </div>
 

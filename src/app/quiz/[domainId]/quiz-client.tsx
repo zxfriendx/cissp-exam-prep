@@ -60,7 +60,7 @@ export default function QuizPageClient() {
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <h1 className="text-2xl font-bold">No active quiz found</h1>
                 <Button asChild className="mt-4">
-                    <Link href="/">Return Home</Link>
+                    <Link href="/practice/">Return Home</Link>
                 </Button>
             </div>
         )
@@ -94,7 +94,7 @@ export default function QuizPageClient() {
         <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col">
             <div className="flex items-center justify-between py-4">
                 <Button variant="ghost" size="sm" asChild>
-                    <Link href="/">
+                    <Link href="/practice/">
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Exit Quiz
                     </Link>

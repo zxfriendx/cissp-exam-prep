@@ -29,9 +29,14 @@ const geistMono = Geist_Mono({
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
+/* The root is the offer now, not the quiz, so the site-wide default describes
+   the books. Pages that are not the offer — /practice/, /guides/ — set their
+   own title. */
 export const metadata: Metadata = {
-  title: "CISSP Prep — Secure Path Digital",
-  description: "Master the CISSP exam with real-world case studies.",
+  metadataBase: new URL("https://learn.securepathdigital.net"),
+  title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
+  description:
+    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 491 practice questions with all four options explained, and one revision sheet per domain. $9.99. Free practice test alongside.",
 };
 
 export default function RootLayout({

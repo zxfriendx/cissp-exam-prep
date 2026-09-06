@@ -122,7 +122,7 @@ export default function StudyPageClient() {
             <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col items-center justify-center gap-4">
                 <p>No such domain.</p>
                 <Button asChild>
-                    <Link href="/">Return Home</Link>
+                    <Link href="/practice/">Return Home</Link>
                 </Button>
             </div>
         )
@@ -135,7 +135,7 @@ export default function StudyPageClient() {
                 <div className="container max-w-5xl mx-auto px-6 sm:px-10">
                     <div className="flex items-center justify-between h-16">
                         <Button variant="ghost" size="sm" asChild className="font-medium">
-                            <Link href="/">
+                            <Link href="/practice/">
                                 <ArrowLeft className="mr-2 h-4 w-4 stroke-2" />
                                 Back to Dashboard
                             </Link>

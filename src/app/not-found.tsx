@@ -29,7 +29,7 @@ export default function NotFound() {
             Back to CISSP Prep
           </Link>
           <Link
-            href="/guides/"
+            href="/practice/"
             className="inline-flex items-center rounded-md border border-border/40 px-5 py-2.5 text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent"
           >
             Study materials
