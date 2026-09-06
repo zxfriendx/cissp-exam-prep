@@ -36,6 +36,11 @@ const CHECKOUT = {
 
 const BUY = CHECKOUT.bundle;
 
+/* ?wanted=true skips Gumroad's product page and opens the checkout form with
+   the item already in the cart — verified 2026-09-06. Without it a buyer who
+   already decided here has to read a second sales page and click again. */
+const BUY_HREF = `${BUY.url}?wanted=true`;
+
 type Product = {
   id: string;
   icon: string;
@@ -110,7 +115,7 @@ const PRODUCTS: Product[] = [
 const FACTS = [
   { n: "292", l: "objectives taught — the whole outline, no gaps to find later" },
   { n: "491", l: "questions with all four options explained" },
-  { n: "2024", l: "outline, current — not a reprint of an older exam" },
+  { n: "2024", l: "exam outline — still ISC2's current revision in 2026" },
   { n: "423", l: "pages you'll finish, across all three" },
 ];
 
@@ -122,13 +127,13 @@ const METHOD = [
   },
   {
     icon: "ic-source",
-    h: "Straight from the standards",
-    p: "Written against NIST, ISO/IEC, FIPS, OWASP and the RFCs themselves, not a paraphrase of somebody else's paraphrase. Every one of the 292 lessons names the document its key points came from, so when two sources disagree you can go and check which one is right.",
+    h: "Settle it yourself when two sources disagree",
+    p: "Two well-reviewed CISSP books can flatly contradict each other, and you are left guessing which one the exam agrees with. Every one of the 292 lessons names the document its key points came from — NIST, ISO/IEC, FIPS, OWASP, the RFCs — so you can go to the source and settle it in a minute instead of carrying the doubt into the exam.",
   },
   {
     icon: "ic-grid",
     h: "No domain quietly skipped",
-    p: "Every objective in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test center.",
+    p: "Every objective in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. And 2024 is still the live outline: ISC2 refreshed the CCSP and CC exams in 2026 and left the CISSP alone, so this is the current exam, not an old one. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test center.",
   },
   {
     icon: "ic-shield",
@@ -170,7 +175,7 @@ export default function GuidesPage() {
             you&apos;ve seen it.
           </p>
           <div className="herocta">
-            <a className="btn btn-buy" href={BUY.url} rel="noopener">
+            <a className="btn btn-buy" href={BUY_HREF} rel="noopener">
               Get all three — {BUY.price}
             </a>
             <Link className="btn btn-ghost" href="/">
@@ -193,11 +198,11 @@ export default function GuidesPage() {
       <section className="block">
         <div className="wrap">
           <p className="vault-label">What You Get</p>
-          <h2>Three books, one spine</h2>
+          <h2>Three books, one price</h2>
           <p className="sec-intro">
-            One download, all three. Each is built from the same 2024 outline, so a weak area
-            in the practice examination points at a numbered section in the companion and a
-            line on the revision sheet.
+            Get a question wrong and the explanation names the section in the companion that
+            fixes it — and the line on the revision sheet that keeps it fixed. One download,
+            all three, no upsell waiting inside.
           </p>
 
           <div className="products">
@@ -230,7 +235,7 @@ export default function GuidesPage() {
                 Yours to print and mark up.
               </p>
             </div>
-            <a className="btn btn-buy btn-lg" href={BUY.url} rel="noopener">
+            <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
               Buy on Gumroad — {BUY.price}
             </a>
           </div>
