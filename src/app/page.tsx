@@ -7,7 +7,7 @@ import "./_sales/guides.css";
 export const metadata: Metadata = {
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 491 practice questions with all four options explained, and one revision sheet per domain. $9.99.",
+    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 439 practice questions with all four options explained, and one revision sheet per domain. $9.99.",
 };
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -87,9 +87,9 @@ const PRODUCTS: Product[] = [
     points: [
       "A case study opens each domain, so every question sits inside a real organization",
       "Every option gets a paragraph, the winner and all three losers",
-      "276 pages you can print, sit under a timer, and mark up",
+      "242 pages you can print, sit under a timer, and mark up",
     ],
-    pages: "276 PP",
+    pages: "242 PP",
   },
   {
     id: "sheets",
@@ -117,11 +117,26 @@ const PRODUCTS: Product[] = [
 // drifted from an app that rendered 439.
 const PREVIEW = getPreviewSummary();
 
+/*
+ * Every figure below is measured from the built v1 bundle, not from a plan or a
+ * changelog. Re-measure with:
+ *
+ *   python3 products/build/build_pdf.py --edition v1 --out /tmp/v1   # in securepathdigital-site
+ *   pdfinfo /tmp/v1/*.pdf | grep Pages
+ *
+ * Measured 2026-09-07: study guide 137 pp, practice examination 242 pp,
+ * revision sheets 10 pp -> 389 total; 439 questions, cross-checked by counting
+ * answer-key entries in the examination's text layer.
+ *
+ * The page carried 491 questions and 423 pages before that. 491 was 439 plus 52
+ * v2 items that were never in this book; 423 and 276 were the iter9 build, which
+ * these three PDFs no longer match.
+ */
 const FACTS = [
   { n: "292", l: "objectives, each with its own lesson" },
-  { n: "491", l: "questions with all four options explained" },
+  { n: "439", l: "questions with all four options explained" },
   { n: "2024", l: "exam outline, still ISC2's current revision" },
-  { n: "423", l: "pages across all three books" },
+  { n: "389", l: "pages across all three books" },
 ];
 
 const METHOD = [
@@ -235,7 +250,7 @@ export default function GuidesPage() {
             <div>
               <h3>All three, {BUY.price}</h3>
               <p>
-                Three PDFs, 423 pages, downloaded once and yours. Print them. Mark them up.
+                Three PDFs, 389 pages, downloaded once and yours. Print them. Mark them up.
                 Take them on a plane.
               </p>
             </div>
