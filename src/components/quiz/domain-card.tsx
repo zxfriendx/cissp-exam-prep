@@ -14,14 +14,12 @@ interface DomainCardProps {
     id: string
     title: string
     questionCount: number
-    /** Distinct scenarios those questions are set in. */
-    scenarioCount?: number
     description: string
     /** Share of the real examination, per the 2024 outline. */
     weight?: number
 }
 
-export function DomainCard({ id, title, questionCount, scenarioCount, description, weight }: DomainCardProps) {
+export function DomainCard({ id, title, questionCount, description, weight }: DomainCardProps) {
     const [isHovered, setIsHovered] = useState(false);
     const startQuiz = useQuizStore(state => state.startQuiz);
     const router = useRouter();
@@ -57,7 +55,6 @@ export function DomainCard({ id, title, questionCount, scenarioCount, descriptio
                 </div>
                 <CardDescription className="text-sm font-medium">
                     {questionCount} questions
-                    {scenarioCount ? <> &middot; {scenarioCount} scenarios</> : null}
                     {weight !== undefined && (
                         <span className="text-secondary"> &middot; {weight}% of the exam</span>
                     )}
