@@ -147,8 +147,8 @@ const METHOD = [
   },
   {
     icon: "ic-source",
-    h: "Settle it yourself when two sources disagree",
-    p: "Two well-reviewed CISSP books can flatly contradict each other, and you are left guessing which one the exam agrees with. Every lesson names its source: NIST, ISO/IEC, FIPS, OWASP, the RFCs. Look it up, settle it, move on.",
+    h: "You can check anything that surprises you",
+    p: "Every one of the 292 lessons names the standard it came from: NIST, ISO/IEC, FIPS, OWASP, the RFCs. So when something here does not match what you read elsewhere, you can settle it in a minute. No doubt carried into the exam.",
   },
   {
     icon: "ic-grid",
@@ -158,7 +158,7 @@ const METHOD = [
   {
     icon: "ic-shield",
     h: "Written by someone who sits the same exams",
-    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing. Independent publications: no certification body has reviewed or endorsed them, and nothing here reproduces exam content.",
+    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing.",
   },
 ];
 

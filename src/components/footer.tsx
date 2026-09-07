@@ -60,7 +60,8 @@ export function Footer() {
           <p className="tm">
             CISSP® and ISC2® are registered trademarks of International Information System
             Security Certification Consortium, Inc. This publication is independent, unofficial,
-            and is not endorsed by, affiliated with, sponsored by, or approved by ISC2.
+            and is not endorsed by, affiliated with, sponsored by, or approved by ISC2, and it
+            reproduces no exam content.
           </p>
         </div>
       </div>
