@@ -292,10 +292,10 @@ export default function GuidesPage() {
             <div>
               <h3>Sit {PREVIEW.perDomain} of them free, in every domain</h3>
               <p>
-                {PREVIEW.served} questions set in {PREVIEW.scenarios} different organizations. Every
-                wrong option tells you why it loses and what it would have been correct for. No
-                sign-up, no card. {BUY.price} adds the rest of the examination on paper with the key
-                at the back, plus the Outline Companion and the Revision Sheets.
+                {PREVIEW.served} questions, open right now with no sign-up and no card. Every wrong
+                option tells you why it loses and what it would have been correct for. If you like
+                how they read, {BUY.price} adds the rest of the examination on paper with the key at
+                the back, plus the Outline Companion and the Revision Sheets.
               </p>
             </div>
             <Link className="btn btn-ghost" href="/practice/">
