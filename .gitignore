@@ -44,6 +44,10 @@ build_log*.txt
 
 # secrets
 .env*
+# ...but .env holds only the unlock service's public origin, which the build
+# inlines. Not a secret, and a clone without it silently ships with the licence
+# check disabled. Real secrets live in GCP Secret Manager.
+!.env
 
 # vercel
 .vercel

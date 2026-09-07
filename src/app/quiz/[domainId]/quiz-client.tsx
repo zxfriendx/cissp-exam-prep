@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useSyncExternalStore } from "react"
+import { useEffect, useRef, useSyncExternalStore } from "react"
 import { useParams } from "next/navigation"
 import { domainOfQuestion, getStimulusFor, isVirtualQuizId } from "@/lib/content"
 import { useQuizStore } from "@/store/quiz-store"
-import { useUserStatsStore } from "@/store/user-stats-store"
+import { useProgressStore } from "@/store/progress-store"
 import { QuestionCard } from "@/components/quiz/question-card"
 import { ResultsView } from "@/components/quiz/results-view"
 import { Button } from "@/components/ui/button"
@@ -33,10 +33,25 @@ export default function QuizPageClient() {
         questions,
         quizTitle,
         deferFeedback,
+        startedAt,
     } = useQuizStore()
 
-    const recordStats = useUserStatsStore(state => state.recordResult);
+    const recordAttempt = useProgressStore(state => state.recordAttempt);
+    const hydrate = useProgressStore(state => state.hydrate);
     const mounted = useMounted()
+
+    // The attempt log records how long each question took, so the scheduler can
+    // tell "knew it" from "worked it out": SM-2 grades an answer 5 rather than 4
+    // when it lands inside the exam's own 1 min 15 s budget. Stamped from an
+    // effect keyed on the INDEX, not at mount: initialised at mount, every
+    // answer after the first in a sitting would record the time since the quiz
+    // opened. 0 means the clock has not started, and no timing is recorded.
+    const shownAt = useRef(0)
+    useEffect(() => { shownAt.current = Date.now() }, [currentQuestionIndex])
+
+    // The log lives in IndexedDB; read it once so an answer appends to the real
+    // history rather than to an empty array that overwrites it.
+    useEffect(() => { void hydrate() }, [hydrate])
 
     // A domain URL starts (or resumes) that domain's quiz. The virtual routes
     // (random, weakness-hunter, exam) only ever resume what the store holds.
@@ -78,9 +93,31 @@ export default function QuizPageClient() {
         const isCorrect = optionId === currentQuestion.correctAnswer;
         answerQuestion(currentQuestion.id, optionId, isCorrect);
 
-        // Per-domain stats feed Weakness Hunter.
+        // One row per answer, appended to the log that every progress number is
+        // folded out of. Everything needed to explain the answer later is
+        // captured HERE, at answer time -- the objectives it tests and the
+        // reason label of the option chosen -- because the question object it
+        // came from may not be loaded when the report is read (the paid bank is
+        // cached, not bundled), and a report cannot reconstruct what was in
+        // front of the reader from a question id alone.
         const dId = domainOfQuestion(currentQuestion);
-        if (dId) recordStats(dId, isCorrect);
+        if (!dId) return;
+        void recordAttempt({
+            qid: currentQuestion.id,
+            domainId: dId,
+            outlineItems: currentQuestion.outlineItems ?? [],
+            chosen: optionId,
+            key: currentQuestion.correctAnswer,
+            correct: isCorrect,
+            label: isCorrect ? undefined : currentQuestion.distractorReasons?.[optionId]?.label,
+            // Which kind of sitting this was: a domain quiz, or one of the
+            // virtual routes (exam, random, review, weakness-hunter).
+            mode: isVirtualQuizId(domainId) ? domainId : "domain",
+            // One id per sitting, taken from the clock the quiz started on --
+            // no extra state to persist, and it changes when the sitting does.
+            sessionId: `quiz-${startedAt ?? 0}`,
+            ms: shownAt.current ? Math.max(0, Date.now() - shownAt.current) : undefined,
+        });
     }
 
     // The scenario THIS question is set in. A domain has fifteen to nineteen of

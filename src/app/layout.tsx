@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Krona_One, Schibsted_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +28,9 @@ const geistMono = Geist_Mono({
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BankLoader } from "@/components/entitlement/bank-loader";
+import { RegisterSW } from "@/components/pwa/register-sw";
+import { InstallCoach } from "@/components/pwa/install-coach";
 
 /* The root is the offer now, not the quiz, so the site-wide default describes
    the books. Pages that are not the offer — /practice/, /guides/ — set their
@@ -37,7 +40,19 @@ export const metadata: Metadata = {
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
     "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 439 practice questions with all four options explained, and one revision sheet per domain. $9.99. Free practice test alongside.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, title: "Eight Domains", statusBarStyle: "black-translucent" },
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
+
+// themeColor moved out of `metadata` in Next 16; it belongs here or it is ignored.
+export const viewport: Viewport = { themeColor: "#0C0D10" };
 
 export default function RootLayout({
   children,
@@ -60,6 +75,15 @@ export default function RootLayout({
       <body
         className={`${krona.variable} ${schibsted.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        {/* Renders nothing. Swaps the paid question bank in, after hydration,
+            for a reader who has unlocked — on every route, so a bookmarked
+            quiz URL gets the full domain rather than the free twenty. */}
+        <BankLoader />
+        {/* Both render nothing until they have something to do: RegisterSW only
+            registers over https in production, InstallCoach only appears when the
+            page is installable and the reader has not dismissed it. */}
+        <RegisterSW />
+        <InstallCoach />
         <div className="flex min-h-screen flex-col">
           <Header />
           <div className="flex-1">{children}</div>

@@ -9,8 +9,9 @@
  */
 import previewData from '@/data/preview.json';
 import { BLUEPRINT, apportionByWeight, blueprintFor } from '@/lib/blueprint';
+import { activeData, lookupStimulus, setPreviewBank } from '@/lib/bank';
 import { domainIdOf, shuffled } from '@/lib/text';
-import { previewStats } from '@/lib/preview';
+import { isDrill, previewStats } from '@/lib/preview';
 
 export interface Option {
     [key: string]: string; // "A": "Option text"
@@ -185,9 +186,20 @@ export interface ContentData {
     domains: Domain[];
 }
 
-const data = previewData as unknown as ContentData;
+/*
+ * The free preview is the baseline, not the only bank. A buyer who unlocks
+ * swaps the 750-question paid bank in underneath every accessor below; see
+ * src/lib/bank.ts, which owns that state and the re-render that follows it.
+ * This module is the only one that imports preview.json, and it registers it
+ * here at import time, before any accessor can run.
+ */
+setPreviewBank(previewData as unknown as ContentData);
 
-export const getBankManifest = (): BankManifest | undefined => data.bank;
+/**
+ * The BUILD's manifest, which does not change when the paid bank swaps in: it
+ * is what the loader compares a cached bank's edition against.
+ */
+export const getBankManifest = (): BankManifest | undefined => activeData().bank;
 
 /** The domain a question belongs to: the schema-2 field, or the id's domain_X_qY form for older persisted copies. */
 export const domainOfQuestion = (q: Pick<Question, 'id' | 'domainId'>): string | undefined =>
@@ -222,13 +234,13 @@ const domainDescriptions: Record<string, string> = {
 };
 
 /**
- * Quiz routes that are not a domain: /quiz/random, /quiz/weakness-hunter and
- * /quiz/exam. They read their question list from the persisted store instead
- * of the bank, and each needs an entry in generateStaticParams so the static
- * export emits a page for it (a reload on one of these paths would otherwise
- * 404 on Apache).
+ * Quiz routes that are not a domain: /quiz/random, /quiz/weakness-hunter,
+ * /quiz/exam and /quiz/review. They read their question list from the persisted
+ * store instead of the bank, and each needs an entry in generateStaticParams so
+ * the static export emits a page for it (a reload on one of these paths would
+ * otherwise 404 on Apache).
  */
-export const VIRTUAL_QUIZ_IDS = ['random', 'weakness-hunter', 'exam'] as const;
+export const VIRTUAL_QUIZ_IDS = ['random', 'weakness-hunter', 'exam', 'review', 'form-a', 'form-b'] as const;
 export type VirtualQuizId = typeof VIRTUAL_QUIZ_IDS[number];
 export const isVirtualQuizId = (id: string): id is VirtualQuizId =>
     (VIRTUAL_QUIZ_IDS as readonly string[]).includes(id);
@@ -239,33 +251,54 @@ export const domainTitle = (domain: Pick<Domain, 'id' | 'title'>): string =>
 
 // ── the scenarios ────────────────────────────────────────────────────────────
 
-const stimulusById = new Map<string, Stimulus>(
-    data.domains.flatMap(d => (d.stimuli ?? []).map(s => [s.id, s] as const))
-);
+/*
+ * The lookup lives in bank.ts because it has to be REBUILT when the paid bank
+ * swaps in. Built here as a module const it would still be indexing the free
+ * preview's 127 scenarios while the questions on screen came from the paid
+ * bank's 133, and every unlocked question set in one of the six new ones would
+ * render with no scenario at all.
+ */
 
 /** The scenario a question is set in, or undefined for a discrete item. */
 export const getStimulus = (id?: string): Stimulus | undefined =>
-    id ? stimulusById.get(id) : undefined;
+    id ? lookupStimulus(id) : undefined;
 
 export const getStimulusFor = (q: Pick<Question, 'stimulusId'>): Stimulus | undefined =>
     getStimulus(q.stimulusId);
 
 /** The scenarios a domain's served questions are set in, in book order. */
 export const getDomainStimuli = (domainId: string): Stimulus[] =>
-    data.domains.find(d => d.id === domainId)?.stimuli ?? [];
+    activeData().domains.find(d => d.id === domainId)?.stimuli ?? [];
 
 // ── the free preview ─────────────────────────────────────────────────────────
 
 /**
- * The questions the free app serves for a domain. Already sampled: the pick
- * happens in scripts/build-preview.mjs, so neither the picker nor the questions
- * it rejected reach the browser.
+ * The questions the app serves for a domain: the free sample, or the paid
+ * bank's drills once a licence is in. Already sampled on the free tier — the
+ * pick happens in scripts/build-preview.mjs, so neither the picker nor the
+ * questions it rejected reach the browser.
+ *
+ * Drills only. The paid bank's `questions` also carries the 250 mock-form items,
+ * and a domain quiz that swept those in would hand the reader half of Form A
+ * before they ever sat it. The filter is a no-op on the free tier, which is only
+ * ever drills — so the free markup is byte-for-byte what it was.
  */
 export const getPreviewQuestions = (domainId: string): Question[] =>
-    data.domains.find(d => d.id === domainId)?.questions ?? [];
+    activeData().domains.find(d => d.id === domainId)?.questions.filter(isDrill) ?? [];
+
+/** The two mock forms, 125 questions each. Paid only: the preview carries none. */
+export type MockForm = 'A' | 'B';
+
+/**
+ * A mock form in book order — domain by domain, testlets intact. The real
+ * examination interleaves the domains, but the questions in a testlet share a
+ * scenario and splitting them up would make the reader re-read it four times.
+ */
+export const getFormQuestions = (form: MockForm): Question[] =>
+    activeData().domains.flatMap(d => d.questions.filter(q => q.form === form));
 
 /** How many questions the printed examination holds, across every domain. */
-export const getPaidBankCount = (): number => data.preview?.paid ?? getTotalQuestionCount();
+export const getPaidBankCount = (): number => activeData().preview?.paid ?? getTotalQuestionCount();
 
 export interface PreviewSummary {
     /** Questions the free app serves. */
@@ -285,7 +318,7 @@ export interface PreviewSummary {
  * being able to claim 491 free questions while the app renders 439.
  */
 export const getPreviewSummary = (): PreviewSummary => {
-    const meta = data.preview;
+    const meta = activeData().preview;
     if (meta) {
         return {
             served: meta.served,
@@ -297,11 +330,11 @@ export const getPreviewSummary = (): PreviewSummary => {
         };
     }
     // A preview.json from before the meta block, or a hand-built one.
-    const all = data.domains.flatMap(d => d.questions);
+    const all = activeData().domains.flatMap(d => d.questions);
     const stats = previewStats(all);
     return {
         served: stats.questions,
-        perDomain: Math.round(stats.questions / Math.max(1, data.domains.length)),
+        perDomain: Math.round(stats.questions / Math.max(1, activeData().domains.length)),
         scenarios: stats.scenarios,
         objectives: stats.objectives,
         paid: stats.questions,
@@ -315,7 +348,7 @@ export const getPreviewSummary = (): PreviewSummary => {
  * from the bank, not typed in here.
  */
 export const getDrillCountPaid = (domainId: string): number | undefined =>
-    data.preview?.paidDrillsByDomain?.[domainId];
+    activeData().preview?.paidDrillsByDomain?.[domainId];
 
 /**
  * One question by id, from whichever bank is active. The review queue stores
@@ -323,7 +356,7 @@ export const getDrillCountPaid = (domainId: string): number | undefined =>
  * would pin a copy of the paid bank in localStorage.
  */
 export const getQuestionById = (id: string): Question | undefined => {
-    for (const d of data.domains) {
+    for (const d of activeData().domains) {
         const hit = d.questions.find(q => q.id === id);
         if (hit) return hit;
     }
@@ -333,7 +366,7 @@ export const getQuestionById = (id: string): Question | undefined => {
 // ── what the app serves ──────────────────────────────────────────────────────
 
 export const getAllDomains = () => {
-    return data.domains.map(d => ({
+    return activeData().domains.map(d => ({
         id: d.id,
         title: domainTitle(d),
         number: blueprintFor(d.id)?.number ?? Number(d.id.replace('domain_', '')),
@@ -351,7 +384,7 @@ export const getAllDomains = () => {
  * this quiz".
  */
 export const getDomainById = (domainId: string): Domain | undefined => {
-    const d = data.domains.find(d => d.id === domainId);
+    const d = activeData().domains.find(d => d.id === domainId);
     return d ? { ...d, title: domainTitle(d), questions: getPreviewQuestions(domainId) } : undefined;
 };
 
@@ -371,12 +404,12 @@ export const getQuestionSet = (domainId: string, set: number): Question[] =>
     getQuestionsForDomain(domainId).slice((set - 1) * SET_SIZE, set * SET_SIZE);
 
 export const getRandomQuestions = (count: number): Question[] => {
-    const allQuestions = data.domains.flatMap(d => getPreviewQuestions(d.id));
+    const allQuestions = activeData().domains.flatMap(d => getPreviewQuestions(d.id));
     return shuffled(allQuestions).slice(0, count);
 };
 
 export const getTotalQuestionCount = (): number =>
-    data.domains.reduce((n, d) => n + getPreviewQuestions(d.id).length, 0);
+    activeData().domains.reduce((n, d) => n + getPreviewQuestions(d.id).length, 0);
 
 /**
  * The practice examination. With no count: every question the app serves, in
@@ -389,8 +422,8 @@ export const getExamQuestions = (count?: number): Question[] => {
         return BLUEPRINT.flatMap(b => getPreviewQuestions(b.id));
     }
     const available: Record<string, number> = {};
-    for (const d of data.domains) available[d.id] = getPreviewQuestions(d.id).length;
+    for (const d of activeData().domains) available[d.id] = getPreviewQuestions(d.id).length;
     const quota = apportionByWeight(count, available);
-    const picked = data.domains.flatMap(d => shuffled(getPreviewQuestions(d.id)).slice(0, quota[d.id] ?? 0));
+    const picked = activeData().domains.flatMap(d => shuffled(getPreviewQuestions(d.id)).slice(0, quota[d.id] ?? 0));
     return shuffled(picked);
 };

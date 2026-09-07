@@ -1,0 +1,19 @@
+{
+  "id": "/practice/",
+  "name": "The Eight Domains",
+  "short_name": "Eight Domains",
+  "description": "Free CISSP practice questions across the eight domains of the 2024 ISC2 outline, with every option explained. Works offline once installed.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["education"],
+  "start_url": "/practice/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0C0D10",
+  "theme_color": "#0C0D10",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
