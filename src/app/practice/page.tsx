@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { getAllDomains, getBankManifest, getTotalQuestionCount, SET_SIZE } from "@/lib/content";
+import { getAllDomains, getBankManifest, getPreviewSummary, getTotalQuestionCount, SET_SIZE } from "@/lib/content";
 import { DomainCard } from "@/components/quiz/domain-card";
 import { RandomQuizButton } from "@/components/quiz/random-quiz-button";
 import { WeaknessHunterButton } from "@/components/quiz/weakness-hunter-button";
 import { ExamButton } from "@/components/quiz/exam-button";
 
+// Counted, not asserted. Every number on this page comes out of the picker in
+// src/lib/preview.ts, so it cannot drift from what the app actually serves --
+// which is how the site came to claim 491 free questions while the app rendered
+// 439 of them.
+const summary = getPreviewSummary();
+
 export const metadata: Metadata = {
   title: "Free CISSP Practice Test — Secure Path Digital",
   description:
-    "491 free CISSP practice questions across the eight domains, with worked explanations that say why each distractor loses. No account needed.",
+    `${summary.served} free CISSP practice questions across the eight domains, ${summary.perDomain} per domain, ` +
+    `set in ${summary.scenarios} scenarios. Every wrong option says why it loses and what it would have been ` +
+    `the right answer to. No account needed.`,
 };
 
 export default function PracticeHome() {
@@ -32,12 +40,17 @@ export default function PracticeHome() {
             <sup className="text-[0.5em] align-super">&reg;</sup> Exam
           </h1>
           <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
-            {total} scenario questions across the eight domains, with worked explanations
-            that say why each distractor loses. Written against the 2024 exam outline.
+            {total} scenario questions across the eight domains, {summary.perDomain} in each,
+            set in {summary.scenarios} different organizations. Answer one and every wrong option
+            tells you the reason it loses and the question it would have been right for.
+          </p>
+          <p className="mx-auto max-w-2xl text-sm text-muted-foreground/80 leading-relaxed px-4">
+            This is the sample. The printed <em>Practice Examination</em> carries {summary.paid} questions,
+            including two full-length mock forms.
           </p>
           {bank && (
             <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">
-              Question bank edition {bank.edition}
+              Question bank edition {bank.v2?.edition ?? bank.edition}
             </p>
           )}
         </section>
@@ -50,8 +63,10 @@ export default function PracticeHome() {
                 Study by Domain
               </h2>
               <p className="text-muted-foreground text-sm">
-                Choose a domain to begin. Every domain opens with the scenario its questions are set in.
-                Take the whole domain in book order, or one set of {SET_SIZE} at a time.
+                Choose a domain to begin. Each question opens with the scenario it is set in — a domain
+                is fifteen-odd organizations, not one — and no two questions in a sitting repeat a
+                scenario until every one of them has been seen. Take all {summary.perDomain}, or one
+                set of {SET_SIZE} at a time.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-4">
@@ -61,6 +76,7 @@ export default function PracticeHome() {
                   id={domain.id}
                   title={domain.title}
                   questionCount={domain.questionCount}
+                  scenarioCount={domain.scenarioCount}
                   description={domain.description}
                   weight={domain.weight}
                 />
@@ -76,9 +92,9 @@ export default function PracticeHome() {
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Sit it like the real thing: answers are recorded as you go and marked at the end,
-                with the key, the worked explanations and each scenario&apos;s debrief. Allow roughly
-                1 minute 15 seconds per question. The correct letter is spread evenly across A, B, C
-                and D, so position tells you nothing. Answer from the stem.
+                with the key, the worked explanations and every scenario you met. Allow roughly
+                1 minute 15 seconds per question. The correct letter lands exactly {summary.keyCounts.A}
+                times each on A, B, C and D, so position tells you nothing. Answer from the stem.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

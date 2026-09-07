@@ -35,6 +35,31 @@ interface QuizState {
     resetQuiz: () => void;
 }
 
+/**
+ * Bump when what is IN a persisted quiz changes, not just its shape.
+ *
+ * v2: the app stopped serving the 439 v1 questions and started serving a
+ * 160-question preview of the v2 examination. A quiz saved before that holds
+ * questions with no scenario and no distractor reasons, so it would finish in a
+ * UI built around both, silently missing half of what the page promises. There
+ * is nothing to migrate -- the questions themselves are gone from the served
+ * pool -- so the migration drops the sitting and the reader starts a new one.
+ */
+const PERSIST_VERSION = 2;
+
+const NO_QUIZ = {
+    currentDomainId: null,
+    currentQuestionIndex: 0,
+    questions: [] as Question[],
+    quizTitle: "",
+    answers: {} as Record<string, string>,
+    score: 0,
+    isQuizActive: false,
+    deferFeedback: false,
+    startedAt: null,
+    finishedAt: null,
+};
+
 const fresh = (questions: Question[], currentDomainId: string, quizTitle: string, deferFeedback = false) => ({
     currentDomainId,
     currentQuestionIndex: 0,
@@ -51,16 +76,7 @@ const fresh = (questions: Question[], currentDomainId: string, quizTitle: string
 export const useQuizStore = create<QuizState>()(
     persist(
         (set) => ({
-            currentDomainId: null,
-            currentQuestionIndex: 0,
-            questions: [],
-            quizTitle: "",
-            answers: {},
-            score: 0,
-            isQuizActive: false,
-            deferFeedback: false,
-            startedAt: null,
-            finishedAt: null,
+            ...NO_QUIZ,
 
             startQuiz: (domainId, setIndex) => {
                 const domain = getDomainById(domainId);
@@ -127,21 +143,13 @@ export const useQuizStore = create<QuizState>()(
                 currentQuestionIndex: Math.max(0, state.currentQuestionIndex - 1)
             })),
 
-            resetQuiz: () => set({
-                currentDomainId: null,
-                currentQuestionIndex: 0,
-                questions: [],
-                quizTitle: "",
-                answers: {},
-                score: 0,
-                isQuizActive: false,
-                deferFeedback: false,
-                startedAt: null,
-                finishedAt: null,
-            })
+            resetQuiz: () => set({ ...NO_QUIZ })
         }),
         {
             name: 'cissp-quiz-storage',
+            version: PERSIST_VERSION,
+            // Nothing carries forward: see PERSIST_VERSION.
+            migrate: () => ({ ...NO_QUIZ }),
             // Persist questions too: the URL alone cannot rebuild a random,
             // weakness-hunter or examination set.
             partialize: (state) => ({

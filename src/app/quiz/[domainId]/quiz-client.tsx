@@ -2,8 +2,7 @@
 
 import { useEffect, useSyncExternalStore } from "react"
 import { useParams } from "next/navigation"
-import { domainOfQuestion, getDomainById, isVirtualQuizId } from "@/lib/content"
-import { splitCaseStudy } from "@/lib/text"
+import { domainOfQuestion, getStimulusFor, isVirtualQuizId } from "@/lib/content"
 import { useQuizStore } from "@/store/quiz-store"
 import { useUserStatsStore } from "@/store/user-stats-store"
 import { QuestionCard } from "@/components/quiz/question-card"
@@ -84,11 +83,20 @@ export default function QuizPageClient() {
         if (dId) recordStats(dId, isCorrect);
     }
 
-    // The scenario for this question's own domain (mixed sets cross domains).
-    // Only the scenario half: the debrief telegraphs answers and is shown on
-    // the results page instead.
-    const questionDomainId = domainOfQuestion(currentQuestion) ?? domainId;
-    const { scenario } = splitCaseStudy(getDomainById(questionDomainId)?.caseStudy ?? "");
+    // The scenario THIS question is set in. A domain has fifteen to nineteen of
+    // them, so it cannot be looked up from the domain the way the single
+    // per-domain case study used to be. A discrete item has none and shows none.
+    const scenario = getStimulusFor(currentQuestion);
+    const mates = currentQuestion.stimulusId
+        ? questions.filter(q => q.stimulusId === currentQuestion.stimulusId)
+        : [];
+    const scenarioPosition = scenario
+        ? { index: mates.findIndex(q => q.id === currentQuestion.id) + 1, total: mates.length }
+        : undefined;
+    // Consecutive questions in one scenario: fold the panel rather than making
+    // the reader scroll past the same six sentences three times.
+    const previous = currentQuestionIndex > 0 ? questions[currentQuestionIndex - 1] : undefined;
+    const scenarioContinued = !!scenario && previous?.stimulusId === currentQuestion.stimulusId;
 
     return (
         <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col">
@@ -118,7 +126,9 @@ export default function QuizPageClient() {
                     onAnswer={handleAnswer}
                     questionIndex={currentQuestionIndex}
                     totalQuestions={questions.length}
-                    caseStudy={scenario || undefined}
+                    scenario={scenario}
+                    scenarioPosition={scenarioPosition}
+                    scenarioContinued={scenarioContinued}
                     deferFeedback={deferFeedback}
                 />
 

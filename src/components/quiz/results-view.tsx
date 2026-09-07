@@ -4,15 +4,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { useQuizStore } from "@/store/quiz-store"
-import { domainOfQuestion, getDomainById } from "@/lib/content"
+import { domainOfQuestion, getDomainById, getStimulus, type Stimulus } from "@/lib/content"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
 import { cleanExplanation, orderedOptions, splitCaseStudy } from "@/lib/text"
 import { Emphasis } from "@/components/quiz/emphasis"
 import { caseStudyMarkdown } from "@/components/quiz/case-study-markdown"
+import { QuestionProvenance } from "@/components/quiz/question-provenance"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
-import { RotateCcw, Home, CheckCircle2, XCircle, BookOpen, Clock, EyeOff } from "lucide-react"
+import { RotateCcw, Home, CheckCircle2, XCircle, BookOpen, Clock, EyeOff, Building2 } from "lucide-react"
 
 interface ResultsViewProps {
     score: number
@@ -51,6 +52,19 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
     const domainRows = [...byDomain.values()].sort(
         (a, b) => (blueprintFor(a.id)?.number ?? 99) - (blueprintFor(b.id)?.number ?? 99)
     );
+
+    // The scenarios this sitting covered, in the order they were met. A set of
+    // twenty crosses fifteen-odd organizations now, so the explanations below
+    // name systems the reader met once and needs to look up again.
+    const scenarios: Stimulus[] = [];
+    const seenScenarios = new Set<string>();
+    for (const q of questions) {
+        const stim = getStimulus(q.stimulusId);
+        if (stim && !seenScenarios.has(stim.id)) {
+            seenScenarios.add(stim.id);
+            scenarios.push(stim);
+        }
+    }
 
     // The case study debrief for every domain in the set, now that the key is out.
     const debriefs = domainRows
@@ -134,8 +148,9 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                         Answers explained
                     </h2>
                     <p className="text-sm text-muted-foreground">
-                        Every question in this set with its key and the reasoning, including why each
-                        distractor loses. Missed questions are open; the rest are folded.
+                        Every question in this set with its key, the reasoning, and for each wrong
+                        option the reason it loses and the question it would have answered.
+                        Missed questions are open; the rest are folded.
                     </p>
                 </div>
                 <ol className="space-y-3">
@@ -143,6 +158,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                         const chosen = answers[q.id];
                         const correct = chosen === q.correctAnswer;
                         const correctText = q.options[q.correctAnswer] ?? "";
+                        const scenario = getStimulus(q.stimulusId);
                         return (
                             <li key={q.id}>
                                 <details open={!correct} className="rounded-lg border-2 border-primary/15 bg-background">
@@ -151,8 +167,17 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                                             ? <CheckCircle2 className="h-5 w-5 mt-0.5 shrink-0 stroke-2 text-[rgb(var(--success))]" />
                                             : <XCircle className="h-5 w-5 mt-0.5 shrink-0 stroke-2 text-[rgb(var(--destructive))]" />}
                                         <span className="font-mono text-xs text-muted-foreground mt-1 w-8 shrink-0">{i + 1}.</span>
-                                        <span className="flex-1 text-sm leading-relaxed text-foreground/90">
-                                            <Emphasis text={q.question} />
+                                        <span className="flex-1 min-w-0">
+                                            {scenario && (
+                                                <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
+                                                    {scenario.title}
+                                                </span>
+                                            )}
+                                            {/* recallLine restates the question so a review row stands
+                                                alone; the full stem leans on the scenario above it. */}
+                                            <span className="block text-sm leading-relaxed text-foreground/90">
+                                                <Emphasis text={q.recallLine ?? q.question} />
+                                            </span>
                                         </span>
                                     </summary>
                                     <div className="px-5 pb-6 pt-1 space-y-4 border-t-2 border-primary/10">
@@ -160,20 +185,36 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                                             {orderedOptions(q.options).map(([key, text]) => {
                                                 const isKey = key === q.correctAnswer;
                                                 const isChosen = key === chosen;
+                                                const reason = q.distractorReasons?.[key];
                                                 return (
                                                     <li
                                                         key={key}
                                                         className={cn(
-                                                            "flex gap-3 text-sm leading-relaxed rounded-md px-3 py-2",
+                                                            "text-sm leading-relaxed rounded-md px-3 py-2",
                                                             isKey && "bg-[rgb(var(--success))]/15 text-foreground",
                                                             isChosen && !isKey && "bg-[rgb(var(--destructive))]/15 text-foreground",
                                                             !isKey && !isChosen && "text-foreground/60",
                                                         )}
                                                     >
-                                                        <span className="font-mono font-semibold w-5 shrink-0 text-secondary">{key}.</span>
-                                                        <span className="flex-1"><Emphasis text={text} /></span>
-                                                        {isChosen && !isKey && <span className="text-xs text-muted-foreground shrink-0">your answer</span>}
-                                                        {isKey && <span className="text-xs text-muted-foreground shrink-0">key</span>}
+                                                        <div className="flex gap-3">
+                                                            <span className="font-mono font-semibold w-5 shrink-0 text-secondary">{key}.</span>
+                                                            <span className="flex-1"><Emphasis text={text} /></span>
+                                                            {isChosen && !isKey && <span className="text-xs text-muted-foreground shrink-0">your answer</span>}
+                                                            {isKey && (
+                                                                <span className="text-xs text-muted-foreground shrink-0">
+                                                                    {isChosen ? "your answer · key" : "key"}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        {reason && (
+                                                            <div className="mt-2 ml-8 border-l-2 border-primary/20 pl-3">
+                                                                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">{reason.label}</p>
+                                                                <p className="text-[13px] text-muted-foreground mt-0.5">
+                                                                    <span className="text-foreground/45">Would be the answer to: </span>
+                                                                    <Emphasis text={reason.wouldAnswer} />
+                                                                </p>
+                                                            </div>
+                                                        )}
                                                     </li>
                                                 );
                                             })}
@@ -186,6 +227,7 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                                         <p className="text-[15px] leading-relaxed text-foreground/80 whitespace-pre-line">
                                             <Emphasis text={cleanExplanation(q.explanation, correctText)} />
                                         </p>
+                                        <QuestionProvenance question={q} />
                                     </div>
                                 </details>
                             </li>
@@ -193,6 +235,40 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                     })}
                 </ol>
             </section>
+
+            {scenarios.length > 0 && (
+                <section className="space-y-4">
+                    <div className="space-y-1">
+                        <h2 className="text-2xl font-semibold tracking-tight text-primary flex items-center gap-2">
+                            <Building2 className="h-6 w-6 stroke-2" />
+                            The scenarios in this set
+                        </h2>
+                        <p className="text-sm text-muted-foreground">
+                            {scenarios.length} organizations, in the order you met them. Open one to
+                            re-read the situation an explanation above is arguing about.
+                        </p>
+                    </div>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                        {scenarios.map(stim => (
+                            <details key={stim.id} className="rounded-lg border-2 border-primary/15 bg-background">
+                                <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-primary">
+                                    {stim.title}
+                                </summary>
+                                <div className="px-4 pb-5 pt-1 border-t-2 border-primary/10 space-y-3">
+                                    <p className="text-sm leading-relaxed text-foreground/80 pt-3">
+                                        <Emphasis text={stim.text} />
+                                    </p>
+                                    {stim.profile?.organization && (
+                                        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                                            {stim.profile.organization}
+                                        </p>
+                                    )}
+                                </div>
+                            </details>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             {debriefs.length > 0 && (
                 <section className="space-y-4 pb-12">
@@ -202,7 +278,8 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                             Case study debrief
                         </h2>
                         <p className="text-sm text-muted-foreground">
-                            The analysis behind each scenario, held back until now because it gives answers away.
+                            The analysis behind the domain&apos;s case study, held back until now because it
+                            gives answers away. The scenarios the questions are set in are above.
                         </p>
                     </div>
                     {debriefs.map(d => (

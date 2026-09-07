@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ICON_SPRITE } from "./_sales/icons";
+import { getPreviewSummary } from "@/lib/content";
 import "./_sales/guides.css";
 
 export const metadata: Metadata = {
@@ -63,11 +64,11 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "Learn which control comes first, who owns the decision, and what separates two answers that both look right — the call the exam actually scores, taught in the order ISC2 lays the outline out.",
+      "Which control comes first. Who owns the decision. Why one of two right-looking answers is the one that scores. That judgment is what CISSP measures, and this book runs the outline in ISC2's own order so you can study straight down it.",
     points: [
-      "Every objective gets a lesson, so there's no gap to discover on exam day",
-      "Every claim names its standard — when two books disagree, you can see who is right",
-      "137 pages you'll actually finish, and an index for when you need it again",
+      "A lesson for every one of the 292 objectives ISC2 lists",
+      "Check any claim against the NIST or ISO document behind it",
+      "137 pages. Short enough to finish, indexed for the second pass.",
     ],
     pages: "137 PP",
   },
@@ -82,12 +83,11 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "Practice the ambiguity, not the vocabulary. Every question puts you in a situation and asks for a decision — and the key explains why the other three options lose, which is where the learning actually happens.",
+      "Every question drops you into a situation and asks for a decision. Then the key walks all four options. Why the winner wins. What each of the other three would have been correct for.",
     points: [
-      "All four options explained on every question, not just the right one",
-      "A case study opens each domain, so you decide in context instead of matching terms",
-      "No letter pattern to game — A, B, C and D are each right about a quarter of the time",
-      "The same questions are free in the practice app — this is them on paper, with the key behind them",
+      "A case study opens each domain, so every question sits inside a real organization",
+      "Every option gets a paragraph, the winner and all three losers",
+      "276 pages you can print, sit under a timer, and mark up",
     ],
     pages: "276 PP",
   },
@@ -102,43 +102,48 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "The night before, you want one page per domain — not a book. Short lines you can test yourself against, so you find out what you can't recall while there's still time to fix it.",
+      "The night before the exam, nobody opens a 137-page book. Eight pages. One per domain. Short lines you can cover with your thumb and check yourself against, so the gaps surface while you can still close them.",
     points: [
-      "Eight sheets weighted like the exam — read the heaviest domain last",
-      "Formulas and ordered models first, where you'll look for them",
-      "Doubles as the glossary, so it's the only page you carry in",
+      "Stacked so you read the heaviest domain last, closest to the exam",
+      "Formulas and ordered models at the top of each sheet",
+      "Doubles as the glossary, so it is the only paper you carry in",
     ],
     pages: "10 PP",
   },
 ];
 
+// Counted from src/data/preview.json, the file the practice app actually
+// serves, so this paragraph cannot drift from it the way "491 free questions"
+// drifted from an app that rendered 439.
+const PREVIEW = getPreviewSummary();
+
 const FACTS = [
-  { n: "292", l: "objectives taught — the whole outline, no gaps to find later" },
+  { n: "292", l: "objectives, each with its own lesson" },
   { n: "491", l: "questions with all four options explained" },
-  { n: "2024", l: "exam outline — still ISC2's current revision in 2026" },
-  { n: "423", l: "pages you'll finish, across all three" },
+  { n: "2024", l: "exam outline, still ISC2's current revision" },
+  { n: "423", l: "pages across all three books" },
 ];
 
 const METHOD = [
   {
     icon: "ic-scale",
-    h: "You learn the material, not the pattern",
-    p: 'In a lot of banks the correct answer is "A" far more often than chance. You start picking up the tell without meaning to, and then the real exam takes it away. Here every letter is right about a quarter of the time, so the only way through a question is actually knowing the answer.',
+    h: "Every letter is right a quarter of the time",
+    p: 'In a lot of banks, "A" wins far more often than chance. You pick up the tell without meaning to. Then the real exam takes it away. In this one, A, B, C and D each win about a quarter of the time. The only way through a question is to know the answer.',
   },
   {
     icon: "ic-source",
     h: "Settle it yourself when two sources disagree",
-    p: "Two well-reviewed CISSP books can flatly contradict each other, and you are left guessing which one the exam agrees with. Every one of the 292 lessons names the document its key points came from — NIST, ISO/IEC, FIPS, OWASP, the RFCs — so you can go to the source and settle it in a minute instead of carrying the doubt into the exam.",
+    p: "Two well-reviewed CISSP books can flatly contradict each other, and you are left guessing which one the exam agrees with. Every lesson names its source: NIST, ISO/IEC, FIPS, OWASP, the RFCs. Look it up, settle it, move on.",
   },
   {
     icon: "ic-grid",
-    h: "No domain quietly skipped",
-    p: "Every objective in the 2024 outline gets its own lesson, 292 of them, with each domain sized to the weight it actually carries on the exam. And 2024 is still the live outline: ISC2 refreshed the CCSP and CC exams in 2026 and left the CISSP alone, so this is the current exam, not an old one. Nothing is thin because it was awkward to write, and you won't find out what was missing in the test center.",
+    h: "Your reading time lands where the marks are",
+    p: "Each domain is sized to the weight it carries on the exam, so the hours go where the questions are. And 2024 is still the live outline: ISC2 refreshed CCSP and CC in 2026 and left CISSP alone. You are studying the current exam.",
   },
   {
     icon: "ic-shield",
     h: "Written by someone who sits the same exams",
-    p: "Bill Friend, CISSP, 20+ years in banking and payments security, writing the material he wanted when he was preparing. Independent publications: no certification body has reviewed or endorsed them, and nothing here reproduces exam content.",
+    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing. Independent publications: no certification body has reviewed or endorsed them, and nothing here reproduces exam content.",
   },
 ];
 
@@ -168,11 +173,10 @@ export default function GuidesPage() {
             The exam tests <span className="grad-copper">your judgment</span>.
           </h1>
           <p className="lede">
-            CISSP puts four defensible answers in front of you and asks which one a security
-            leader would choose. Engineers lose marks picking the technically correct answer
-            instead of the management one. These three books teach that call — with a lesson
-            for every objective in the 2024 outline, so nothing on exam day is the first time
-            you&apos;ve seen it.
+            CISSP shows you four defensible answers and asks which one a security leader picks.
+            Engineers lose marks right there. They choose the technically correct option; the
+            exam wanted the management one. These three books teach that call, objective by
+            objective, across the whole 2024 outline.
           </p>
           <div className="herocta">
             <a className="btn btn-buy" href={BUY_HREF} rel="noopener">
@@ -200,9 +204,9 @@ export default function GuidesPage() {
           <p className="vault-label">What You Get</p>
           <h2>Three books, one price</h2>
           <p className="sec-intro">
-            Get a question wrong and the explanation names the section in the companion that
-            fixes it — and the line on the revision sheet that keeps it fixed. One download,
-            all three, no upsell waiting inside.
+            The three books cross-reference each other. Miss a question, and the answer names
+            the lesson that covers it and the revision-sheet line to memorize. One download.
+            All three.
           </p>
 
           <div className="products">
@@ -231,8 +235,8 @@ export default function GuidesPage() {
             <div>
               <h3>All three, {BUY.price}</h3>
               <p>
-                423 pages as PDFs you keep — no account, no subscription, no app to crash.
-                Yours to print and mark up.
+                Three PDFs, 423 pages, downloaded once and yours. Print them. Mark them up.
+                Take them on a plane.
               </p>
             </div>
             <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
@@ -247,10 +251,10 @@ export default function GuidesPage() {
       <section className="block">
         <div className="wrap">
           <p className="vault-label">Why These</p>
-          <h2>Study material that doesn&apos;t quietly cheat you</h2>
+          <h2>Practice that survives contact with the real exam</h2>
           <p className="sec-intro">
-            Most question banks have habits that feel fine while you&apos;re studying and cost you on
-            exam day. These were built to remove them.
+            Cheap question banks build habits that feel like progress. The exam is designed to
+            defeat them.
           </p>
 
           <div className="method">
@@ -271,12 +275,12 @@ export default function GuidesPage() {
         <div className="wrap">
           <div className="free">
             <div>
-              <h3>The questions are already free</h3>
+              <h3>Sit {PREVIEW.perDomain} of them free, in every domain</h3>
               <p>
-                All 491 of them, split by domain, with a study mode alongside the quiz — no
-                account and no card. What {BUY.price} buys is those questions on paper with the
-                key at the back, plus the two books that are not in the app at all: the Outline
-                Companion and the Revision Sheets.
+                {PREVIEW.served} questions set in {PREVIEW.scenarios} different organizations. Every
+                wrong option tells you why it loses and what it would have been correct for. No
+                sign-up, no card. {BUY.price} adds the rest of the examination on paper with the key
+                at the back, plus the Outline Companion and the Revision Sheets.
               </p>
             </div>
             <Link className="btn btn-ghost" href="/practice/">

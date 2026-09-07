@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation"
 import { formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
 
 interface ExamButtonProps {
-    /** Blueprint-weighted sample size; omit for the whole book in order. */
+    /** Blueprint-weighted sample size; omit for everything the app serves, in order. */
     count?: number
-    /** Size of the bank, for the full-book card. */
+    /** How many questions the app serves, for the everything card. */
     total: number
 }
 
@@ -30,7 +30,7 @@ export function ExamButton({ count, total }: ExamButtonProps) {
         >
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                 <CardTitle className="text-sm font-semibold text-primary">
-                    {count ? "Weighted Set" : "Full Book"}
+                    {count ? "Weighted Set" : "Everything Free"}
                 </CardTitle>
                 {count
                     ? <ClipboardList className="h-5 w-5 text-secondary group-hover:text-primary transition-colors stroke-2" />
@@ -43,7 +43,7 @@ export function ExamButton({ count, total }: ExamButtonProps) {
                 <p className="text-xs text-muted-foreground leading-relaxed">
                     {count
                         ? "Drawn to the 2024 exam blueprint weights, domains mixed"
-                        : "Every question, domain by domain, in book order"}
+                        : "Every question the free app carries, domain by domain"}
                 </p>
                 <p className="text-xs text-secondary mt-2 font-medium">
                     About {formatMinutes(paceBudgetSeconds(n))} at exam pace
