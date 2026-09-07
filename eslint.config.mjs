@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Linted by its own config; see services/unlock/.
+    "services/**",
   ]),
 ]);
 

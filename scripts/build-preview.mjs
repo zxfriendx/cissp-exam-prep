@@ -73,6 +73,15 @@ export function buildPreview(bank) {
             keyCounts: stats.keyCounts,
             /** Questions in the paid examination this is a sample of. */
             paid: bank.domains.reduce((n, d) => n + (d.questionsV2?.length ?? 0), 0),
+            /**
+             * Per domain, how many drills the paid examination holds. The free
+             * app prints "20 of 80" on a domain card, and it can only be honest
+             * about the second number if the number ships with the sample.
+             * Drills only: Forms A and B are cross-domain mock papers, not part
+             * of a domain's own set.
+             */
+            paidDrillsByDomain: Object.fromEntries(bank.domains.map(d =>
+                [d.id, (d.questionsV2 ?? []).filter(isDrill).length])),
         },
         bank: bank.bank,
         domains,

@@ -1,0 +1,11 @@
+# The unlock service's Docker context is the repo root, because it needs both
+# src/data/content.json and scripts/build-paid.mjs to cut its bank at image
+# build time. Everything else is dead weight in the layer.
+node_modules
+.next
+out
+.git
+.claude
+test
+public
+services/unlock/data

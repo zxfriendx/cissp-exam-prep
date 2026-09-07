@@ -175,6 +175,8 @@ export interface PreviewMeta {
     keyCounts: Record<string, number>;
     /** Questions in the paid examination this is a sample of. */
     paid: number;
+    /** Per domain, how many drills the paid examination holds. */
+    paidDrillsByDomain?: Record<string, number>;
 }
 
 export interface ContentData {
@@ -305,6 +307,27 @@ export const getPreviewSummary = (): PreviewSummary => {
         paid: stats.questions,
         keyCounts: stats.keyCounts,
     };
+};
+
+/**
+ * How many drills the paid examination holds for a domain, so a card can say
+ * "20 of 80" instead of implying 20 is all there is. Counted by the generator
+ * from the bank, not typed in here.
+ */
+export const getDrillCountPaid = (domainId: string): number | undefined =>
+    data.preview?.paidDrillsByDomain?.[domainId];
+
+/**
+ * One question by id, from whichever bank is active. The review queue stores
+ * question ids rather than question objects — a scheduler that held the objects
+ * would pin a copy of the paid bank in localStorage.
+ */
+export const getQuestionById = (id: string): Question | undefined => {
+    for (const d of data.domains) {
+        const hit = d.questions.find(q => q.id === id);
+        if (hit) return hit;
+    }
+    return undefined;
 };
 
 // ── what the app serves ──────────────────────────────────────────────────────

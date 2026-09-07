@@ -12,7 +12,17 @@
       "C": 40,
       "D": 40
     },
-    "paid": 750
+    "paid": 750,
+    "paidDrillsByDomain": {
+      "domain_1": 80,
+      "domain_2": 50,
+      "domain_3": 65,
+      "domain_4": 65,
+      "domain_5": 65,
+      "domain_6": 60,
+      "domain_7": 65,
+      "domain_8": 50
+    }
   },
   "bank": {
     "schema": 2,
