@@ -2,7 +2,12 @@
 
 A modern, interactive web application designed to help users prepare for the CISSP (Certified Information Systems Security Professional) exam. Built with **Next.js**, **Tailwind CSS**, and **Shadcn UI**.
 
-It is the on-screen edition of the printed **The Eight Domains — Practice Examination** (Secure Path Digital): the same 439 scenario questions, the same answer key, the same worked explanations, and the same rule that the case study's analysis is held back until after you have answered.
+It is the on-screen edition of the printed **The Eight Domains — Practice Examination**
+(Secure Path Digital). Free, it serves **160 questions, 20 per domain**, sampled from the
+book's 500 domain drills. A licence key from the $19.99 Gumroad product unlocks all
+**750** — the same questions, the same key, the same review — and they then work offline.
+
+Read `CLAUDE.md` before changing anything about the bank or the paywall.
 
 ## 🚀 Features
 
@@ -16,13 +21,13 @@ It is the on-screen edition of the printed **The Eight Domains — Practice Exam
     -   Generates custom quizzes targeting your weakest areas.
 -   **Random Practice Mode**:
     -   Take mixed quizzes (10, 20, or 40 questions) covering all domains, marked as you go.
--   **Case Study Context**:
-    -   Every domain opens with the scenario its questions are set in; it is one tap away during a quiz.
-    -   The scenario's analysis ("Key Lessons") gives answers away, so it waits until the results page, and sits folded on the study page.
+-   **Scenario Context**:
+    -   A domain is 15–19 named organizations, not one case study. Each question prints the scenario it is set in above it, folded when the previous question shared it.
 -   **Answers Explained**:
-    -   Immediate feedback in practice modes, with the key and a worked explanation that says why each distractor loses.
-    -   After every set: a full review of each question, your answer, the key, the explanation, score by domain, time taken against exam pace, and the case study debriefs.
--   **Fixed Option Order**: Options are shown A-D exactly as the book prints them. The answer key is balanced across the four letters (109/111/109/110), and the explanations argue by letter, so there is no runtime shuffle.
+    -   The key argued, and under every wrong option its reason label and one sentence saying why that option loses. 480 of them across the free preview.
+    -   After every set: a full review of each question, your answer, the key, the explanation, score by domain, and time taken against exam pace.
+-   **Fixed Option Order**: Options are shown A–D exactly as the book prints them. The v2 key lands A 186 / B 195 / C 192 / D 177 — 26.0% at the widest — and the explanations reference the key by letter, so there is no runtime shuffle.
+-   **Paid tier**: a licence key from Gumroad swaps the 160-question preview for all 750, stored in IndexedDB so it works offline. Installable as a PWA.
 -   **Modern UI/UX**:
     -   Clean, professional interface using Shadcn UI components.
     -   Smooth animations with Framer Motion.
@@ -96,7 +101,12 @@ To verify the installation:
 
 ## 📄 content.json Structure
 
-`src/data/content.json` carries the question bank and the eight case studies. The 439 questions are the ones the printed practice examination is rendered from: `content.rekeyed.json` in the content pipeline's product audit directory (paths in `docs/questions-rebuild-scope-2026-09-03.md`), so **edit questions in the pipeline, then import them; never edit them here**. The `caseStudy` strings belong to this repository (rewritten 2026-09-02, `docs/prose-audit-2026-09-02.md`); the importer never touches them.
+`src/data/content.json` carries the question bank. **Two populations in one file:**
+
+-   `domains[].questionsV2[]` — the **750** the printed books render, with their scenarios in `domains[].stimuli[]`. This is the live bank; edit it here.
+-   `domains[].questions[]` — the frozen v1 **439**, kept only as provenance for the 410 v2 items that carry a `variantOf` back to one. The builder's gate V0 holds it at exactly 439, and nothing renders it any more. The old rule "edit questions in the pipeline, then import them" applied to this array and no longer applies to anything.
+
+⚠ **Nothing under `src/` may import this file.** See `CLAUDE.md`: an imported JSON module is bundled into the client, so importing the bank publishes the paid examination. The app imports the generated `src/data/preview.json` instead, and a test enforces it.
 
 ### Importing questions
 

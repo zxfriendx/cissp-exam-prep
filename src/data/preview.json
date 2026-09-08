@@ -1,6 +1,7 @@
 {
   "preview": {
     "schema": 1,
+    "edition": "2026-09-08",
     "perDomain": 20,
     "served": 160,
     "scenarios": 127,

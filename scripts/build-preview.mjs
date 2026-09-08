@@ -65,6 +65,13 @@ export function buildPreview(bank) {
         // Generated. Do not hand-edit: scripts/build-preview.mjs overwrites it.
         preview: {
             schema: 1,
+            /**
+             * The v2 bank edition this sample was cut from. The `bank` block
+             * below is the v1 provenance manifest and says 2026-08-31 / 439,
+             * which describes an array this file contains none of -- so a check
+             * that wants to know how old the free preview is has to read this.
+             */
+            edition: bank.bank?.v2?.edition ?? null,
             perDomain: FREE_PREVIEW_PER_DOMAIN,
             served: stats.questions,
             scenarios: stats.scenarios,
