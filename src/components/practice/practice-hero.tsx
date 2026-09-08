@@ -38,13 +38,13 @@ export function PracticeHero() {
                 <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
                     {drills} domain drills and {forms} full-length mock forms of {perForm}. Every one puts
                     you inside a situation and asks what you would do. Get it wrong and you find out why that
-                    option loses, and which question it would have been the right answer to.
+                    option loses, in a sentence.
                 </p>
             ) : (
                 <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
                     {drills} free questions across the eight domains, {summary.perDomain} in each. Every one puts
                     you inside a situation and asks what you would do. Get it wrong and you find out why that
-                    option loses, and which question it would have been the right answer to.
+                    option loses, in a sentence.
                 </p>
             )}
             <QuickStartButton count={10} />

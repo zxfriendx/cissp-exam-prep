@@ -53,7 +53,7 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "Every question drops you into a situation and asks for a decision. Then the key walks all four options. Why the winner wins. What each of the other three would have been correct for.",
+      "Every question drops you into a situation and asks for a decision. Then the key walks all four options: why the winner wins, and why each of the other three loses.",
     points: [
       "A case study opens each domain, so every question sits inside a real organization",
       "Every option gets a paragraph, the winner and all three losers",
@@ -263,7 +263,7 @@ export default function GuidesPage() {
               <h3>Sit {PREVIEW.perDomain} of them free, in every domain</h3>
               <p>
                 {PREVIEW.served} questions, open right now with no sign-up and no card. Every wrong
-                option tells you why it loses and what it would have been correct for. If you like
+                option tells you why it loses, in a sentence. If you like
                 how they read, {BUY.price} adds the rest of the examination on paper with the key at
                 the back, plus the Outline Companion and the Revision Sheets.
               </p>

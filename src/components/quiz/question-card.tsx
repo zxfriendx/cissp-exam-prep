@@ -61,7 +61,6 @@ function OptionVerdict({
             <p className="text-sm leading-relaxed text-muted-foreground mt-1 flex gap-2">
                 <CornerDownRight className="h-3.5 w-3.5 mt-1 shrink-0 stroke-2 text-muted-foreground/60" />
                 <span>
-                    <span className="text-foreground/50">Would be the answer to: </span>
                     <span className="text-foreground/80"><Emphasis text={wouldAnswer} /></span>
                 </span>
             </p>

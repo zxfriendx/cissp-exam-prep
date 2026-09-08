@@ -362,7 +362,7 @@ export default function ReportClient() {
                                                         </span>
                                                     </p>
                                                     <p className="mt-1 text-foreground/85">
-                                                        It would have been the right answer to: {reason.wouldAnswer}
+                                                        {reason.wouldAnswer}
                                                     </p>
                                                 </div>
                                             ) : attempt.label ? (
@@ -424,7 +424,7 @@ export default function ReportClient() {
                                                 </p>
                                                 {reason && (
                                                     <p className="text-foreground/85">
-                                                        That option would have been right for: {reason.wouldAnswer}
+                                                        {reason.wouldAnswer}
                                                     </p>
                                                 )}
                                             </div>

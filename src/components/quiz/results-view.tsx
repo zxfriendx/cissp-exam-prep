@@ -210,7 +210,6 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                                                             <div className="mt-2 ml-8 border-l-2 border-primary/20 pl-3">
                                                                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">{reason.label}</p>
                                                                 <p className="text-[13px] text-muted-foreground mt-0.5">
-                                                                    <span className="text-foreground/45">Would be the answer to: </span>
                                                                     <Emphasis text={reason.wouldAnswer} />
                                                                 </p>
                                                             </div>

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     `${summary.served} free CISSP practice questions across the eight domains, ${summary.perDomain} per domain. ` +
     `Every question puts you in a situation and asks what you would do, and every wrong option says why it ` +
-    `loses and what it would have been the right answer to. No account needed.`,
+    `loses, in a sentence. No account needed.`,
 };
 
 export default function PracticeHome() {
