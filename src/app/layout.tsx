@@ -54,6 +54,17 @@ export const metadata: Metadata = {
 // themeColor moved out of `metadata` in Next 16; it belongs here or it is ignored.
 export const viewport: Viewport = { themeColor: "#0C0D10" };
 
+/* One place to change the GA property. Both this app and the apex site's
+   public/index.html carry the same id and the same linked-domain list; they are
+   one property, split by hostname in reports rather than by having two. */
+const GA_ID = "G-Y20Q6FPX5T";
+const GA_LINKED_DOMAINS = [
+  "securepathdigital.net",
+  "learn.securepathdigital.net",
+  "securepath6.gumroad.com",
+  "gumroad.com",
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,10 +76,20 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYNW16GB14" />
+        {/* GA4. G-TYNW16GB14 used to sit here -- it is atmavailability's
+            measurement ID, copied in with the rest of this layout when the app
+            was forked from that one, so every visit to this property was being
+            reported into that one until 2026-09-08. Both datasets were wrong.
+
+            `linker.domains` is what keeps a buyer one person across the hop to
+            Gumroad: without it the checkout starts a fresh session on a fresh
+            domain and the sale attributes to nothing. It only works if the same
+            measurement ID is also set in Gumroad's own Settings -> Advanced
+            field, and if these domains are listed in the GA data stream. */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TYNW16GB14');`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{linker:{domains:${JSON.stringify(GA_LINKED_DOMAINS)}}});`,
           }}
         />
       </head>
