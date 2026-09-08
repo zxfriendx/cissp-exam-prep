@@ -108,6 +108,10 @@
   font-family:var(--font-display);font-weight:400;font-size:1.35rem;margin-bottom:.5rem;
 }
 .guides-page .buyband p{color:rgb(var(--vault-muted));font-size:.95rem;max-width:40rem}
+/* Two tiers, the same five books; the second adds the licence key. Stacked so the
+   prices read down a column and the difference between them is one line. */
+.guides-page .buybtns{display:flex;flex-direction:column;gap:.7rem;align-items:stretch}
+.guides-page .buybtns .sub{color:rgb(var(--vault-muted));font-size:.82rem;text-align:center}
 .guides-page .btn-ghost:hover{border-color:var(--copper);color:var(--copper-hi)}
 .guides-page .method{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
 @media(max-width:860px){

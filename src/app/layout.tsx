@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://learn.securepathdigital.net"),
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 439 practice questions with all four options explained, and one revision sheet per domain. $9.99. Free practice test alongside.",
+    "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. $9.99. Free practice test alongside.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Eight Domains", statusBarStyle: "black-translucent" },
   icons: {

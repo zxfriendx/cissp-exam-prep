@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ICON_SPRITE } from "./_sales/icons";
 import { getPreviewSummary } from "@/lib/content";
-import { BUY, BUY_HREF } from "@/lib/checkout";
+import { BUY, BUY_HREF, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
 import "./_sales/guides.css";
 
 export const metadata: Metadata = {
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Three books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 439 practice questions with all four options explained, and one revision sheet per domain. $9.99.",
+    "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. $9.99.",
 };
 
 
@@ -37,15 +37,18 @@ const PRODUCTS: Product[] = [
       "Which control comes first. Who owns the decision. Why one of two right-looking answers is the one that scores. That judgment is what CISSP measures, and this book runs the outline in ISC2's own order so you can study straight down it.",
     points: [
       "A lesson for every one of the 292 objectives ISC2 lists",
+      "29 diagrams drawn for the page, at a size you can read",
       "Check any claim against the NIST or ISO document behind it",
-      "137 pages. Short enough to finish, indexed for the second pass.",
+      "140 pages. Short enough to finish, indexed for the second pass.",
     ],
-    pages: "137 PP",
+    pages: "140 PP",
   },
   {
     id: "test",
     icon: "ic-clipboard",
-    kicker: "Book Two",
+    // Three books, one card. A buyer thinks "the practice examination"; the split
+    // into drills and two mock forms is what they find inside it.
+    kicker: "Books Two to Four",
     title: (
       <>
         The Eight Domains
@@ -53,18 +56,19 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "Every question drops you into a situation and asks for a decision. Then the key walks all four options: why the winner wins, and why each of the other three loses.",
+      "750 questions. Each one drops you into a situation at a named organization and asks for a decision. The key explains why the winner wins, and gives each of the other three a sentence on why it loses.",
     points: [
-      "A case study opens each domain, so every question sits inside a real organization",
-      "Every option gets a paragraph, the winner and all three losers",
-      "242 pages you can print, sit under a timer, and mark up",
+      "500 drills filed by domain, weighted the way ISC2 weights the exam",
+      "Two full-length mock forms of 125, in their own books, to sit under a timer",
+      "133 scenarios across 76 organizations, printed above the questions they set up",
+      "791 pages you can print and mark up, the answers in a separate book",
     ],
-    pages: "242 PP",
+    pages: "791 PP",
   },
   {
     id: "sheets",
     icon: "ic-sheet",
-    kicker: "Book Three",
+    kicker: "Book Five",
     title: (
       <>
         The Eight Domains
@@ -72,7 +76,7 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "The night before the exam, nobody opens a 137-page book. Eight pages. One per domain. Short lines you can cover with your thumb and check yourself against, so the gaps surface while you can still close them.",
+      "The night before the exam, nobody opens a 140-page book. Eight pages. One per domain. Short lines you can cover with your thumb and check yourself against, so the gaps surface while you can still close them.",
     points: [
       "Stacked so you read the heaviest domain last, closest to the exam",
       "Formulas and ordered models at the top of each sheet",
@@ -88,25 +92,31 @@ const PRODUCTS: Product[] = [
 const PREVIEW = getPreviewSummary();
 
 /*
- * Every figure below is measured from the built v1 bundle, not from a plan or a
- * changelog. Re-measure with:
+ * Every figure on this page is measured from the built PDFs, not from a plan or
+ * a changelog. Re-measure in securepathdigital-site with:
  *
- *   python3 products/build/build_pdf.py --edition v1 --out /tmp/v1   # in securepathdigital-site
- *   pdfinfo /tmp/v1/*.pdf | grep Pages
+ *   python3 products/build/build_pdf.py --out /tmp/v2
+ *   pdfinfo /tmp/v2/*.pdf | grep Pages
+ *   pdftotext -layout /tmp/v2/eight-domains-domain-drills.pdf - \
+ *     | grep -cE '^\s*[0-9]+\s+Domain [0-9]'        # review blocks = questions
+ *   pdftotext -layout /tmp/v2/eight-domains-study-guide.pdf - \
+ *     | grep -oE 'Figure [0-9]+\.[0-9]+' | sort -u | wc -l
  *
- * Measured 2026-09-07: study guide 137 pp, practice examination 242 pp,
- * revision sheets 10 pp -> 389 total; 439 questions, cross-checked by counting
- * answer-key entries in the examination's text layer.
+ * Measured 2026-09-08 against products/editions/2026-09-08-inline-reasons:
+ * study guide 140 pp with 29 placed figures, domain drills 555 pp / 500
+ * questions, mock form A 117 pp / 125, mock form B 119 pp / 125, revision
+ * sheets 10 pp. 941 pages, 750 questions.
  *
- * The page carried 491 questions and 423 pages before that. 491 was 439 plus 52
- * v2 items that were never in this book; 423 and 276 were the iter9 build, which
- * these three PDFs no longer match.
+ * Two numbers here have been wrong before and both were caught by measuring.
+ * The page said 491 questions when the app served 439, and 35 diagrams when the
+ * book prints 29 -- the build's own figure gate counts 35 rows in its data file
+ * and six of them are never placed. Count the captions in the PDF, not the rows.
  */
 const FACTS = [
   { n: "292", l: "objectives, each with its own lesson" },
-  { n: "439", l: "questions with all four options explained" },
+  { n: "750", l: "questions, every wrong option answered" },
   { n: "2024", l: "exam outline, still ISC2's current revision" },
-  { n: "389", l: "pages across all three books" },
+  { n: "941", l: "pages across the five books" },
 ];
 
 const METHOD = [
@@ -160,12 +170,12 @@ export default function GuidesPage() {
           <p className="lede">
             CISSP shows you four defensible answers and asks which one a security leader picks.
             Engineers lose marks right there. They choose the technically correct option; the
-            exam wanted the management one. These three books teach that call, objective by
+            exam wanted the management one. These five books teach that call, objective by
             objective, across the whole 2024 outline.
           </p>
           <div className="herocta">
             <a className="btn btn-buy" href={BUY_HREF} rel="noopener">
-              Get all three — {BUY.price}
+              Get the set — {BUY.price}
             </a>
             <Link className="btn btn-ghost" href="/practice/">
               Try the questions free
@@ -187,11 +197,11 @@ export default function GuidesPage() {
       <section className="block">
         <div className="wrap">
           <p className="vault-label">What You Get</p>
-          <h2>Three books, one price</h2>
+          <h2>Five books, one price</h2>
           <p className="sec-intro">
-            The three books cross-reference each other. Miss a question, and the answer names
-            the lesson that covers it and the revision-sheet line to memorize. One download.
-            All three.
+            The books cross-reference each other. Miss a question, and the answer names the
+            lesson that covers it and the revision-sheet line to memorize. One download. All
+            five.
           </p>
 
           <div className="products">
@@ -218,15 +228,23 @@ export default function GuidesPage() {
 
           <div className="buyband">
             <div>
-              <h3>All three, {BUY.price}</h3>
+              <h3>All five, {BUY.price}</h3>
               <p>
-                Three PDFs, 389 pages, downloaded once and yours. Print them. Mark them up.
-                Take them on a plane.
+                Five PDFs, 941 pages, downloaded once and yours. Print them. Mark them up.
+                Take them on a plane. For {BUY_PLUS.price} the same five come with a licence
+                key, and the practice app here becomes all 750 questions, offline, on up to
+                five devices.
               </p>
             </div>
-            <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
-              Buy on Gumroad — {BUY.price}
-            </a>
+            <div className="buybtns">
+              <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
+                The five books — {BUY.price}
+              </a>
+              <a className="btn btn-ghost btn-lg" href={BUY_PLUS_HREF} rel="noopener">
+                Books and the app — {BUY_PLUS.price}
+              </a>
+              <span className="sub">Same books either way</span>
+            </div>
           </div>
         </div>
       </section>
@@ -263,9 +281,9 @@ export default function GuidesPage() {
               <h3>Sit {PREVIEW.perDomain} of them free, in every domain</h3>
               <p>
                 {PREVIEW.served} questions, open right now with no sign-up and no card. Every wrong
-                option tells you why it loses, in a sentence. If you like
-                how they read, {BUY.price} adds the rest of the examination on paper with the key at
-                the back, plus the Outline Companion and the Revision Sheets.
+                option tells you why it loses, in a sentence. If you like how they read,
+                {" "}{BUY.price} adds the other 590 on paper, the two mock forms in books of their
+                own, plus the Outline Companion and the Revision Sheets.
               </p>
             </div>
             <Link className="btn btn-ghost" href="/practice/">

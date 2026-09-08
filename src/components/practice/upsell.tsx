@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { getAllDomains, getDrillCountPaid, getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
-import { BUY, BUY_HREF } from "@/lib/checkout";
+import { BUY, BUY_HREF, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -15,6 +15,11 @@ import { Button } from "@/components/ui/button";
  * reads the meta block scripts/build-preview.mjs wrote — for the same reason
  * the rest of the page is: the site spent a while claiming 491 free questions
  * while the app served 439, and the fix was to stop typing numbers in.
+ *
+ * Two buttons, and the order matters: the licence key that unlocks this app
+ * exists only on the $19.99 product. Cloud Run runs with that product's id, so
+ * a $9.99 buyer has no key to enter. This block used to offer $9.99 and promise
+ * a key with it.
  */
 export function Upsell() {
     const tier = useBankStore(state => state.tier);
@@ -42,18 +47,23 @@ export function Upsell() {
                         the 2024 outline&rsquo;s objectives and to spread across all {summary.scenarios} scenarios
                         they come from. The printed <em>Practice Examination</em> carries{" "}
                         {split ? `${paidDrills} drills and ${formItems} mock-form questions` : `all ${summary.paid}`},
-                        every one of them with all four options explained. Unlock it here and this app serves
-                        the whole bank, offline, on this device.
+                        each with the key argued and a sentence on every wrong option.
                     </p>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                        {BUY.price} buys all three books &mdash; the Outline Companion, the Practice
-                        Examination and the Revision Sheets &mdash; as PDFs, plus the licence key that
-                        unlocks them here.
+                        {BUY.price} buys the five books as PDFs: the Outline Companion, the three
+                        examination books and the Revision Sheets. {BUY_PLUS.price} buys the same
+                        five and a licence key, which turns this app into the whole bank &mdash;
+                        offline, on up to five devices.
                     </p>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <Button asChild size="lg" className="font-medium">
-                        <a href={BUY_HREF} rel="noopener">Buy on Gumroad &mdash; {BUY.price}</a>
+                        <a href={BUY_PLUS_HREF} rel="noopener">
+                            Books and the app &mdash; {BUY_PLUS.price}
+                        </a>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="font-medium">
+                        <a href={BUY_HREF} rel="noopener">Books only &mdash; {BUY.price}</a>
                     </Button>
                     <p className="text-sm text-muted-foreground">
                         Already bought?{" "}

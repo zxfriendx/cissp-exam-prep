@@ -11,11 +11,13 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    CHECKOUT WIRING
 
-   Live on Gumroad since 2026-09-06 as ONE product — the three books together,
-   not three SKUs. That is why the cards below have no individual buy buttons:
-   there is nothing to buy separately, and a "Coming soon" chip beside a live
-   bundle reads as broken. If the books are ever split, add entries here and
-   give each card its own button back.
+   Live on Gumroad since 2026-09-06. The books are never sold separately — the
+   five PDFs are one purchase — which is why the cards on the offer page have no
+   individual buy buttons and say "Included" instead.
+
+   Two products, differing only in whether a licence key comes with them:
+   $9.99 for the PDFs, $19.99 for the PDFs plus the key that turns this app into
+   the full 750-question bank, offline. Same books in both.
 
    Gumroad is the merchant of record, so it handles EU VAT, delivery and
    refunds. Bluehost static hosting cannot take payment, so a checkout link is
@@ -28,15 +30,28 @@
    ───────────────────────────────────────────────────────────────────────────── */
 
 export const CHECKOUT = {
+    /* The five PDFs. No licence key, so nothing to unlock in this app. */
     bundle: {
         url: "https://securepath6.gumroad.com/l/eight-domains",
         price: "$9.99",
     },
+    /* The same five PDFs plus a licence key. THIS is the product the unlock
+       service validates against: Cloud Run runs with
+       GUMROAD_PRODUCT_ID=O_wvGHBX4d_MOpvoZafVQw==, which is `lkidg`, not
+       `eight-domains`. A key from the $9.99 product does not exist, so any
+       "unlock" call to action has to point here or it sells a thing the buyer
+       will not receive. */
+    plus: {
+        url: "https://securepath6.gumroad.com/l/lkidg",
+        price: "$19.99",
+    },
 } as const;
 
 export const BUY = CHECKOUT.bundle;
+export const BUY_PLUS = CHECKOUT.plus;
 
 /* ?wanted=true skips Gumroad's product page and opens the checkout form with
    the item already in the cart — verified 2026-09-06. Without it a buyer who
    already decided has to read a second sales page and click again. */
 export const BUY_HREF = `${BUY.url}?wanted=true`;
+export const BUY_PLUS_HREF = `${BUY_PLUS.url}?wanted=true`;

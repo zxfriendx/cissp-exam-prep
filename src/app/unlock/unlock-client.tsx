@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CheckCircle2, KeyRound, Loader2, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useBankStore } from "@/lib/bank";
-import { BUY, BUY_HREF } from "@/lib/checkout";
+import { BUY, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
 import {
     SERVICE_UNCONFIGURED_MESSAGE,
     SUPPORT_PHONE,
@@ -72,8 +72,9 @@ export function UnlockPageClient() {
                         Unlock your <span className="grad-copper">questions</span>
                     </h1>
                     <p className="text-muted-foreground text-base leading-relaxed">
-                        The licence key that came with the books loads all of them into this app, on this
-                        device. Once they are here they stay here, and they work with no connection at all.
+                        The licence key from the {BUY_PLUS.price} purchase loads all 750 questions into
+                        this app, on this device. Once they are here they stay here, and they work with no
+                        connection at all.
                     </p>
                 </header>
 
@@ -186,7 +187,8 @@ export function UnlockPageClient() {
                     <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed list-disc pl-5">
                         <li>
                             Gumroad emails a receipt the moment the payment clears. The licence key is in it,
-                            alongside the download links.
+                            alongside the download links. Keys come with the {BUY_PLUS.price} purchase; the
+                            {" "}{BUY.price} one is the books on their own.
                         </li>
                         <li>
                             It is also on the product&rsquo;s page in your Gumroad library, if the email has
@@ -205,11 +207,11 @@ export function UnlockPageClient() {
                 <section className="rounded-xl border border-primary/15 bg-card p-6 space-y-3">
                     <h2 className="text-lg font-semibold tracking-tight text-primary">Not bought them yet?</h2>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                        {BUY.price} for all three books, and the key that loads the whole question bank into
-                        this app. The free practice test stays free either way.
+                        {BUY_PLUS.price} for the five books and the key that loads the whole question bank
+                        into this app. The free practice test stays free either way.
                     </p>
                     <Button asChild variant="outline" className="font-medium">
-                        <a href={BUY_HREF} rel="noopener">Buy on Gumroad &mdash; {BUY.price}</a>
+                        <a href={BUY_PLUS_HREF} rel="noopener">Buy on Gumroad &mdash; {BUY_PLUS.price}</a>
                     </Button>
                 </section>
             </main>
