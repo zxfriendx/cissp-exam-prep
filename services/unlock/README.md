@@ -138,13 +138,23 @@ docker run --rm -p 8080:8080 \
 ```
 
 `docker build` reruns `scripts/build-paid.mjs`, so **the edition in the image is
-whatever `src/data/content.json` held at build time**. `/healthz` reports it, and
-it is the `/v1/bank` ETag; a client holding the previous edition re-downloads on
-its next refresh. Check it after every deploy:
+whatever `src/data/content.json` held at build time**. `/v1/health` reports it,
+and it is verbatim the `/v1/bank` ETag; a client holding the previous edition
+re-downloads on its next refresh. Check it after every deploy:
 
 ```bash
-curl -s https://<host>/healthz     # {"ok":true,"edition":"2026-09-06","items":750,...}
+curl -s https://<host>/v1/health   # {"ok":true,"edition":"2026-09-08","items":750,...}
 ```
+
+⚠ **Health lives at `/v1/health`, not `/healthz`.** Google's frontend reserves
+`/healthz` on Cloud Run and answers it with its own HTML 404 before the container
+sees the request.
+
+⚠ **Changing the bank's content without changing `bank.v2.edition` in
+`content.json` ships nothing.** The ETag *is* the edition string, so a client
+that already holds the bank sends `If-None-Match: "<same edition>"`, gets a 304
+and keeps the old text indefinitely. Bump the edition in the same commit as the
+content.
 
 Rate limits are **in-memory and per instance** — activate 5/min/IP and 3/hour/sub,
 refresh 30/min/IP. With max-instances 2 the real ceiling is twice that. This is a
