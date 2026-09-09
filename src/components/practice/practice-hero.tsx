@@ -36,22 +36,22 @@ export function PracticeHero() {
             </h1>
             {paid ? (
                 <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
-                    {drills} domain drills and {forms} full-length mock forms of {perForm}. Every one puts
-                    you inside a situation and asks what you would do. Get it wrong and you find out why that
-                    option loses, in a sentence.
+                    {drills} domain drills and {forms} full-length mock forms of {perForm}. Every one puts you
+                    in a company with a decision to make, the way the real exam does. Miss it and you find out
+                    why the answer you liked was the weaker one.
                 </p>
             ) : (
                 <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
-                    {drills} free questions across the eight domains, {summary.perDomain} in each. Every one puts
-                    you inside a situation and asks what you would do. Get it wrong and you find out why that
-                    option loses, in a sentence.
+                    {drills} free questions, {summary.perDomain} in each domain. Every one puts you in a company
+                    with a decision to make, the way the real exam does. Miss it and you find out why the answer
+                    you liked was the weaker one.
                 </p>
             )}
             <QuickStartButton count={10} />
             {!paid && (
                 <p className="mx-auto max-w-2xl text-sm text-muted-foreground/80 leading-relaxed px-4">
-                    The printed <em>Practice Examination</em> carries {summary.paid} questions and two
-                    full-length mock forms.
+                    The printed <em>Practice Examination</em> has all {summary.paid}, including two
+                    full-length mock forms to sit under a timer.
                 </p>
             )}
             {bank && (

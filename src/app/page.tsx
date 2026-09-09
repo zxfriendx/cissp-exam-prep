@@ -8,7 +8,7 @@ import "./_sales/guides.css";
 export const metadata: Metadata = {
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. $9.99.",
+    "750 CISSP practice questions that read like the real exam, with a reason on every wrong answer, plus a lesson for all 292 objectives on the 2024 outline and one revision sheet per domain. Five books, $9.99.",
 };
 
 
@@ -34,12 +34,12 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "Which control comes first. Who owns the decision. Why one of two right-looking answers is the one that scores. That judgment is what CISSP measures, and this book runs the outline in ISC2's own order so you can study straight down it.",
+      "Everything the exam can ask you, in the order ISC2 lists it. Start at page one and work down. When a practice question catches you out, the answer sends you to the exact lesson that covers it, so you are never hunting for the thing you got wrong.",
     points: [
-      "A lesson for every one of the 292 objectives ISC2 lists",
-      "29 diagrams drawn for the page, at a size you can read",
-      "Check any claim against the NIST or ISO document behind it",
-      "140 pages. Short enough to finish, indexed for the second pass.",
+      "One lesson per objective. All 292 of them, none skipped.",
+      "29 diagrams you can actually read, drawn for the page",
+      "Every lesson names its source, so you can check anything",
+      "140 pages. Short enough that you will finish it.",
     ],
     pages: "140 PP",
   },
@@ -56,12 +56,12 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "750 questions. Each one drops you into a situation at a named organization and asks for a decision. The key explains why the winner wins, and gives each of the other three a sentence on why it loses.",
+      "750 questions that read like the exam instead of like flashcards. Each one puts you in a company with a decision to make. Miss it and you find out why the answer you liked was the weaker one, which is the part that changes how you read the next question.",
     points: [
-      "500 drills filed by domain, weighted the way ISC2 weights the exam",
-      "Two full-length mock forms of 125, in their own books, to sit under a timer",
-      "133 scenarios across 76 organizations, printed above the questions they set up",
-      "791 pages you can print and mark up, the answers in a separate book",
+      "500 drills by domain, weighted the way the real exam is",
+      "Two full 125-question mock exams to sit under a timer",
+      "133 scenarios, so you read a new situation cold every time",
+      "Answers in a separate book, so you cannot peek",
     ],
     pages: "791 PP",
   },
@@ -76,11 +76,11 @@ const PRODUCTS: Product[] = [
       </>
     ),
     blurb:
-      "The night before the exam, nobody opens a 140-page book. Eight pages. One per domain. Short lines you can cover with your thumb and check yourself against, so the gaps surface while you can still close them.",
+      "The night before the exam you will not open a 140-page book. You will want one page per domain. Cover the right-hand column with your thumb, work down it, and you will know what you still do not know while there is time to do something about it.",
     points: [
-      "Stacked so you read the heaviest domain last, closest to the exam",
-      "Formulas and ordered models at the top of each sheet",
-      "Doubles as the glossary, so it is the only paper you carry in",
+      "Ordered so the heaviest domain is the last thing you read",
+      "Formulas and ordered models up top, where you look first",
+      "Doubles as the glossary. The only paper worth taking with you.",
     ],
     pages: "10 PP",
   },
@@ -113,32 +113,32 @@ const PREVIEW = getPreviewSummary();
  * and six of them are never placed. Count the captions in the PDF, not the rows.
  */
 const FACTS = [
-  { n: "292", l: "objectives, each with its own lesson" },
-  { n: "750", l: "questions, every wrong option answered" },
-  { n: "2024", l: "exam outline, still ISC2's current revision" },
-  { n: "941", l: "pages across the five books" },
+  { n: "750", l: "questions, every wrong answer explained" },
+  { n: "292", l: "objectives on the outline, none skipped" },
+  { n: "941", l: "pages you can print and write on" },
+  { n: "2024", l: "outline, the one you will actually sit" },
 ];
 
 const METHOD = [
   {
     icon: "ic-scale",
-    h: "Every letter is right a quarter of the time",
-    p: 'In a lot of banks, "A" wins far more often than chance. You pick up the tell without meaning to. Then the real exam takes it away. In this one, A, B, C and D each win about a quarter of the time. The only way through a question is to know the answer.',
+    h: "You cannot guess your way through",
+    p: 'In most question banks "A" wins far more often than chance, and you pick up the habit without meaning to. The real exam takes it away. Here A, B, C and D each win about a quarter of the time, so the only way through a question is to know the answer.',
   },
   {
     icon: "ic-source",
-    h: "You can check anything that surprises you",
-    p: "Every one of the 292 lessons names the standard it came from: NIST, ISO/IEC, FIPS, OWASP, the RFCs. So when something here does not match what you read elsewhere, you can settle it in a minute. No doubt carried into the exam.",
+    h: "Check anything that looks wrong to you",
+    p: "Every one of the 292 lessons names the standard it came from: NIST, ISO/IEC, FIPS, OWASP, the RFCs. When something here contradicts what you read elsewhere, you can settle it in a minute instead of carrying the doubt into the exam.",
   },
   {
     icon: "ic-grid",
-    h: "Your reading time lands where the marks are",
-    p: "Each domain is sized to the weight it carries on the exam, so the hours go where the questions are. And 2024 is still the live outline: ISC2 refreshed CCSP and CC in 2026 and left CISSP alone. You are studying the current exam.",
+    h: "Your study time goes where the marks are",
+    p: "Each domain is sized to the weight it carries on the exam, so you are not spending two weeks on 10% of the paper. And 2024 is still the live outline: ISC2 refreshed CCSP and CC in 2026 and left CISSP alone.",
   },
   {
     icon: "ic-shield",
-    h: "Written by someone who sits the same exams",
-    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing.",
+    h: "Written by someone who sits these exams",
+    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing for it.",
   },
 ];
 
@@ -156,6 +156,11 @@ export default function GuidesPage() {
   return (
     // .guides-page scopes guides.css — its class names (.card, .btn, .free)
     // are generic enough to collide with the quiz UI otherwise.
+    //
+    // SECTION ORDER IS DELIBERATE. Social links land here cold, so the page runs
+    // pain -> why this is different -> try it free -> what you get -> buy. The
+    // catalogue used to sit second and pushed the free sample and the reasons to
+    // believe below three long product cards.
     <div className="guides-page">
       <svg style={{ display: "none" }} aria-hidden="true" dangerouslySetInnerHTML={{ __html: ICON_SPRITE }} />
 
@@ -163,22 +168,23 @@ export default function GuidesPage() {
         <div className="wrap">
           <p className="vault-label">Study Materials</p>
           <h1>
-            You know the technology.
+            You can ace the practice apps
             <br />
-            The exam tests <span className="grad-copper">your judgment</span>.
+            and still <span className="grad-copper">fail the exam</span>.
           </h1>
           <p className="lede">
-            CISSP shows you four defensible answers and asks which one a security leader picks.
-            Engineers lose marks right there. They choose the technically correct option; the
-            exam wanted the management one. These five books teach that call, objective by
-            objective, across the whole 2024 outline.
+            The free apps ask whether you remember a term. The exam does something else. It
+            gives you four answers that all look defensible and asks which one you would
+            actually pick. There are 750 of that second kind here, each one set in a real
+            company, and when you miss one you find out why the answer you liked was the
+            weaker one.
           </p>
           <div className="herocta">
             <a className="btn btn-buy" href={BUY_HREF} rel="noopener">
-              Get the set — {BUY.price}
+              Get all five books — {BUY.price}
             </a>
             <Link className="btn btn-ghost" href="/practice/">
-              Try the questions free
+              Try {PREVIEW.served} questions free
             </Link>
           </div>
           <div className="facts">
@@ -188,63 +194,6 @@ export default function GuidesPage() {
                 <p className="l">{f.l}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="wrap"><Machined /></div>
-
-      <section className="block">
-        <div className="wrap">
-          <p className="vault-label">What You Get</p>
-          <h2>Five books, one price</h2>
-          <p className="sec-intro">
-            The books cross-reference each other. Miss a question, and the answer names the
-            lesson that covers it and the revision-sheet line to memorize. One download. All
-            five.
-          </p>
-
-          <div className="products">
-            {PRODUCTS.map((product) => (
-              <article className="card" key={product.id}>
-                <svg className="icon" aria-hidden="true" focusable="false">
-                  <use href={`#${product.icon}`} />
-                </svg>
-                <p className="kicker">{product.kicker}</p>
-                <h3>{product.title}</h3>
-                <p className="blurb">{product.blurb}</p>
-                <ul>
-                  {product.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <div className="spec">
-                  <span className="pages">{product.pages}</span>
-                  <span className="included">Included</span>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="buyband">
-            <div>
-              <h3>All five, {BUY.price}</h3>
-              <p>
-                Five PDFs, 941 pages, downloaded once and yours. Print them. Mark them up.
-                Take them on a plane. For {BUY_PLUS.price} the same five come with a licence
-                key, and the practice app here becomes all 750 questions, offline, on up to
-                five devices.
-              </p>
-            </div>
-            <div className="buybtns">
-              <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
-                The five books — {BUY.price}
-              </a>
-              <a className="btn btn-ghost btn-lg" href={BUY_PLUS_HREF} rel="noopener">
-                Books and the app — {BUY_PLUS.price}
-              </a>
-              <span className="sub">Same books either way</span>
-            </div>
           </div>
         </div>
       </section>
@@ -278,17 +227,74 @@ export default function GuidesPage() {
         <div className="wrap">
           <div className="free">
             <div>
-              <h3>Sit {PREVIEW.perDomain} of them free, in every domain</h3>
+              <h3>Try {PREVIEW.perDomain} in every domain, free</h3>
               <p>
-                {PREVIEW.served} questions, open right now with no sign-up and no card. Every wrong
-                option tells you why it loses, in a sentence. If you like how they read,
-                {" "}{BUY.price} adds the other 590 on paper, the two mock forms in books of their
-                own, plus the Outline Companion and the Revision Sheets.
+                {PREVIEW.served} questions, open right now, no sign-up and no card. Read a few
+                and see whether they feel like the exam you are about to sit. If they do,
+                {" "}{BUY.price} gets you the other 590, both mock forms, the Outline Companion
+                and the Revision Sheets.
               </p>
             </div>
             <Link className="btn btn-ghost" href="/practice/">
               Start a free quiz →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="wrap"><Machined /></div>
+
+      <section className="block">
+        <div className="wrap">
+          <p className="vault-label">What You Get</p>
+          <h2>Five books, one price</h2>
+          <p className="sec-intro">
+            Miss a question and the answer tells you which lesson to reread and which
+            revision-sheet line to memorize. You never have to go looking. One download, all
+            five books.
+          </p>
+
+          <div className="products">
+            {PRODUCTS.map((product) => (
+              <article className="card" key={product.id}>
+                <svg className="icon" aria-hidden="true" focusable="false">
+                  <use href={`#${product.icon}`} />
+                </svg>
+                <p className="kicker">{product.kicker}</p>
+                <h3>{product.title}</h3>
+                <p className="blurb">{product.blurb}</p>
+                <ul>
+                  {product.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="spec">
+                  <span className="pages">{product.pages}</span>
+                  <span className="included">Included</span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="buyband">
+            <div>
+              <h3>All five, {BUY.price}</h3>
+              <p>
+                Five PDFs, 941 pages, yours the moment you download them. Print them, write on
+                them, take them on a plane. For {BUY_PLUS.price} you get the same five books
+                plus a licence key that turns the practice app here into all 750 questions,
+                offline, on up to five devices.
+              </p>
+            </div>
+            <div className="buybtns">
+              <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
+                The five books — {BUY.price}
+              </a>
+              <a className="btn btn-ghost btn-lg" href={BUY_PLUS_HREF} rel="noopener">
+                Books and the app — {BUY_PLUS.price}
+              </a>
+              <span className="sub">Same books either way</span>
+            </div>
           </div>
         </div>
       </section>

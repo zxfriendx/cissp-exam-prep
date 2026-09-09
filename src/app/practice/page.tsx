@@ -21,9 +21,9 @@ const summary = getPreviewSummary();
 export const metadata: Metadata = {
   title: "Free CISSP Practice Test — Secure Path Digital",
   description:
-    `${summary.served} free CISSP practice questions across the eight domains, ${summary.perDomain} per domain. ` +
-    `Every question puts you in a situation and asks what you would do, and every wrong option says why it ` +
-    `loses, in a sentence. No account needed.`,
+    `${summary.served} free CISSP practice questions, ${summary.perDomain} in each domain. Every one puts you in a ` +
+    `company with a decision to make, the way the real exam does, and every wrong answer tells you why it was ` +
+    `the weaker call. No sign-up, no card.`,
 };
 
 export default function PracticeHome() {

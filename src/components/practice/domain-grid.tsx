@@ -26,15 +26,15 @@ export function DomainGrid() {
                 </h2>
                 {paid ? (
                     <p className="text-muted-foreground text-sm">
-                        Pick a domain and start. Each question drops you into a different organization, so you
-                        are always reading a new situation cold instead of grinding the same one. Take
-                        the whole domain at once, or {SET_SIZE} at a time.
+                        Pick a domain and start. Every question is set in a different organization, so you
+                        read a new situation each time instead of grinding the same one. Take the whole
+                        domain at once, or {SET_SIZE} at a time.
                     </p>
                 ) : (
                     <p className="text-muted-foreground text-sm">
-                        Pick a domain and start. Each question drops you into a different organization, so you
-                        are always reading a new situation cold instead of grinding the same one. Take
-                        all {summary.perDomain} at once, or {SET_SIZE} at a time.
+                        Pick a domain and start. Every question is set in a different organization, so you
+                        read a new situation each time instead of grinding the same one. Take all{" "}
+                        {summary.perDomain} at once, or {SET_SIZE} at a time.
                     </p>
                 )}
             </div>
