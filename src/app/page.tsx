@@ -26,63 +26,59 @@ const PRODUCTS: Product[] = [
   {
     id: "test",
     icon: "ic-clipboard",
-    // Three books, one card. A buyer thinks "the practice examination"; the split
-    // into drills and two mock forms is what they find inside it.
-    kicker: "Step One — Books Two to Four",
+    kicker: "Step one",
     title: (
       <>
-        The Eight Domains
-        <br />— Practice Examination
+        Diagnose
+        <br />and train
       </>
     ),
     blurb:
-      "750 questions that read like the exam instead of like flashcards. Each one puts you in a company with a decision to make. Miss it and you find out why the answer you liked was the weaker one, which is the part that changes how you read the next question.",
+      "Sit questions until one catches you out. That is the point of them. You find the gap at your kitchen table, with time to close it, instead of in the testing centre with the clock running.",
     points: [
-      "500 drills by domain, weighted the way the real exam is",
-      "Two full 125-question mock exams to sit under a timer",
-      "133 scenarios, so you read a new situation cold every time",
-      "Answers and review sit behind each domain, not beside the question",
+      "Drills weighted the way the exam is, so the hours go where the marks are",
+      "Two full-length mock forms to sit under a timer, marked at the end",
+      "Every miss labelled with why it lost: right control but wrong problem, wrong scope, wrong phase, symptom not cause",
     ],
-    pages: "791 PP",
+    pages: "Books Two to Four \u00b7 791 pages",
   },
   {
     id: "study",
     icon: "ic-book",
-    kicker: "Step Two — Book One",
+    kicker: "Step two",
     title: (
       <>
-        The Eight Domains
-        <br />— Outline Companion
+        Close
+        <br />the gap
       </>
     ),
     blurb:
-      "Everything the exam can ask you, in the order ISC2 lists it. Start at page one and work down. When a practice question catches you out, the answer sends you to the exact lesson that covers it, so you are never hunting for the thing you got wrong.",
+      "A miss names the exact lesson that covers it. You read that one, not the whole book. Every claim in it names the standard it came from, so anything that surprises you takes a minute to check.",
     points: [
-      "One lesson per objective. All 292 of them, none skipped.",
-      "29 diagrams you can actually read, drawn for the page",
-      "Every lesson names its source, so you can check anything",
-      "140 pages. Short enough that you will finish it.",
+      "One lesson per objective, in ISC2\u2019s own order, none skipped",
+      "The review sends you straight to the lesson, so you never go hunting",
+      "Short enough that you will actually finish it",
     ],
-    pages: "140 PP",
+    pages: "Book One \u00b7 140 pages",
   },
   {
     id: "sheets",
     icon: "ic-sheet",
-    kicker: "Step Three — Book Five",
+    kicker: "Step three",
     title: (
       <>
-        The Eight Domains
-        <br />— Revision Sheets
+        Calibrate the
+        <br />night before
       </>
     ),
     blurb:
-      "The night before the exam you will not open a 140-page book. You will want one page per domain. Cover the right-hand column with your thumb, work down it, and you will know what you still do not know while there is time to do something about it.",
+      "You will not open a book the night before. You want one page per domain. Cover the right-hand column with your thumb, work down it, and you know what you still do not know while there is time to do something about it.",
     points: [
-      "Ordered so the heaviest domain is the last thing you read",
-      "Formulas and ordered models up top, where you look first",
-      "Doubles as the glossary. The only paper worth taking with you.",
+      "One page per domain, the heaviest read last",
+      "Formulas and ordered models where you look first",
+      "Doubles as the glossary. The only paper worth carrying in.",
     ],
-    pages: "10 PP",
+    pages: "Book Five \u00b7 10 pages",
   },
 ];
 
@@ -113,32 +109,30 @@ const PREVIEW = getPreviewSummary();
  * and six of them are never placed. Count the captions in the PDF, not the rows.
  */
 const FACTS = [
-  { n: "750", l: "questions, every wrong answer explained" },
-  { n: "292", l: "objectives on the outline, none skipped" },
-  { n: "941", l: "pages you can print and write on" },
-  { n: "2", l: "full 125-question mock forms, timed" },
+  { n: "Every miss", l: "tells you why the answer you liked was the weaker call" },
+  { n: "No tells", l: "a balanced key, measured across all 750 questions" },
+  { n: "Sourced", l: "every explanation names the NIST or ISO document behind it" },
+  { n: "2024", l: "the live outline, the one you will actually sit" },
 ];
 
 const METHOD = [
   {
     icon: "ic-scale",
-    h: "No position tell to lean on",
-    p: 'In most question banks "A" wins far more often than chance, and you pick up the habit without meaning to. The real exam takes it away. Measured across all 750 here: A 24.8%, B 26.0%, C 25.6%, D 23.6%. Close enough to even that position tells you nothing.',
-  },
-  {
-    icon: "ic-source",
-    h: "Every answer names the standard it rests on",
-    p: "NIST SP 800-53 Rev 5, ISO/IEC 27001 and 27002:2022, FIPS, OWASP, the RFCs. When an explanation here contradicts something you read on a forum, you can check the governing document in a minute instead of carrying the doubt into the exam.",
+    h: "The keyword trap",
+    sub: "Cheap question banks build habits that fail on exam day.",
+    p: "Most free apps ask whether you remember what an acronym stands for. The real exam assumes you know the term and tests whether you know who owns the risk, which control comes first, or when a compensating control is acceptable. These questions make you read like a risk manager, not a technician.",
   },
   {
     icon: "ic-grid",
-    h: "Your study time goes where the marks are",
-    p: "Each domain is sized to the weight it carries on the exam, so you are not spending two weeks on 10% of the paper. And 2024 is still the live outline: ISC2 refreshed CCSP and CC in 2026 and left CISSP alone.",
+    h: "No guessing tells",
+    sub: "A balanced answer key across all 750 questions.",
+    p: 'In amateur banks "A" wins far more often than chance, and you learn the tell without meaning to. The real exam takes it away. Measured here: A 24.8%, B 26.0%, C 25.6%, D 23.6%. The only way through a question is the rationale.',
   },
   {
-    icon: "ic-shield",
-    h: "Written by someone who sits these exams",
-    p: "Bill Friend, CISSP, 20+ years in banking and payments security. He wrote the book he wanted while he was preparing for it.",
+    icon: "ic-source",
+    h: "Rooted in primary sources",
+    sub: "Every explanation cites the governing standard.",
+    p: "NIST SP 800-53 Rev 5, ISO/IEC 27001 and 27002:2022, FIPS, OWASP, the RFCs. When an answer here contradicts something you read on a forum, you can check the source in sixty seconds instead of carrying the doubt into the exam.",
   },
 ];
 
@@ -206,11 +200,11 @@ export default function GuidesPage() {
 
       <section className="block">
         <div className="wrap">
-          <p className="vault-label">Why These</p>
-          <h2>Practice that survives contact with the real exam</h2>
+          <p className="vault-label">Why most prep fails</p>
+          <h2>Most prep trains you for a different exam</h2>
           <p className="sec-intro">
-            Cheap question banks build habits that feel like progress. The exam is designed to
-            defeat them.
+            You can clear a question bank at 90% and still read a real question four times
+            without knowing what it wants. Here is why, and what changes it.
           </p>
 
           <div className="method">
@@ -220,6 +214,7 @@ export default function GuidesPage() {
                   <use href={`#${m.icon}`} />
                 </svg>
                 <h4>{m.h}</h4>
+                <p className="m-sub">{m.sub}</p>
                 <p>{m.p}</p>
               </div>
             ))}
@@ -233,12 +228,12 @@ export default function GuidesPage() {
       <section className="block">
         <div className="wrap">
           <p className="vault-label">What You Get</p>
-          <h2>Three steps, five books</h2>
+          <h2>Find the gap, close it, carry one page in</h2>
           <p className="sec-intro">
-            Sit questions until one catches you out. Read the lesson it sends you to. The night
-            before, work down the one page that matters. Miss a question and the answer names
-            the lesson and the revision-sheet line, so you are never hunting for what you got
-            wrong.
+            The five books work as one loop. A miss in the drills names the
+            lesson that covers it and the revision-sheet line to memorize, so you are never
+            hunting for what you got wrong, and the night before you carry in one page per
+            domain instead of a book.
           </p>
 
           <div className="products">
@@ -272,12 +267,12 @@ export default function GuidesPage() {
             <div className="tier">
               <p className="tname">PDF Reference Pack</p>
               <p className="price">{BUY.price}</p>
-              <p className="price-sub">Five PDFs, 941 pages. Yours to keep.</p>
+              <p className="price-sub">Five PDFs, yours to keep and print.</p>
               <ul>
-                <li><strong>500 domain drills</strong>, weighted the way the exam is</li>
-                <li><strong>Mock Form A and Form B</strong>, 125 questions each</li>
-                <li>The <strong>140-page Outline Companion</strong>, all 292 objectives</li>
-                <li>The <strong>10-page Revision Sheets</strong>, one per domain</li>
+                <li>The <strong>domain drills</strong>, weighted the way the exam is</li>
+                <li><strong>Two full-length mock exams</strong> to sit under a timer</li>
+                <li>The <strong>Outline Companion</strong>, a lesson for every objective</li>
+                <li>The <strong>Revision Sheets</strong>, one page per domain</li>
                 <li>Printable answer and scoring sheets</li>
               </ul>
               <div className="buy-foot">
@@ -294,7 +289,7 @@ export default function GuidesPage() {
               <p className="price-sub">The same five PDFs, plus the app unlocked.</p>
               <ul>
                 <li>Everything in the PDF Reference Pack</li>
-                <li>All <strong>750 questions inside the practice app</strong>, not just the free {PREVIEW.served}</li>
+                <li><strong>Every question inside the practice app</strong>, not just the free sample</li>
                 <li>Both mock forms <strong>under a timer</strong>, marked at the end</li>
                 <li>Practice weighted to the <strong>domains you keep missing</strong></li>
                 <li>Works <strong>offline</strong>, on up to five devices</li>
@@ -328,6 +323,10 @@ export default function GuidesPage() {
               Start the free {PREVIEW.served} questions →
             </Link>
           </div>
+          <p className="author-note">
+            Written by Bill Friend, CISSP, 20+ years in banking and payments security. He wrote
+            the book he wanted while he was preparing for the same exam.
+          </p>
         </div>
       </section>
     </div>

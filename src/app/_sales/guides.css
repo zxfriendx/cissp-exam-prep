@@ -113,7 +113,7 @@
 .guides-page .buybtns{display:flex;flex-direction:column;gap:.7rem;align-items:stretch}
 .guides-page .buybtns .sub{color:rgb(var(--vault-muted));font-size:.82rem;text-align:center}
 .guides-page .btn-ghost:hover{border-color:var(--copper);color:var(--copper-hi)}
-.guides-page .method{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.guides-page .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 @media(max-width:860px){
   .guides-page .method{grid-template-columns:1fr}
 }
@@ -170,4 +170,14 @@
 .guides-page .tier .buy-foot .btn{width:100%;justify-content:center}
 .guides-page .tiers-note{
   text-align:center;color:rgb(var(--vault-muted));font-size:.86rem;margin-top:1.4rem;
+}
+
+/* The subhead under each "why prep fails" block is the problem in one line; the
+   paragraph is the mechanism. Muted so the h4 stays the thing you read first. */
+.guides-page .m-item .m-sub{color:var(--steel);font-size:.9rem;font-weight:500;margin-bottom:.6rem}
+/* The proof bar carries short outcome phrases, not numbers. Same display face,
+   one step smaller than a four-digit figure would take. */
+.guides-page .hero .facts .n{font-size:1.25rem;text-transform:uppercase;letter-spacing:.06em}
+.guides-page .author-note{
+  color:rgb(var(--vault-muted));font-size:.86rem;text-align:center;margin-top:1.6rem;
 }
