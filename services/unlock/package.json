@@ -1,0 +1,17 @@
+{
+    "name": "cissp-unlock",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Verifies a Gumroad licence and serves the paid CISSP question bank. Zero runtime dependencies.",
+    "type": "module",
+    "engines": {
+        "node": ">=22.18"
+    },
+    "scripts": {
+        "start": "node src/server.ts",
+        "dev": "node --watch src/server.ts",
+        "test": "node --test",
+        "mock": "node mock-gumroad.ts",
+        "bank": "node ../../scripts/build-paid.mjs"
+    }
+}

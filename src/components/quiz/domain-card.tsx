@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { PlayCircle, BookOpen } from "lucide-react"
 import Link from "next/link"
-import { setCountFor, setLabel } from "@/lib/content"
+import { getDrillCountPaid, setCountFor, setLabel } from "@/lib/content"
+import { useBankStore } from "@/lib/bank"
 import { useQuizStore } from "@/store/quiz-store"
 
 interface DomainCardProps {
@@ -24,6 +25,16 @@ export function DomainCard({ id, title, questionCount, description, weight }: Do
     const startQuiz = useQuizStore(state => state.startQuiz);
     const router = useRouter();
     const sets = setCountFor(questionCount);
+
+    /* "20 of 80 questions", not "20 questions". A card that only says 20 lets a
+       reader conclude 20 is all there is for the domain, which is the wrong
+       impression in both directions: it undersells the book and it makes the
+       free app look thin. The 80 is counted by the generator from the bank, not
+       typed in here. Dropped once the paid bank is loaded, when 80 IS all of
+       them and "80 of 80" is just noise. */
+    const tier = useBankStore(state => state.tier);
+    const paidDrills = getDrillCountPaid(id);
+    const showOutOf = tier === 'free' && paidDrills !== undefined && paidDrills > questionCount;
 
     // "Start Quiz" is a link, so an unfinished domain quiz resumes. A set is
     // an explicit start: it replaces whatever the store holds for the domain.
@@ -54,7 +65,7 @@ export function DomainCard({ id, title, questionCount, description, weight }: Do
                     </Badge>
                 </div>
                 <CardDescription className="text-sm font-medium">
-                    {questionCount} Questions
+                    {showOutOf ? `${questionCount} of ${paidDrills}` : questionCount} questions
                     {weight !== undefined && (
                         <span className="text-secondary"> &middot; {weight}% of the exam</span>
                     )}

@@ -2,13 +2,14 @@
 
 import { useMemo } from "react"
 import { useParams } from "next/navigation"
-import { getDomainById } from "@/lib/content"
+import { getDomainById, getStimulus, type Stimulus } from "@/lib/content"
 import { blueprintFor } from "@/lib/blueprint"
 import { splitCaseStudy } from "@/lib/text"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, PlayCircle, BookOpen, ShieldCheck, EyeOff } from "lucide-react"
+import { Emphasis } from "@/components/quiz/emphasis"
+import { ArrowLeft, PlayCircle, BookOpen, ShieldCheck, EyeOff, Building2 } from "lucide-react"
 import Link from "next/link"
 import ReactMarkdown from 'react-markdown'
 import type { Components } from 'react-markdown'
@@ -117,12 +118,29 @@ export default function StudyPageClient() {
         return { overview: overviewText, scenario: split.scenario, debrief: split.debrief }
     }, [domain])
 
+    // The scenarios this domain's quiz actually uses, in the order it meets
+    // them. The case study above is one organization; the questions are set in
+    // fifteen-odd others, and this page is where a reader can read them without
+    // being asked a question about them.
+    const scenarios = useMemo<Stimulus[]>(() => {
+        const seen = new Set<string>()
+        const out: Stimulus[] = []
+        for (const q of domain?.questions ?? []) {
+            const stim = getStimulus(q.stimulusId)
+            if (stim && !seen.has(stim.id)) {
+                seen.add(stim.id)
+                out.push(stim)
+            }
+        }
+        return out
+    }, [domain])
+
     if (!domain) {
         return (
             <div className="container max-w-4xl mx-auto p-4 min-h-screen flex flex-col items-center justify-center gap-4">
                 <p>No such domain.</p>
                 <Button asChild>
-                    <Link href="/">Return Home</Link>
+                    <Link href="/practice/">Return Home</Link>
                 </Button>
             </div>
         )
@@ -135,7 +153,7 @@ export default function StudyPageClient() {
                 <div className="container max-w-5xl mx-auto px-6 sm:px-10">
                     <div className="flex items-center justify-between h-16">
                         <Button variant="ghost" size="sm" asChild className="font-medium">
-                            <Link href="/">
+                            <Link href="/practice/">
                                 <ArrowLeft className="mr-2 h-4 w-4 stroke-2" />
                                 Back to Dashboard
                             </Link>
@@ -168,7 +186,8 @@ export default function StudyPageClient() {
                             <div className="flex items-center gap-2 text-muted-foreground">
                                 <BookOpen className="h-5 w-5 stroke-2" />
                                 <span className="text-sm font-medium">
-                                    Case Study &amp; Learning Material &middot; {domain.questions.length} questions
+                                    Case study &amp; learning material &middot; {domain.questions.length} questions
+                                    {scenarios.length > 0 && <> &middot; {scenarios.length} scenarios</>}
                                 </span>
                             </div>
                         </div>
@@ -197,11 +216,11 @@ export default function StudyPageClient() {
                         <CardHeader className="border-b-2 border-primary/10 bg-muted/20">
                             <CardTitle className="text-2xl font-semibold text-primary flex items-center gap-2">
                                 <BookOpen className="h-6 w-6 stroke-2" />
-                                The scenario these questions are set in
+                                The domain case study
                             </CardTitle>
                             <CardDescription className="text-sm text-muted-foreground pt-2">
-                                Read it first and keep it in mind. The question stems name systems and people
-                                that only appear here.
+                                Background for the domain as a whole. The practice questions are not set in
+                                it — each one carries its own scenario, printed above the question.
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="pt-8 pb-10 px-8 sm:px-12">
@@ -213,6 +232,42 @@ export default function StudyPageClient() {
                         </CardContent>
                     </Card>
                 </div>
+
+                {/* The scenarios the questions are actually set in */}
+                {scenarios.length > 0 && (
+                    <section className="mb-8 space-y-4">
+                        <div className="space-y-1">
+                            <h2 className="text-2xl font-semibold tracking-tight text-primary flex items-center gap-2">
+                                <Building2 className="h-6 w-6 stroke-2" />
+                                The {scenarios.length} scenarios in this domain
+                            </h2>
+                            <p className="text-sm text-muted-foreground">
+                                One organization each, three to six questions apiece in the printed
+                                examination. Nothing here gives an answer away — the scenario is what the
+                                question hands you before it asks.
+                            </p>
+                        </div>
+                        <div className="grid gap-2 sm:grid-cols-2">
+                            {scenarios.map(stim => (
+                                <details key={stim.id} className="rounded-lg border-2 border-primary/15 bg-background">
+                                    <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-primary">
+                                        {stim.title}
+                                    </summary>
+                                    <div className="px-4 pb-5 pt-1 border-t-2 border-primary/10 space-y-3">
+                                        <p className="text-sm leading-relaxed text-foreground/80 pt-3">
+                                            <Emphasis text={stim.text} />
+                                        </p>
+                                        {stim.profile?.organization && (
+                                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                                                {stim.profile.organization}
+                                            </p>
+                                        )}
+                                    </div>
+                                </details>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* Debrief, held back like the back of the book */}
                 {debrief && (
