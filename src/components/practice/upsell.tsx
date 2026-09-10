@@ -17,8 +17,9 @@ import { Button } from "@/components/ui/button";
  * while the app served 439, and the fix was to stop typing numbers in.
  *
  * Two buttons, and the order matters: the licence key that unlocks this app
- * exists only on the $19.99 product. Cloud Run runs with that product's id, so
- * a $9.99 buyer has no key to enter. This block used to offer $9.99 and promise
+ * exists only on the `lkidg` product. Cloud Run runs with that product's id, so
+ * an `eight-domains` buyer has no key to enter. This block used to offer the
+ * cheaper product and promise
  * a key with it.
  */
 export function Upsell() {

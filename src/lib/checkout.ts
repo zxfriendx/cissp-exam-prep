@@ -16,8 +16,15 @@
    individual buy buttons and say "Included" instead.
 
    Two products, differing only in whether a licence key comes with them:
-   $9.99 for the PDFs, $19.99 for the PDFs plus the key that turns this app into
-   the full 750-question bank, offline. Same books in both.
+   $29 for the PDFs, $49 for the PDFs plus the key that turns this app into the
+   full 750-question bank, offline. Same books in both.
+
+   Priced at $9.99/$19.99 until 2026-09-10. Raising them means four surfaces move
+   together or a buyer is quoted one price and charged another: this file, the
+   apex `public/index.html`, `products/gumroad-landing/landing.html`, and the
+   Gumroad products themselves (price, description and custom_summary, via the
+   CLI). The hero artwork carries the price too -- PRICE in
+   products/build/marketing_images.py -- and has to be regenerated.
 
    Gumroad is the merchant of record, so it handles EU VAT, delivery and
    refunds. Bluehost static hosting cannot take payment, so a checkout link is
@@ -33,17 +40,17 @@ export const CHECKOUT = {
     /* The five PDFs. No licence key, so nothing to unlock in this app. */
     bundle: {
         url: "https://securepath6.gumroad.com/l/eight-domains",
-        price: "$9.99",
+        price: "$29",
     },
     /* The same five PDFs plus a licence key. THIS is the product the unlock
        service validates against: Cloud Run runs with
        GUMROAD_PRODUCT_ID=O_wvGHBX4d_MOpvoZafVQw==, which is `lkidg`, not
-       `eight-domains`. A key from the $9.99 product does not exist, so any
+       `eight-domains`. A key from the cheaper product does not exist, so any
        "unlock" call to action has to point here or it sells a thing the buyer
        will not receive. */
     plus: {
         url: "https://securepath6.gumroad.com/l/lkidg",
-        price: "$19.99",
+        price: "$49",
     },
 } as const;
 

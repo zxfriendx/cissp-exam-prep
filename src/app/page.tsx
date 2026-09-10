@@ -8,7 +8,7 @@ import "./_sales/guides.css";
 export const metadata: Metadata = {
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "750 CISSP practice questions that read like the real exam, with a reason on every wrong answer, plus a lesson for all 292 objectives on the 2024 outline and one revision sheet per domain. Five books, $9.99.",
+    "750 CISSP practice questions that read like the real exam, with a reason on every wrong answer, plus a lesson for all 292 objectives on the 2024 outline and one revision sheet per domain. Five books from $29, or $49 with the practice app unlocked.",
 };
 
 
@@ -24,9 +24,31 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   {
+    id: "test",
+    icon: "ic-clipboard",
+    // Three books, one card. A buyer thinks "the practice examination"; the split
+    // into drills and two mock forms is what they find inside it.
+    kicker: "Step One — Books Two to Four",
+    title: (
+      <>
+        The Eight Domains
+        <br />— Practice Examination
+      </>
+    ),
+    blurb:
+      "750 questions that read like the exam instead of like flashcards. Each one puts you in a company with a decision to make. Miss it and you find out why the answer you liked was the weaker one, which is the part that changes how you read the next question.",
+    points: [
+      "500 drills by domain, weighted the way the real exam is",
+      "Two full 125-question mock exams to sit under a timer",
+      "133 scenarios, so you read a new situation cold every time",
+      "Answers and review sit behind each domain, not beside the question",
+    ],
+    pages: "791 PP",
+  },
+  {
     id: "study",
     icon: "ic-book",
-    kicker: "Book One",
+    kicker: "Step Two — Book One",
     title: (
       <>
         The Eight Domains
@@ -44,31 +66,9 @@ const PRODUCTS: Product[] = [
     pages: "140 PP",
   },
   {
-    id: "test",
-    icon: "ic-clipboard",
-    // Three books, one card. A buyer thinks "the practice examination"; the split
-    // into drills and two mock forms is what they find inside it.
-    kicker: "Books Two to Four",
-    title: (
-      <>
-        The Eight Domains
-        <br />— Practice Examination
-      </>
-    ),
-    blurb:
-      "750 questions that read like the exam instead of like flashcards. Each one puts you in a company with a decision to make. Miss it and you find out why the answer you liked was the weaker one, which is the part that changes how you read the next question.",
-    points: [
-      "500 drills by domain, weighted the way the real exam is",
-      "Two full 125-question mock exams to sit under a timer",
-      "133 scenarios, so you read a new situation cold every time",
-      "Answers in a separate book, so you cannot peek",
-    ],
-    pages: "791 PP",
-  },
-  {
     id: "sheets",
     icon: "ic-sheet",
-    kicker: "Book Five",
+    kicker: "Step Three — Book Five",
     title: (
       <>
         The Eight Domains
@@ -116,19 +116,19 @@ const FACTS = [
   { n: "750", l: "questions, every wrong answer explained" },
   { n: "292", l: "objectives on the outline, none skipped" },
   { n: "941", l: "pages you can print and write on" },
-  { n: "2024", l: "outline, the one you will actually sit" },
+  { n: "2", l: "full 125-question mock forms, timed" },
 ];
 
 const METHOD = [
   {
     icon: "ic-scale",
-    h: "You cannot guess your way through",
-    p: 'In most question banks "A" wins far more often than chance, and you pick up the habit without meaning to. The real exam takes it away. Here A, B, C and D each win about a quarter of the time, so the only way through a question is to know the answer.',
+    h: "No position tell to lean on",
+    p: 'In most question banks "A" wins far more often than chance, and you pick up the habit without meaning to. The real exam takes it away. Measured across all 750 here: A 24.8%, B 26.0%, C 25.6%, D 23.6%. Close enough to even that position tells you nothing.',
   },
   {
     icon: "ic-source",
-    h: "Check anything that looks wrong to you",
-    p: "Every one of the 292 lessons names the standard it came from: NIST, ISO/IEC, FIPS, OWASP, the RFCs. When something here contradicts what you read elsewhere, you can settle it in a minute instead of carrying the doubt into the exam.",
+    h: "Every answer names the standard it rests on",
+    p: "NIST SP 800-53 Rev 5, ISO/IEC 27001 and 27002:2022, FIPS, OWASP, the RFCs. When an explanation here contradicts something you read on a forum, you can check the governing document in a minute instead of carrying the doubt into the exam.",
   },
   {
     icon: "ic-grid",
@@ -166,26 +166,30 @@ export default function GuidesPage() {
 
       <section className="hero">
         <div className="wrap">
-          <p className="vault-label">Study Materials</p>
+          <p className="vault-label">Updated for the live 2024 ISC2 outline</p>
           <h1>
-            You can ace the practice apps
+            You don&apos;t fail the CISSP because you forgot a definition.
             <br />
-            and still <span className="grad-copper">fail the exam</span>.
+            You fail because two answers look{" "}
+            <span className="grad-copper">completely defensible</span>.
           </h1>
           <p className="lede">
-            The free apps ask whether you remember a term. The exam does something else. It
-            gives you four answers that all look defensible and asks which one you would
-            actually pick. There are 750 of that second kind here, each one set in a real
-            company, and when you miss one you find out why the answer you liked was the
-            weaker one.
+            Practice apps drill recall. The exam does something harder: it puts you in a room
+            with four plausible business decisions and asks which one you own first. There are
+            750 questions of that second kind here, each one set in a company with something at
+            stake. Miss one and the review does not just show you the key. It tells you why the
+            answer you liked was the weaker decision under the standard that governs it.
           </p>
+          {/* Free first. It is the cheapest thing a cold visitor can say yes to,
+              and the questions are the product -- reading four of them sells the
+              books better than a paragraph about the books does. */}
           <div className="herocta">
-            <a className="btn btn-buy" href={BUY_HREF} rel="noopener">
-              Get all five books — {BUY.price}
-            </a>
-            <Link className="btn btn-ghost" href="/practice/">
+            <Link className="btn btn-buy" href="/practice/">
               Try {PREVIEW.served} questions free
             </Link>
+            <a className="btn btn-ghost" href="#pricing">
+              See the packs — from {BUY.price}
+            </a>
           </div>
           <div className="facts">
             {FACTS.map((f) => (
@@ -223,35 +227,18 @@ export default function GuidesPage() {
         </div>
       </section>
 
-      <section className="block" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="free">
-            <div>
-              <h3>Try {PREVIEW.perDomain} in every domain, free</h3>
-              <p>
-                {PREVIEW.served} questions, open right now, no sign-up and no card. Read a few
-                and see whether they feel like the exam you are about to sit. If they do,
-                {" "}{BUY.price} gets you the other 590, both mock forms, the Outline Companion
-                and the Revision Sheets.
-              </p>
-            </div>
-            <Link className="btn btn-ghost" href="/practice/">
-              Start a free quiz →
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <div className="wrap"><Machined /></div>
 
       <section className="block">
         <div className="wrap">
           <p className="vault-label">What You Get</p>
-          <h2>Five books, one price</h2>
+          <h2>Three steps, five books</h2>
           <p className="sec-intro">
-            Miss a question and the answer tells you which lesson to reread and which
-            revision-sheet line to memorize. You never have to go looking. One download, all
-            five books.
+            Sit questions until one catches you out. Read the lesson it sends you to. The night
+            before, work down the one page that matters. Miss a question and the answer names
+            the lesson and the revision-sheet line, so you are never hunting for what you got
+            wrong.
           </p>
 
           <div className="products">
@@ -276,25 +263,70 @@ export default function GuidesPage() {
             ))}
           </div>
 
-          <div className="buyband">
+          {/* Two tiers, the same five PDFs. The only difference is the licence
+              key, so the cards say that in one line rather than running a
+              feature matrix where fifteen of sixteen rows are identical.
+              `plus` is recommended because the app is where the 750 questions
+              are actually sittable; the PDFs alone are a reference. */}
+          <div className="tiers" id="pricing">
+            <div className="tier">
+              <p className="tname">PDF Reference Pack</p>
+              <p className="price">{BUY.price}</p>
+              <p className="price-sub">Five PDFs, 941 pages. Yours to keep.</p>
+              <ul>
+                <li><strong>500 domain drills</strong>, weighted the way the exam is</li>
+                <li><strong>Mock Form A and Form B</strong>, 125 questions each</li>
+                <li>The <strong>140-page Outline Companion</strong>, all 292 objectives</li>
+                <li>The <strong>10-page Revision Sheets</strong>, one per domain</li>
+                <li>Printable answer and scoring sheets</li>
+              </ul>
+              <div className="buy-foot">
+                <a className="btn btn-ghost btn-lg" href={BUY_HREF} rel="noopener">
+                  Buy the PDF pack — {BUY.price}
+                </a>
+              </div>
+            </div>
+
+            <div className="tier rec">
+              <span className="flag">Recommended</span>
+              <p className="tname">Complete Study Engine</p>
+              <p className="price">{BUY_PLUS.price}</p>
+              <p className="price-sub">The same five PDFs, plus the app unlocked.</p>
+              <ul>
+                <li>Everything in the PDF Reference Pack</li>
+                <li>All <strong>750 questions inside the practice app</strong>, not just the free {PREVIEW.served}</li>
+                <li>Both mock forms <strong>under a timer</strong>, marked at the end</li>
+                <li>Practice weighted to the <strong>domains you keep missing</strong></li>
+                <li>Works <strong>offline</strong>, on up to five devices</li>
+              </ul>
+              <div className="buy-foot">
+                <a className="btn btn-buy btn-lg" href={BUY_PLUS_HREF} rel="noopener">
+                  Buy the study engine — {BUY_PLUS.price}
+                </a>
+              </div>
+            </div>
+          </div>
+          <p className="tiers-note">
+            One payment, no subscription. Same five books either way.
+          </p>
+        </div>
+      </section>
+
+      <section className="block" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="free">
             <div>
-              <h3>All five, {BUY.price}</h3>
+              <h3>Test {PREVIEW.perDomain} questions in every domain, free</h3>
               <p>
-                Five PDFs, 941 pages, yours the moment you download them. Print them, write on
-                them, take them on a plane. For {BUY_PLUS.price} you get the same five books
-                plus a licence key that turns the practice app here into all 750 questions,
-                offline, on up to five devices.
+                {PREVIEW.served} live scenario questions across all eight domains. No email, no
+                account, no card. Read a few and see whether they feel like the exam you are
+                about to sit — the difficulty, the way the options are written, and how much
+                the explanation actually tells you.
               </p>
             </div>
-            <div className="buybtns">
-              <a className="btn btn-buy btn-lg" href={BUY_HREF} rel="noopener">
-                The five books — {BUY.price}
-              </a>
-              <a className="btn btn-ghost btn-lg" href={BUY_PLUS_HREF} rel="noopener">
-                Books and the app — {BUY_PLUS.price}
-              </a>
-              <span className="sub">Same books either way</span>
-            </div>
+            <Link className="btn btn-ghost btn-lg" href="/practice/">
+              Start the free {PREVIEW.served} questions →
+            </Link>
           </div>
         </div>
       </section>

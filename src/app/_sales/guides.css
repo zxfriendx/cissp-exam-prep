@@ -128,3 +128,46 @@
 }
 .guides-page .free h3{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:1.1rem;margin-bottom:.6rem}
 .guides-page .free p{color:rgb(var(--vault-muted));font-size:.95rem;max-width:38rem}
+
+/* ── Pricing tiers ──────────────────────────────────────────────────────────
+   Two cards, not a comparison table: at 400px a table either scrolls sideways
+   or shrinks the prices to nothing, and the only row that actually decides the
+   purchase is "does the app come with it". The recommended card is the one with
+   the licence key, so it carries the copper border the buy band uses. */
+.guides-page .tiers{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;margin-top:2rem}
+@media(max-width:860px){.guides-page .tiers{grid-template-columns:1fr}}
+.guides-page .tier{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:2.2rem 2rem;display:flex;flex-direction:column;position:relative;
+}
+.guides-page .tier.rec{
+  border-color:rgba(201,123,63,.42);
+  background:linear-gradient(180deg,rgba(201,123,63,.10),rgba(201,123,63,.02));
+}
+.guides-page .tier .flag{
+  position:absolute;top:-.7rem;left:2rem;font-family:var(--font-display);
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgb(var(--accent-foreground));background:var(--grad-copper);
+  border-radius:99px;padding:.35rem .8rem;
+}
+.guides-page .tier .tname{
+  font-family:var(--font-display);font-size:.62rem;letter-spacing:.28em;
+  text-transform:uppercase;color:rgb(var(--vault-muted));margin-bottom:.9rem;
+}
+.guides-page .tier .price{font-family:var(--font-display);font-size:2.5rem;line-height:1}
+.guides-page .tier .price-sub{color:rgb(var(--vault-muted));font-size:.85rem;margin:.5rem 0 1.6rem}
+.guides-page .tier ul{list-style:none;display:grid;gap:.6rem;margin-bottom:1.9rem}
+.guides-page .tier ul li{
+  font-size:.9rem;color:rgb(var(--vault-muted));padding-left:1.15rem;position:relative;line-height:1.5;
+}
+.guides-page .tier ul li::before{
+  content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;
+  background:var(--copper);border-radius:50%;
+}
+.guides-page .tier ul li strong{color:var(--ink);font-weight:600}
+/* Pins the button to the bottom so two cards of different length still line up. */
+.guides-page .tier .buy-foot{margin-top:auto}
+.guides-page .tier .buy-foot .btn{width:100%;justify-content:center}
+.guides-page .tiers-note{
+  text-align:center;color:rgb(var(--vault-muted));font-size:.86rem;margin-top:1.4rem;
+}
