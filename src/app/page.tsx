@@ -98,10 +98,11 @@ const PREVIEW = getPreviewSummary();
  *   pdftotext -layout /tmp/v2/eight-domains-study-guide.pdf - \
  *     | grep -oE 'Figure [0-9]+\.[0-9]+' | sort -u | wc -l
  *
- * Measured 2026-09-08 against products/editions/2026-09-08-inline-reasons:
+ * Measured 2026-09-10 against products/editions/2026-09-10-length-tell:
  * study guide 140 pp with 29 placed figures, domain drills 555 pp / 500
- * questions, mock form A 117 pp / 125, mock form B 119 pp / 125, revision
- * sheets 10 pp. 941 pages, 750 questions.
+ * questions, mock form A 117 pp / 125, mock form B 117 pp / 125, revision
+ * sheets 10 pp. 939 pages, 750 questions. (941 until 2026-09-10: the length-tell
+ * pass trimmed 47 options and Mock Form B lost two pages.)
  *
  * Two numbers here have been wrong before and both were caught by measuring.
  * The page said 491 questions when the app served 439, and 35 diagrams when the

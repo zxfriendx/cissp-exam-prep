@@ -29,7 +29,7 @@
     ],
     "v2": {
       "schema": 1,
-      "edition": "2026-09-08",
+      "edition": "2026-09-10",
       "carriedFromV1": 0,
       "newItems": 750,
       "itemCount": 750,
@@ -2885,7 +2885,7 @@
           ],
           "question": "For the supplier that will hold standing remote access to the fleet, which area of its operation should the assessment weight MOST heavily?",
           "options": {
-            "A": "Its access management discipline, incident response maturity, and adherence to security standards.",
+            "A": "Its access management discipline, incident response maturity, and security standards.",
             "B": "Its financial reserves and the coverage limits of its cyber liability insurance.",
             "C": "Its contractual service levels for ATM uptime and repair turnaround times.",
             "D": "The physical protections in place at its corporate office locations."
@@ -5205,7 +5205,7 @@
           ],
           "question": "Ramanathan has six weeks before the plan is re-approved. Which step MOST improves its treatment of external dependencies?",
           "options": {
-            "A": "Obtain and test Tessellate's recovery plan against the four-hour objective, including its Frankfurt dependency",
+            "A": "Obtain and test Tessellate's recovery plan against the four-hour objective",
             "B": "Raise the contractual availability commitment from 99.9% to 99.99% at the next renewal",
             "C": "Add a manual downtime procedure for clinicians to use during a record outage",
             "D": "Commission a business impact analysis of the two hospitals' clinical processes"
@@ -12012,7 +12012,7 @@
           "options": {
             "A": "Pin every storage bucket, database and backup target to the Frankfurt region.",
             "C": "Execute standard contractual clauses covering the Manila desk, with a transfer impact assessment.",
-            "B": "Encrypt the production database at rest with keys Sablon holds in Frankfurt.",
+            "B": "Encrypt the production database at rest with keys that Sablon generates and holds in Frankfurt.",
             "D": "Log every Manila support session and review the access records each month."
           },
           "correctAnswer": "C",
@@ -14603,7 +14603,7 @@
           "options": {
             "A": "Encrypting the guest's virtual disk so its contents are unreadable if the file is copied.",
             "B": "Restricting access to the hypervisor management console to a named administrator group.",
-            "C": "Enrolling every guest and retained snapshot in the same inventory and patching program as physical hosts.",
+            "C": "Enrolling every guest and retained snapshot in the same patching program as physical hosts.",
             "D": "Taking a fresh snapshot before every change so the service can be rolled back quickly."
           },
           "correctAnswer": "C",
@@ -15148,7 +15148,7 @@
           ],
           "question": "An engineer argues network intrusion detection should have caught it. What is the MOST accurate response?",
           "options": {
-            "A": "Physical-layer tampering inside the chassis is invisible to network monitoring; detection requires hardware integrity controls at the device.",
+            "A": "Tampering inside the chassis is invisible to network monitoring; it takes hardware integrity controls at the device.",
             "B": "The network IDS would have seen the shim with its sensor placed inline to the bank host.",
             "C": "Enabling deep-packet inspection on the existing sensors would have revealed the injected dispense commands.",
             "D": "Correlating the carrier's NetFlow records against transaction logs would have exposed the additional device."
@@ -17182,7 +17182,7 @@
           "question": "Which suppression arrangement BEST protects the racks without giving up the sprinkler coverage this building's code requires?",
           "options": {
             "A": "Keep the wet risers charged above the racks and fit drip pans under each joint.",
-            "B": "Convert the hall's sprinkler branch to double interlock pre-action, released by aspirating smoke detection.",
+            "B": "Convert the hall's sprinkler branch to double interlock pre-action with aspirating smoke detection.",
             "C": "Install clean agent total flooding for the hall and remove it from the sprinkler system.",
             "D": "Install carbon dioxide total flooding in the hall, discharging on cross-zoned heat detection."
           },
@@ -18414,7 +18414,7 @@
           "question": "Thackray Health keeps fourteen months of encrypted backup cartridges in a media library on its own site: a windowless room with a card reader, a fire-rated safe and racking for 900 cartridges. Cartridges leave the room for restore rehearsals and for a quarterly courier run to a second site. Staff sign a paper sheet on the way out and, in principle, on the way back. An internal audit counts the shelves and finds 23 cartridges the catalog says are held there and which are not present. Which control BEST closes the weakness the audit exposed?",
           "options": {
             "A": "Upgrade the room's card reader so entry needs a second factor as well.",
-            "B": "Bar-code every cartridge and reconcile a scanned shelf count against the backup catalog monthly.",
+            "B": "Bar-code every cartridge and reconcile a scanned shelf count against the catalog monthly.",
             "C": "Shorten the retention period so fewer cartridges are held on the shelves at once.",
             "D": "Move the quarterly courier run to a bonded carrier that signs transfer receipts."
           },
@@ -18817,7 +18817,7 @@
           ],
           "question": "Winsford Freight has approved a business case for a driver-facing mobile application. The security requirements handed to the development team read, in full: the application shall be secure; strong encryption shall be used; and the application shall comply with relevant regulation. The delivery manager wants sprinting to start next week and argues that a penetration test before go-live will catch whatever the wording missed. The security architect has been given one week inside requirements analysis and no more. What is the BEST use of that week?",
           "options": {
-            "A": "Rewrite each statement as a testable requirement with acceptance criteria and a control reference.",
+            "A": "Rewrite each statement as a testable requirement with acceptance criteria.",
             "B": "Choose the cipher suite, key lengths and certificate profile the application will use.",
             "C": "Book the penetration test early so a slot exists before the go-live date.",
             "D": "Map the application against the regulator's guidance and list every clause that applies."
@@ -18968,7 +18968,7 @@
           "question": "Culverdale Diagnostics has built the cryptographic module for a blood-analyzer platform. The three engineers who wrote the module also wrote its test harness, ran the tests and produced the ninety-page evidence pack now sitting with the assurance lead. Every requirement in the baseline traces to at least one passing test. The platform ships to hospitals in eleven weeks and the program has no budget line for outside work. Which condition should the assurance lead insist on FIRST?",
           "options": {
             "A": "A penetration test of the assembled analyzer once it runs in a pilot hospital.",
-            "B": "Verification of the module against the requirement baseline by testers outside the team.",
+            "B": "Verification of the module against the baseline by testers outside the team.",
             "C": "Peer review of the module's source by a fourth engineer on the team.",
             "D": "A doubling of the test cases so each requirement traces to three tests."
           },
@@ -21238,7 +21238,7 @@
           "question": "Which assessment of the engineer's IPsec claim is MOST accurate?",
           "options": {
             "A": "The tunnel would have stopped the rogue base station from forcing the modems down to 2G in the first place.",
-            "B": "The interception would still have occurred, but the captured traffic would have been unreadable ciphertext instead of cardholder data.",
+            "B": "The interception would still have occurred, but the captured traffic would have been unreadable ciphertext.",
             "C": "IPsec's added overhead would have made transactions over a 2G link time out, so the ATMs would simply have gone offline.",
             "D": "The tunnel would have alerted the SOC as soon as the peer's identity could no longer be cryptographically verified."
           },
@@ -21794,7 +21794,7 @@
           "question": "Which assessment of the parked laptop and a proportionate first response is BEST?",
           "options": {
             "A": "An active intrusion is underway; disable the branch wireless network until law enforcement arrives on site.",
-            "B": "Probable wireless reconnaissance (war driving); review how far the branch SSIDs propagate and confirm the strength of the authentication they require.",
+            "B": "Probable wireless reconnaissance; review how far the branch SSIDs propagate and confirm the strength of their authentication.",
             "C": "Harmless behavior; passively observing radio signals from a parking lot yields nothing of value to an attacker.",
             "D": "An evil twin attack is already in progress; direct branch staff to move every handheld onto its cellular fallback connectivity at once."
           },
@@ -21839,7 +21839,7 @@
           ],
           "question": "Which upgrade MOST directly addresses both the slowdowns and the sniffing, and why?",
           "options": {
-            "A": "Replace the hub with a switch, giving each port its own collision domain and forwarding unicast frames to the destination port.",
+            "A": "Replace the hub with a switch, so each port is its own collision domain and frames go only where addressed.",
             "B": "Replace the hub with a small router, so that every PC is placed into a separate IP subnet of its own.",
             "C": "Cascade a second hub off the first and split the PCs between the two devices, halving the shared load.",
             "D": "Upgrade to a faster hub, so the shared medium offers more headroom to every attached station."
@@ -22207,7 +22207,7 @@
           ],
           "question": "To justify replacing the scanners urgently, which statement of the obsolete standard's risk is MOST accurate?",
           "options": {
-            "A": "WEP's short initialization vectors force keystream reuse, letting an attacker who captures traffic recover the key within minutes and join the network.",
+            "A": "WEP's short initialization vectors force keystream reuse, letting an attacker who captures traffic recover the key within minutes.",
             "B": "WEP's weakness is chiefly short passphrases, so configuring the longest supported key makes it acceptable for scanner traffic.",
             "C": "WEP's flaw is primarily its one-way authentication, so adding MAC-address filtering restores adequate protection for the warehouse fleet.",
             "D": "WEP's break requires prolonged physical access to an access point, so the risk stays confined to the warehouse floor and its equipment."
@@ -22301,7 +22301,7 @@
           "options": {
             "A": "Ping of death: fragments that reassemble into a datagram beyond the maximum legal size.",
             "B": "Smurf: amplified echo replies converging on the controller from a broadcast network.",
-            "C": "Teardrop: deliberately overlapping fragment offsets that crash a vulnerable reassembly implementation.",
+            "C": "Teardrop: overlapping fragment offsets that crash a vulnerable reassembly implementation.",
             "D": "SYN flood: connection requests that exhaust the controller's half-open session table."
           },
           "correctAnswer": "C",
@@ -22348,7 +22348,7 @@
             "A": "Block the flood's source addresses at the perimeter firewall as the SOC identifies them.",
             "B": "Raise the servers' connection-table limits so that more half-open sessions can be held at once.",
             "C": "Shorten the servers' keep-alive timers so established HTTP sessions are released sooner.",
-            "D": "Enable SYN cookies, so the servers commit no connection state until a client's final handshake acknowledgment arrives."
+            "D": "Enable SYN cookies, so the servers hold no connection state until the client completes the handshake."
           },
           "correctAnswer": "D",
           "explanation": "The flood's lever is asymmetry. Each spoofed SYN costs the attacker one packet and costs the server a table entry held open for a timeout.\nSYN cookies remove the lever (D). The server answers with a SYN-ACK whose sequence number cryptographically encodes the pending connection, and stores nothing. State gets created only when a real client returns the final ACK. Spoofed SYNs, whose ACKs come from nowhere, now cost the server nothing, and legitimate handshakes complete normally.\nDurable denial-of-service mitigations attack the attacker's asymmetry. Make the unverified party carry the cost of state and a flood of fakes loses its purchase.",
@@ -22945,7 +22945,7 @@
           "options": {
             "A": "It replaces the branches' broadband and LTE circuits with uniformly provisioned MPLS.",
             "B": "It raises each branch's usable bandwidth by bonding whatever links the site has available.",
-            "C": "It applies centrally defined policy to every branch edge device, independent of each site's underlying transport.",
+            "C": "It applies centrally defined policy to every branch edge device, whatever each site's transport.",
             "D": "It encrypts traffic between branches using keys that each site's edge device manages for itself."
           },
           "correctAnswer": "C",
@@ -23036,7 +23036,7 @@
           "question": "A branch design justifies no inbound filtering because the site is behind address translation. Which evaluation of that is MOST accurate?",
           "options": {
             "A": "NAT is equivalent to a stateful firewall, since both maintain per-connection state tables that gate what may enter the network.",
-            "B": "NAT obscures internal addressing and incidentally drops unsolicited inbound traffic, but enforcing security policy still requires a firewall.",
+            "B": "NAT hides internal addressing and incidentally drops unsolicited inbound traffic, but enforcing policy still needs a firewall.",
             "C": "NAT reduces security overall, because rewriting packet headers strips the very fields that inspection devices depend on.",
             "D": "NAT gives translated sessions confidentiality, since outside observers see the rewritten public addresses on the wire."
           },
@@ -23222,7 +23222,7 @@
             "A": "Upgrading to a stronger cipher, so captured authorization messages take far longer to decrypt.",
             "B": "Rotating the encryption keys used by each ATM on a daily schedule instead of monthly.",
             "C": "Hashing each message body, so any modification made to it in transit is detected on receipt.",
-            "D": "Adding timestamps and sequence numbers that the processing center validates, so a repeated message is recognized and refused."
+            "D": "Adding timestamps and sequence numbers that the processing center validates on every message."
           },
           "correctAnswer": "D",
           "explanation": "This is a replay attack, and the lesson is that the attacker read nothing. A captured ciphertext, re-sent intact, is decrypted and honored like the original. The missing property is freshness: the receiver cannot tell a first presentation from a repeat.\nValidated timestamps, sequence numbers or nonces supply it (D), and make the duplicate detectably stale.\nConfidentiality, integrity and freshness are separate guarantees. A protocol can encrypt and authenticate flawlessly and still pay twice, until something in each message proves it is new.",
@@ -23405,7 +23405,7 @@
           "options": {
             "A": "The team is right: per-administrator accountability addresses the principal risk, which is untraceable shared access to devices.",
             "B": "The team is right if management traffic is confined to a dedicated VLAN, since that separation is functionally equivalent to encryption.",
-            "C": "The team is wrong: Telnet carries those individual credentials and every session in cleartext, so interception yields working administrator access; replace it with SSH.",
+            "C": "The team is wrong: Telnet carries those individual credentials in cleartext, so interception yields working administrator access.",
             "D": "The team is wrong about switches but right about routers, which sit behind the perimeter and face less interception risk."
           },
           "correctAnswer": "C",
@@ -23450,7 +23450,7 @@
           "question": "An external scan shows a remote-shell port open on forty hosts, permitted inbound from any source. Which risk assessment is MOST accurate?",
           "options": {
             "A": "The exposure is minor, because the service listening on that port encrypts every session between client and server.",
-            "B": "Forty hosts offer remote administrative shells to the whole internet; that access belongs behind one hardened, MFA-protected entry point.",
+            "B": "Forty hosts offer administrative shells to the whole internet; that access belongs behind one hardened, MFA-protected entry point.",
             "C": "A false positive in effect: an open port carries no real risk until a vulnerability is published for the service.",
             "D": "The principal risk is information disclosure through service banners, which changing the daemon's banner text will resolve."
           },
@@ -23866,7 +23866,7 @@
             "A": "Rename the staff SSID to an obscure value and suppress it from the access points' beacon broadcasts.",
             "B": "Brief staff to join manually when the displayed signal strength is high and steady.",
             "C": "Lock the handhelds to 5 GHz channels, which inexpensive rogue equipment less commonly serves.",
-            "D": "Deploy WPA3-Enterprise (802.1X), with client profiles that validate the authentication server's certificate before connecting."
+            "D": "Deploy WPA3-Enterprise, with client profiles that validate the authentication server's certificate first."
           },
           "correctAnswer": "D",
           "explanation": "An SSID is a self-declared name any radio can claim. Telling twin from truth takes an identity the network can prove and an attacker cannot copy.\nUnder 802.1X the handheld's supplicant validates the authentication server's certificate before it will complete the join (D). An evil twin can echo the SSID and cannot present the certificate's private key, so a properly pinned client refuses it. Cryptographic distinction, enforced by configuration.\nNames and signal properties are claimable. Only a key-backed identity check lets a client refuse a perfect imitation.",
@@ -24004,7 +24004,7 @@
           ],
           "question": "Which explanation BEST connects the clock drift to the authentication failures?",
           "options": {
-            "A": "Kerberos rejects authenticators whose timestamps fall outside the permitted clock skew, a freshness check that keeps captured tickets from being replayed.",
+            "A": "Kerberos rejects authenticators whose timestamps fall outside the permitted clock skew, a check against replay.",
             "B": "Kerberos derives its session keys from the current clock value, so drifted machines compute mismatched keys.",
             "C": "Ticket lifetimes are measured by the client alone, so a drifted client discards its own still-valid tickets before they have truly expired.",
             "D": "The domain controllers sign tickets with time-based one-time codes that drifted servers can no longer generate."
@@ -25114,7 +25114,7 @@
           ],
           "question": "Redbank Health Analytics built its datacenter for a web tier that answers clinicians and a database tier behind it, so every subnet's default gateway is an interface on the perimeter firewall pair. A claims-modeling cluster added in March now moves 40 terabytes a night between 60 nodes in two adjacent subnets. That traffic leaves a node, crosses the firewall pair and returns to a node in the same rack. The pair runs at 94 percent of forwarding capacity at 02:00, and operations has begun disabling inspection to keep the job inside its window. Which change BEST resolves the bottleneck without giving up inspection of the cluster?",
           "options": {
-            "A": "Increase the firewall pair's throughput license and add a second link to each leaf",
+            "A": "Increase the firewall pair's throughput license and add a second uplink from each leaf switch",
             "B": "Place the cluster's subnets on a leaf pair that routes between them, with distributed enforcement",
             "C": "Exempt the cluster's subnets from inspection and log the flows at the leaf switches",
             "D": "Schedule the modeling job across the working day so its traffic no longer coincides"
@@ -25567,7 +25567,7 @@
             "A": "End-to-end encryption enabled for the partnership meetings on the platform",
             "B": "Single sign-on required for the desktop and mobile clients before joining",
             "C": "Per-meeting identifiers and passcodes, with a lobby the host admits participants from",
-            "D": "Recording disabled and transcripts retained for thirty days on the platform"
+            "D": "Recording disabled and meeting transcripts retained for thirty days on the platform"
           },
           "correctAnswer": "C",
           "explanation": "A standing meeting identifier that has not changed in three years is a password shared with every participant the firm has ever had, and the telephone bridge reaches it without touching the firm's identity system.\nGenerate a fresh identifier and passcode for each meeting, and hold arrivals in a lobby the host admits from (C). Last quarter's number stops working, and an unexpected caller waits somewhere a human can see them.\nA credential that never changes is a credential everyone still has.",
@@ -30253,7 +30253,7 @@
           "options": {
             "A": "A remote wipe command that erases the volume the next time the device reports in.",
             "B": "A screen-lock timeout that requires the engineer's password after fifteen minutes of inactivity.",
-            "C": "Full-disk encryption with pre-boot authentication, so the volume stays sealed until a credential is presented.",
+            "C": "Full-disk encryption with pre-boot authentication, so the volume stays sealed without a credential.",
             "D": "An inventory report that flags laptops which have not checked in for seven days."
           },
           "correctAnswer": "C",
@@ -30609,7 +30609,7 @@
           "options": {
             "A": "Calderwood corrects the claim rule and reviews its other attribute mappings for similar errors.",
             "B": "Both parties sign and encrypt assertions so attribute values stay intact in transit.",
-            "C": "Brightwater applies its own authorization policy to asserted attributes instead of treating them as entitlements.",
+            "C": "Brightwater applies its own authorization policy to asserted attributes instead of trusting them.",
             "D": "Brightwater keeps a local copy of the region mapping and refreshes it from Calderwood monthly."
           },
           "correctAnswer": "C",
@@ -33639,7 +33639,7 @@
           "question": "What is the MOST accurate explanation of why the scanner never reported it?",
           "options": {
             "A": "A credentialed scan would have been required to see inside the application logic.",
-            "B": "Scanners match known vulnerability signatures, and a business-logic flaw unique to this application has none.",
+            "B": "Scanners match known vulnerability signatures, and a flaw unique to this application has none.",
             "C": "The flaw was exploitable only over TLS, which kept the scanner from inspecting the traffic.",
             "D": "Weekly scanning was too infrequent to catch a flaw introduced between scan windows."
           },
@@ -34237,7 +34237,7 @@
           "question": "Six input parameters interact in ways single-parameter tests missed, and exhaustive testing would take years. Which technique targets that interaction risk at the MOST practical cost?",
           "options": {
             "A": "Full exhaustive testing of every possible combination of the six parameters.",
-            "B": "Pairwise combinatorial testing, covering every two-parameter value combination at least once.",
+            "B": "Pairwise combinatorial testing, covering every two-parameter value combination once.",
             "C": "Random sampling of input combinations until the test window is exhausted.",
             "D": "Boundary testing of each parameter's minimum and maximum values in isolation."
           },
@@ -37054,7 +37054,7 @@
           "question": "Draycott Analytics reviews ninety days of directory logs to assess the control that every change to a privileged group raises an alert to its security operations center. The rule was verified with a deliberate test change on the day it went live. The review finds zero alerts across the ninety days, and the assessor is preparing to record that no unauthorized privileged group change occurred. During the period two of the eleven domain controllers were rebuilt, and the log forwarder is installed by a build script maintained by the platform team. Which check MOST determines whether that zero is evidence?",
           "options": {
             "A": "Repeat the go-live verification by making a controlled change to a privileged group and confirming the alert reaches the operations center",
-            "B": "Reconcile each controller's daily event volume against the collection platform's ingest record, so any interval with nothing forwarded becomes visible",
+            "B": "Reconcile each controller's daily event volume against the collection platform's ingest record, exposing any gap in forwarding",
             "C": "Compare present privileged group membership against the membership recorded in the approved baseline at the start of the ninety-day period",
             "D": "Read the operations center's ticket queue for the period to establish that no privileged group alert was closed as a false positive"
           },
@@ -37157,7 +37157,7 @@
           "options": {
             "A": "The modules this release changed most heavily, on the basis that defect density is highest in code that has just been rewritten",
             "B": "The modules carrying the lowest unit test coverage, on the basis that untested code is the code nobody has exercised",
-            "C": "The code that decides access and trust: authentication, authorization, cryptographic operations, and parsing of input arriving from outside the controller",
+            "C": "The code that decides access and trust: authentication, authorization, cryptography, and the parsing of external input",
             "D": "The static analysis backlog, worked downwards from the tool's highest severity ranking until the four weeks she has run out"
           },
           "correctAnswer": "C",
@@ -37359,7 +37359,7 @@
           ],
           "question": "Yarrow Transit Authority checks 900 Linux servers every month against the CIS Level 1 benchmark. Twelve benchmark settings conflict with a ticketing application the authority is contractually stuck with until next year, and its change board approved deviations for all twelve, writing them into Yarrow's own hardened build standard. The monthly report therefore opens with 10,800 failures, and the operations team stopped reading it in February. Four settings that Yarrow's card-payment obligations require are absent from the Level 1 profile altogether. Which change MOST improves what the monthly compliance check is worth?",
           "options": {
-            "A": "Test each host against Yarrow's approved build standard, carry the twelve deviations as dated exceptions, and separately confirm that standard meets the payment obligations",
+            "A": "Test each host against Yarrow's own build standard, carry the twelve deviations as dated exceptions, and confirm that standard meets the payment obligations",
             "B": "Suppress the twelve known deviations inside the tool so the monthly report lists the failures that operations has not already reviewed and accepted",
             "C": "Switch the check from the Level 1 benchmark to Level 2, whose stricter profile covers several of the payment settings the current one omits",
             "D": "Remove the twelve deviations from the estate so every host matches the benchmark, and record the ticketing application's breakage as a business risk"
@@ -37412,7 +37412,7 @@
           "options": {
             "A": "Escalate every accepted risk to the board, so that a body senior to the committee sees what the firm is carrying",
             "B": "Re-test the finding beneath each accepted risk, so the committee learns whether the underlying weakness is still present today",
-            "C": "Require the current accountable owner to re-affirm each acceptance on a stated interval, with the acceptance lapsing to open if nobody does",
+            "C": "Require the current accountable owner to re-affirm each acceptance on a stated interval, or it lapses to open",
             "D": "Record the name and the date of the original approver against each accepted risk, so the committee can see who accepted what"
           },
           "correctAnswer": "C",
@@ -37515,7 +37515,7 @@
             "A": "Exercise each of the eighteen applications twice a year instead of annually, so a failure has two chances to appear",
             "B": "Extend the exercise program to the tier-two applications, so the whole portfolio carries a tested recovery time",
             "C": "Have each application owner attest in writing that the recovery procedure is current before that application's annual exercise",
-            "D": "Exercise the tier-one applications together from a cold recovery site with the primary site isolated, recording every dependency that proves unavailable"
+            "D": "Exercise the tier-one applications together with the primary site isolated, recording every dependency that proves unavailable"
           },
           "correctAnswer": "D",
           "explanation": "Eighteen green results were eighteen measurements of a condition the outage removed: a healthy primary site sitting behind the application, quietly answering for certificates, licenses and names. Exercise the tier-one applications together, from a cold recovery site, with the primary site isolated (D). Together and isolated are the two words doing the work, because a shared service can only be shown to be recoverable when nothing is left to borrow it from. Recording each dependency that proves unavailable turns the exercise into a map the society does not currently have.\nAn application is only as recoverable as the services it silently assumes.",
@@ -39221,7 +39221,7 @@
             "A": "Anti-malware configured to submit unknown executables to the vendor for analysis.",
             "B": "A policy forbidding technicians from downloading software to fleet machines.",
             "C": "Blocking the fleet's outbound web access to sites known to host hacking tools.",
-            "D": "A deny-by-default policy admitting software the organization has explicitly authorized to execute."
+            "D": "A deny-by-default policy admitting only software the organization has authorized."
           },
           "correctAnswer": "D",
           "explanation": "A diagnostic tool downloaded that morning is on nobody's list of known-bad software. Any control that starts from an enumeration of what is forbidden will miss it.\nNIST SP 800-53 Rev 5 CM-7(5) Least Functionality | Authorized Software - Allow-by-Exception is the precise control (D). Identify the software authorized to execute, employ a deny-all permit-by-exception policy to allow it, and review and update the list on a defined frequency. Its sibling CM-7(4) Unauthorized Software - Deny-by-Exception runs the weaker direction, and the catalog says so by structure. Watch the vocabulary too: Rev 5 uses allow-list and deny-list where older material says whitelisting and blacklisting.\nEnumerate what is allowed to run.",
@@ -41635,7 +41635,7 @@
           "question": "Which improvement BEST addresses the timeline problem across machines and the switch?",
           "options": {
             "A": "Extending the local log retention period on every ATM in the fleet to one year.",
-            "B": "A SIEM platform aggregating the logs centrally, with synchronized time and cross-source correlation.",
+            "B": "A SIEM platform aggregating the logs centrally with synchronized time and correlation.",
             "C": "A SOAR platform automating the response playbooks the SOC executes most often.",
             "D": "Quarterly audits verifying that each machine is recording the required event types."
           },
@@ -42979,7 +42979,7 @@
             "A": "Schedule the run overnight so that fewer branches and customers can be affected by it",
             "B": "Route every test message through a distribution list that excludes customer-facing teams",
             "C": "Suspend the fraud team's alerting for the duration of the recovery site's processing",
-            "D": "Issue a test communications plan naming stakeholders, the EXERCISE prefix, and start and stop calls"
+            "D": "Issue a communications plan naming stakeholders, the EXERCISE prefix, and start and stop calls"
           },
           "correctAnswer": "D",
           "explanation": "A rehearsal that cannot be told apart from an incident produces incidents. What prevents that is agreed before anyone logs in (D): a named list of who is told, a marking convention that survives being forwarded, and a formal announcement opening and closing the exercise. Anything outside those two calls is treated as real. The regulator's attendance belongs in the same document, because an examiner watching what looks like an unannounced failure draws conclusions the society will spend months correcting.\nLabel the message. The recipient list is the wrong place to hide.",
@@ -43593,7 +43593,7 @@
           ],
           "question": "Inglewood Chemicals runs a flat plant network where a compromised engineering workstation gave an intruder ninety days of undetected lateral movement last year. The security team already has endpoint detection on servers, a SIEM and netflow. It now wants a signal that fires early, is almost never raised by ordinary work, and costs little to run. The plant will not accept anything that touches the availability of the process control network. Which deployment BEST meets that requirement?",
           "options": {
-            "A": "Seed decoy credentials and unused file shares that no legitimate process should touch",
+            "A": "Seed decoy credentials and file shares that no legitimate process should touch",
             "B": "Stand up an internet-facing honeypot to collect tooling aimed at the plant",
             "C": "Mirror the plant network into a honeynet that emulates the control systems",
             "D": "Raise SIEM alerting on failed logons across the engineering workstations"
@@ -48187,7 +48187,7 @@
           "question": "Thurlow University's research office uses a software-as-a-service collaboration platform under a signed enterprise agreement. The provider publishes a current SOC 2 Type II report, encrypts customer data at rest and in transit, and runs a documented vulnerability program. A researcher nonetheless exposed forty thousand participant records by leaving a folder shared with anyone holding the link, a setting the provider offers and the university never restricted. The information security officer is deciding where to place assurance effort this year. Which activity MOST directly addresses the risk that remains Thurlow's under this arrangement?",
           "options": {
             "A": "Reviewing the provider's SOC 2 Type II report and its exception list each year at renewal.",
-            "B": "Continuously assessing and enforcing the tenant's sharing and access settings against a documented university baseline.",
+            "B": "Assessing and enforcing the tenant's sharing and access settings against a university baseline.",
             "C": "Requiring the provider to hold university data encrypted with keys the university generates.",
             "D": "Producing a quarterly report of externally shared folders for research data owners to review."
           },
@@ -48544,7 +48544,7 @@
           "question": "Fennimore Retail's checkout application is covered by two security tools. A static analyzer reports nine hundred findings per release, most of them on code paths the application never reaches, and developers have stopped triaging them. A dynamic scanner run against the staging site reports a handful of genuine defects but cannot say which line of code produced them, so each one takes a day to locate. Fennimore's automated functional tests already exercise every checkout flow nightly. Which testing approach BEST gives findings that are both exploitable and traceable to a line of code?",
           "options": {
             "A": "Tune the static analyzer's rule set and suppress the categories the team judges to be noise.",
-            "B": "Instrument the running application during the functional tests so findings carry runtime context and code location.",
+            "B": "Instrument the running application during the functional tests so findings carry a code location.",
             "C": "Add software composition analysis so third-party components are assessed alongside Fennimore's own code.",
             "D": "Commission a manual penetration test of the checkout application before each quarterly release."
           },
@@ -48747,7 +48747,7 @@
           "question": "Kestrel Yards writes flight-planning software for regional airlines. Developers install the compiler, build plugins and code generators from whichever public source their onboarding page happens to name, and the build server pulls a code-generation plugin at build time from an author's personal hosting. Rebuilding last month's release on two machines produced two different binaries, and nobody could say which one the airlines received. The security manager wants the toolchain itself brought under control. Which measure would BEST achieve that?",
           "options": {
             "A": "Run software composition analysis over the application's declared dependencies on every merge and block known vulnerabilities.",
-            "B": "Serve compilers and plugins from an internal mirror, pinned by version and checked against publisher signatures, on workstations and build servers.",
+            "B": "Serve compilers and plugins from an internal mirror, pinned by version and checked against publisher signatures.",
             "C": "Require developers to upgrade the compiler and every plugin to the newest published release at each sprint start.",
             "D": "Compare the binaries the release produces on two machines and investigate any difference before the release is signed."
           },
@@ -48798,7 +48798,7 @@
           "options": {
             "A": "Encrypt the properties file in the repository and keep the decryption key in the deployment job that reads it.",
             "B": "Scan the whole repository history for committed secrets and rotate every credential the scan reports finding.",
-            "C": "Issue a distinct credential per environment from a managed secret store, injected at deployment and rotated on schedule.",
+            "C": "Issue a distinct credential per environment from a managed secret store, injected at deployment.",
             "D": "Withdraw the contractors' read access to the repository and review the remaining permissions each quarter."
           },
           "correctAnswer": "C",
@@ -48899,7 +48899,7 @@
             "A": "A requirement that the supplier hold ISO/IEC 27001 certification covering its development offices for the contract term.",
             "B": "A right for Bexley to commission an annual penetration test of the portal once it runs in production.",
             "C": "A requirement that supplier developers complete accredited secure coding training before they join the project.",
-            "D": "Named, testable security requirements with acceptance criteria Bexley verifies before acceptance, and final payment tied to verification."
+            "D": "Named, testable security requirements with acceptance criteria, and final payment tied to their verification."
           },
           "correctAnswer": "D",
           "explanation": "A contract that promises 'industry best practice' transfers no obligation anyone can test, and a review on request is a right Bexley will exercise once the code is written and the invoice is due. Requirements written as acceptance criteria change both facts (D). They tell the supplier what to build, and they give Bexley something to verify while it still holds the money.\nWrite security into the deliverable and into the payment terms.",
@@ -48946,7 +48946,7 @@
           ],
           "question": "Harnwell Foods runs its enterprise resource planning suite as a managed service: the supplier hosts it, patches it, and provides an annual independent assurance report over the base product. Harnwell's own analysts write scripts in the platform's customization layer, one of which publishes a web endpoint on the supplier's infrastructure so a haulage partner can post invoices. The supplier's terms state that customer-written extensions are the customer's responsibility. Which control should Harnwell treat as PRIMARY for those extensions?",
           "options": {
-            "A": "Harnwell's own development lifecycle applied to the customization layer: requirements, peer review, testing and change approval.",
+            "A": "Harnwell's own development lifecycle applied to the customization layer, from requirements to change approval.",
             "B": "A request that the supplier review and approve each customization before it reaches the hosted production tenant.",
             "C": "The web application firewall the supplier operates in front of the hosted platform for all of its tenants.",
             "D": "The supplier's annual assurance report, checked each year to confirm that its scope covers the hosted platform."
@@ -48998,7 +48998,7 @@
           "options": {
             "A": "Withdraw the low-code licenses until a development standard for the platform is written and approved.",
             "B": "Deliver secure development training to every member of staff who has built an application on the platform.",
-            "C": "Bring platform applications under the approval and inventory required of other software before they may reach production data.",
+            "C": "Bring platform applications under the approval and inventory required of other software.",
             "D": "Run static analysis across the applications the platform generated and remediate the injection defects reported."
           },
           "correctAnswer": "C",
@@ -49097,7 +49097,7 @@
           "question": "Westhaven Bank requires a threat model for every new service. In practice one of its two application security engineers writes the model after code complete, working from the design document, and files it with the release record. Developers rarely read it. The last three models missed abuse paths the delivery teams already knew about, one of which caused a four-hour outage in March, and the engineers are now eleven services behind. The security director wants the activity to justify its cost. Which change should she make FIRST?",
           "options": {
             "A": "Engage an external consultancy to threat model the firm's ten highest-value services once each quarter.",
-            "B": "Have delivery teams model their own designs at design time, with security facilitating and findings entering the backlog.",
+            "B": "Have delivery teams model their own designs at design time, with security facilitating.",
             "C": "Replace the threat model with a penetration test booked two weeks before each planned release.",
             "D": "Publish a catalog of common threats for the two engineers to work through more consistently."
           },
@@ -49146,7 +49146,7 @@
           ],
           "question": "Ridgeline Software releases its billing platform about forty times a week through an automated pipeline that runs unit and integration tests, a dependency scan and a policy check, records the merge approver and the artifact digest, and can roll back in two minutes. The change advisory board meets on Tuesdays and expects a form for each change; the team files them in a batch on Wednesday, describing changes already live. An auditor has reported the platform as operating outside change control. Which response is MOST defensible?",
           "options": {
-            "A": "Classify pipeline releases as pre-approved standard changes, with the pipeline's gates and records serving as evidence of control.",
+            "A": "Classify pipeline releases as pre-approved standard changes, with the pipeline's gates and records as the evidence.",
             "B": "Require the advisory board to approve each of the forty weekly releases before the pipeline may deploy them.",
             "C": "Suspend automated release until the board can review changes at the rate the team produces them.",
             "D": "Extend the pipeline to raise a change form automatically for each release once it has completed."
@@ -49297,7 +49297,7 @@
           "question": "Selbridge Water must open a new customer billing portal on 1 April, the date its regulator set for a tariff change; the date does not move. The internal delivery team works in two-week iterations, and eight weeks out its burn-down shows about a quarter more scope than it can finish. When this happened on the last program, the team dropped the work nobody was asking for, which turned out to be the authorization test suite and the audit-logging story. Which practice would BEST protect the security of what ships?",
           "options": {
             "A": "Add contractors to the team for the remaining eight weeks so that the full scope can be delivered.",
-            "B": "Write the security requirements into each story's definition of done, so scope cuts remove features and not controls.",
+            "B": "Write security requirements into each story's definition of done, so cuts drop features, not controls.",
             "C": "Ask the regulator for a four-week extension so that the outstanding security work can be completed.",
             "D": "Book a penetration test for the week after launch and fix what it finds in the next iteration."
           },

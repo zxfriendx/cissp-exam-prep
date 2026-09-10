@@ -159,6 +159,24 @@ for it in items:
         if w == min(lens_.values()) and w < 0.75*mean:
             fail(f"{it['id']}: option {k} is {w} words vs 0.75x mean {0.75*mean:.1f} (D4)")
 
+# 8b. the visible length tell, in characters (guide D4, second paragraph). Words were
+#     not enough: the v2 bank passed rule 8 while the key was the visibly-longest option
+#     46% of the time. A key may never be longest by a margin a reader can see at a
+#     glance, and across the batch the visibly-longest option may be the key no more
+#     often than gate V23 allows the book.
+have = hit = 0
+for it in items:
+    L = {k: len(v) for k, v in it["options"].items()}
+    top = max(L, key=L.get); srt = sorted(L.values(), reverse=True); m = srt[0] - srt[1]
+    if top == it["correctAnswer"] and m >= 16:
+        fail(f"{it['id']}: key {top} is longest by {m} chars, a margin a reader can see (D4)")
+    if m >= 9:
+        have += 1; hit += (top == it["correctAnswer"])
+if have >= 10 and hit / have > 0.35:
+    fail(f"visibly-longest option is the key {hit}/{have} = {100*hit/have:.0f}% across the batch; V23 allows 35% (D4)")
+elif have:
+    report(f"D4 chars: visibly-longest option is the key {hit}/{have} = {100*hit/have:.0f}%")
+
 # 9. prose rules: no em dashes; discriminator present; lengths
 EMDASH = re.compile(r"[—–]")
 DISC = re.compile(r"\b(FIRST|BEST|MOST|LEAST|GREATEST|PRIMARY|BEFORE|NEXT)\b")

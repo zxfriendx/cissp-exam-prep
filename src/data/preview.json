@@ -1,7 +1,7 @@
 {
   "preview": {
     "schema": 1,
-    "edition": "2026-09-08",
+    "edition": "2026-09-10",
     "perDomain": 20,
     "served": 160,
     "scenarios": 127,
@@ -55,7 +55,7 @@
     ],
     "v2": {
       "schema": 1,
-      "edition": "2026-09-08",
+      "edition": "2026-09-10",
       "carriedFromV1": 0,
       "newItems": 750,
       "itemCount": 750,
@@ -1409,7 +1409,7 @@
           ],
           "question": "Ramanathan has six weeks before the plan is re-approved. Which step MOST improves its treatment of external dependencies?",
           "options": {
-            "A": "Obtain and test Tessellate's recovery plan against the four-hour objective, including its Frankfurt dependency",
+            "A": "Obtain and test Tessellate's recovery plan against the four-hour objective",
             "B": "Raise the contractual availability commitment from 99.9% to 99.99% at the next renewal",
             "C": "Add a manual downtime procedure for clinicians to use during a record outage",
             "D": "Commission a business impact analysis of the two hospitals' clinical processes"
@@ -4719,7 +4719,7 @@
           "question": "Which assessment of the engineer's IPsec claim is MOST accurate?",
           "options": {
             "A": "The tunnel would have stopped the rogue base station from forcing the modems down to 2G in the first place.",
-            "B": "The interception would still have occurred, but the captured traffic would have been unreadable ciphertext instead of cardholder data.",
+            "B": "The interception would still have occurred, but the captured traffic would have been unreadable ciphertext.",
             "C": "IPsec's added overhead would have made transactions over a 2G link time out, so the ATMs would simply have gone offline.",
             "D": "The tunnel would have alerted the SOC as soon as the peer's identity could no longer be cryptographically verified."
           },
@@ -4860,7 +4860,7 @@
           ],
           "question": "Which upgrade MOST directly addresses both the slowdowns and the sniffing, and why?",
           "options": {
-            "A": "Replace the hub with a switch, giving each port its own collision domain and forwarding unicast frames to the destination port.",
+            "A": "Replace the hub with a switch, so each port is its own collision domain and frames go only where addressed.",
             "B": "Replace the hub with a small router, so that every PC is placed into a separate IP subnet of its own.",
             "C": "Cascade a second hub off the first and split the PCs between the two devices, halving the shared load.",
             "D": "Upgrade to a faster hub, so the shared medium offers more headroom to every attached station."
@@ -5138,7 +5138,7 @@
           "options": {
             "A": "It replaces the branches' broadband and LTE circuits with uniformly provisioned MPLS.",
             "B": "It raises each branch's usable bandwidth by bonding whatever links the site has available.",
-            "C": "It applies centrally defined policy to every branch edge device, independent of each site's underlying transport.",
+            "C": "It applies centrally defined policy to every branch edge device, whatever each site's transport.",
             "D": "It encrypts traffic between branches using keys that each site's edge device manages for itself."
           },
           "correctAnswer": "C",
@@ -5461,7 +5461,7 @@
           ],
           "question": "Which explanation BEST connects the clock drift to the authentication failures?",
           "options": {
-            "A": "Kerberos rejects authenticators whose timestamps fall outside the permitted clock skew, a freshness check that keeps captured tickets from being replayed.",
+            "A": "Kerberos rejects authenticators whose timestamps fall outside the permitted clock skew, a check against replay.",
             "B": "Kerberos derives its session keys from the current clock value, so drifted machines compute mismatched keys.",
             "C": "Ticket lifetimes are measured by the client alone, so a drifted client discards its own still-valid tickets before they have truly expired.",
             "D": "The domain controllers sign tickets with time-based one-time codes that drifted servers can no longer generate."
@@ -8605,7 +8605,7 @@
             "A": "Anti-malware configured to submit unknown executables to the vendor for analysis.",
             "B": "A policy forbidding technicians from downloading software to fleet machines.",
             "C": "Blocking the fleet's outbound web access to sites known to host hacking tools.",
-            "D": "A deny-by-default policy admitting software the organization has explicitly authorized to execute."
+            "D": "A deny-by-default policy admitting only software the organization has authorized."
           },
           "correctAnswer": "D",
           "explanation": "A diagnostic tool downloaded that morning is on nobody's list of known-bad software. Any control that starts from an enumeration of what is forbidden will miss it.\nNIST SP 800-53 Rev 5 CM-7(5) Least Functionality | Authorized Software - Allow-by-Exception is the precise control (D). Identify the software authorized to execute, employ a deny-all permit-by-exception policy to allow it, and review and update the list on a defined frequency. Its sibling CM-7(4) Unauthorized Software - Deny-by-Exception runs the weaker direction, and the catalog says so by structure. Watch the vocabulary too: Rev 5 uses allow-list and deny-list where older material says whitelisting and blacklisting.\nEnumerate what is allowed to run.",
