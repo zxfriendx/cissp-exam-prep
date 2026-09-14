@@ -2,7 +2,9 @@
 
 import { getBankManifest, getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
+import Link from "next/link";
 import { QuickStartButton } from "@/components/quiz/quick-start-button";
+import { BUY, BUY_PLUS } from "@/lib/checkout";
 
 /**
  * The counts at the top of /practice/.
@@ -48,10 +50,18 @@ export function PracticeHero() {
                 </p>
             )}
             <QuickStartButton count={10} />
+            {/* Says what the free set is a sample of, and links to the page that
+                sells the rest. It used to name "the printed Practice Examination"
+                with no link and no price, so a reader who wanted the rest had to
+                go looking for it. */}
             {!paid && (
                 <p className="mx-auto max-w-2xl text-sm text-muted-foreground/80 leading-relaxed px-4">
-                    The printed <em>Practice Examination</em> has all {summary.paid}, including two
-                    full-length mock forms to sit under a timer.
+                    These are {drills} of the {summary.paid} in <em>The Eight Domains</em>, a CISSP practice
+                    examination with two full-length mock exams to sit under a timer and a lesson behind
+                    every miss. Five books from {BUY.price}, or {BUY_PLUS.price} with all {summary.paid} in this app.{" "}
+                    <Link href="/" className="text-accent underline underline-offset-4 hover:brightness-110">
+                        See what is in it
+                    </Link>
                 </p>
             )}
             {bank && (

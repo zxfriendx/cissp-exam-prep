@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { useQuizStore } from "@/store/quiz-store"
-import { domainOfQuestion, getDomainById, getStimulus, type Stimulus } from "@/lib/content"
+import { domainOfQuestion, getDomainById, getPaidBankCount, getStimulus, getTotalQuestionCount, type Stimulus } from "@/lib/content"
+import { useBankStore } from "@/lib/bank"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
 import { cleanExplanation, orderedOptions, splitCaseStudy } from "@/lib/text"
 import { Emphasis } from "@/components/quiz/emphasis"
@@ -30,6 +31,7 @@ interface DomainRow {
 export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
     const percentage = Math.round((score / totalQuestions) * 100);
     const { questions, answers, startedAt, finishedAt, resetQuiz, restartQuiz } = useQuizStore();
+    const tier = useBankStore(state => state.tier);
 
     let message = "Keep studying!";
     if (percentage >= 80) message = "Excellent work! You're ready.";
@@ -139,6 +141,20 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                     </Button>
                 </CardFooter>
             </Card>
+
+            {/* The moment a reader has just seen what they missed is the moment
+                the rest of the examination is worth a sentence. One line, no
+                card, and it goes to the page that says what is in it. */}
+            {tier !== "paid" && (
+                <p className="text-sm text-muted-foreground text-center">
+                    This set came from the free {getTotalQuestionCount()} questions. The whole examination
+                    is {getPaidBankCount()}, with two full-length mock exams to sit under a timer and a lesson
+                    behind every miss.{" "}
+                    <Link href="/" className="text-accent underline underline-offset-4 hover:brightness-110">
+                        See what is in it
+                    </Link>
+                </p>
+            )}
 
             {/* The back of the book: key and worked explanations. */}
             <section className="space-y-4">
