@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { getDomainById, getExamQuestions, getFormQuestions, getQuestionById, getQuestionSet, getQuestionsForDomain, getRandomQuestions, type MockForm, Question, setLabel } from '@/lib/content';
 import { shuffled } from '@/lib/text';
+import { trackQuizStart, trackQuizComplete } from '@/lib/analytics';
 
 interface QuizState {
     currentDomainId: string | null;
@@ -85,7 +86,13 @@ const fresh = (questions: Question[], currentDomainId: string, quizTitle: string
 
 export const useQuizStore = create<QuizState>()(
     persist(
-        (set) => ({
+        (set, get) => {
+            /** Every way a sitting starts goes through here, so quiz_start fires once per start. */
+            const begin = (state: ReturnType<typeof fresh>) => {
+                trackQuizStart(state.currentDomainId, state.questions.length);
+                set(state);
+            };
+            return {
             ...NO_QUIZ,
 
             startQuiz: (domainId, setIndex) => {
@@ -95,11 +102,11 @@ export const useQuizStore = create<QuizState>()(
                 const title = domain
                     ? (setIndex ? `${domain.title} · Questions ${setLabel(setIndex, all.length)}` : domain.title)
                     : "Quiz";
-                set(fresh(questions, domainId, title));
+                begin(fresh(questions, domainId, title));
             },
 
             startRandomQuiz: (count) => {
-                set(fresh(getRandomQuestions(count), 'random', `Random Practice (${count} Questions)`));
+                begin(fresh(getRandomQuestions(count), 'random', `Random Practice (${count} Questions)`));
             },
 
             startWeaknessHunterQuiz: (weakDomainIds: string[]) => {
@@ -115,7 +122,7 @@ export const useQuizStore = create<QuizState>()(
                     });
                 }
 
-                set(fresh(shuffled(selectedQuestions), 'weakness-hunter', "Weakness Hunter Mode"));
+                begin(fresh(shuffled(selectedQuestions), 'weakness-hunter', "Weakness Hunter Mode"));
             },
 
             /**
@@ -131,7 +138,7 @@ export const useQuizStore = create<QuizState>()(
                 const questions = ids
                     .map(getQuestionById)
                     .filter((q): q is Question => q !== undefined);
-                set(fresh(questions, 'review', `Due Today (${questions.length} Questions)`));
+                begin(fresh(questions, 'review', `Due Today (${questions.length} Questions)`));
             },
 
             startExamQuiz: (count) => {
@@ -139,7 +146,7 @@ export const useQuizStore = create<QuizState>()(
                 const title = count
                     ? `Practice Examination (${questions.length} Questions)`
                     : `Practice Examination (Full Book, ${questions.length} Questions)`;
-                set(fresh(questions, 'exam', title, true));
+                begin(fresh(questions, 'exam', title, true));
             },
 
             /*
@@ -153,38 +160,53 @@ export const useQuizStore = create<QuizState>()(
              */
             startFormQuiz: (form) => {
                 const questions = getFormQuestions(form);
-                set(fresh(questions, `form-${form.toLowerCase()}`, `Mock Form ${form} (${questions.length} Questions)`, true));
+                begin(fresh(questions, `form-${form.toLowerCase()}`, `Mock Form ${form} (${questions.length} Questions)`, true));
             },
 
-            restartQuiz: () => set({
+            restartQuiz: () => {
+                const { currentDomainId, questions } = get();
+                trackQuizStart(currentDomainId, questions.length, true);
+                set({
                 currentQuestionIndex: 0,
                 answers: {},
                 score: 0,
                 isQuizActive: true,
                 startedAt: Date.now(),
                 finishedAt: null,
-            }),
+                });
+            },
 
             answerQuestion: (questionId, answer, isCorrect) => set((state) => ({
                 answers: { ...state.answers, [questionId]: answer },
                 score: isCorrect ? state.score + 1 : state.score
             })),
 
-            nextQuestion: () => set((state) => {
+            nextQuestion: () => {
+                const state = get();
                 const next = state.currentQuestionIndex + 1;
                 const done = next >= state.questions.length;
-                return {
+                const finishing = done && !state.finishedAt;
+                const now = Date.now();
+                if (finishing) {
+                    // Marked the way the results page marks it, from the answers,
+                    // rather than from `score`, so the two can never disagree.
+                    const correct = state.questions.filter(q => state.answers[q.id] === q.correctAnswer).length;
+                    const elapsed = state.startedAt ? Math.max(0, Math.round((now - state.startedAt) / 1000)) : 0;
+                    trackQuizComplete(state.currentDomainId, state.questions.length, correct, elapsed);
+                }
+                set({
                     currentQuestionIndex: next,
-                    finishedAt: done && !state.finishedAt ? Date.now() : state.finishedAt,
-                };
-            }),
+                    finishedAt: finishing ? now : state.finishedAt,
+                });
+            },
 
             prevQuestion: () => set((state) => ({
                 currentQuestionIndex: Math.max(0, state.currentQuestionIndex - 1)
             })),
 
             resetQuiz: () => set({ ...NO_QUIZ })
-        }),
+            };
+        },
         {
             name: 'cissp-quiz-storage',
             version: PERSIST_VERSION,

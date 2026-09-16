@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ICON_SPRITE } from "./_sales/icons";
 import { getPreviewSummary } from "@/lib/content";
-import { BUY, BUY_HREF, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
+import { BUY, BUY_PLUS } from "@/lib/checkout";
+import { BuyLink } from "@/components/buy-link";
 import "./_sales/guides.css";
 
 export const metadata: Metadata = {
@@ -300,9 +301,9 @@ export default function GuidesPage() {
                 <li><strong>A reason on every wrong answer</strong>, across all 750 questions</li>
               </ul>
               <div className="buy-foot">
-                <a className="btn btn-ghost btn-lg" href={BUY_HREF} rel="noopener">
+                <BuyLink className="btn btn-ghost btn-lg" buy="books" placement="offer_tier">
                   Buy the five books — {BUY.price}
-                </a>
+                </BuyLink>
               </div>
             </div>
 
@@ -319,9 +320,9 @@ export default function GuidesPage() {
                 <li>Works <strong>offline</strong>, on up to five devices</li>
               </ul>
               <div className="buy-foot">
-                <a className="btn btn-buy btn-lg" href={BUY_PLUS_HREF} rel="noopener">
+                <BuyLink className="btn btn-buy btn-lg" buy="plus" placement="offer_tier">
                   Buy the books and the app — {BUY_PLUS.price}
-                </a>
+                </BuyLink>
               </div>
             </div>
           </div>
@@ -353,9 +354,9 @@ export default function GuidesPage() {
               <Link className="btn btn-ghost btn-lg" href="/practice/">
                 Start the free {PREVIEW.served} →
               </Link>
-              <a className="btn btn-buy btn-lg" href={BUY_PLUS_HREF} rel="noopener">
+              <BuyLink className="btn btn-buy btn-lg" buy="plus" placement="offer_free_block">
                 Unlock all 750 in the app — {BUY_PLUS.price}
-              </a>
+              </BuyLink>
             </div>
           </div>
           <p className="author-note">

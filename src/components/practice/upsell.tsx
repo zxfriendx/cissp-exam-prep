@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { getAllDomains, getDrillCountPaid, getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
-import { BUY, BUY_HREF, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
+import { BUY, BUY_PLUS } from "@/lib/checkout";
+import { BuyLink } from "@/components/buy-link";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -65,12 +66,12 @@ export function Upsell() {
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <Button asChild size="lg" className="font-medium">
-                        <a href={BUY_PLUS_HREF} rel="noopener">
+                        <BuyLink buy="plus" placement="practice_upsell">
                             Unlock all {summary.paid} in this app &mdash; {BUY_PLUS.price}
-                        </a>
+                        </BuyLink>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="font-medium">
-                        <a href={BUY_HREF} rel="noopener">The five books &mdash; {BUY.price}</a>
+                        <BuyLink buy="books" placement="practice_upsell">The five books &mdash; {BUY.price}</BuyLink>
                     </Button>
                     <p className="text-sm text-muted-foreground">
                         <Link href="/" className="text-accent underline underline-offset-4 hover:brightness-110">

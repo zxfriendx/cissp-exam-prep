@@ -5,7 +5,8 @@ import Link from "next/link";
 import { CheckCircle2, KeyRound, Loader2, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useBankStore } from "@/lib/bank";
-import { BUY, BUY_PLUS, BUY_PLUS_HREF } from "@/lib/checkout";
+import { BUY, BUY_PLUS } from "@/lib/checkout";
+import { BuyLink } from "@/components/buy-link";
 import {
     SERVICE_UNCONFIGURED_MESSAGE,
     SUPPORT_PHONE,
@@ -211,7 +212,7 @@ export function UnlockPageClient() {
                         into this app. The free practice test stays free either way.
                     </p>
                     <Button asChild variant="outline" className="font-medium">
-                        <a href={BUY_PLUS_HREF} rel="noopener">Buy on Gumroad &mdash; {BUY_PLUS.price}</a>
+                        <BuyLink buy="plus" placement="unlock_page">Buy on Gumroad &mdash; {BUY_PLUS.price}</BuyLink>
                     </Button>
                 </section>
             </main>

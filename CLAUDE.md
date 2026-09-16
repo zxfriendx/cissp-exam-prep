@@ -63,3 +63,25 @@ Every product number on the storefront is measured from the built PDFs; the comm
 produce each one are in a comment above `FACTS` in `src/app/page.tsx`. Re-measure rather
 than copying from a changelog — the page claimed 491 questions while the app served 439,
 and 35 diagrams while the book prints 29.
+
+### Analytics: four events beyond page views
+
+`src/lib/analytics.ts`, added 2026-09-16. GA4 property `G-Y20Q6FPX5T` is shared with the
+apex; split reports on **Hostname**. Before this the property received `page_view` only.
+
+| event | fires | carries |
+|---|---|---|
+| `quiz_start` | every start action in `quiz-store.ts`, via `begin()`, and `restartQuiz` | `mode` (domain / random / weakness / review / exam / form), `domain`, `count`, `restart` |
+| `quiz_complete` | `nextQuestion` when the last question is answered | the same, plus `correct`, `percent`, `elapsed_s` |
+| `buy_click` | every checkout link, all of which are `<BuyLink>` (`src/components/buy-link.tsx`) | `product` (books / plus), `placement` |
+| `history_loaded` | once per page load, after the attempt log hydrates (`<AnalyticsIdentity>` in the root layout) | `attempts`, and sets the **`attempts_bucket`** user property: none / 1-10 / 11-50 / 51+ |
+
+Every event also carries `tier` (free / paid), read at the moment it fires. "Returning
+user" in GA4 is a cookie fact; `attempts_bucket` is "has answered questions in this
+browser before", which is the question worth asking. Verified end to end on the staged
+build by reading `window.dataLayer` under Playwright: a first load reports `none`, a
+second load after a ten-question set reports `1-10`.
+
+A new buy button must be a `<BuyLink>`, not an `<a>`: the component owns the href, the
+`rel` and the event, and the offer page is a server component that cannot attach an
+`onClick` of its own.

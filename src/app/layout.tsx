@@ -29,6 +29,7 @@ const geistMono = Geist_Mono({
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BankLoader } from "@/components/entitlement/bank-loader";
+import { AnalyticsIdentity } from "@/components/analytics-identity";
 import { RegisterSW } from "@/components/pwa/register-sw";
 import { InstallCoach } from "@/components/pwa/install-coach";
 
@@ -100,6 +101,9 @@ export default function RootLayout({
             for a reader who has unlocked — on every route, so a bookmarked
             quiz URL gets the full domain rather than the free twenty. */}
         <BankLoader />
+        {/* Renders nothing. Sets the attempts_bucket user property once the
+            attempt log is read, so GA4 can tell a first visit from a return. */}
+        <AnalyticsIdentity />
         {/* Both render nothing until they have something to do: RegisterSW only
             registers over https in production, InstallCoach only appears when the
             page is installable and the reader has not dismissed it. */}
