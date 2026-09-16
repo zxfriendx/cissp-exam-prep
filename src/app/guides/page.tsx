@@ -16,12 +16,15 @@ export const metadata: Metadata = {
   description: "The Eight Domains CISSP study materials have moved to the site root.",
   alternates: { canonical: "https://learn.securepathdigital.net/" },
   robots: { index: false, follow: true },
-  other: { refresh: "0; url=/" },
 };
 
 export default function GuidesRedirect() {
   return (
     <main style={{ padding: "6rem 1.5rem", textAlign: "center" }}>
+      {/* This used to be set through the page metadata, which Next renders as
+          a meta NAME of "refresh"; no browser acts on that, so only the script
+          below ever redirected. */}
+      <meta httpEquiv="refresh" content="0; url=/" />
       <script
         dangerouslySetInnerHTML={{
           __html: "window.location.replace('/');",

@@ -45,6 +45,7 @@ export function Footer() {
               <li><p>Columbus, Ohio</p></li>
               <li><a href="tel:+16148878772">(614) 887-8772</a></li>
               <li><a href="https://securepathdigital.net">securepathdigital.net</a></li>
+              <li><a href="https://securepathdigital.net/privacy/">Privacy</a></li>
             </ul>
           </div>
         </div>
