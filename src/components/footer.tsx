@@ -26,8 +26,8 @@ export function Footer() {
               <VaultLockup />
             </Link>
             <p className="foot-tag">
-              Bank-grade security for growing businesses. Fractional CISO &amp; cybersecurity
-              advisory for regulated firms.
+              Study materials and a practice app that help you get CISSP certified. Read the
+              material, take the practice tests, and let the app show you your weak points.
             </p>
           </div>
 

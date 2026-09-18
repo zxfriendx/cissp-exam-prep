@@ -12,7 +12,9 @@ import { useProgressStore } from "@/store/progress-store";
 const navLinks = [
   { label: "Study Materials", href: "/" },
   { label: "Free Practice Test", href: "/practice/" },
-  { label: "Services", href: "https://securepathdigital.net/#services" },
+  /* The apex dropped its fractional-CISO section on 2026-09-18; the site is
+     about the study materials now, so there is no Services target to link. */
+  { label: "About", href: "https://securepathdigital.net/about/" },
   { label: "Contact", href: "https://securepathdigital.net/#contact" },
 ];
 
