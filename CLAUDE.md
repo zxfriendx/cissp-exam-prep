@@ -30,16 +30,27 @@ one to read for the products, the store and the deploy runbooks.**
   Gumroad licence key for a signed token and serves the full 750. Its own README carries
   the runbook. `scripts/build-paid.mjs` cuts the bank it ships; `data/paid.json` is
   gitignored and built inside the image.
+- **The privacy policy is not in this repo.** It has one source,
+  `securepathdigital.net/privacy/`, which covers this app too. The footer links there and
+  `src/app/privacy/page.tsx` redirects there. Anything that changes what the app collects
+  or stores in the browser changes that page (`public/privacy/index.html` in the site repo).
+- **Redirect routes emit `<meta httpEquiv="refresh">` in the body**, not
+  `metadata.other.refresh`: Next renders the latter as `<meta name="refresh">`, which no
+  browser acts on. `/guides/` had only ever redirected by script until 2026-09-16.
 
 ### Two Gumroad products, and only one issues keys
 
 | | permalink | price | what it delivers |
 |---|---|---|---|
-| Books | `eight-domains` | $9.99 | the five PDFs |
-| Books + app | `lkidg` | $19.99 | the same five, plus a licence key |
+| Books | `eight-domains` | $29 | the five PDFs |
+| Books + app | `lkidg` | $49 | the same five, plus a licence key |
+
+Prices were $9.99 / $19.99 until 2026-09-10. They live in `src/lib/checkout.ts`, and the
+apex, the Gumroad listings and the hero artwork all carry them too; see the site repo's
+CLAUDE.md before moving them again.
 
 Cloud Run runs with `GUMROAD_PRODUCT_ID=O_wvGHBX4d_MOpvoZafVQw==`, which is `lkidg`. **A
-key cannot come from the $9.99 product**, so any "unlock the app" call to action has to
+key cannot come from the $29 product**, so any "unlock the app" call to action has to
 point at `lkidg` or it sells something the buyer will not receive. Both URLs live in
 `src/lib/checkout.ts`; the unlock page and the practice upsell both got this wrong until
 2026-09-08.
@@ -85,3 +96,9 @@ second load after a ten-question set reports `1-10`.
 A new buy button must be a `<BuyLink>`, not an `<a>`: the component owns the href, the
 `rel` and the event, and the offer page is a server component that cannot attach an
 `onClick` of its own.
+
+Every parameter above is registered as a custom dimension or metric on the property
+(2026-09-18), which is what makes it reportable. Add a parameter here and register it with
+`analytics/register-definitions.py` in the site repo, which is idempotent; API access is a
+service account, not a login. That repo's CLAUDE.md § Analytics has the account, the key
+path and why the gcloud login route does not work.
