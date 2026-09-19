@@ -19,7 +19,8 @@ const summary = getPreviewSummary();
 // licence unlocks the paid bank are client components underneath it, and each
 // of them renders the free markup until BankLoader has swapped the bank in.
 export const metadata: Metadata = {
-  title: "Free CISSP Practice Test — Secure Path Digital",
+  title: `Free CISSP Practice Test: ${summary.served} Questions, No Sign-up — Secure Path Digital`,
+  alternates: { canonical: "https://learn.securepathdigital.net/practice/" },
   description:
     `${summary.served} free CISSP practice questions, ${summary.perDomain} in each domain. Every one puts you in a ` +
     `company with a decision to make, the way the real exam does, and every wrong answer tells you why it was ` +

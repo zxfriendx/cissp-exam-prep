@@ -42,6 +42,15 @@ export const metadata: Metadata = {
   description:
     "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. From $29, or $49 with the practice app unlocked. Free practice test alongside.",
   manifest: "/manifest.webmanifest",
+  /* Social previews. Page titles and descriptions flow into these; the image is
+     the store's hero cover, copied into public/og/. */
+  openGraph: {
+    type: "website",
+    siteName: "Secure Path Digital",
+    locale: "en_US",
+    images: [{ url: "/og/eight-domains.png", width: 1280, height: 720, alt: "The Eight Domains: the five CISSP study books and the practice app" }],
+  },
+  twitter: { card: "summary_large_image" },
   appleWebApp: { capable: true, title: "Eight Domains", statusBarStyle: "black-translucent" },
   icons: {
     icon: [

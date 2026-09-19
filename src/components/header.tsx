@@ -14,6 +14,7 @@ const navLinks = [
   { label: "Free Practice Test", href: "/practice/" },
   /* The apex dropped its fractional-CISO section on 2026-09-18; the site is
      about the study materials now, so there is no Services target to link. */
+  { label: "FAQ", href: "https://securepathdigital.net/cissp-faq/" },
   { label: "About", href: "https://securepathdigital.net/about/" },
   { label: "Contact", href: "https://securepathdigital.net/#contact" },
 ];

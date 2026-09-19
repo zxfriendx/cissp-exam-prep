@@ -6,10 +6,32 @@ import { BUY, BUY_PLUS } from "@/lib/checkout";
 import { BuyLink } from "@/components/buy-link";
 import "./_sales/guides.css";
 
+/* The title carries the funnel queries (docs/CISSP_SEO_RESEARCH.md in the content
+   pipeline, § 6): "CISSP practice questions", "CISSP study guide", "CISSP cheat sheet"
+   are what someone mid-study types, and they are the three things this sells. */
 export const metadata: Metadata = {
-  title: "The Eight Domains — CISSP Practice Examination — Secure Path Digital",
+  title: "The Eight Domains — 750 CISSP Practice Questions, Study Guide and Cheat Sheets",
   description:
-    "A CISSP practice examination: 750 questions that read like the real exam, a reason on every wrong answer, a lesson for all 292 objectives on the 2024 outline, and one revision sheet per domain. Five books for $29, or $49 with the practice app unlocked to all 750.",
+    "A CISSP practice examination: 750 practice questions that read like the real exam with a reason on every wrong answer, a study guide with a lesson for all 292 objectives on the 2024 outline, and a one-page cheat sheet per domain. Five books for $29, or $49 with the practice app unlocked.",
+  alternates: { canonical: "https://learn.securepathdigital.net/" },
+};
+
+/* Product schema for the offer. The apex home page carries the same product
+   under its own @id; both point at the same two Gumroad offers. */
+const PRODUCT_LD = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://learn.securepathdigital.net/#eight-domains",
+  name: "The Eight Domains — CISSP Study Materials",
+  description:
+    "Five books and a practice app for the 2024 CISSP outline: a study guide with a lesson for every one of the 292 objectives, 750 practice questions with a reason on every wrong answer, two full-length timed mock exams, and one revision sheet per domain.",
+  image: "https://learn.securepathdigital.net/og/eight-domains.png",
+  brand: { "@type": "Organization", name: "Secure Path Digital LLC", url: "https://securepathdigital.net/" },
+  author: { "@type": "Person", name: "Bill Friend", url: "https://securepathdigital.net/about/" },
+  offers: [
+    { "@type": "Offer", name: "The five books (PDF)", price: "29.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY.url },
+    { "@type": "Offer", name: "The five books and the practice app", price: "49.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY_PLUS.url },
+  ],
 };
 
 
@@ -173,6 +195,7 @@ export default function GuidesPage() {
     // sample as the way in for anyone still deciding.
     <div className="guides-page">
       <svg style={{ display: "none" }} aria-hidden="true" dangerouslySetInnerHTML={{ __html: ICON_SPRITE }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_LD) }} />
 
       <section className="hero">
         <div className="wrap">
@@ -297,7 +320,7 @@ export default function GuidesPage() {
                 <li><strong>500 domain drills</strong>, weighted the way the exam is</li>
                 <li><strong>Two full-length mock exams</strong> of 125, with printable answer and scoring sheets</li>
                 <li><strong>The study guide</strong>: a lesson for every objective on the 2024 outline</li>
-                <li><strong>The revision sheets</strong>: one page per domain</li>
+                <li><strong>The revision sheets</strong>: one page per domain, the cheat sheet you carry in</li>
                 <li><strong>A reason on every wrong answer</strong>, across all 750 questions</li>
               </ul>
               <div className="buy-foot">

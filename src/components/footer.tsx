@@ -36,6 +36,7 @@ export function Footer() {
             <ul>
               <li><Link href="/">Study materials</Link></li>
               <li><Link href="/practice/">Free practice test</Link></li>
+              <li><a href="https://securepathdigital.net/cissp-faq/">CISSP exam FAQ</a></li>
             </ul>
           </div>
 

@@ -34,6 +34,13 @@ one to read for the products, the store and the deploy runbooks.**
   `securepathdigital.net/privacy/`, which covers this app too. The footer links there and
   `src/app/privacy/page.tsx` redirects there. Anything that changes what the app collects
   or stores in the browser changes that page (`public/privacy/index.html` in the site repo).
+- **SEO plumbing (2026-09-19):** `src/app/sitemap.ts` and `robots.ts` are metadata routes
+  written at export (`/` and `/practice/` listed; the app screens disallowed); `layout.tsx`
+  sets `openGraph` and `twitter` defaults with `public/og/eight-domains.png`; the offer page
+  and the practice page set `alternates.canonical`; the offer page carries `Product` JSON-LD
+  with both prices typed in (`PRODUCT_LD`), so a price change touches it too. The header and
+  footer link to the apex FAQ at `securepathdigital.net/cissp-faq/`. The site repo's
+  CLAUDE.md § SEO has the research this came from.
 - **Redirect routes emit `<meta httpEquiv="refresh">` in the body**, not
   `metadata.other.refresh`: Next renders the latter as `<meta name="refresh">`, which no
   browser acts on. `/guides/` had only ever redirected by script until 2026-09-16.
