@@ -60,3 +60,4 @@ next-env.d.ts
 # it is a cut of content.json, which is already committed, so committing it too
 # would just be a second copy to keep in step.
 services/unlock/data/paid.json
+.next-test-browser.log

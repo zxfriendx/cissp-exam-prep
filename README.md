@@ -98,6 +98,10 @@ To deploy:
 To verify the installation:
 1.  Run `npm run build` to check for build errors.
 2.  Run `npm run lint` to check for code style issues.
+3.  Run `npm test` for the unit tests. They use `node --test` and need no browser.
+4.  Run `npm run test:browser` for the rendered checks in `e2e/`. It starts `next dev` on port 3917 (set `PORT` to change it), drives headless Chrome at `/usr/bin/google-chrome` (set `CHROME_PATH` to change it), and stops the server when done. The server log is `.next-test-browser.log`. It never downloads a browser.
+
+The browser test `e2e/quiz-contrast.e2e.mjs` answers a quiz question right and wrong. It measures the computed text and background colour of every option and requires 4.5:1 contrast, or 3:1 for the dimmed options. It also checks the marked answers really get the success fill and the red border, not the outline variant's dark steel. Run it after touching `question-card.tsx`, `button.tsx` or the colour tokens in `globals.css`.
 
 ## 📄 content.json Structure
 

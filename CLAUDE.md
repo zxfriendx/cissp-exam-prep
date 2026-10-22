@@ -46,6 +46,13 @@ one to read for the products, the store and the deploy runbooks.**
   `metadata.other.refresh`: Next renders the latter as `<meta name="refresh">`, which no
   browser acts on. `/guides/` had only ever redirected by script until 2026-09-16.
 
+### Tests
+
+`npm test` runs the fast `node --test` suite in `test/`. `npm run test:browser` starts
+`next dev` on port 3917 and runs `e2e/` in headless system Chrome; it checks the rendered
+contrast of the quiz answer buttons. Run it after changing quiz or button styling. See
+README § Verification.
+
 ### Two Gumroad products, and only one issues keys
 
 | | permalink | price | what it delivers |
