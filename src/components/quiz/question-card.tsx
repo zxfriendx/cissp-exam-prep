@@ -180,19 +180,15 @@ export function QuestionCard({
                                         className={cn(
                                             "w-full justify-start text-left h-auto py-6 px-7 text-base whitespace-normal transition-all duration-300 border-2 font-normal",
                                             !isAnswered && "border-primary/20 hover:border-secondary/50 hover:bg-muted/20 hover:shadow-md",
-                                            // Written as `!deferFeedback && isAnswered && isTargetCorrect` (rather
-                                            // than the equivalent `showMarking && isTargetCorrect`) so the
-                                            // contrast-fix regression guard (test/quiz-contrast.test.mjs) can still
-                                            // regex-extract these three class strings by their exact
-                                            // `isAnswered && ... && "..."` shape. Semantically identical to
-                                            // `showMarking && isTargetCorrect` -- `showMarking` is exactly
-                                            // `isAnswered && !deferFeedback`, AND is commutative, and none of these
-                                            // are side-effecting -- but keep it this way rather than "simplifying"
-                                            // back to `showMarking`, or the dark: contrast fix silently stops being
-                                            // checked.
-                                            !deferFeedback && isAnswered && isTargetCorrect && "border-secondary/60 dark:border-secondary/60 bg-[rgb(var(--success))] dark:bg-[rgb(var(--success))] text-[rgb(var(--success-foreground))] dark:text-[rgb(var(--success-foreground))] font-medium disabled:opacity-100",
-                                            !deferFeedback && isAnswered && isSelected && !isTargetCorrect && "border-red-400 dark:border-red-400 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100 disabled:opacity-100",
-                                            !deferFeedback && isAnswered && !isSelected && !isTargetCorrect && "border-primary/10 disabled:opacity-60",
+                                            // Every coloured state carries a dark: counterpart. The outline
+                                            // variant's dark:bg-input/30 and dark:border-input beat a bare class
+                                            // on specificity, and tailwind-merge keeps both, so without the
+                                            // dark: copies the marked answer renders near-black on steel.
+                                            // e2e/quiz-contrast.e2e.mjs (npm run test:browser) checks the
+                                            // rendered colours.
+                                            showMarking && isTargetCorrect && "border-secondary/60 dark:border-secondary/60 bg-[rgb(var(--success))] dark:bg-[rgb(var(--success))] text-[rgb(var(--success-foreground))] dark:text-[rgb(var(--success-foreground))] font-medium disabled:opacity-100",
+                                            showMarking && isSelected && !isTargetCorrect && "border-red-400 dark:border-red-400 bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-100 disabled:opacity-100",
+                                            showMarking && !isSelected && !isTargetCorrect && "border-primary/10 disabled:opacity-60",
                                             // Exam mode (deferFeedback): no correct/incorrect color-coding yet, but
                                             // this is the same dark-only outline-variant vs. bare-class specificity
                                             // issue the contrast fix above addresses, so it gets the same treatment
@@ -210,9 +206,9 @@ export function QuestionCard({
                                             {/* On the marked-correct option the fill is the mint --success and
                                                 the label has to go dark with the text. Left at text-secondary it
                                                 measured 1.06:1 against that fill -- copper on mint, invisible --
-                                                while the option text beside it sat at 9.45:1. The class-merge
-                                                guard in test/quiz-contrast.test.mjs cannot see this: it checks
-                                                the button's own colours, not the spans inside it. */}
+                                                while the option text beside it sat at 9.45:1. The rendered
+                                                check in e2e/quiz-contrast.e2e.mjs measures every text span
+                                                inside the button, this label included. */}
                                             <span className={cn(
                                                 "font-mono text-sm font-semibold w-6 shrink-0",
                                                 showMarking && isTargetCorrect ? "text-[rgb(var(--success-foreground))]" : "text-secondary",
