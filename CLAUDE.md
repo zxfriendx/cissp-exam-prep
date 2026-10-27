@@ -35,7 +35,9 @@ one to read for the products, the store and the deploy runbooks.**
   `getPreviewQuestions()`, which filters by access, so no sitting can hold a gated
   question. All 160 still ship in the export: the gate is a request, not a lock. Changing
   the consent wording means bumping `CONSENT_VERSION` in `src/lib/unlock-protocol.ts`, and
-  anything the form collects belongs on the privacy page in the site repo.
+  anything the form collects belongs on the privacy page in the site repo. The runbook for the list (storage,
+  secrets, the welcome series, the mailer, subscriber requests) is the site repo's
+  `docs/MAILING_LIST.md`.
 - **`services/unlock/`** is a zero-dependency Node 22 service on Cloud Run that trades a
   Gumroad licence key for a signed token and serves the full 750. Its own README carries
   the runbook. `scripts/build-paid.mjs` cuts the bank it ships; `data/paid.json` is
@@ -75,7 +77,7 @@ apex, the Gumroad listings and the hero artwork all carry them too; see the site
 CLAUDE.md before moving them again.
 
 Cloud Run runs with `GUMROAD_PRODUCT_ID=O_wvGHBX4d_MOpvoZafVQw==`, which is `lkidg`. **A
-key cannot come from the $29 product**, so any "unlock the app" call to action has to
+key cannot come from the $39 product**, so any "unlock the app" call to action has to
 point at `lkidg` or it sells something the buyer will not receive. Both URLs live in
 `src/lib/checkout.ts`; the unlock page and the practice upsell both got this wrong until
 2026-09-08.
