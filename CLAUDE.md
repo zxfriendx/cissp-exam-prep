@@ -132,9 +132,8 @@ A new buy button must be a `<BuyLink>`, not an `<a>`: the component owns the hre
 `onClick` of its own.
 
 Every parameter above up to `history_loaded` is registered as a custom dimension or
-metric on the property (2026-09-18), which is what makes it reportable. **The gate's new
-parameter `code` is NOT registered yet (2026-10-27): add it to `register-definitions.py`
-and run it.** `placement` is already registered, under the display name "Buy placement",
+metric on the property (2026-09-18), which is what makes it reportable. The gate's
+`code` was registered on 2026-10-27 as "Signup error code". `placement` is already registered, under the display name "Buy placement",
 which now also covers the gate's placements. Add a parameter here and register it with
 `analytics/register-definitions.py` in the site repo, which is idempotent; API access is a
 service account, not a login. That repo's CLAUDE.md § Analytics has the account, the key
