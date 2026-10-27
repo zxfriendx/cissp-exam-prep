@@ -53,4 +53,7 @@ export const LIMITS = {
     activateIp: { limit: 5, windowMs: 60_000 },
     activateSub: { limit: 3, windowMs: 3_600_000 },
     refreshIp: { limit: 30, windowMs: 60_000 },
+    subscribeIpMin: { limit: 5, windowMs: 60_000 },
+    subscribeIpHour: { limit: 30, windowMs: 3_600_000 },
+    unsubscribeIp: { limit: 30, windowMs: 60_000 },
 } as const;

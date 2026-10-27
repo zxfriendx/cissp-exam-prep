@@ -13,7 +13,30 @@ POST /v1/activate   { key }          -> { ok, token, exp, edition, uses, cap }
 POST /v1/refresh    { key, token }   -> { ok, token, exp, edition, uses, cap }
 GET  /v1/bank       Bearer <token>   -> the bank, gzipped, ETag: "<edition>"
 GET  `/v1/health` (and `/healthz` locally)                        -> { ok, edition, items, stimuli, kid }
+POST /v1/subscribe  { email, consent, consentVersion, source, utm, website } -> { ok } | { ok:false, code }
+GET|POST /v1/unsubscribe?id=<sha256>&sig=<hmac>   -> an HTML page (POST is RFC 8058 one-click)
 ```
+
+### The mailing list (since 2026-10-27)
+
+The free sample is 40 open questions plus 120 that open when the visitor joins the
+list. `/v1/subscribe` stores the address in **Firestore**, collection `subscribers`,
+document id `sha256(lower(trim(email)))`, so a repeat signup updates one record and
+never resets `createdAt`. Stored: `email`, `createdAt`, `lastSignupAt`,
+`consentVersion`, `source`, `utm` (utm_* only), `unsubscribed`, `unsubscribedAt`. No IP
+address and no user agent. The service reaches Firestore over REST with the Cloud Run
+service account's token from the metadata server, so it holds no credential and keeps
+zero dependencies.
+
+- The address is never logged: `email` is in the log redaction set, and log lines carry
+  the first 12 hex of the id.
+- A filled honeypot (`website`) gets the same `{ok:true}` as a real signup and stores
+  nothing. Rate limits: 5/min and 30/hour per IP.
+- Unsubscribe links are signed: `sig = base64url(HMAC-SHA256(SUBSCRIBE_LINK_KEY, "unsub:"+id))[:32]`.
+  The sender on the home server holds the same key and builds the links; the service
+  checks them. The page reads the same whether or not the address was on the list.
+- Sending is **not** done here. See `scripts/mailer/` in the site repo.
+
 
 The wire contract — request and response shapes, and every `code` a failure can
 carry — is `src/lib/unlock-protocol.ts` in the app, imported here with
@@ -49,6 +72,9 @@ published docs promise `{success:false,message:"..."}`.
 | `UNLOCK_GRANTS` | no | — | `label:key,label:key`. These keys skip Gumroad and get a `src:'grant'` token. Keys must still be licence-shaped. |
 | `UNLOCK_DENY` | no | — | Comma list of `sub` **prefixes**, refused at all three endpoints. |
 | `ALLOWED_ORIGINS` | no | — | Comma list of exact origins, or `*`. An unlisted origin gets no CORS headers and a 403 on preflight. |
+| `SUBSCRIBE_STORE` | no | off | `firestore` on Cloud Run, `memory` for local runs. Off means `/v1/subscribe` answers 503 `store_unavailable`. |
+| `FIRESTORE_PROJECT` | no | metadata server | Override the project id. |
+| `SUBSCRIBE_LINK_KEY` | for unsubscribe | — | Hex, at least 32 bytes. Same value as the mailer's. Without it the unsubscribe page says to reply instead. |
 | `PORT` | no | `8080` | |
 | `PAID_BANK_PATH` | no | `../data/paid.json` | |
 | `UNLOCK_LOG` | no | — | `off` silences the log. |

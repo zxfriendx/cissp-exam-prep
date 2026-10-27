@@ -19,7 +19,7 @@ import { makeBank } from './bank.ts';
 /** Bigger than any legitimate request here: a key and a token, and nothing else. */
 const MAX_BODY = 4096;
 
-const SECRETISH = new Set(['key', 'license_key', 'licence_key', 'token', 'authorization']);
+const SECRETISH = new Set(['key', 'license_key', 'licence_key', 'token', 'authorization', 'email']);
 
 export function makeLog(stream: NodeJS.WritableStream, enabled = true): Log {
     return (level: LogLevel, msg: string, fields: Record<string, unknown> = {}) => {
@@ -89,7 +89,9 @@ export function createServer({ handle, log, allowedOrigins }: ServerDeps): Serve
     return createHttpServer((req: IncomingMessage, res: ServerResponse) => {
         void (async () => {
             const started = Date.now();
-            const path = (req.url ?? '/').split('?')[0] ?? '/';
+            const [rawPath, rawQuery] = (req.url ?? '/').split('?', 2);
+            const path = rawPath || '/';
+            const query = Object.fromEntries(new URLSearchParams(rawQuery ?? ''));
             const method = req.method ?? 'GET';
             const ip = clientIp(req);
             const cors = corsHeadersFor(req.headers.origin, allowedOrigins);
@@ -115,7 +117,10 @@ export function createServer({ handle, log, allowedOrigins }: ServerDeps): Serve
             if (method === 'POST') {
                 const read = await readBody(req);
                 if (!read.ok) return sendJson(413, { ok: false, error: 'body_too_large' }, { connection: 'close' });
-                try {
+                // A mail client's one-click unsubscribe posts a form body
+                // (List-Unsubscribe=One-Click), not JSON. The route needs nothing in it.
+                if (path === '/v1/unsubscribe') body = {};
+                else try {
                     body = read.text ? JSON.parse(read.text) : {};
                 } catch {
                     return sendJson(400, { ok: false, error: 'bad_json' });
@@ -125,7 +130,7 @@ export function createServer({ handle, log, allowedOrigins }: ServerDeps): Serve
             const headers: Record<string, string | undefined> = {};
             for (const [k, v] of Object.entries(req.headers)) headers[k] = Array.isArray(v) ? v.join(', ') : v;
 
-            const appReq: AppRequest = { method, path, headers, body, ip };
+            const appReq: AppRequest = { method, path, headers, body, ip, query };
             try {
                 const out = await handle(appReq);
                 if (out.body) return send(out.status, out.headers, out.body);
