@@ -1,5 +1,6 @@
 /**
- * The four things the app tells GA4 beyond page views, added 2026-09-16.
+ * The four things the app tells GA4 beyond page views, added 2026-09-16,
+ * and the four email-gate events added 2026-10-27 (at the bottom).
  *
  * Until then the property (G-Y20Q6FPX5T, shared with the apex; split reports
  * on Hostname) received page_view and nothing else, so "used the app" meant
@@ -105,4 +106,33 @@ export function identifyHistory(attempts: number): void {
 
 export function identifyTier(t: string): void {
     gtag("set", "user_properties", { tier: t });
+}
+
+/*
+ * The email gate on the free sample, added 2026-10-27. `placement` names the
+ * surface the signup panel sat on, the same way buy_click's does. The email
+ * address itself NEVER goes to GA: none of these take it as an argument, and
+ * nothing that calls them has a reason to pass it.
+ *
+ *   gate_view       a signup panel rendered for a visitor who has not joined
+ *   signup_submit   the form passed its own checks and the request went out
+ *   signup_success  the service said ok and the other 120 opened
+ *   signup_error    the service or the network said no; `code` says which
+ */
+export type GatePlacement = "practice_page" | "results" | "exam_modes";
+
+export function trackGateView(placement: GatePlacement): void {
+    track("gate_view", { placement });
+}
+
+export function trackSignupSubmit(placement: GatePlacement): void {
+    track("signup_submit", { placement });
+}
+
+export function trackSignupSuccess(placement: GatePlacement): void {
+    track("signup_success", { placement });
+}
+
+export function trackSignupError(placement: GatePlacement, code: string): void {
+    track("signup_error", { placement, code });
 }

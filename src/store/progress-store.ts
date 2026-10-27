@@ -81,8 +81,9 @@ function derive(attempts: readonly AttemptRecord[]): Derived {
 
 /**
  * The question pool new material is drawn from: everything the app currently
- * serves, in blueprint order. On the free tier that is the 160-question
- * preview; if the paid bank is loaded it is whatever content.ts then serves.
+ * serves, in blueprint order. On the free tier that is the part of the
+ * 160-question preview the visitor has opened (40 before the email signup, all
+ * 160 after); if the paid bank is loaded it is whatever content.ts then serves.
  * The scheduler never sees a question object, only ids and objectives.
  */
 const pool = () =>

@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { getDomainById, getExamQuestions, getFormQuestions, getQuestionById, getQuestionSet, getQuestionsForDomain, getRandomQuestions, type MockForm, Question, setLabel } from '@/lib/content';
 import { shuffled } from '@/lib/text';
+import { sampleAccess } from '@/lib/bank';
+import { isAvailable } from '@/lib/sample-gate';
 import { trackQuizStart, trackQuizComplete } from '@/lib/analytics';
 
 interface QuizState {
@@ -135,9 +137,12 @@ export const useQuizStore = create<QuizState>()(
              * is not loaded now.
              */
             startReviewQuiz: (ids) => {
+                // Also drops a question the email gate is holding back: a queue
+                // built while this browser was joined can outlive the flag.
+                const access = sampleAccess();
                 const questions = ids
                     .map(getQuestionById)
-                    .filter((q): q is Question => q !== undefined);
+                    .filter((q): q is Question => q !== undefined && isAvailable(q, access));
                 begin(fresh(questions, 'review', `Due Today (${questions.length} Questions)`));
             },
 

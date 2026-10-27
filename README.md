@@ -4,7 +4,8 @@ A modern, interactive web application designed to help users prepare for the CIS
 
 It is the on-screen edition of the printed **The Eight Domains — Practice Examination**
 (Secure Path Digital). Free, it serves **160 questions, 20 per domain**, sampled from the
-book's 500 domain drills. A licence key from the $19.99 Gumroad product unlocks all
+book's 500 domain drills: 40 (5 per domain) with no signup, and the other 120 after a
+free email signup. A licence key from the $19.99 Gumroad product unlocks all
 **750** — the same questions, the same key, the same review — and they then work offline.
 
 Read `CLAUDE.md` before changing anything about the bank or the paywall.

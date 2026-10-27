@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { useQuizStore } from "@/store/quiz-store"
-import { domainOfQuestion, getDomainById, getPaidBankCount, getStimulus, getTotalQuestionCount, type Stimulus } from "@/lib/content"
+import { domainOfQuestion, getDomainById, getPaidBankCount, getSampleCounts, getSampleQuestions, getStimulus, type Stimulus } from "@/lib/content"
 import { useBankStore } from "@/lib/bank"
 import { blueprintFor, formatMinutes, paceBudgetSeconds } from "@/lib/blueprint"
 import { cleanExplanation, orderedOptions, splitCaseStudy } from "@/lib/text"
@@ -14,7 +14,8 @@ import { QuestionProvenance } from "@/components/quiz/question-provenance"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
-import { RotateCcw, Home, CheckCircle2, XCircle, BookOpen, Clock, EyeOff, Building2 } from "lucide-react"
+import { SignupPanel } from "@/components/practice/signup-panel"
+import { RotateCcw, Home, PlayCircle, CheckCircle2, XCircle, BookOpen, Clock, EyeOff, Building2 } from "lucide-react"
 
 interface ResultsViewProps {
     score: number
@@ -30,8 +31,18 @@ interface DomainRow {
 
 export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
     const percentage = Math.round((score / totalQuestions) * 100);
-    const { questions, answers, startedAt, finishedAt, resetQuiz, restartQuiz } = useQuizStore();
+    const { questions, answers, startedAt, finishedAt, resetQuiz, restartQuiz, currentDomainId, startQuiz } = useQuizStore();
     const tier = useBankStore(state => state.tier);
+    const access = useBankStore(state => state.access);
+    const counts = getSampleCounts();
+
+    // The end of a domain's open questions is the dead end the email gate
+    // replaces: say how many more this domain has, and once the signup lands,
+    // offer the whole domain from here without a trip back to the dashboard.
+    const domainId = currentDomainId?.startsWith("domain_") ? currentDomainId : null;
+    const domainTitleText = domainId ? getDomainById(domainId)?.title : undefined;
+    const domainSample = domainId ? getSampleQuestions(domainId).length : 0;
+    const domainMore = Math.max(0, domainSample - questions.length);
 
     let message = "Keep studying!";
     if (percentage >= 80) message = "Excellent work! You're ready.";
@@ -142,12 +153,37 @@ export function ResultsView({ score, totalQuestions }: ResultsViewProps) {
                 </CardFooter>
             </Card>
 
+            {/* Renders nothing once joined or paid, but stays mounted through
+                the signup so it can say it worked. */}
+            {access !== "paid" && (
+                <SignupPanel
+                    placement="results"
+                    context={
+                        domainId && domainMore > 0
+                            ? `That was the ${questions.length} open questions in ${domainTitleText ?? "this domain"}. ${domainMore} more are waiting in this domain.`
+                            : undefined
+                    }
+                    successAction={
+                        domainId ? (
+                            <Button size="lg" className="font-medium" onClick={() => startQuiz(domainId)}>
+                                <PlayCircle className="mr-2 h-4 w-4" />
+                                Start all {domainSample} in this domain
+                            </Button>
+                        ) : (
+                            <Button size="lg" variant="outline" className="font-medium" asChild>
+                                <Link href="/practice/" onClick={resetQuiz}>Back to the dashboard</Link>
+                            </Button>
+                        )
+                    }
+                />
+            )}
+
             {/* The moment a reader has just seen what they missed is the moment
                 the rest of the examination is worth a sentence. One line, no
                 card, and it goes to the page that says what is in it. */}
             {tier !== "paid" && (
                 <p className="text-sm text-muted-foreground text-center">
-                    This set came from the free {getTotalQuestionCount()} questions. The whole examination
+                    This set came from the free {counts.sample} questions. The whole examination
                     is {getPaidBankCount()}, with two full-length mock exams to sit under a timer and a lesson
                     behind every miss.{" "}
                     <Link href="/" className="text-accent underline underline-offset-4 hover:brightness-110">

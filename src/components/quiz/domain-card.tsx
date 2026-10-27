@@ -15,12 +15,14 @@ interface DomainCardProps {
     id: string
     title: string
     questionCount: number
+    /** The domain's whole free sample (20), including what the email gate holds back. */
+    sampleCount?: number
     description: string
     /** Share of the real examination, per the 2024 outline. */
     weight?: number
 }
 
-export function DomainCard({ id, title, questionCount, description, weight }: DomainCardProps) {
+export function DomainCard({ id, title, questionCount, sampleCount, description, weight }: DomainCardProps) {
     const [isHovered, setIsHovered] = useState(false);
     const startQuiz = useQuizStore(state => state.startQuiz);
     const router = useRouter();
@@ -32,9 +34,12 @@ export function DomainCard({ id, title, questionCount, description, weight }: Do
        free app look thin. The 80 is counted by the generator from the bank, not
        typed in here. Dropped once the paid bank is loaded, when 80 IS all of
        them and "80 of 80" is just noise. */
-    const tier = useBankStore(state => state.tier);
+    const access = useBankStore(state => state.access);
     const paidDrills = getDrillCountPaid(id);
-    const showOutOf = tier === 'free' && paidDrills !== undefined && paidDrills > questionCount;
+    const showOutOf = access === 'joined' && paidDrills !== undefined && paidDrills > questionCount;
+    /* Before the email signup: "5 open now, 20 free with email", so the card
+       says both what is here and what the signup adds. */
+    const gated = access === 'open' && sampleCount !== undefined && sampleCount > questionCount;
 
     // "Start Quiz" is a link, so an unfinished domain quiz resumes. A set is
     // an explicit start: it replaces whatever the store holds for the domain.
@@ -65,7 +70,9 @@ export function DomainCard({ id, title, questionCount, description, weight }: Do
                     </Badge>
                 </div>
                 <CardDescription className="text-sm font-medium">
-                    {showOutOf ? `${questionCount} of ${paidDrills}` : questionCount} questions
+                    {gated
+                        ? `${questionCount} open now, ${sampleCount} free with email`
+                        : `${showOutOf ? `${questionCount} of ${paidDrills}` : questionCount} questions`}
                     {weight !== undefined && (
                         <span className="text-secondary"> &middot; {weight}% of the exam</span>
                     )}

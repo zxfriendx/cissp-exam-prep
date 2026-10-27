@@ -31,6 +31,7 @@ import { create } from 'zustand';
 import { kvDelete, kvGet, kvSet } from '@/lib/idb';
 import type { ContentData, Domain, Stimulus } from '@/lib/content';
 import type { PaidBank } from '@/lib/unlock-protocol';
+import { accessFor, availableQuestions, type SampleAccess } from '@/lib/sample-gate';
 
 /** The IndexedDB `kv` key the downloaded paid bank is cached under. */
 export const BANK_CACHE_KEY = 'paid-bank';
@@ -44,6 +45,19 @@ let preview: ContentData = EMPTY;
 let paid: PaidBank | null = null;
 let active: ContentData = EMPTY;
 let stimulusIndex = new Map<string, Stimulus>();
+/**
+ * Has this browser joined the mailing list? Module state for the same reason
+ * the bank is: content.ts reads it outside React. Starts false on the server
+ * and on the first client render, and only <SampleGateLoader> flips it, from an
+ * effect, so hydration sees the same 40 the server rendered.
+ */
+let joined = false;
+/**
+ * Does the free bank carry an open tier at all? A preview.json from before the
+ * email gate (or a hand-built one) has no `open` flags, and gating it would
+ * serve nothing. With no flags there is no gate: every question is available.
+ */
+let gateActive = false;
 
 const indexStimuli = (data: ContentData): Map<string, Stimulus> =>
     new Map(data.domains.flatMap(d => (d.stimuli ?? []).map(s => [s.id, s] as const)));
@@ -51,8 +65,12 @@ const indexStimuli = (data: ContentData): Map<string, Stimulus> =>
 const editionOf = (): string | null =>
     paid?.edition ?? preview.bank?.v2?.edition ?? preview.bank?.edition ?? null;
 
+const currentAccess = (): SampleAccess =>
+    accessFor({ tier: paid ? 'paid' : 'free', joined: joined || !gateActive });
+
+/** What the visitor can open right now: 40, 160, or the paid bank's 750. */
 const countServed = (data: ContentData): number =>
-    data.domains.reduce((n, d) => n + d.questions.length, 0);
+    data.domains.reduce((n, d) => n + availableQuestions(d.questions, currentAccess()).length, 0);
 
 /**
  * What components watch so they re-render when the bank changes underneath the
@@ -62,9 +80,15 @@ const countServed = (data: ContentData): number =>
  */
 export interface BankState {
     tier: BankTier;
+    /**
+     * open / joined / paid: what the email gate lets through. Components that
+     * print counts subscribe to this, not just `tier`, because joining changes
+     * the counts while the tier stays 'free'.
+     */
+    access: SampleAccess;
     /** The active bank's edition — the paid one when paid, the build's when free. */
     edition: string | null;
-    /** Questions the app can serve right now, mock-form items included. */
+    /** Questions the app can serve right now, mock-form items included, gated ones not. */
     served: number;
     /** True while the paid bank is being read out of IndexedDB or downloaded. */
     loading: boolean;
@@ -72,13 +96,19 @@ export interface BankState {
 
 export const useBankStore = create<BankState>(() => ({
     tier: 'free',
+    access: 'open',
     edition: null,
     served: 0,
     loading: false,
 }));
 
 const publish = (): void => {
-    useBankStore.setState({ tier: paid ? 'paid' : 'free', edition: editionOf(), served: countServed(active) });
+    useBankStore.setState({
+        tier: paid ? 'paid' : 'free',
+        access: currentAccess(),
+        edition: editionOf(),
+        served: countServed(active),
+    });
 };
 
 /**
@@ -92,6 +122,7 @@ const publish = (): void => {
  */
 export function setPreviewBank(data: ContentData): void {
     preview = data;
+    gateActive = data.domains.some(d => d.questions.some(q => q.open === true));
     if (!paid) {
         active = data;
         stimulusIndex = indexStimuli(data);
@@ -121,6 +152,20 @@ export function setActiveBank(bank: PaidBank | null): void {
 export const activeData = (): ContentData => active;
 
 export const activeTier = (): BankTier => (paid ? 'paid' : 'free');
+
+/** open / joined / paid, right now. What every question accessor in content.ts filters by. */
+export const sampleAccess = (): SampleAccess => currentAccess();
+
+/**
+ * Record that this browser has joined (or, with false, forget it). Called by
+ * <SampleGateLoader> after hydration and by the signup form on success, which
+ * is what opens the other 120 without a reload.
+ */
+export function setSampleJoined(value: boolean): void {
+    if (joined === value) return;
+    joined = value;
+    publish();
+}
 
 /** The scenario a question is set in. Rebuilt by every swap, so it cannot go stale. */
 export const lookupStimulus = (id: string): Stimulus | undefined => stimulusIndex.get(id);
@@ -175,5 +220,7 @@ export function resetBankForTests(): void {
     paid = null;
     active = EMPTY;
     stimulusIndex = new Map();
-    useBankStore.setState({ tier: 'free', edition: null, served: 0, loading: false });
+    joined = false;
+    gateActive = false;
+    useBankStore.setState({ tier: 'free', access: 'open', edition: null, served: 0, loading: false });
 }
