@@ -154,8 +154,8 @@ const FACTS = [
 const METHOD = [
   {
     icon: "ic-scale",
-    h: "The keyword trap",
-    sub: "Cheap question banks build habits that fail on exam day.",
+    h: "Decisions, not definitions",
+    sub: "Each question is a business decision with something at stake.",
     p: "Most free apps ask whether you remember what an acronym stands for. The real exam assumes you know the term and tests whether you know who owns the risk, which control comes first, or when a compensating control is acceptable. These questions make you read like a risk manager, not a technician.",
   },
   {
@@ -202,13 +202,15 @@ export default function GuidesPage() {
           <p className="vault-label">
             A CISSP practice examination &middot; five books and an app &middot; from {BUY.price}
           </p>
-          {/* The headline is shared with the apex, the Gumroad page and the
-              hero artwork. Change it in all four or in none. */}
+          {/* The headline is shared with the Gumroad page and the hero artwork
+              (securepathdigital-site marketing_images.py g_hero, and the og image).
+              Change it in all of them or in none. */}
+          {/* Since 2026-10-26 it leads with what the reader gets. It used to open on how
+              candidates fail ("You don't fail the CISSP because..."); Bill: it "leads
+              with describing how to fail". */}
           <h1>
-            You don&apos;t fail the CISSP because you forgot a definition.
-            <br />
-            You fail because two answers look{" "}
-            <span className="grad-copper">completely defensible</span>.
+            750 CISSP questions that read like{" "}
+            <span className="grad-copper">the real exam</span>.
           </h1>
           {/* The first sentence names the product. The page went without one
               for a while: "there are 750 questions of that second kind here"
@@ -218,8 +220,8 @@ export default function GuidesPage() {
             the way the exam writes them, each one set in a company with something at stake,
             and a reason on every wrong answer. It comes as five printable books for {BUY.price},
             or the same five plus the free practice app on this site unlocked to all 750 for{" "}
-            {BUY_PLUS.price}. The point is to meet the question that would have beaten you at your
-            kitchen table, where there is time to close the gap.
+            {BUY_PLUS.price}. You learn to pick the better of two good answers, which is what the
+            exam scores, and you practice it at your kitchen table before the day that counts.
           </p>
           {/* The buy button says what it buys. "See the packs" did not. */}
           <div className="herocta">
@@ -245,11 +247,11 @@ export default function GuidesPage() {
 
       <section className="block">
         <div className="wrap">
-          <p className="vault-label">Why most prep fails</p>
-          <h2>Most prep trains you for a different exam</h2>
+          <p className="vault-label">Why these questions</p>
+          <h2>Written the way the exam asks</h2>
           <p className="sec-intro">
-            You can clear a question bank at 90% and still read a real question four times
-            without knowing what it wants. Here is why, and what changes it.
+            The exam asks for judgment: who owns the risk, which control comes first. Three
+            things make these questions train that.
           </p>
 
           <div className="method">
