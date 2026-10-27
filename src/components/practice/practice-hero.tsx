@@ -1,6 +1,6 @@
 "use client"
 
-import { getBankManifest, getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
+import { getBankManifest, getPreviewSummary, getSampleCounts, getTotalQuestionCount } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
 import Link from "next/link";
 import { QuickStartButton } from "@/components/quiz/quick-start-button";
@@ -16,11 +16,12 @@ import { BUY, BUY_PLUS } from "@/lib/checkout";
  * hydration quiet.
  */
 export function PracticeHero() {
-    const tier = useBankStore(state => state.tier);
+    const access = useBankStore(state => state.access);
     const summary = getPreviewSummary();
+    const counts = getSampleCounts();
     const drills = getTotalQuestionCount();
     const bank = getBankManifest();
-    const paid = tier === "paid";
+    const paid = access === "paid";
     const forms = 2;
     const perForm = 125;
 
@@ -42,11 +43,17 @@ export function PracticeHero() {
                     in a company with a decision to make, the way the real exam does. Miss it and you find out
                     why the answer you liked was the weaker one.
                 </p>
-            ) : (
+            ) : access === "joined" ? (
                 <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
-                    {drills} free questions, {summary.perDomain} in each domain. Every one puts you in a company
+                    {counts.sample} free questions, {counts.perDomain} in each domain. Every one puts you in a company
                     with a decision to make, the way the real exam does. Miss it and you find out why the answer
                     you liked was the weaker one.
+                </p>
+            ) : (
+                <p className="mx-auto max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed px-4">
+                    Try {counts.open} now, {counts.sample} free with email, {counts.perDomain} in each domain. Every
+                    one puts you in a company with a decision to make, the way the real exam does. Miss it and you
+                    find out why the answer you liked was the weaker one.
                 </p>
             )}
             <QuickStartButton count={10} />
@@ -56,7 +63,7 @@ export function PracticeHero() {
                 go looking for it. */}
             {!paid && (
                 <p className="mx-auto max-w-2xl text-sm text-muted-foreground/80 leading-relaxed px-4">
-                    These are {drills} of the {summary.paid} in <em>The Eight Domains</em>, a CISSP practice
+                    The free {counts.sample} are drawn from the {summary.paid} in <em>The Eight Domains</em>, a CISSP practice
                     examination with two full-length mock exams to sit under a timer and a lesson behind
                     every miss. Five books from {BUY.price}, or {BUY_PLUS.price} with all {summary.paid} in this app.{" "}
                     <Link href="/" className="text-accent underline underline-offset-4 hover:brightness-110">

@@ -1,5 +1,6 @@
 /**
- * The three calls the app makes to the unlock service.
+ * The calls the app makes to the unlock service: three for the licence, and
+ * subscribe() for the mailing list that opens the rest of the free sample.
  *
  * Everything here returns a value; nothing throws. A caller only ever has to
  * branch on `ok`, and the failure it gets back is always one of the protocol's
@@ -25,6 +26,10 @@ import type {
     ActivateRequest,
     PaidBank,
     RefreshRequest,
+    SubscribeErr,
+    SubscribeErrorCode,
+    SubscribeOk,
+    SubscribeRequest,
     UnlockErr,
     UnlockErrorCode,
     UnlockOk,
@@ -205,4 +210,48 @@ export async function fetchBank(token: string, opts: CallOptions = {}): Promise<
 
     const err = unwrap(reply);
     return err.ok ? unreachable : err;
+}
+
+// ── the mailing list ─────────────────────────────────────────────────────────
+
+const KNOWN_SUBSCRIBE_CODES: readonly SubscribeErrorCode[] = [
+    'invalid_email',
+    'consent_required',
+    'rate_limited',
+    'store_unavailable',
+];
+
+/**
+ * What subscribe() hands back. The protocol's answer, or one of two outcomes
+ * the client decides for itself: `unconfigured` (no NEXT_PUBLIC_UNLOCK_URL in
+ * this build, so nothing was sent) and `unreachable` (network down, timeout,
+ * or a body that is not the protocol). Neither of those is ever a join.
+ */
+export type SubscribeResult =
+    | SubscribeOk
+    | SubscribeErr
+    | { ok: false; code: 'unreachable' | 'unconfigured'; retryAfter?: undefined };
+
+/**
+ * POST /v1/subscribe. Like the calls above it never throws. Only a body that
+ * says `ok: true` counts as joined: a 200 with an HTML page from a proxy is
+ * `unreachable`, so a broken service can never open the gated questions.
+ */
+export async function subscribe(req: SubscribeRequest, opts: CallOptions = {}): Promise<SubscribeResult> {
+    if (!isUnlockConfigured((opts.baseUrl ?? UNLOCK_URL).replace(/\/+$/, ''))) {
+        return { ok: false, code: 'unconfigured' };
+    }
+    const reply = await request('/v1/subscribe', jsonPost(req), opts);
+    if (reply.kind === 'unreachable') return { ok: false, code: 'unreachable' };
+
+    const body = reply.body as Record<string, unknown> | null;
+    if (body && typeof body === 'object') {
+        if (body.ok === true) return { ok: true };
+        if (body.ok === false && KNOWN_SUBSCRIBE_CODES.includes(body.code as SubscribeErrorCode)) {
+            const retryAfter = typeof body.retryAfter === 'number' ? body.retryAfter : retryAfterOf(reply.headers);
+            return { ok: false, code: body.code as SubscribeErrorCode, ...(retryAfter !== undefined ? { retryAfter } : {}) };
+        }
+    }
+    if (reply.status === 429) return { ok: false, code: 'rate_limited', retryAfter: retryAfterOf(reply.headers) };
+    return { ok: false, code: 'unreachable' };
 }

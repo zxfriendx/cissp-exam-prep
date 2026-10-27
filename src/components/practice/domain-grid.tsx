@@ -1,22 +1,22 @@
 "use client"
 
-import { getAllDomains, getPreviewSummary, SET_SIZE } from "@/lib/content";
+import { getAllDomains, getSampleCounts, SET_SIZE } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
 import { DomainCard } from "@/components/quiz/domain-card";
 
 /**
  * The eight domain cards, and the line above them that says how big a sitting is.
  *
- * Reads `tier` purely to re-render: getAllDomains() is what actually changes
- * when the paid bank swaps in, and it is not React state, so without a
- * subscription here the grid would go on showing twenty a domain after the
- * unlock.
+ * Reads `access` purely to re-render: getAllDomains() is what actually changes
+ * when the paid bank swaps in or the email signup opens the other 120, and it
+ * is not React state, so without a subscription here the grid would go on
+ * showing five a domain after the signup.
  */
 export function DomainGrid() {
-    const tier = useBankStore(state => state.tier);
+    const access = useBankStore(state => state.access);
     const domains = getAllDomains();
-    const summary = getPreviewSummary();
-    const paid = tier === "paid";
+    const counts = getSampleCounts();
+    const paid = access === "paid";
 
     return (
         <section className="space-y-8">
@@ -30,11 +30,17 @@ export function DomainGrid() {
                         read a new situation each time instead of grinding the same one. Take the whole
                         domain at once, or {SET_SIZE} at a time.
                     </p>
-                ) : (
+                ) : access === "joined" ? (
                     <p className="text-muted-foreground text-sm">
                         Pick a domain and start. Every question is set in a different organization, so you
                         read a new situation each time instead of grinding the same one. Take all{" "}
-                        {summary.perDomain} at once, or {SET_SIZE} at a time.
+                        {counts.perDomain} at once, or {SET_SIZE} at a time.
+                    </p>
+                ) : (
+                    <p className="text-muted-foreground text-sm">
+                        Pick a domain and start. Every question is set in a different organization, so you
+                        read a new situation each time instead of grinding the same one. {counts.openPerDomain} in
+                        each domain are open now; a free email signup opens all {counts.perDomain}.
                     </p>
                 )}
             </div>
@@ -45,6 +51,7 @@ export function DomainGrid() {
                         id={domain.id}
                         title={domain.title}
                         questionCount={domain.questionCount}
+                        sampleCount={domain.sampleCount}
                         description={domain.description}
                         weight={domain.weight}
                     />

@@ -26,6 +26,16 @@ one to read for the products, the store and the deploy runbooks.**
   `stage-learn.sh` re-checks the built export.
 - **The app imports `src/data/preview.json`** — 160 questions, 20 per domain, cut by
   `scripts/build-preview.mjs`, which npm runs as `prebuild` so it cannot go stale.
+- **The free sample is email-gated (2026-10-27).** 40 of the 160 (5 per domain, stamped
+  `open: true` by the builder via `pickOpen()` in `src/lib/preview.ts`) need nothing; the
+  other 120 open when the visitor joins the mailing list. `src/lib/sample-gate.ts` holds
+  the pure rules (`accessFor`, `availableQuestions`), the consent sentence and the storage
+  keys (`spd.sample.joined` in localStorage, `spd.utm` in sessionStorage);
+  `<SignupPanel>` posts to the unlock service's `/v1/subscribe`. Every quiz draws through
+  `getPreviewQuestions()`, which filters by access, so no sitting can hold a gated
+  question. All 160 still ship in the export: the gate is a request, not a lock. Changing
+  the consent wording means bumping `CONSENT_VERSION` in `src/lib/unlock-protocol.ts`, and
+  anything the form collects belongs on the privacy page in the site repo.
 - **`services/unlock/`** is a zero-dependency Node 22 service on Cloud Run that trades a
   Gumroad licence key for a signed token and serves the full 750. Its own README carries
   the runbook. `scripts/build-paid.mjs` cuts the bank it ships; `data/paid.json` is
@@ -90,7 +100,7 @@ produce each one are in a comment above `FACTS` in `src/app/page.tsx`. Re-measur
 than copying from a changelog — the page claimed 491 questions while the app served 439,
 and 35 diagrams while the book prints 29.
 
-### Analytics: four events beyond page views
+### Analytics: events beyond page views
 
 `src/lib/analytics.ts`, added 2026-09-16. GA4 property `G-Y20Q6FPX5T` is shared with the
 apex; split reports on **Hostname**. Before this the property received `page_view` only.
@@ -101,6 +111,15 @@ apex; split reports on **Hostname**. Before this the property received `page_vie
 | `quiz_complete` | `nextQuestion` when the last question is answered | the same, plus `correct`, `percent`, `elapsed_s` |
 | `buy_click` | every checkout link, all of which are `<BuyLink>` (`src/components/buy-link.tsx`) | `product` (books / plus), `placement` |
 | `history_loaded` | once per page load, after the attempt log hydrates (`<AnalyticsIdentity>` in the root layout) | `attempts`, and sets the **`attempts_bucket`** user property: none / 1-10 / 11-50 / 51+ |
+| `gate_view` | a `<SignupPanel>` renders for a visitor who has not joined (once per panel mount) | `placement` (practice_page / results / exam_modes) |
+| `signup_submit` | the signup form passed its own checks and the request went out | `placement` |
+| `signup_success` | `/v1/subscribe` answered `ok: true` and the other 120 opened | `placement` |
+| `signup_error` | the service or the network said no | `placement`, `code` (invalid_email / consent_required / rate_limited / store_unavailable / unreachable / unconfigured) |
+
+The email address is never a GA parameter: none of the gate's track functions take it.
+Verified under Playwright with the GA hits intercepted, none carries it. GA4's own
+enhanced-measurement form listener does put the form element on the local `dataLayer`,
+which is standard and sends no field values.
 
 Every event also carries `tier` (free / paid), read at the moment it fires. "Returning
 user" in GA4 is a cookie fact; `attempts_bucket` is "has answered questions in this
@@ -112,8 +131,11 @@ A new buy button must be a `<BuyLink>`, not an `<a>`: the component owns the hre
 `rel` and the event, and the offer page is a server component that cannot attach an
 `onClick` of its own.
 
-Every parameter above is registered as a custom dimension or metric on the property
-(2026-09-18), which is what makes it reportable. Add a parameter here and register it with
+Every parameter above up to `history_loaded` is registered as a custom dimension or
+metric on the property (2026-09-18), which is what makes it reportable. **The gate's new
+parameter `code` is NOT registered yet (2026-10-27): add it to `register-definitions.py`
+and run it.** `placement` is already registered, under the display name "Buy placement",
+which now also covers the gate's placements. Add a parameter here and register it with
 `analytics/register-definitions.py` in the site repo, which is idempotent; API access is a
 service account, not a login. That repo's CLAUDE.md § Analytics has the account, the key
 path and why the gcloud login route does not work.

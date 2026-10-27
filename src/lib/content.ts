@@ -9,7 +9,8 @@
  */
 import previewData from '@/data/preview.json';
 import { BLUEPRINT, apportionByWeight, blueprintFor } from '@/lib/blueprint';
-import { activeData, lookupStimulus, setPreviewBank } from '@/lib/bank';
+import { activeData, lookupStimulus, sampleAccess, setPreviewBank } from '@/lib/bank';
+import { availableQuestions } from '@/lib/sample-gate';
 import { domainIdOf, shuffled } from '@/lib/text';
 import { isDrill, previewStats } from '@/lib/preview';
 
@@ -121,6 +122,12 @@ export interface Question {
      * shows each of them only where it exists.
      */
     sources?: string[];
+    /**
+     * Free tier only: one of the 40 (5 a domain) served with no signup. Stamped
+     * by scripts/build-preview.mjs; the other 120 in preview.json open when the
+     * visitor joins the mailing list. Absent on every paid-bank question.
+     */
+    open?: boolean;
     /** The v1 question this one was rewritten from, for the 410 that were. */
     variantOf?: string;
     /** What the rewrite changed: "scenario", "discriminator", ... */
@@ -169,6 +176,10 @@ export interface BankManifest {
 export interface PreviewMeta {
     schema: number;
     perDomain: number;
+    /** Of perDomain, how many open with no signup. Absent before the email gate. */
+    openPerDomain?: number;
+    /** Questions served with no signup, across every domain. */
+    open?: number;
     served: number;
     scenarios: number;
     objectives: number;
@@ -284,7 +295,47 @@ export const getDomainStimuli = (domainId: string): Stimulus[] =>
  * ever drills — so the free markup is byte-for-byte what it was.
  */
 export const getPreviewQuestions = (domainId: string): Question[] =>
+    availableQuestions(getSampleQuestions(domainId), sampleAccess());
+
+/**
+ * A domain's whole free sample (20), gate or no gate; on the paid tier, its
+ * drills. getPreviewQuestions() is this minus whatever the email gate is
+ * holding back, and it is what every quiz draws from: a sitting can never
+ * contain a question the visitor has not opened.
+ */
+export const getSampleQuestions = (domainId: string): Question[] =>
     activeData().domains.find(d => d.id === domainId)?.questions.filter(isDrill) ?? [];
+
+/**
+ * The email gate's numbers, counted from the file that ships: the sample (160),
+ * how many need no signup (40) and how many a free signup opens (120), plus
+ * how many this visitor can open right now.
+ */
+export interface SampleCounts {
+    sample: number;
+    open: number;
+    gated: number;
+    openPerDomain: number;
+    perDomain: number;
+    available: number;
+}
+
+export const getSampleCounts = (): SampleCounts => {
+    const meta = activeData().preview;
+    const all = activeData().domains.flatMap(d => getSampleQuestions(d.id));
+    // Read from the meta block when the free bank is active; counted when it is
+    // not, so the paid tier (which carries no flags) never reports a gate.
+    const sample = meta?.served ?? all.length;
+    const open = meta?.open ?? sample;
+    return {
+        sample,
+        open,
+        gated: sample - open,
+        openPerDomain: meta?.openPerDomain ?? meta?.perDomain ?? 0,
+        perDomain: meta?.perDomain ?? 0,
+        available: getTotalQuestionCount(),
+    };
+};
 
 /** The two mock forms, 125 questions each. Paid only: the preview carries none. */
 export type MockForm = 'A' | 'B';
@@ -372,6 +423,8 @@ export const getAllDomains = () => {
         number: blueprintFor(d.id)?.number ?? Number(d.id.replace('domain_', '')),
         weight: blueprintFor(d.id)?.weight,
         questionCount: getPreviewQuestions(d.id).length,
+        /** The domain's whole free sample, gated questions included. */
+        sampleCount: getSampleQuestions(d.id).length,
         scenarioCount: new Set(getPreviewQuestions(d.id).map(q => q.stimulusId).filter(Boolean)).size,
         description: domainDescriptions[d.id] || "Master this domain with practice questions and detailed explanations."
     }));

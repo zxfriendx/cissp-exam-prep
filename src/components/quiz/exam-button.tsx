@@ -19,9 +19,17 @@ interface ExamButtonProps {
      * no "everything" card at all.
      */
     form?: MockForm
+    /** The "everything" card is showing only the open questions, not the whole sample. */
+    everythingOpen?: boolean
+    /**
+     * The set needs more questions than the visitor has opened (a weighted 50
+     * before the email signup, when 40 are open). Clicking calls this instead
+     * of starting a short set, so the page can show the signup panel.
+     */
+    onGated?: () => void
 }
 
-export function ExamButton({ count, total, form }: ExamButtonProps) {
+export function ExamButton({ count, total, form, onGated, everythingOpen }: ExamButtonProps) {
     const startExamQuiz = useQuizStore(state => state.startExamQuiz);
     const startFormQuiz = useQuizStore(state => state.startFormQuiz);
     const router = useRouter();
@@ -32,6 +40,10 @@ export function ExamButton({ count, total, form }: ExamButtonProps) {
     const n = form ? getFormQuestions(form).length : count ?? total;
 
     const handleStart = () => {
+        if (onGated) {
+            onGated();
+            return;
+        }
         if (form) {
             startFormQuiz(form);
             router.push(`/quiz/form-${form.toLowerCase()}`);
@@ -41,17 +53,25 @@ export function ExamButton({ count, total, form }: ExamButtonProps) {
         router.push('/quiz/exam');
     };
 
-    const title = form ? `Mock Form ${form}` : count ? "Weighted Set" : "Everything Free";
+    const title = form ? `Mock Form ${form}` : count ? "Weighted Set" : everythingOpen ? "Everything Open" : "Everything Free";
     const blurb = form
         ? "The whole form as the printed book sets it, in order"
         : count
             ? "Drawn to the 2024 exam blueprint weights, domains mixed"
-            : "Every question the free app carries, domain by domain";
+            : everythingOpen
+                ? "Every question open now, domain by domain"
+                : "Every question the free app carries, domain by domain";
 
     return (
         <Card
             className="hover:border-secondary/50 hover:shadow-md transition-all duration-300 cursor-pointer group border-2 border-primary/15"
             onClick={handleStart}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleStart() }
+            }}
+            aria-label={onGated ? `${title}, ${n} questions. Needs the free email signup` : undefined}
         >
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
                 <CardTitle className="text-sm font-semibold text-primary">
@@ -71,7 +91,9 @@ export function ExamButton({ count, total, form }: ExamButtonProps) {
                     {blurb}
                 </p>
                 <p className="text-xs text-secondary mt-2 font-medium">
-                    About {formatMinutes(paceBudgetSeconds(n))} at exam pace
+                    {onGated
+                        ? "Opens with the free email signup"
+                        : `About ${formatMinutes(paceBudgetSeconds(n))} at exam pace`}
                 </p>
             </CardContent>
         </Card>

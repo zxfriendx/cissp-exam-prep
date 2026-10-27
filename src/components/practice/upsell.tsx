@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { getAllDomains, getDrillCountPaid, getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
+import { getAllDomains, getDrillCountPaid, getPreviewSummary, getSampleCounts } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
 import { BUY, BUY_PLUS } from "@/lib/checkout";
 import { BuyLink } from "@/components/buy-link";
@@ -29,11 +29,13 @@ import { Button } from "@/components/ui/button";
  * cheaper product and promise a key with it.
  */
 export function Upsell() {
-    const tier = useBankStore(state => state.tier);
-    if (tier === "paid") return null;
+    const access = useBankStore(state => state.access);
+    if (access === "paid") return null;
 
     const summary = getPreviewSummary();
-    const served = getTotalQuestionCount();
+    // The whole free sample, gated questions included: the 590 "you have not
+    // seen" are the ones not in it, whether or not this visitor has signed up.
+    const served = getSampleCounts().sample;
     const withheld = summary.paid - served;
     // Counted from the same meta block, not typed in: paidDrillsByDomain is
     // written by the generator out of the bank that ships.

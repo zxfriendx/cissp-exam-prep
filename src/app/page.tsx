@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ICON_SPRITE } from "./_sales/icons";
-import { getPreviewSummary } from "@/lib/content";
+import { getPreviewSummary, getSampleCounts } from "@/lib/content";
 import { BUY, BUY_PLUS } from "@/lib/checkout";
 import { BuyLink } from "@/components/buy-link";
 import "./_sales/guides.css";
@@ -116,6 +116,9 @@ const PRODUCTS: Product[] = [
 // drifted from an app that rendered 439.
 const PREVIEW = getPreviewSummary();
 const WITHHELD = PREVIEW.paid - PREVIEW.served;
+// Since 2026-10-27, 40 of the free 160 need nothing and the other 120 need a
+// free email signup. Counted from the same file.
+const SAMPLE = getSampleCounts();
 
 /*
  * Every figure on this page is measured from the built PDFs, not from a plan or
@@ -229,7 +232,7 @@ export default function GuidesPage() {
               Get all 750 questions — from {BUY.price}
             </a>
             <Link className="btn btn-ghost" href="/practice/">
-              Try {PREVIEW.served} of them free
+              Try {SAMPLE.open} now, {PREVIEW.served} free with email
             </Link>
           </div>
           <div className="facts">
@@ -366,8 +369,9 @@ export default function GuidesPage() {
             <div>
               <h3>Start with {PREVIEW.served} free. Then the other {WITHHELD}.</h3>
               <p>
-                The free app on this site serves {PREVIEW.perDomain} questions in every domain,
-                with no email, no account and no card. They are drawn from the same 750, at the
+                The free app on this site serves {PREVIEW.perDomain} questions in every domain.
+                {" "}{SAMPLE.openPerDomain} in each are open straight away, and a free email signup
+                opens the rest. No account and no card. They are drawn from the same 750, at the
                 same difficulty, with the same reason on every wrong answer, so read a few and
                 see whether they feel like the exam you are about to sit. When you can clear
                 them, the examination is where you go on: the {WITHHELD} questions you have not
@@ -377,7 +381,7 @@ export default function GuidesPage() {
             </div>
             <div className="buybtns">
               <Link className="btn btn-ghost btn-lg" href="/practice/">
-                Start the free {PREVIEW.served} →
+                Try {SAMPLE.open} now, {PREVIEW.served} with email →
               </Link>
               <BuyLink className="btn btn-buy btn-lg" buy="plus" placement="offer_free_block">
                 Unlock all 750 in the app — {BUY_PLUS.price}

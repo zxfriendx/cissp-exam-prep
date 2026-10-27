@@ -1,8 +1,10 @@
 "use client"
 
-import { getPreviewSummary, getTotalQuestionCount } from "@/lib/content";
+import { useState } from "react";
+import { getPreviewSummary, getSampleCounts, getTotalQuestionCount } from "@/lib/content";
 import { useBankStore } from "@/lib/bank";
 import { ExamButton } from "@/components/quiz/exam-button";
+import { SignupPanel } from "@/components/practice/signup-panel";
 
 /**
  * The Practice Examination section: which sittings are on offer.
@@ -17,12 +19,20 @@ import { ExamButton } from "@/components/quiz/exam-button";
  * holds the free bank's sitting. So a paid sitting caps at one mock form of 125,
  * which is also the largest set the printed book asks anyone to sit in one go.
  * The free tier keeps its "Everything Free" card: 160 is small enough.
+ *
+ * Before the email signup only 40 are open, so a weighted 50 or 100 cannot be
+ * drawn. Those cards stay on the page, say they open with the signup, and a
+ * click shows the signup panel here rather than starting a short set.
  */
 export function ExamModes() {
-    const tier = useBankStore(state => state.tier);
+    const access = useBankStore(state => state.access);
     const total = getTotalQuestionCount();
     const summary = getPreviewSummary();
-    const paid = tier === "paid";
+    const counts = getSampleCounts();
+    const paid = access === "paid";
+    const [asked, setAsked] = useState(false);
+    // A weighted set the visitor has not opened enough questions for.
+    const gate = (count: number) => (count > total ? () => setAsked(true) : undefined);
 
     return (
         <section className="space-y-6 pt-8 border-t border-primary/10">
@@ -41,8 +51,8 @@ export function ExamModes() {
                     <p className="text-muted-foreground text-sm leading-relaxed">
                         Sit it like the real thing. Nothing is marked until you finish, and then you get the
                         score, the worked answers and every scenario you saw. Budget about 1 minute 15 seconds
-                        a question. You cannot guess your way through on position either: A, B, C and D each
-                        win exactly {summary.keyCounts.A} times.
+                        a question. You cannot guess your way through on position either: across the free{" "}
+                        {counts.sample}, A, B, C and D each win exactly {summary.keyCounts.A} times.
                     </p>
                 )}
             </div>
@@ -55,10 +65,17 @@ export function ExamModes() {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <ExamButton count={50} total={total} />
-                    <ExamButton count={100} total={total} />
-                    <ExamButton total={total} />
+                    <ExamButton count={50} total={total} onGated={gate(50)} />
+                    <ExamButton count={100} total={total} onGated={gate(100)} />
+                    <ExamButton total={total} everythingOpen={access === "open"} />
                 </div>
+            )}
+            {asked && (
+                <SignupPanel
+                    placement="exam_modes"
+                    autoFocus
+                    context={`A weighted set draws on all ${counts.sample} free questions, so it opens with the signup.`}
+                />
             )}
         </section>
     );

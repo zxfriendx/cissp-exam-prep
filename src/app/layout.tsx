@@ -29,6 +29,7 @@ const geistMono = Geist_Mono({
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BankLoader } from "@/components/entitlement/bank-loader";
+import { SampleGateLoader } from "@/components/entitlement/sample-gate-loader";
 import { AnalyticsIdentity } from "@/components/analytics-identity";
 import { RegisterSW } from "@/components/pwa/register-sw";
 import { InstallCoach } from "@/components/pwa/install-coach";
@@ -110,6 +111,10 @@ export default function RootLayout({
             for a reader who has unlocked — on every route, so a bookmarked
             quiz URL gets the full domain rather than the free twenty. */}
         <BankLoader />
+        {/* Renders nothing. Opens the other 120 free questions for a browser
+            that has joined the mailing list, and keeps the landing URL's utm_*
+            tags for the session so a signup can be credited. */}
+        <SampleGateLoader />
         {/* Renders nothing. Sets the attempts_bucket user property once the
             attempt log is read, so GA4 can tell a first visit from a return. */}
         <AnalyticsIdentity />
