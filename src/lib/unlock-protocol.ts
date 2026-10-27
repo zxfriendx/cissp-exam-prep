@@ -95,3 +95,47 @@ export interface HealthResponse {
 export const LICENCE_KEY_RE = /^[A-F0-9]{8}(-[A-F0-9]{8}){3}$/;
 
 export const normaliseKey = (raw: string): string => raw.trim().toUpperCase();
+
+/* ------------------------------------------------------------------ mailing list
+ * The free sample is 160 questions. Since 2026-10-27, 40 of them (5 per domain) are
+ * open and the other 120 open when the visitor joins the mailing list. The service
+ * stores the address; the app records locally that this browser has joined.
+ */
+
+/**
+ * The consent sentence version shown beside the checkbox. Bump it whenever the
+ * wording changes, so every stored consent can be traced to the exact text the
+ * person agreed to. The wording itself lives with the form in the app.
+ */
+export const CONSENT_VERSION = '2026-10-27';
+
+/** POST /v1/subscribe — join the list. Idempotent per address. */
+export interface SubscribeRequest {
+    email: string;
+    /** The ticked consent box. Anything but `true` is refused. */
+    consent: boolean;
+    consentVersion: string;
+    /** Where the form was, e.g. 'practice-gate'. */
+    source?: string;
+    /** utm_* values from the landing URL, if any. */
+    utm?: Record<string, string>;
+    /** Honeypot. A person never fills it; a bot usually does. */
+    website?: string;
+}
+
+export interface SubscribeOk { ok: true }
+
+export type SubscribeErrorCode =
+    | 'invalid_email'
+    | 'consent_required'
+    | 'rate_limited'
+    | 'store_unavailable';
+
+export interface SubscribeErr {
+    ok: false;
+    code: SubscribeErrorCode;
+    /** Seconds, on `rate_limited`. */
+    retryAfter?: number;
+}
+
+export type SubscribeResponse = SubscribeOk | SubscribeErr;
