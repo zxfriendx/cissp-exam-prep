@@ -35,6 +35,13 @@ import type { Question } from '@/lib/content';
  */
 export const FREE_PREVIEW_PER_DOMAIN = 20;
 
+/**
+ * How many of a domain's free questions open with no signup. The other
+ * FREE_PREVIEW_PER_DOMAIN - OPEN_PER_DOMAIN open when the visitor joins the
+ * mailing list (src/lib/sample-gate.ts). 5 of 20, so 40 of the 160.
+ */
+export const OPEN_PER_DOMAIN = 5;
+
 /** Bucket for the discrete items -- the ones written to stand without a scenario. */
 export const DISCRETE_GROUP = '__discrete__';
 
@@ -133,6 +140,24 @@ export function pickPreview<T extends PreviewCandidate>(
         if (sa !== sb) return sa - sb;
         return a.id.localeCompare(b.id);
     });
+}
+
+/**
+ * The open tier: `limit` of a domain's already-picked free questions that are
+ * served with no signup. It is the same picker run a second time over the
+ * sample, so the five inherit the same guarantees in miniature: one per
+ * scenario before any scenario gets a second (five distinct scenarios, or four
+ * plus a discrete item, in every domain today), biased to objectives the
+ * others do not test, balanced on the key, independent of input order, and
+ * returned in book order. scripts/build-preview.mjs stamps the result as
+ * `open: true`, so the split is fixed at build time and every visitor sees
+ * the same 40.
+ */
+export function pickOpen<T extends PreviewCandidate>(
+    sample: readonly T[],
+    limit: number = OPEN_PER_DOMAIN,
+): T[] {
+    return pickPreview(sample, limit);
 }
 
 /** Lexicographic compare of the [-fresh, taken, keyCount, id] score tuples. */

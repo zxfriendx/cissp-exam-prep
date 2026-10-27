@@ -14,7 +14,8 @@
  * book. The preview would have been a preview of nothing.
  *
  * So the bank stays on the build machine and only the sample crosses the wire:
- * the 160 selected questions, the 127 scenarios they are set in, and the eight
+ * the 160 selected questions (40 of them stamped `open: true`, served with no
+ * signup; the other 120 open on a free email signup, see src/lib/sample-gate.ts), the 127 scenarios they are set in, and the eight
  * domain case studies. About 620 KB, and the other 590 questions are not in the
  * export at all.
  *
@@ -31,7 +32,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-import { FREE_PREVIEW_PER_DOMAIN, isDrill, pickPreview, previewStats } from '../src/lib/preview.ts';
+import { FREE_PREVIEW_PER_DOMAIN, OPEN_PER_DOMAIN, isDrill, pickOpen, pickPreview, previewStats } from '../src/lib/preview.ts';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const BANK_PATH = join(repoRoot, 'src', 'data', 'content.json');
@@ -42,9 +43,15 @@ export function buildPreview(bank) {
     const domains = bank.domains.map(domain => {
         const drills = (domain.questionsV2 ?? []).filter(isDrill);
         // A bank with no v2 items at all still produces a usable app.
-        const questions = drills.length
+        const sample = drills.length
             ? pickPreview(drills, FREE_PREVIEW_PER_DOMAIN)
             : (domain.questions ?? []).slice(0, FREE_PREVIEW_PER_DOMAIN);
+        // The open tier: OPEN_PER_DOMAIN of the sample, served with no signup.
+        // Stamped here rather than picked in the browser so the split is fixed
+        // per build and the picker stays off the wire. Copies, not mutations:
+        // the bank object is the caller's.
+        const open = new Set(pickOpen(sample, OPEN_PER_DOMAIN).map(q => q.id));
+        const questions = sample.map(q => (open.has(q.id) ? { ...q, open: true } : q));
 
         const used = new Set(questions.map(q => q.stimulusId).filter(Boolean));
         return {
@@ -73,6 +80,9 @@ export function buildPreview(bank) {
              */
             edition: bank.bank?.v2?.edition ?? null,
             perDomain: FREE_PREVIEW_PER_DOMAIN,
+            /** Of perDomain, how many need no signup; the rest need a free email signup. */
+            openPerDomain: OPEN_PER_DOMAIN,
+            open: all.filter(q => q.open).length,
             served: stats.questions,
             scenarios: stats.scenarios,
             objectives: stats.objectives,
@@ -105,10 +115,10 @@ function main() {
     const bank = readBank();
     const preview = buildPreview(bank);
     writeFileSync(PREVIEW_PATH, serialise(preview));
-    const { served, scenarios, objectives, paid, keyCounts } = preview.preview;
+    const { served, open, scenarios, objectives, paid, keyCounts } = preview.preview;
     const bytes = serialise(preview).length;
     console.log(
-        `preview.json  <-  ${served} of ${paid} questions · ${scenarios} scenarios · ` +
+        `preview.json  <-  ${served} of ${paid} questions (${open} open) · ${scenarios} scenarios · ` +
         `${objectives} outline objectives · keys ${JSON.stringify(keyCounts)} · ${(bytes / 1024).toFixed(0)} KB`
     );
 }

@@ -3,6 +3,8 @@
     "schema": 1,
     "edition": "2026-09-10",
     "perDomain": 20,
+    "openPerDomain": 5,
+    "open": 40,
     "served": 160,
     "scenarios": 127,
     "objectives": 148,
@@ -560,7 +562,8 @@
             "NIST SP 800-53 Rev 5 | SA-4 Acquisition Process; PM-30 Supply Chain Risk Management Strategy",
             "NIST SP 800-161 Rev 1 (upd 1) | Section 3.1 C-SCRM in Acquisition"
           ],
-          "rev": "7b3f986e3dad"
+          "rev": "7b3f986e3dad",
+          "open": true
         },
         {
           "id": "d1_v2_q037",
@@ -667,7 +670,8 @@
           "sources": [
             "NIST SP 800-53 Rev 5 | PS-5 Personnel Transfer; PS-4 Personnel Termination; AC-2 Account Management"
           ],
-          "rev": "1423121a2c00"
+          "rev": "1423121a2c00",
+          "open": true
         },
         {
           "id": "d1_v2_q041",
@@ -717,7 +721,8 @@
             "FIPS 199 | Section 3, Security Objectives (three objectives; integrity includes non-repudiation and authenticity)",
             "NIST SP 800-53 Rev 5 | SI-7 Software, Firmware, and Information Integrity; AU-9 Protection of Audit Information; AU-10 Non-repudiation"
           ],
-          "rev": "04e6cf345717"
+          "rev": "04e6cf345717",
+          "open": true
         },
         {
           "id": "d1_v2_q045",
@@ -1152,7 +1157,8 @@
               "label": "wrong scope",
               "wouldAnswer": "Probes the perimeter from outside for known weaknesses. This movement happened wholly inside it, on valid credentials."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d1_v2_q86",
@@ -1340,7 +1346,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "The model Meridian already had, and the breach is its textbook failure: hard shell, soft interior."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d1_v2_q104",
@@ -1909,7 +1916,8 @@
               "label": "wrong scope",
               "wouldAnswer": "The strongest distractor. Five-year-old logs magnified the impact; the breach was caused by how the media exited."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d2_v2_q107",
@@ -1955,7 +1963,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Defines measurable service commitments. SecureVault should have had one, and it governs performance."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d2_v2_q110",
@@ -2001,7 +2010,8 @@
               "label": "wrong scope",
               "wouldAnswer": "The operation a modern full format approximates, and what people assume every format does. That is the root cause."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d2_v2_q116",
@@ -2143,7 +2153,8 @@
               "label": "wrong phase",
               "wouldAnswer": "The other wrong state. Once the system boots and the data reaches RAM, full-disk encryption contributes nothing."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d2_v2_q126",
@@ -2339,7 +2350,8 @@
               "label": "wrong scope",
               "wouldAnswer": "Identifies a person on its face. Names get shared, and a full name is treated as PII outright."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d2_v2_q135",
@@ -3251,7 +3263,8 @@
             "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement",
             "OWASP Top 10:2025 | A01 Broken Access Control"
           ],
-          "rev": "050d99ab5610"
+          "rev": "050d99ab5610",
+          "open": true
         },
         {
           "id": "d3_v2_q002",
@@ -3358,7 +3371,8 @@
             "NIST SP 800-53 Rev 5 | PL-10 Baseline Selection; PL-11 Baseline Tailoring",
             "NIST SP 800-37 Rev 2 | Section 3.3 SELECT, tasks S-1 to S-6"
           ],
-          "rev": "91e926303872"
+          "rev": "91e926303872",
+          "open": true
         },
         {
           "id": "d3_v2_q007",
@@ -3459,7 +3473,8 @@
               "label": "symptom not cause",
               "wouldAnswer": "Mistakes a side effect for the goal. Service continued normally, which is what let the theft run undetected."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d3_v2_q16",
@@ -3505,7 +3520,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Bolts on an unrelated control. Full-disk encryption protects data at rest on the drive and does nothing about a live interposer."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d3_v2_q21",
@@ -3551,7 +3567,8 @@
               "label": "detective when preventive is asked",
               "wouldAnswer": "Detective by construction. An immutable record proves afterwards that cash left, and by then the money is gone."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d3_v2_q22",
@@ -4610,7 +4627,8 @@
               "label": "symptom not cause",
               "wouldAnswer": "Fails on the facts. The fleet had no TLS configured, which is what made the cleartext capture possible."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d4_v2_q104",
@@ -4748,7 +4766,8 @@
               "label": "detective when preventive is asked",
               "wouldAnswer": "Misunderstands a relay attack. The attacker forwards the IKE exchange untouched between the true endpoints, so peer authentication succeeds."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d4_v2_q113",
@@ -4794,7 +4813,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Reaches the right verdict through the wrong facts. Sharing a strand by wavelength describes a lit service; a dark strand is the bank's."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d4_v2_q115",
@@ -4844,7 +4864,8 @@
               "label": "wrong scope",
               "wouldAnswer": "Stretches injection, which means crafted data pushed into an application or protocol stream. A device placed in a path is something else."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d4_v2_q120",
@@ -4890,7 +4911,8 @@
               "label": "symptom not cause",
               "wouldAnswer": "Buys speed for a medium that stays shared. Contention scales down and persists, and the confidentiality exposure is untouched at any speed."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d4_v2_q126",
@@ -5936,7 +5958,8 @@
             "NIST SP 800-53 Rev 5 | AC-17(3) Remote Access | Managed Access Control Points",
             "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement"
           ],
-          "rev": "b49fcc82421f"
+          "rev": "b49fcc82421f",
+          "open": true
         },
         {
           "id": "d5_v2_q012",
@@ -6041,7 +6064,8 @@
             "NIST SP 800-53 Rev 5 | AC-4 Information Flow Enforcement; AC-16 Security and Privacy Attributes",
             "NIST SP 800-53 Rev 5 | AC-3 Access Enforcement"
           ],
-          "rev": "5de76bb19dec"
+          "rev": "5de76bb19dec",
+          "open": true
         },
         {
           "id": "d5_v2_q16",
@@ -6087,7 +6111,8 @@
               "label": "symptom not cause",
               "wouldAnswer": "Misreads the evidence. Sessions were logged; the record said 'SuperAdmin logged in', so the logging itself worked."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d5_v2_q22",
@@ -6133,7 +6158,8 @@
               "label": "wrong scope",
               "wouldAnswer": "Dies on the 30-second code lifetime combined with ordinary attempt throttling."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d5_v2_q23",
@@ -6317,7 +6343,8 @@
               "label": "wrong phase",
               "wouldAnswer": "Recovers physical credentials at or after the exit conversation, inside the window the lead wants closed, and touches nothing logical."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d5_v2_q34",
@@ -7275,7 +7302,8 @@
             "NIST SP 800-218 | RV.1.3 vulnerability disclosure and remediation policy",
             "NIST SP 800-216 named as the dedicated federal disclosure guideline"
           ],
-          "rev": "eeb2bc9690cf"
+          "rev": "eeb2bc9690cf",
+          "open": true
         },
         {
           "id": "d6_v2_q026",
@@ -7373,7 +7401,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Addresses volume and concurrency. This defect appears at any transaction rate."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d6_v2_q37",
@@ -7465,7 +7494,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Correct determination of no vulnerability, and here no determination occurred."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d6_v2_q43",
@@ -7561,7 +7591,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Would require a primary control that cannot be implemented, and nothing here says transaction controls are absent."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d6_v2_q52",
@@ -7799,7 +7830,8 @@
               "label": "detective when preventive is asked",
               "wouldAnswer": "Accepts the flaw's arrival in production and optimizes the response to it."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d6_v2_q67",
@@ -8638,7 +8670,8 @@
             "NIST SP 800-53 Rev 5 | CM-7(5) Authorized Software - Allow-by-Exception",
             "NIST SP 800-53 Rev 5 | CM-7(4) Unauthorized Software - Deny-by-Exception; CM-10 Software Usage Restrictions"
           ],
-          "rev": "a171b530ad88"
+          "rev": "a171b530ad88",
+          "open": true
         },
         {
           "id": "d7_v2_q018",
@@ -8744,7 +8777,8 @@
             "NIST SP 800-34 Rev 1 | Section 3.5.3 Exercises (tabletop is discussion-based only)",
             "NIST SP 800-84 | Chapters 3 to 6 (NIST taxonomy differs from the CISSP five-type ladder)"
           ],
-          "rev": "bac28368f177"
+          "rev": "bac28368f177",
+          "open": true
         },
         {
           "id": "d7_v2_q021",
@@ -8850,7 +8884,8 @@
             "NIST SP 800-53 Rev 5 | IR-4(12) Malicious Code and Forensic Analysis",
             "NIST SP 800-86 named as the dedicated forensic-technique source"
           ],
-          "rev": "aac06b9aaffd"
+          "rev": "aac06b9aaffd",
+          "open": true
         },
         {
           "id": "d7_v2_q26",
@@ -8896,7 +8931,8 @@
               "label": "correct but not first",
               "wouldAnswer": "Worth having, and it needs a staged deployment to work. A fleet-wide failure saturates the network and blocks it."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d7_v2_q28",
@@ -8991,7 +9027,8 @@
               "label": "wrong phase",
               "wouldAnswer": "Concedes the outage. Dispatching technicians to every site is the worst case this incident demonstrated."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d7_v2_q35",
@@ -9990,7 +10027,8 @@
             "NIST SP 800-53 Rev 5 | SC-50 Software-Enforced Separation and Policy Enforcement (new in Rev 5); CM-6 Configuration Settings",
             "NIST SP 800-218 | PO.3.3 toolchain generates supporting artifacts"
           ],
-          "rev": "d7b72b39b72a"
+          "rev": "d7b72b39b72a",
+          "open": true
         },
         {
           "id": "d8_v2_q030",
@@ -10134,7 +10172,8 @@
               "label": "wrong phase",
               "wouldAnswer": "Relies on human review, and in pull-request workflows the code reaches the server before anyone reviews it."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d8_v2_q109",
@@ -10180,7 +10219,8 @@
               "label": "right control, wrong problem",
               "wouldAnswer": "Nothing in the incident ties it to stale passwords, and rotation would not have surfaced a five-month presence."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d8_v2_q110",
@@ -10226,7 +10266,8 @@
               "label": "wrong phase",
               "wouldAnswer": "Stops SQL injection. The review was stored through a legitimate write, and the database behaved correctly."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d8_v2_q114",
@@ -10272,7 +10313,8 @@
               "label": "detective when preventive is asked",
               "wouldAnswer": "Detective when preventive is asked. Logging records the compromise after it has happened."
             }
-          }
+          },
+          "open": true
         },
         {
           "id": "d8_v2_q116",
