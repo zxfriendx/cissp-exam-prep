@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Krona_One, Schibsted_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./site-header.css";
 
 // Vault Steel typography — see securepathdigital-site/brand/kit-vault-steel.html.
 // Krona One is a DISPLAY face: hero, wordmark and small-caps labels only, always

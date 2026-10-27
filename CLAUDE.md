@@ -58,6 +58,19 @@ one to read for the products, the store and the deploy runbooks.**
   `metadata.other.refresh`: Next renders the latter as `<meta name="refresh">`, which no
   browser acts on. `/guides/` had only ever redirected by script until 2026-09-16.
 
+### The header is shared with the apex
+
+`src/components/header.tsx` is the only header; the root layout mounts it on every route
+(offer, practice, quiz, study, report, progress, unlock, 404). Its links are `SHARED_NAV`
+(absolute URLs, identical to the apex's `NAV` in `securepathdigital-site/scripts/sync_header.py`)
+plus Unlock, learn only. `src/app/site-header.css` is a verbatim copy of that script's CSS:
+change the site repo first, then paste. aria-current: `page` on the exact route, `true` on Free
+Practice Test across quiz/study/report/progress. Below 1024px a real button (aria-expanded,
+Escape, closes on route change or tap) opens an absolute panel, so nothing shifts. No link may
+appear only after hydration. `test/header.test.mjs` pins the list and, when the site checkout
+sits beside this one (or `SPD_SITE` points at it), compares links and CSS with the apex.
+The browser check is the site repo's `tools/qa/header_nav_check.py`.
+
 ### Tests
 
 `npm test` runs the fast `node --test` suite in `test/`. `npm run test:browser` starts

@@ -1,0 +1,66 @@
+/* site-header:start -- a VERBATIM copy of the CSS block in securepathdigital-site
+   scripts/sync_header.py, so the bar is identical on both properties. Change it
+   there first, then paste it here. Markup: src/components/header.tsx. */
+header.site{
+  position:sticky;top:0;z-index:50;
+  border-bottom:1px solid var(--line);background:rgba(12,13,16,.86);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+header.site .wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 24px}
+header.site .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+header.site .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);transition:color .25s}
+header.site .brand svg{width:38px;height:38px;color:var(--steel);flex:none}
+header.site .brand .wordmark{font-family:var(--font-display);font-size:.78rem;letter-spacing:.14em;line-height:1.5}
+header.site .brand .wordmark span{display:block;font-size:.6rem;letter-spacing:.42em;color:var(--steel)}
+header.site .nav-links{display:flex;align-items:center;gap:1.75rem;margin:0;padding:0;list-style:none}
+header.site .nav-links li{margin:0;padding:0}
+header.site .nav-links li::before{content:none}
+header.site .nav-links a{
+  position:relative;display:flex;align-items:center;min-height:44px;
+  text-decoration:none;font-weight:500;font-size:.92rem;line-height:1.5;white-space:nowrap;
+  color:var(--ink);transition:color .25s;
+}
+header.site .nav-links a:hover{color:var(--copper)}
+header.site .nav-links a[aria-current]{color:var(--copper-hi)}
+header.site .nav-links a[aria-current]::after{
+  content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;
+  border-radius:1px;background:var(--copper);
+}
+header.site .nav-button{display:none}
+header.site .nav-button svg{display:block}
+header.site .nav-button .icon-close{display:none}
+
+/* Below 1024px the links collapse behind a menu button. The panel is absolute
+   (header.site, being sticky, is its containing block), so opening it never
+   moves the page underneath. */
+@media (max-width:1023.98px){
+  header.site .nav-button{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;margin:0 -10px 0 0;padding:0;border:0;border-radius:6px;
+    background:transparent;color:var(--ink);cursor:pointer;
+  }
+  header.site .nav-button:hover{color:var(--copper)}
+  header.site .nav-button:focus-visible,
+  header.site .nav-button:has(.nav-toggle:focus-visible){outline:2px solid var(--copper-hi);outline-offset:0}
+  header.site .nav-toggle{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+  header.site.is-open .nav-button .icon-open,
+  header.site:has(.nav-toggle:checked) .nav-button .icon-open{display:none}
+  header.site.is-open .nav-button .icon-close,
+  header.site:has(.nav-toggle:checked) .nav-button .icon-close{display:block}
+  header.site .nav-menu{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    max-height:calc(100dvh - 76px);overflow-y:auto;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    box-shadow:0 18px 32px rgba(0,0,0,.45);
+  }
+  header.site.is-open .nav-menu,
+  header.site:has(.nav-toggle:checked) .nav-menu{display:block}
+  header.site .nav-links{flex-direction:column;align-items:stretch;gap:0;padding:.5rem 24px 1rem}
+  header.site .nav-links li+li{border-top:1px solid var(--line)}
+  header.site .nav-links a{min-height:52px;font-size:1.05rem}
+  header.site .nav-links a[aria-current]::after{left:-12px;right:auto;top:14px;bottom:14px;width:3px;height:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  header.site .brand,header.site .nav-links a{transition:none}
+}
+/* site-header:end */

@@ -148,8 +148,9 @@ export default function StudyPageClient() {
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Header Navigation */}
-            <div className="border-b border-primary/15 bg-background sticky top-0 z-10">
+            {/* Back link. Not sticky: the site header is the only bar pinned to the
+                top, and a second sticky bar here slid underneath it on scroll. */}
+            <div className="border-b border-primary/15 bg-background">
                 <div className="container max-w-5xl mx-auto px-6 sm:px-10">
                     <div className="flex items-center justify-between h-16">
                         <Button variant="ghost" size="sm" asChild className="font-medium">
