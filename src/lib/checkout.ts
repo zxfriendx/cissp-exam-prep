@@ -16,7 +16,7 @@
    individual buy buttons and say "Included" instead.
 
    Two products, differing only in whether a licence key comes with them:
-   $29 for the PDFs, $49 for the PDFs plus the key that turns this app into the
+   $39 for the PDFs, $69 for the PDFs plus the key that turns this app into the
    full 750-question bank, offline. Same books in both.
 
    Priced at $9.99/$19.99 until 2026-09-10. Raising them means four surfaces move
@@ -40,7 +40,7 @@ export const CHECKOUT = {
     /* The five PDFs. No licence key, so nothing to unlock in this app. */
     bundle: {
         url: "https://securepath6.gumroad.com/l/eight-domains",
-        price: "$29",
+        price: "$39",
     },
     /* The same five PDFs plus a licence key. THIS is the product the unlock
        service validates against: Cloud Run runs with
@@ -50,7 +50,7 @@ export const CHECKOUT = {
        will not receive. */
     plus: {
         url: "https://securepath6.gumroad.com/l/lkidg",
-        price: "$49",
+        price: "$69",
     },
 } as const;
 

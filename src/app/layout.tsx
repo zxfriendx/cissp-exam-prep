@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://learn.securepathdigital.net"),
   title: "The Eight Domains — CISSP Study Materials — Secure Path Digital",
   description:
-    "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. From $29, or $49 with the practice app unlocked. Free practice test alongside.",
+    "Five books covering the eight domains of the 2024 CISSP outline: a lesson for every objective, 750 practice questions with every wrong option answered, two full-length mock forms, and one revision sheet per domain. From $39, or $69 with the practice app unlocked. Free practice test alongside.",
   manifest: "/manifest.webmanifest",
   /* Social previews. Page titles and descriptions flow into these; the image is
      the store's hero cover, copied into public/og/. */

@@ -67,10 +67,10 @@ README § Verification.
 
 | | permalink | price | what it delivers |
 |---|---|---|---|
-| Books | `eight-domains` | $29 | the five PDFs |
-| Books + app | `lkidg` | $49 | the same five, plus a licence key |
+| Books | `eight-domains` | $39 | the five PDFs |
+| Books + app | `lkidg` | $69 | the same five, plus a licence key |
 
-Prices were $9.99 / $19.99 until 2026-09-10. They live in `src/lib/checkout.ts`, and the
+Prices were $9.99 / $19.99 until 2026-09-10, and $29 / $49 until 2026-10-27. They live in `src/lib/checkout.ts`, and the
 apex, the Gumroad listings and the hero artwork all carry them too; see the site repo's
 CLAUDE.md before moving them again.
 

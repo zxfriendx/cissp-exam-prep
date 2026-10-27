@@ -12,7 +12,7 @@ import "./_sales/guides.css";
 export const metadata: Metadata = {
   title: "The Eight Domains — 750 CISSP Practice Questions, Study Guide and Cheat Sheets",
   description:
-    "A CISSP practice examination: 750 practice questions that read like the real exam with a reason on every wrong answer, a study guide with a lesson for all 292 objectives on the 2024 outline, and a one-page cheat sheet per domain. Five books for $29, or $49 with the practice app unlocked.",
+    "A CISSP practice examination: 750 practice questions that read like the real exam with a reason on every wrong answer, a study guide with a lesson for all 292 objectives on the 2024 outline, and a one-page cheat sheet per domain. Five books for $39, or $69 with the practice app unlocked.",
   alternates: { canonical: "https://learn.securepathdigital.net/" },
 };
 
@@ -29,8 +29,8 @@ const PRODUCT_LD = {
   brand: { "@type": "Organization", name: "Secure Path Digital LLC", url: "https://securepathdigital.net/" },
   author: { "@type": "Person", name: "Bill Friend", url: "https://securepathdigital.net/about/" },
   offers: [
-    { "@type": "Offer", name: "The five books (PDF)", price: "29.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY.url },
-    { "@type": "Offer", name: "The five books and the practice app", price: "49.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY_PLUS.url },
+    { "@type": "Offer", name: "The five books (PDF)", price: "39.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY.url },
+    { "@type": "Offer", name: "The five books and the practice app", price: "69.00", priceCurrency: "USD", availability: "https://schema.org/InStock", url: BUY_PLUS.url },
   ],
 };
 
