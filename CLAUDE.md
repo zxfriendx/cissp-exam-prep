@@ -62,8 +62,11 @@ one to read for the products, the store and the deploy runbooks.**
 
 `src/components/header.tsx` is the only header; the root layout mounts it on every route
 (offer, practice, quiz, study, report, progress, unlock, 404). Its links are `SHARED_NAV`
-(absolute URLs, identical to the apex's `NAV` in `securepathdigital-site/scripts/sync_header.py`)
-plus Unlock, learn only. `src/app/site-header.css` is a verbatim copy of that script's CSS:
+(absolute URLs, identical to the apex's `NAV` in `securepathdigital-site/scripts/sync_header.py`),
+and nothing else. Unlock left the header on 2026-10-29: it is a buyers-only step that free
+visitors mistook for the email signup. Buyers reach `/unlock/` (titled "Enter your licence
+key") from the Gumroad receipt, the practice upsell, a line under the signup panel and the
+footer. `src/app/site-header.css` is a verbatim copy of that script's CSS:
 change the site repo first, then paste. aria-current: `page` on the exact route, `true` on Free
 Practice Test across quiz/study/report/progress. Below 1024px a real button (aria-expanded,
 Escape, closes on route change or tap) opens an absolute panel, so nothing shifts. No link may

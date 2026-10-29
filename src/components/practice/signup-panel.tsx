@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react"
 import { CheckCircle2, Loader2, Mail } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { setSampleJoined, useBankStore } from "@/lib/bank"
 import { getSampleCounts } from "@/lib/content"
@@ -330,6 +331,16 @@ export function SignupPanel({ placement, context, successAction, autoFocus }: Si
                     )}
                 </div>
             </form>
+            {/* Two different keys to the same page: the email opens the free 160, the
+                licence key from a purchase opens all 750. Say which is which here,
+                where a buyer would otherwise try the email form. */}
+            <p className="mt-4 text-sm text-muted-foreground">
+                Bought the books and app?{" "}
+                <Link href="/unlock/" className="text-accent underline underline-offset-4 hover:brightness-110">
+                    Enter your licence key
+                </Link>
+                .
+            </p>
         </section>
     )
 }

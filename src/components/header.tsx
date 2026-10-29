@@ -29,8 +29,11 @@ export const SHARED_NAV = [
   { label: "Contact", href: `${APEX}/#contact` },
 ] as const;
 
-/* Learn only, after the shared links: buyers need a way in. */
-const NAV = [...SHARED_NAV, { label: "Unlock", href: `${LEARN}/unlock/` }];
+/* The learn header carries exactly the shared links. Unlock was a seventh item until
+   2026-10-29: a buyers-only step in the menu every free visitor reads, easy to mistake
+   for the free email signup. Buyers reach /unlock/ from the Gumroad receipt, the
+   practice upsell ("Already bought? Enter your key."), the signup panel and the footer. */
+const NAV = SHARED_NAV;
 
 /* The practice app's screens, all reached from /practice/. On these the Free
    Practice Test link is marked as the current section. */

@@ -8,7 +8,7 @@ import { UnlockPageClient } from "./unlock-client";
  * static host to get wrong.
  */
 export const metadata: Metadata = {
-  title: "Unlock Your Questions — Secure Path Digital",
+  title: "Enter Your Licence Key — Secure Path Digital",
   description:
     "Enter the licence key from your Gumroad receipt to load all 750 practice questions into this app, " +
     "on this device, ready to use offline.",

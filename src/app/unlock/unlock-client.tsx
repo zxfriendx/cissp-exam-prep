@@ -70,7 +70,7 @@ export function UnlockPageClient() {
                         className="font-display uppercase text-2xl sm:text-3xl md:text-4xl font-normal text-primary"
                         style={{ lineHeight: "1.2" }}
                     >
-                        Unlock your <span className="grad-copper">questions</span>
+                        Enter your <span className="grad-copper">licence key</span>
                     </h1>
                     <p className="text-muted-foreground text-base leading-relaxed">
                         The licence key from the {BUY_PLUS.price} purchase loads all 750 questions into
