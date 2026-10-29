@@ -30,5 +30,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  // services/ is a separate Node 22 program: no DOM lib, no JSX, its own
+  // tsconfig. Without this the app build type-checks it against lib.dom.
+  "exclude": ["node_modules", "services"]
 }

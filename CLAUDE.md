@@ -8,3 +8,151 @@ Brand: **Secure Path Digital — Vault Steel**. Master record: `~/source/securep
 here; never fork a palette into this project. Copies in this repo are derivatives, not
 sources: `src/app/globals.css` `--vault-*` tokens (branch `vault-steel-rebrand`). Index of every brand's master record and its known copies:
 `~/source/infrastructure-docs/registry/brands.md`.
+
+## What this repo is, in one screen
+
+The **question bank** (`src/data/content.json`) and the **practice app** deployed to
+`learn.securepathdigital.net`. The printed books are built in
+`~/source/securepathdigital-site`, which reads this bank — **that repo's `CLAUDE.md` is the
+one to read for the products, the store and the deploy runbooks.**
+
+- **One file, two populations.** `domains[].questions[]` is the frozen v1 439, kept only as
+  provenance for 410 `variantOf` links; gate V0 in the builder holds it at exactly 439.
+  `domains[].questionsV2[]` is the 750 the books print, with scenarios in `stimuli[]`.
+- ⚠ **Nothing under `src/` may import `content.json`.** An imported JSON module is bundled
+  into the client, so importing the bank publishes the paid examination — measured, 4.2 MB
+  of chunks with all 590 withheld questions reachable, against 1.8 MB and none. A test
+  (`no file under src/ imports the full bank or the paid cut`) enforces it, and
+  `stage-learn.sh` re-checks the built export.
+- **The app imports `src/data/preview.json`** — 160 questions, 20 per domain, cut by
+  `scripts/build-preview.mjs`, which npm runs as `prebuild` so it cannot go stale.
+- **The free sample is email-gated (2026-10-27).** 40 of the 160 (5 per domain, stamped
+  `open: true` by the builder via `pickOpen()` in `src/lib/preview.ts`) need nothing; the
+  other 120 open when the visitor joins the mailing list. `src/lib/sample-gate.ts` holds
+  the pure rules (`accessFor`, `availableQuestions`), the consent sentence and the storage
+  keys (`spd.sample.joined` in localStorage, `spd.utm` in sessionStorage);
+  `<SignupPanel>` posts to the unlock service's `/v1/subscribe`. Every quiz draws through
+  `getPreviewQuestions()`, which filters by access, so no sitting can hold a gated
+  question. All 160 still ship in the export: the gate is a request, not a lock. Changing
+  the consent wording means bumping `CONSENT_VERSION` in `src/lib/unlock-protocol.ts`, and
+  anything the form collects belongs on the privacy page in the site repo. The runbook for the list (storage,
+  secrets, the welcome series, the mailer, subscriber requests) is the site repo's
+  `docs/MAILING_LIST.md`.
+- **`services/unlock/`** is a zero-dependency Node 22 service on Cloud Run that trades a
+  Gumroad licence key for a signed token and serves the full 750. Its own README carries
+  the runbook. `scripts/build-paid.mjs` cuts the bank it ships; `data/paid.json` is
+  gitignored and built inside the image.
+- **The privacy policy is not in this repo.** It has one source,
+  `securepathdigital.net/privacy/`, which covers this app too. The footer links there and
+  `src/app/privacy/page.tsx` redirects there. Anything that changes what the app collects
+  or stores in the browser changes that page (`public/privacy/index.html` in the site repo).
+- **SEO plumbing (2026-09-19):** `src/app/sitemap.ts` and `robots.ts` are metadata routes
+  written at export (`/` and `/practice/` listed; the app screens disallowed); `layout.tsx`
+  sets `openGraph` and `twitter` defaults with `public/og/eight-domains.png`; the offer page
+  and the practice page set `alternates.canonical`; the offer page carries `Product` JSON-LD
+  with both prices typed in (`PRODUCT_LD`), so a price change touches it too. The header and
+  footer link to the apex FAQ at `securepathdigital.net/cissp-faq/`. The site repo's
+  CLAUDE.md § SEO has the research this came from. `public/googleeba7ace057631f5b.html` is
+  Search Console's ownership file for learn; it ships with every export and must stay.
+- **Redirect routes emit `<meta httpEquiv="refresh">` in the body**, not
+  `metadata.other.refresh`: Next renders the latter as `<meta name="refresh">`, which no
+  browser acts on. `/guides/` had only ever redirected by script until 2026-09-16.
+
+### The header is shared with the apex
+
+`src/components/header.tsx` is the only header; the root layout mounts it on every route
+(offer, practice, quiz, study, report, progress, unlock, 404). Its links are `SHARED_NAV`
+(absolute URLs, identical to the apex's `NAV` in `securepathdigital-site/scripts/sync_header.py`),
+and nothing else. Unlock left the header on 2026-10-29: it is a buyers-only step that free
+visitors mistook for the email signup. Buyers reach `/unlock/` (titled "Enter your licence
+key") from the Gumroad receipt, the practice upsell, a line under the signup panel and the
+footer. `src/app/site-header.css` is a verbatim copy of that script's CSS:
+change the site repo first, then paste. aria-current: `page` on the exact route, `true` on Free
+Practice Test across quiz/study/report/progress. Below 1024px a real button (aria-expanded,
+Escape, closes on route change or tap) opens an absolute panel, so nothing shifts. No link may
+appear only after hydration. `test/header.test.mjs` pins the list and, when the site checkout
+sits beside this one (or `SPD_SITE` points at it), compares links and CSS with the apex.
+The browser check is the site repo's `tools/qa/header_nav_check.py`.
+
+### Tests
+
+`npm test` runs the fast `node --test` suite in `test/`. `npm run test:browser` starts
+`next dev` on port 3917 and runs `e2e/` in headless system Chrome; it checks the rendered
+contrast of the quiz answer buttons. Run it after changing quiz or button styling. See
+README § Verification.
+
+### Two Gumroad products, and only one issues keys
+
+| | permalink | price | what it delivers |
+|---|---|---|---|
+| Books | `eight-domains` | $39 | the five PDFs |
+| Books + app | `lkidg` | $69 | the same five, plus a licence key |
+
+Prices were $9.99 / $19.99 until 2026-09-10, and $29 / $49 until 2026-10-27. They live in `src/lib/checkout.ts`, and the
+apex, the Gumroad listings and the hero artwork all carry them too; see the site repo's
+CLAUDE.md before moving them again.
+
+Cloud Run runs with `GUMROAD_PRODUCT_ID=O_wvGHBX4d_MOpvoZafVQw==`, which is `lkidg`. **A
+key cannot come from the $39 product**, so any "unlock the app" call to action has to
+point at `lkidg` or it sells something the buyer will not receive. Both URLs live in
+`src/lib/checkout.ts`; the unlock page and the practice upsell both got this wrong until
+2026-09-08.
+
+### Bumping the bank
+
+`bank.v2.edition` in `content.json` **is** the `/v1/bank` ETag. Change the content without
+changing it and every client that already holds the bank sends `If-None-Match`, takes a
+304, and keeps the old text forever. Bump it in the same commit as the content, then
+rebuild `preview.json` and `paid.json` and redeploy the service.
+
+### `.env`, not `.env.production`
+
+`NEXT_PUBLIC_UNLOCK_URL` lives in `.env` because `next dev` never reads `.env.production` —
+a value only there leaves the dev server with the licence check disabled and the unlock
+page correctly saying so, which reads as a bug and is not one. `.gitignore` has `!.env`.
+
+### Copy
+
+Every product number on the storefront is measured from the built PDFs; the commands that
+produce each one are in a comment above `FACTS` in `src/app/page.tsx`. Re-measure rather
+than copying from a changelog — the page claimed 491 questions while the app served 439,
+and 35 diagrams while the book prints 29.
+
+### Analytics: events beyond page views
+
+`src/lib/analytics.ts`, added 2026-09-16. GA4 property `G-Y20Q6FPX5T` is shared with the
+apex; split reports on **Hostname**. Before this the property received `page_view` only.
+
+| event | fires | carries |
+|---|---|---|
+| `quiz_start` | every start action in `quiz-store.ts`, via `begin()`, and `restartQuiz` | `mode` (domain / random / weakness / review / exam / form), `domain`, `count`, `restart` |
+| `quiz_complete` | `nextQuestion` when the last question is answered | the same, plus `correct`, `percent`, `elapsed_s` |
+| `buy_click` | every checkout link, all of which are `<BuyLink>` (`src/components/buy-link.tsx`) | `product` (books / plus), `placement` |
+| `history_loaded` | once per page load, after the attempt log hydrates (`<AnalyticsIdentity>` in the root layout) | `attempts`, and sets the **`attempts_bucket`** user property: none / 1-10 / 11-50 / 51+ |
+| `gate_view` | a `<SignupPanel>` renders for a visitor who has not joined (once per panel mount) | `placement` (practice_page / results / exam_modes) |
+| `signup_submit` | the signup form passed its own checks and the request went out | `placement` |
+| `signup_success` | `/v1/subscribe` answered `ok: true` and the other 120 opened | `placement` |
+| `signup_error` | the service or the network said no | `placement`, `code` (invalid_email / consent_required / rate_limited / store_unavailable / unreachable / unconfigured) |
+
+The email address is never a GA parameter: none of the gate's track functions take it.
+Verified under Playwright with the GA hits intercepted, none carries it. GA4's own
+enhanced-measurement form listener does put the form element on the local `dataLayer`,
+which is standard and sends no field values.
+
+Every event also carries `tier` (free / paid), read at the moment it fires. "Returning
+user" in GA4 is a cookie fact; `attempts_bucket` is "has answered questions in this
+browser before", which is the question worth asking. Verified end to end on the staged
+build by reading `window.dataLayer` under Playwright: a first load reports `none`, a
+second load after a ten-question set reports `1-10`.
+
+A new buy button must be a `<BuyLink>`, not an `<a>`: the component owns the href, the
+`rel` and the event, and the offer page is a server component that cannot attach an
+`onClick` of its own.
+
+Every parameter above up to `history_loaded` is registered as a custom dimension or
+metric on the property (2026-09-18), which is what makes it reportable. The gate's
+`code` was registered on 2026-10-27 as "Signup error code". `placement` is already registered, under the display name "Buy placement",
+which now also covers the gate's placements. Add a parameter here and register it with
+`analytics/register-definitions.py` in the site repo, which is idempotent; API access is a
+service account, not a login. That repo's CLAUDE.md § Analytics has the account, the key
+path and why the gcloud login route does not work.

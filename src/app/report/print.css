@@ -1,0 +1,165 @@
+/*
+ * The study guide, on paper.
+ *
+ * Vault Steel is a dark identity, and it INVERTS in print: covers keep the dark
+ * ground, interiors are paper. This file is that inversion for the report, and
+ * nothing else — every rule is inside `@media print`, and every rule is scoped
+ * to `html.report-printing`, a class the report page puts on the document and
+ * takes off when it unmounts. Neither guard is optional: a stylesheet imported
+ * by a component in the App Router is global, so an unscoped rule here would
+ * follow the reader onto the quiz.
+ *
+ * The colours are measured, not chosen by eye:
+ *
+ *   steel   #9BA3AF on white is 2.54:1 — unreadable, and the brand's print
+ *           rules say so. Meta text darkens to #5F6873 (5.65:1).
+ *   copper  #C97B3F on white is 3.29:1, under AA for body text. Copper TEXT
+ *           darkens to #8F5527 (6.01:1); the undarkened copper survives only
+ *           as rules and borders, where contrast minima do not apply.
+ *   ink     #111318 (18.58:1).
+ *   wrong   #A32C24 (7.14:1)   right #1F6B52 (6.40:1)
+ *
+ * Long-form body sets in a serif. The grotesk carries short copy and tires over
+ * a printed page, which is the same finding that put a serif in the books.
+ */
+
+@media print {
+    /* `html.report-printing` is 0,1,1 — it must outrank `:root, .dark` (0,1,0)
+       in globals.css whichever order the two chunks land in. */
+    html.report-printing {
+        /* Overriding the palette's own triplets inverts everything downstream:
+           background, card, border, muted-foreground and the rest are all
+           defined from these in globals.css. */
+        --vault-bg: 255 255 255;
+        --vault-surface: 255 255 255;
+        --vault-ink: 17 19 24;
+        --vault-steel: 95 104 115;
+        --vault-steel-deep: 71 79 90;
+        --vault-line: 196 202 211;
+        --vault-copper: 143 85 39;
+        --vault-copper-lo: 143 85 39;
+        --vault-copper-hi: 143 85 39;
+        --vault-muted: 95 104 115;
+
+        --muted: 241 242 245;
+        --border: 40 44 52;
+        --destructive: 163 44 36;
+        --success: 31 107 82;
+
+        /* layout.tsx sets color-scheme:dark inline, which beats a stylesheet. */
+        color-scheme: light !important;
+        background: #fff !important;
+    }
+
+    html.report-printing body {
+        background: #fff !important;
+        color: #111318 !important;
+    }
+
+    /* The chrome. The header is sticky and the footer is four columns of site
+       navigation; neither belongs on a printed study guide. Everything the
+       reader clicks is marked print:hidden in the page itself. */
+    html.report-printing header,
+    html.report-printing .vault-footer {
+        display: none !important;
+    }
+
+    /* The copper gradient is painted into the text with background-clip, and a
+       printer that drops backgrounds prints it as nothing at all. Solid. */
+    html.report-printing .grad-copper {
+        background: none !important;
+        -webkit-text-fill-color: #8F5527 !important;
+        color: #8F5527 !important;
+    }
+
+    html.report-printing .report-root {
+        /* Long-form body: serif. */
+        font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        color: #111318;
+        max-width: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Labels, ids and figures stay in the mono/display faces: they are
+       reference marks, not prose, and the serif makes "1.3.2" ambiguous. */
+    html.report-printing .report-root .font-mono,
+    html.report-printing .report-root .vault-label,
+    html.report-printing .report-root .font-display {
+        font-family: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+    }
+
+    html.report-printing .report-root h1,
+    html.report-printing .report-root h2,
+    html.report-printing .report-root h3 {
+        color: #111318;
+        /* A heading at the foot of a page with its section overleaf. */
+        break-after: avoid-page;
+        page-break-after: avoid;
+    }
+
+    html.report-printing .report-root p {
+        orphans: 2;
+        widows: 2;
+    }
+
+    /* A worked question is a unit: stem, options, key and reason together, or
+       the reader is turning the page mid-argument. */
+    html.report-printing .report-block {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+
+    html.report-printing .report-section {
+        break-before: page;
+        page-break-before: always;
+    }
+
+    html.report-printing .report-section:first-of-type {
+        break-before: auto;
+        page-break-before: auto;
+    }
+
+    /* Table borders and rules. The token border is 15% alpha, which is a hint
+       on a screen and nothing at all on paper. */
+    html.report-printing .report-root table,
+    html.report-printing .report-root th,
+    html.report-printing .report-root td,
+    html.report-printing .report-root .report-rule {
+        border-color: #C4CAD3 !important;
+    }
+
+    html.report-printing .report-root thead {
+        display: table-header-group;
+    }
+
+    /* The correct/chosen tints carry meaning, so they have to survive a
+       printer's default of dropping backgrounds. */
+    html.report-printing .report-key,
+    html.report-printing .report-chosen {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    html.report-printing .report-key {
+        border-left: 3px solid #1F6B52;
+        color: #111318;
+    }
+
+    html.report-printing .report-chosen {
+        border-left: 3px solid #A32C24;
+        color: #111318;
+    }
+
+    /* Underlines and link colour are noise once the page cannot be clicked. */
+    html.report-printing .report-root a {
+        color: #111318;
+        text-decoration: none;
+    }
+
+    @page {
+        margin: 18mm 16mm 20mm;
+    }
+}

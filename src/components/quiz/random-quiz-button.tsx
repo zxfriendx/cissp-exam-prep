@@ -30,7 +30,7 @@ export function RandomQuizButton({ count }: { count: number }) {
                     {count}
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                    Randomized from all domains
+                    Anything from any domain, like the real exam
                 </p>
             </CardContent>
         </Card>

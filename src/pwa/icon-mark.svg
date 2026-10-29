@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The Vault Steel vault-dial mark, as flat artwork for raster export.
+
+  This is a TRACING of src/components/vault-mark.tsx, not a second design. The
+  component is the source of truth and the two must be kept in step; the only
+  differences are deliberate and forced by the medium:
+
+    * currentColor becomes the literal ink #ECEEF2. An SVG handed to a raster
+      renderer has no inherited colour to pick up, and the header's steel
+      #9BA3AF loses too much contrast once the mark is 32px on a home screen.
+    * rgb(var(--vault-copper)) becomes #C97B3F. Same reason: no cascade here.
+
+  Ground, padding and canvas size are NOT in this file — src/pwa/make-icons.py
+  composes them, because "any" and "maskable" need different safe areas.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <circle cx="24" cy="24" r="21" fill="none" stroke="#ECEEF2" stroke-width="2.5"/>
+  <circle cx="24" cy="24" r="13.5" fill="none" stroke="#ECEEF2" stroke-width="1.6"/>
+  <g stroke="#ECEEF2" stroke-width="2">
+    <line x1="35.31" y1="12.69" x2="38.14" y2="9.86"/>
+    <line x1="40" y1="24" x2="44" y2="24"/>
+    <line x1="35.31" y1="35.31" x2="38.14" y2="38.14"/>
+    <line x1="24" y1="40" x2="24" y2="44"/>
+    <line x1="12.69" y1="35.31" x2="9.86" y2="38.14"/>
+    <line x1="8" y1="24" x2="4" y2="24"/>
+    <line x1="12.69" y1="12.69" x2="9.86" y2="9.86"/>
+  </g>
+  <line x1="24" y1="8" x2="24" y2="4" stroke="#C97B3F" stroke-width="2.5"/>
+  <g stroke="#ECEEF2" stroke-width="2.4">
+    <line x1="24" y1="19.5" x2="24" y2="10.5"/>
+    <line x1="27.9" y1="26.25" x2="35.69" y2="30.75"/>
+    <line x1="20.1" y1="26.25" x2="12.31" y2="30.75"/>
+  </g>
+  <circle cx="24" cy="24" r="4.5" fill="none" stroke="#ECEEF2" stroke-width="2.4"/>
+</svg>

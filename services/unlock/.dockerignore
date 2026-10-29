@@ -1,0 +1,3 @@
+# The build context is the repo root, so the root .dockerignore is the one that
+# applies. This file exists only to say so -- do not add rules here expecting
+# them to take effect.

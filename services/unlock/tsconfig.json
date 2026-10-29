@@ -1,0 +1,34 @@
+{
+    // The app's tsconfig excludes services/ (see its "exclude") because this is a
+    // different program: Node 22, no DOM, no JSX, and run straight from .ts with
+    // no bundler -- which is why relative imports carry their .ts extension.
+    //
+    // "module": "preserve" is what lets one tsconfig cover both trees. The app's
+    // package.json has no "type", so under nodenext TypeScript reads every file
+    // it imports from src/ as CommonJS and rejects the exports in
+    // unlock-protocol.ts. Nothing here is emitted, so the looser model costs
+    // nothing; erasableSyntaxOnly is the check that actually matters, because it
+    // is Node's type stripping that has to accept this code.
+    "compilerOptions": {
+        "target": "ES2023",
+        "lib": ["ES2023"],
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "allowJs": true,
+        "verbatimModuleSyntax": true,
+        "erasableSyntaxOnly": true,
+        "isolatedModules": true,
+        "strict": true,
+        // Not noUncheckedIndexedAccess: the app's src/lib files are pulled into
+        // this program by the shared contract, and they were not written under
+        // it. Turning it on reports six errors in another lane's code.
+        "noUnusedLocals": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "types": ["node"],
+        // unlock-protocol.ts imports its Question/Stimulus types this way.
+        "paths": { "@/*": ["../../src/*"] }
+    },
+    "include": ["src/**/*.ts", "test/**/*.ts", "mock-gumroad.ts", "testkit.ts"]
+}

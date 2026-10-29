@@ -26,16 +26,18 @@ export function Footer() {
               <VaultLockup />
             </Link>
             <p className="foot-tag">
-              Bank-grade security for growing businesses. Fractional CISO &amp; cybersecurity
-              advisory for regulated firms.
+              Study materials and a practice app that help you get CISSP certified. Read the
+              material, take the practice tests, and let the app show you your weak points.
             </p>
           </div>
 
           <div className="foot-col">
             <h4>Study</h4>
             <ul>
-              <li><Link href="/">CISSP Prep</Link></li>
-              <li><Link href="/guides/">Study materials</Link></li>
+              <li><Link href="/">Study materials</Link></li>
+              <li><Link href="/practice/">Free practice test</Link></li>
+              <li><a href="https://securepathdigital.net/cissp-faq/">CISSP exam FAQ</a></li>
+              <li><Link href="/unlock/">Have a licence key?</Link></li>
             </ul>
           </div>
 
@@ -45,6 +47,7 @@ export function Footer() {
               <li><p>Columbus, Ohio</p></li>
               <li><a href="tel:+16148878772">(614) 887-8772</a></li>
               <li><a href="https://securepathdigital.net">securepathdigital.net</a></li>
+              <li><a href="https://securepathdigital.net/privacy/">Privacy</a></li>
             </ul>
           </div>
         </div>
@@ -60,7 +63,8 @@ export function Footer() {
           <p className="tm">
             CISSP® and ISC2® are registered trademarks of International Information System
             Security Certification Consortium, Inc. This publication is independent, unofficial,
-            and is not endorsed by, affiliated with, sponsored by, or approved by ISC2.
+            and is not endorsed by, affiliated with, sponsored by, or approved by ISC2, and it
+            reproduces no exam content.
           </p>
         </div>
       </div>
